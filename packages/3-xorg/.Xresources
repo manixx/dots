@@ -1,0 +1,67 @@
+! 
+! .Xresoures 
+! Manfred Mjka <manixx90@gmail.com> 
+!
+
+! colors 
+
+#define white #b7bec9
+#define black #262729
+#define grey #88909f
+#define red #e77171
+#define green #a1bf78
+#define cyan #5ebaa5
+#define yellow #dbb774
+#define blue #73b3e7
+#define magenta #d390e7
+
+*.foreground:   white
+*.background:   [80]black
+*.cursorColor:  white
+
+*.color0: grey
+*.color1: red
+*.color2: green
+*.color3: yellow
+*.color4: blue
+*.color5: magenta
+*.color6: cyan
+*.color7: white
+*.color8: grey
+*.color9: red
+*.color10: green
+*.color11: yellow
+*.color12: blue
+*.color13: magenta
+*.color14: cyan
+*.color15: white
+
+! styling
+
+URxvt*font:           xft:DejaVu Sans Mono:pixelsize=12
+URxvt*scrollBar:      false
+URxvt*internalBorder: 24
+Xcursor.size:         16
+
+! settings 
+
+URxvt*depth:          32
+URxvt*saveLines:      4000
+URxvt*cursorBlink:    true
+
+URxvt.perl-lib: /usr/lib/urxvt/perl
+URxvt*keyboard-select.clipboard: true
+
+URxvt*perl-ext-common: default,matcher,keyboard-select,font-size
+URxvt*url-launcher:    xdg-open
+URxvt*matcher.button:  1
+URxvt*matcher.rend.0:  Uline Bold fg5
+URxvt*fading:          false
+
+URxvt.keysym.Shift-Up: command:\033]720;1\007
+URxvt.keysym.Shift-Down: command:\033]721;1\007
+
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-Plus:   font-size:increase
+URxvt.keysym.M-Minus:  font-size:decrease
+URxvt.keysym.M-0:      font-size:reset
