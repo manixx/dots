@@ -13,6 +13,7 @@ packages=(
   imagemagick
   libnotify
   otf-font-awesome
+  redshift
   rxvt-unicode
   scrot
   ttf-dejavu
@@ -55,6 +56,9 @@ mkdir -p ~/.config/i3status
 cp i3status-config ~/.config/i3status/config
 
 cp compton.conf ~/.config
+
+mkdir -p ~/.config/dunst
+cp dunstrc ~/.config/dunst
 
 sudo cp 20-intel.conf /etc/X11/xorg.conf.d
 

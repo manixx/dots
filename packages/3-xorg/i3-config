@@ -168,8 +168,8 @@ for_window [class=".*"] border pixel 2
 
 # class                 border   bground  text     indic.   child_border
 client.focused          $black77 $black77 $white   $blue    $white
-client.focused_inactive $black77 $black77 $white77 $black77 $black77
-client.unfocused        $black77 $black77 $white77 $black77 $black77
+client.focused_inactive $black00 $black00 $white77 $black00 $black00
+client.unfocused        $black00 $black00 $white77 $black00 $black00
 client.urgent           $black77 $black77 $red     $black77 $black77
 client.placeholder      $black77 $black77 $white77 $black77 $black77
 client.background       $black77

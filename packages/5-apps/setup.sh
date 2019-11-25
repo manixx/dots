@@ -6,6 +6,11 @@ packages=(
   firefox 
   pass 
   task 
+  telegram-desktop
+)
+
+aur_packages=(
+
 )
 
 sudo pacman -S --needed "${packages[@]}"
