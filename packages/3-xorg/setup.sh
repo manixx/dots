@@ -9,19 +9,21 @@ packages=(
   i3-gaps
   i3lock
   i3status
-  libnotify
   imagemagick
+  libnotify
   otf-font-awesome
   rxvt-unicode
   scrot
   ttf-dejavu
   unclutter
   urxvt-perls
+  xclip
   xf86-video-intel
   xorg-server
   xorg-xbacklight
   xorg-xinit
   xorg-xrandr
+  xorg-xprop
 )
 
 aur_packages=(
@@ -46,7 +48,27 @@ cp .xinitrc \
   ~ 
 
 mkdir -p ~/.config/i3 
-cp i3-config ~/.config/i3 
+cp i3-config ~/.config/i3/config 
 
 mkdir -p ~/.config/i3status 
-cp i3status-config ~/.config/i3status 
+cp i3status-config ~/.config/i3status/config
+
+cp compton.conf ~/.config
+
+sudo cp 20-intel.conf /etc/X11/xorg.conf.d
+
+# setup geoclue for redshift 
+
+if ! grep -Fxq "[redshift]" /etc/geoclue/geoclue.conf; then 
+  sudo sh -c "cat geoclue-redshift.conf >> /etc/geoclue/geoclue.conf"
+fi
+
+if ! grep -Fxq "url=https://location.services.mozilla.com/v1/geolocate?key=geoclue" /etc/geoclue/geoclue.conf; then 
+  sudo sed -i 's/\[wifi\]/\[wifi\]\nurl=https:\/\/location.services.mozilla.com\/v1\/geolocate?key=geoclue/' /etc/geoclue/geoclue.conf
+fi
+
+sudo systemctl enable avahi-daemon.socket
+
+# setup x11 keymap 
+
+localectl set-x11-keymap de 

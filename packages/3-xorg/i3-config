@@ -37,18 +37,18 @@ bindsym $mod+Shift+t reload
 bindsym $mod+Shift+r restart
 
 bindsym $mod+space exec --no-startup-id i3-dmenu-desktop \
-				--dmenu="dmenu -i -l 5 -b -fn '$font-$font_size' -nf '$grey' -nb '$black' -sf '$black' -sb '$white'" 
+  --dmenu="dmenu -i -l 5 -b -fn '$font-$font_size' -nf '$grey' -nb '$black' -sf '$black' -sb '$white'" 
 
 bindsym $mod+Shift+p exec --no-startup-id passmenu \
-				-i -l 5 -fn '$font-$font_size' -nf '$grey' -nb '$black' -sf '$black' -sb '$white'
+  -i -l 5 -fn '$font-$font_size' -nf '$grey' -nb '$black' -sf '$black' -sb '$white'
 
 bindsym $mod+Shift+e exec \
-				"i3-nagbar --font 'pango:$font $font_size' -t warning -m 'Exit?' -B 'Hell yes!' 'i3-msg exit'"
+  "i3-nagbar --font 'pango:$font $font_size' -t warning -m 'Exit?' -B 'Hell yes!' 'i3-msg exit'"
 
 bindsym $mod+Escape exec --no-startup-id \
-				scrot -o ~/.cache/lock.png && \
-				convert -scale 10% -scale 1000% ~/.cache/lock.png ~/.cache/lock.png && \
-				i3lock -i ~/.cache/lock.png
+  scrot -o ~/.cache/lock.png && \
+  convert -scale 10% -scale 1000% ~/.cache/lock.png ~/.cache/lock.png && \
+  i3lock -i ~/.cache/lock.png
 
 bindsym --release $mod+Print exec --no-startup-id scrot -s 
 
@@ -60,10 +60,10 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
 bindsym XF86AudioMicMute     exec --no-startup-id amixer set Capture toggle
 
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 && \
-				xbacklight -get > /home/manfred/.config/backlight
+  xbacklight -get > /home/manfred/.config/backlight
 
 bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 5 && \
-				xbacklight -get > /home/manfred/.config/backlight
+  xbacklight -get > /home/manfred/.config/backlight
 
 # bindsym XF86Tools     exec --no-startup-id urxvt -e nnn
 # bindsym XF86Display   exec --no-startup-id -- reserved for auth guard 
@@ -72,13 +72,13 @@ bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 5 && \
 # Spotify 
 
 bindsym $mod+XF86AudioMute        exec --no-startup-id \
-				dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
+  dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 
 bindsym $mod+XF86AudioLowerVolume exec --no-startup-id \
-				dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
+  dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
 
 bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id \
-				dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+  dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
 
 # Movement 
 
@@ -139,21 +139,21 @@ bindsym $mod+Shift+0 move container to workspace $ws-misc
 # Resize 
 
 mode "resize" {
-        bindsym $left       resize shrink width  10 px or 10 ppt
-        bindsym $down       resize grow   height 10 px or 10 ppt
-        bindsym $up         resize shrink height 10 px or 10 ppt
-        bindsym $right      resize grow   width  10 px or 10 ppt
-        bindsym Escape mode "default"
+  bindsym $left       resize shrink width  10 px or 10 ppt
+  bindsym $down       resize grow   height 10 px or 10 ppt
+  bindsym $up         resize shrink height 10 px or 10 ppt
+  bindsym $right      resize grow   width  10 px or 10 ppt
+  bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
 
 # Move workspaces
 
 mode "move ws" {
-				bindsym 1 move workspace to output eDP1
-				bindsym 2 move workspace to output DP1
-				bindsym 3 move workspace to output HDMI2
-				bindsym Escape mode "default" 
+  bindsym 1 move workspace to output eDP1
+  bindsym 2 move workspace to output DP1
+  bindsym 3 move workspace to output HDMI2
+  bindsym Escape mode "default" 
 }
 bindsym $mod+p mode "move ws" 
 
@@ -177,26 +177,26 @@ client.background       $black77
 # Bar 
 
 bar {
-				status_command i3status 
-				i3bar_command i3bar --transparency
-	
-				position top
-				tray_output none
-				strip_workspace_numbers yes
-				font pango:$font $font_weight $font_size
+  status_command i3status 
+  i3bar_command i3bar --transparency
 
-				colors {
-								background $black33
-								statusline $white
-								separator  $white33
+  position top
+  tray_output none
+  strip_workspace_numbers yes
+  font pango:$font $font_weight $font_size
 
-								#	                 border   bground  text
-								focused_workspace  $black33 $black33 $blue
-								active_workspace   $black33 $black33 $white77
-								inactive_workspace $black33 $black33 $white77
-								urgent_workspace   $black33 $black33 $red
-								binding_mode       $black33 $yellow  $black
-				}
+  colors {
+    background $black33
+    statusline $white
+    separator  $white33
+
+#	                 border   bground  text
+    focused_workspace  $black33 $black33 $magenta
+    active_workspace   $black33 $black33 $white77
+    inactive_workspace $black33 $black33 $white77
+    urgent_workspace   $black33 $black33 $red
+    binding_mode       $black33 $yellow  $black
+  }
 }
 
 # Application assginments 
@@ -210,4 +210,8 @@ assign [instance="^telegram-desktop$"] $ws-messaging
 for_window [instance="^spotify$"]  move to workspace $ws-music 
 for_window [instance="^chromium$"] focus
 for_window [instance="^nvim$"]     focus
+
+# Autostart 
+
+exec --no-startup-id redshift 
 

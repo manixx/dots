@@ -92,9 +92,9 @@ nmap ga <Plug>(EasyAlign)
 
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
 
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
@@ -181,17 +181,17 @@ hi CursorLineNr ctermbg=none cterm=bold
 "
 
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ 
-      \     [ 'mode', 'paste' ],
-      \     [ 'ctrlpmark', 'cocstatus', 'readonly', 'filename', 'modified', 'method', 'git' ] 
-      \   ]
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status'
-      \ },
-      \ }
+  \ 'colorscheme': 'wombat',
+  \ 'active': {
+  \   'left': [ 
+  \     [ 'mode', 'paste' ],
+  \     [ 'ctrlpmark', 'cocstatus', 'readonly', 'filename', 'modified', 'method', 'git' ] 
+  \   ]
+  \ },
+  \ 'component_function': {
+  \   'cocstatus': 'coc#status'
+  \ },
+  \ }
 
 " if dark, disable background to make it transparent again 
 if &background == 'dark'

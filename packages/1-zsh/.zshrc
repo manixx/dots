@@ -1,8 +1,10 @@
 #
 # zsh config 
+# Manfred Mjka <manixx90@gmail.com>
 # 
 
 autoload -Uz compinit promptinit vcs_info edit-command-line bashcompinit
+
 compinit
 promptinit
 bashcompinit
@@ -10,15 +12,27 @@ bashcompinit
 setopt prompt_subst      # to enable functions in prompt
 zle -N edit-command-line # to edit command in $EDITOR
 
+#
+# external sources 
+#
+
 source /usr/share/bash-completion/completions
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-source ~/.vim/plugged/edge/zsh/.zsh-pure-power-light
 
-#source ~/.local/lib/az/az.completion
-source /opt/google-cloud-sdk/completion.zsh.inc
+if [-d ~/.vim/plugged/edge/zsh/.zsh-pure-power-light ]; then 
+  source ~/.vim/plugged/edge/zsh/.zsh-pure-power-light
+fi 
+
+if [ -d /opt/az-cli/az.completion ]; then
+  source /opt/az-cli/az.completion
+fi 
+
+if [ -d /opt/google-cloud-sdk/completion.zsh.inc ]; then
+  source /opt/google-cloud-sdk/completion.zsh.inc
+fi 
 
 #
 # key bindings 
@@ -35,7 +49,7 @@ bindkey '^l' forward-word
 bindkey '^o' edit-command-line
 bindkey '^p' clear-screen
 
-bindkey -s '^b' 'n^M' 
+bindkey -s '^b' 'n^M' # launch nnn
 
 #
 # style options 
@@ -52,11 +66,11 @@ zstyle ':completion:*' special-dirs true # add slash on ./ ../
 #
 
 vcs_data() { # print branch name 
-	vcs_info
+  vcs_info
 
-	if [ -n "$vcs_info_msg_0_" ]; then
-		echo " | ${vcs_info_msg_0_}"
-	fi
+  if [ -n "$vcs_info_msg_0_" ]; then
+    echo " | ${vcs_info_msg_0_}"
+  fi
 }
 
 k8s_data() { # print k8s context 
@@ -90,12 +104,13 @@ SAVEHIST=5000
 #
 # aliases 
 #
- 
+
 alias ls="ls --color=auto"
 alias dev="cd ~/dev" 
 alias downloads="cd ~/downloads"
 alias smi="cd ~/dev/smart-instructions-firebase"
 alias smi="cd ~/dev/smart-instructions-firebase"
+
 #
 # global settings  
 #
@@ -105,7 +120,6 @@ export NNN_TRASH=1 # use trash-cli
 export NNN_USE_EDITOR=1
 export NVM_DIR=~/.nvm
 
-
 #
 # launch i3 
 #  
@@ -113,5 +127,3 @@ export NVM_DIR=~/.nvm
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
   exec startx
 fi
-
-export PATH=$PATH:/home/manfred/.bin

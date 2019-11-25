@@ -38,6 +38,12 @@ aur_packages=(
   ccls
 )
 
+npm_packages=(
+  dockerfile-language-server-nodejs
+  bash-language-server
+  neovim
+)
+
 sudo pacman -S --needed ${packages[@]}
 
 # copy config 
@@ -59,9 +65,7 @@ done
 mkdir -p ~/.npm-global
 npm config set prefix '~/.npm-global'
 
-npm i -g \
-  dockerfile-language-server-nodejs \
-  bash-language-server
+npm i -g ${npm_packages[@]}
 
 # install aur 
 mkdir -p ~/.aur 
