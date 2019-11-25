@@ -6,6 +6,7 @@ packages=(
   dmenu
   dunst
   feh
+  gcc # for .Xresoures parsing 
   i3-gaps
   i3lock
   i3status
@@ -22,8 +23,8 @@ packages=(
   xorg-server
   xorg-xbacklight
   xorg-xinit
-  xorg-xrandr
   xorg-xprop
+  xorg-xrandr
 )
 
 aur_packages=(
