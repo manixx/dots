@@ -36,4 +36,4 @@ done
 chsh -s /bin/zsh
 
 cp ./.zsh{rc,env} ~
-trash ~/.bash*
+trash -f ~/.bash*

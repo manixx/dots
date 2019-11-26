@@ -12,6 +12,9 @@ bashcompinit
 setopt prompt_subst      # to enable functions in prompt
 zle -N edit-command-line # to edit command in $EDITOR
 
+# ignore commands with space prefixed 
+setopt HIST_IGNORE_SPACE
+
 #
 # external sources 
 #
@@ -22,7 +25,7 @@ source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
-if [-d ~/.vim/plugged/edge/zsh/.zsh-pure-power-light ]; then 
+if [ -d ~/.vim/plugged/edge/zsh/.zsh-pure-power-light ]; then 
   source ~/.vim/plugged/edge/zsh/.zsh-pure-power-light
 fi 
 
