@@ -45,6 +45,7 @@ set shortmess+=c
 set signcolumn=yes
 set tabstop=8
 set shiftwidth=2 noexpandtab 
+set showtabline=2
 
 syntax on
 filetype plugin on

@@ -12,8 +12,11 @@ general {
   color_good     = "#a1bf78"
   color_degraded = "#dbb774"
   color_bad      = "#e77171"
+  markup         = "pango"
 }
 
+order += "read_file tasks"
+order += "read_file calendar"
 order += "cpu_usage"
 order += "load"
 order += "memory"
@@ -43,7 +46,17 @@ battery all {
 read_file backlight {
   path = "/home/manfred/.config/backlight"
   max_characters = 3
-  format = " %content%"
+  format = "<span color='#b7bec9'> %content%</span>"
+}
+
+read_file calendar {
+  path = "/home/manfred/.cache/calendar"
+  format = "<span color='#b7bec9'> %content</span>"
+}
+
+read_file tasks {
+  path = "/home/manfred/.cache/tasks"
+  format = "<span color='#b7bec9'> %content</span>"
 }
 
 disk "/" {

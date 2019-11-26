@@ -11,6 +11,9 @@ bashcompinit
 
 setopt prompt_subst      # to enable functions in prompt
 zle -N edit-command-line # to edit command in $EDITOR
+zle -N zle-line-init     # call on init (setting PROMPT to inital)
+zle -N zle-keymap-select # call on vim selection mode change
+
 
 # ignore commands with space prefixed 
 setopt HIST_IGNORE_SPACE
@@ -51,6 +54,7 @@ bindkey '^h' backward-word
 bindkey '^l' forward-word
 bindkey '^o' edit-command-line
 bindkey '^p' clear-screen
+bindkey "^?" backward-delete-char # delete chars after mode switch 
 
 bindkey -s '^b' 'n^M' # launch nnn
 
@@ -93,8 +97,15 @@ n() { # launch nnn
 # prompt
 #
 
+# todo why copy PROMPT? 
+function zle-line-init zle-keymap-select {
+  VIM_PROMPT="%B%F{yellow}[INSERT]%f%b "
+  RPROMPT='${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}%F{black}[${?}]%f %F{magenta}%~%f$(vcs_data)'
+  zle reset-prompt
+}
+
 PROMPT='%F{black}$(date +"[%H:%M:%S]")%f %F{green}→%f '
-RPROMPT='%F{black}[${?}]%f %F{magenta}%~%f$(vcs_data)'
+RPROMPT='%F{magenta}%~%f$(vcs_data)'
 
 #
 # history settings
@@ -103,6 +114,8 @@ RPROMPT='%F{black}[${?}]%f %F{magenta}%~%f$(vcs_data)'
 HISTFILE=~/.zhistory
 HISTSIZE=1000
 SAVEHIST=5000
+HISTCONTROL=ignorespace
+KEYTIMEOUT=1
 
 #
 # aliases 

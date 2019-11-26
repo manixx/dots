@@ -11,3 +11,4 @@ cp ~/.xinitrc \
 
 cp ~/.config/i3/config       packages/3-xorg/i3-config
 cp ~/.config/i3status/config packages/3-xorg/i3status-config
+cp ~/.config/dunst/dunstrc   packages/3-xorg

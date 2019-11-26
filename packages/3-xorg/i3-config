@@ -157,6 +157,15 @@ mode "move ws" {
 }
 bindsym $mod+p mode "move ws" 
 
+# Assign workspaces to screens 
+
+workspace $ws-code output DP1
+workspace $ws-browse output HDMI2
+workspace $ws-term output eDP1 
+workspace $ws-messaging output eDP1 
+workspace $ws-music output eDP1 
+workspace $ws-misc output DP1
+
 # Styling 
 
 gaps              inner 14
@@ -184,18 +193,19 @@ bar {
   tray_output none
   strip_workspace_numbers yes
   font pango:$font $font_weight $font_size
+  output eDP1
 
   colors {
-    background $black33
+    background $blackaa
     statusline $white
     separator  $white33
 
 #	                 border   bground  text
-    focused_workspace  $black33 $black33 $magenta
-    active_workspace   $black33 $black33 $white77
-    inactive_workspace $black33 $black33 $white77
-    urgent_workspace   $black33 $black33 $red
-    binding_mode       $black33 $yellow  $black
+    focused_workspace  $blackaa $blackaa $magenta
+    active_workspace   $blackaa $blackaa $white77
+    inactive_workspace $blackaa $blackaa $white77
+    urgent_workspace   $blackaa $blackaa $red
+    binding_mode       $blackaa $yellow  $black
   }
 }
 
@@ -204,6 +214,7 @@ bar {
 assign [instance="^chromium$"]         $ws-browse 
 assign [instance="^nvim$"]             $ws-code
 assign [instance="^web.whatsapp.com$"] $ws-messaging
+assign [instance="^matterhorn$"]       $ws-messaging
 assign [instance="^talk.sclable.com$"] $ws-messaging
 assign [instance="^telegram-desktop$"] $ws-messaging
 
