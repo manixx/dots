@@ -3,42 +3,27 @@
 # Manfred Mjka <manixx90@gmail.com>
 # 
 
-autoload -Uz compinit promptinit vcs_info edit-command-line bashcompinit
+#
+# setup zsh features 
+#
+
+autoload -Uz \
+  compinit \
+  promptinit \
+  vcs_info \
+  edit-command-line \
+  bashcompinit
 
 compinit
 promptinit
 bashcompinit
 
-setopt prompt_subst      # to enable functions in prompt
 zle -N edit-command-line # to edit command in $EDITOR
 zle -N zle-line-init     # call on init (setting PROMPT to inital)
 zle -N zle-keymap-select # call on vim selection mode change
 
-
-# ignore commands with space prefixed 
-setopt HIST_IGNORE_SPACE
-
-#
-# external sources 
-#
-
-source /usr/share/bash-completion/completions
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/fzf/completion.zsh
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-
-if [ -d ~/.vim/plugged/edge/zsh/.zsh-pure-power-light ]; then 
-  source ~/.vim/plugged/edge/zsh/.zsh-pure-power-light
-fi 
-
-if [ -d /opt/az-cli/az.completion ]; then
-  source /opt/az-cli/az.completion
-fi 
-
-if [ -d /opt/google-cloud-sdk/completion.zsh.inc ]; then
-  source /opt/google-cloud-sdk/completion.zsh.inc
-fi 
+setopt HIST_IGNORE_SPACE # ignore commands with space prefixed 
+setopt prompt_subst      # to enable functions in prompt
 
 #
 # key bindings 
@@ -63,10 +48,10 @@ bindkey -s '^b' 'n^M' # launch nnn
 #
 
 zstyle ':vcs_info:*'   check-for-changes true
-zstyle ':vcs_info:*'   stagedstr '%F{green} •%f'
-zstyle ':vcs_info:*'   unstagedstr '%F{red} •%f'
-zstyle ':vcs_info:*'   formats '%F{red}%b%c%u%f'
-zstyle ':completion:*' special-dirs true # add slash on ./ ../
+zstyle ':vcs_info:*'   stagedstr '%F{green} •%f' # staged
+zstyle ':vcs_info:*'   unstagedstr '%F{red} •%f' # unstaged
+zstyle ':vcs_info:*'   formats '%F{red}%b%c%u%f' # show branch
+zstyle ':completion:*' special-dirs true         # add slash on ./ ../
 
 #
 # functions
@@ -111,21 +96,21 @@ RPROMPT='%F{magenta}%~%f$(vcs_data)'
 # history settings
 #
 
-HISTFILE=~/.zhistory
-HISTSIZE=1000
-SAVEHIST=5000
-HISTCONTROL=ignorespace
-KEYTIMEOUT=1
 
 #
 # aliases 
 #
 
 alias ls="ls --color=auto"
-alias dev="cd ~/dev" 
-alias downloads="cd ~/downloads"
-alias smi="cd ~/dev/smart-instructions-firebase"
-alias smi="cd ~/dev/smart-instructions-firebase"
+
+# 
+# zsh settings 
+#
+
+HISTFILE=~/.zhistory
+HISTSIZE=1000
+SAVEHIST=5000
+KEYTIMEOUT=1 # switch faster to normal mode 
 
 #
 # global settings  
@@ -135,6 +120,20 @@ export EDITOR=nvim
 export NNN_TRASH=1 # use trash-cli
 export NNN_USE_EDITOR=1
 export NVM_DIR=~/.nvm
+
+#
+# external sources 
+#
+
+source /usr/share/bash-completion/completions
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/fzf/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
+if [ -d ~/.vim/plugged/edge/zsh/.zsh-pure-power-light ]; then 
+  source ~/.vim/plugged/edge/zsh/.zsh-pure-power-light
+fi 
 
 #
 # launch i3 
