@@ -60,10 +60,10 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
 bindsym XF86AudioMicMute     exec --no-startup-id amixer set Capture toggle
 
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 && \
-  xbacklight -get > /home/manfred/.config/backlight
+  xbacklight -get | cut -d'.' -f 1 > /home/manfred/.config/backlight
 
 bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 5 && \
-  xbacklight -get > /home/manfred/.config/backlight
+  xbacklight -get | cut -d'.' -f 1 > /home/manfred/.config/backlight
 
 # bindsym XF86Tools     exec --no-startup-id urxvt -e nnn
 # bindsym XF86Display   exec --no-startup-id -- reserved for auth guard 
@@ -198,14 +198,14 @@ bar {
   colors {
     background $blackaa
     statusline $white
-    separator  $white33
+    separator  $white00
 
 #	                 border   bground  text
-    focused_workspace  $blackaa $blackaa $magenta
-    active_workspace   $blackaa $blackaa $white77
-    inactive_workspace $blackaa $blackaa $white77
-    urgent_workspace   $blackaa $blackaa $red
-    binding_mode       $blackaa $yellow  $black
+    focused_workspace  $white00 $white00 $magenta
+    active_workspace   $white00 $white00 #949ba5
+    inactive_workspace $white00 $white00 #949ba5
+    urgent_workspace   $white00 $white00 $red
+    binding_mode       $white00 $yellow  $black
   }
 }
 
