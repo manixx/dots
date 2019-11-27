@@ -31,6 +31,9 @@ cp ~/.ssh/id_rsa* .temp/ssh
 mkdir -p .temp/bg 
 cp ~/.bg/* .temp/bg 
 
+mkdir -p .temp/task
+cp ~/.task/* .temp/task -r 
+
 mkdir -p .temp/password-store
 cp ~/.password-store/* .temp/password-store -r 
 
