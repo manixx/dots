@@ -60,7 +60,10 @@ cp compton.conf ~/.config
 mkdir -p ~/.config/dunst
 cp dunstrc ~/.config/dunst
 
-sudo cp 20-intel.conf /etc/X11/xorg.conf.d
+sudo cp \
+  20-intel.conf \
+  30-touchpad.conf \
+  /etc/X11/xorg.conf.d
 
 # setup geoclue for redshift 
 
