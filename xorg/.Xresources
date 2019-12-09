@@ -5,29 +5,30 @@
 
 ! colors 
 
-#define white #b7bec9
-#define black #262729
-#define grey #88909f
-#define red #e77171
-#define green #a1bf78
-#define cyan #5ebaa5
-#define yellow #dbb774
-#define blue #73b3e7
-#define magenta #d390e7
+#define white    #b7bec9
+#define black    #262729
+#define grey     #88909f
+#define darkgrey #5b6371
+#define red      #e77171
+#define green    #a1bf78
+#define cyan     #5ebaa5
+#define yellow   #dbb774
+#define blue     #73b3e7
+#define magenta  #d390e7
 
-*.foreground:   white
-*.background:   [65]black
-*.cursorColor:  white
+*.foreground:  white
+*.background:  [70]black
+*.cursorColor: white
 
-*.color0: grey
+*.color0: black
 *.color1: red
 *.color2: green
 *.color3: yellow
 *.color4: blue
 *.color5: magenta
 *.color6: cyan
-*.color7: white
-*.color8: grey
+*.color7: grey
+*.color8: darkgrey
 *.color9: red
 *.color10: green
 *.color11: yellow
