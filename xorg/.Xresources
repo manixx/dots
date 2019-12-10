@@ -16,7 +16,7 @@
 #define magenta #d390e7
 
 *.foreground:   white
-*.background:   [65]black
+*.background:   [75]black
 *.cursorColor:  white
 
 *.color0: grey

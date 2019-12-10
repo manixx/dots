@@ -8,6 +8,8 @@ packages=(
   chromium 
   dhcpcd
   dmenu
+  docker
+  docker-compose
   dunst
   feh
   firefox 
@@ -21,6 +23,7 @@ packages=(
   imagemagick
   iw 
   libnotify
+  man
   netctl 
   nnn
   nodejs
@@ -43,6 +46,7 @@ packages=(
   ttf-dejavu
   unclutter
   urxvt-perls
+  wget 
   wpa_supplicant 
   xclip
   xf86-video-intel
@@ -59,8 +63,9 @@ packages=(
 aur_packages=(
   ccls
   compton-tryone-git
-  zsh-fast-syntax-highlighting-git
   spotify 
+  urxvt-font-size-git
+  zsh-fast-syntax-highlighting-git
 )
 
 coc_extensions=(
@@ -174,6 +179,9 @@ cp ./xorg/compton.conf ~/.config
 
 mkdir -p ~/.config/dunst
 cp ./xorg/dunstrc ~/.config/dunst
+
+mkdir -p ~/.local/share/applications
+cp ./applications/* ~/.local/share/applications
 
 sudo cp \
   ./xorg/20-intel.conf \
