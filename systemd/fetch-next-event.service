@@ -1,0 +1,9 @@
+[Unit]
+Description=Fetch next event
+
+[Service]
+ExecStart=/home/manfred/.bin/fetch-next-event.sh
+User=manfred
+
+[Install]
+WantedBy=multi-user.target

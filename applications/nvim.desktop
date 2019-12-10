@@ -1,5 +1,5 @@
 [Desktop Entry]
 Name=Neovim
-Exec=urxvt -name nvim -e nvim 
+Exec=urxvt --internalBorder 0 -name nvim -e nvim 
 Terminal=false
 Type=Application
