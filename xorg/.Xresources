@@ -53,7 +53,7 @@ URxvt*cursorBlink:    true
 URxvt.perl-lib: /usr/lib/urxvt/perl
 URxvt*keyboard-select.clipboard: true
 
-URxvt*perl-ext-common: default,matcher,keyboard-select,font-size
+URxvt*perl-ext-common: default,matcher,keyboard-select,font-size,url-select
 URxvt*url-launcher:    xdg-open
 URxvt*matcher.button:  1
 URxvt*matcher.rend.0:  Uline Bold fg5
@@ -66,3 +66,7 @@ URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-Plus:   font-size:increase
 URxvt.keysym.M-Minus:  font-size:decrease
 URxvt.keysym.M-0:      font-size:reset
+
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.url-select.launcher:  /usr/bin/xdg-open
+URxvt.url-select.underline: true
