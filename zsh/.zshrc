@@ -28,15 +28,15 @@ source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
-if [ -d ~/.vim/plugged/edge/zsh/.zsh-pure-power-light ]; then 
+if [ -f ~/.vim/plugged/edge/zsh/.zsh-pure-power-light ]; then 
   source ~/.vim/plugged/edge/zsh/.zsh-pure-power-light
 fi 
 
-if [ -d /opt/az-cli/az.completion ]; then
+if [ -f /opt/az-cli/az.completion ]; then
   source /opt/az-cli/az.completion
 fi 
 
-if [ -d /opt/google-cloud-sdk/completion.zsh.inc ]; then
+if [ -f /opt/google-cloud-sdk/completion.zsh.inc ]; then
   source /opt/google-cloud-sdk/completion.zsh.inc
 fi 
 
@@ -124,8 +124,6 @@ KEYTIMEOUT=1
 alias ls="ls --color=auto"
 alias dev="cd ~/dev" 
 alias downloads="cd ~/downloads"
-alias smi="cd ~/dev/smart-instructions-firebase"
-alias smi="cd ~/dev/smart-instructions-firebase"
 
 #
 # global settings  
@@ -135,6 +133,10 @@ export EDITOR=nvim
 export NNN_TRASH=1 # use trash-cli
 export NNN_USE_EDITOR=1
 export NVM_DIR=~/.nvm
+export FZF_DEFAULT_OPTS='
+  --color fg:7,bg:-1,hl:5,fg+:7,bg+:-1,hl+:7
+  --color info:4,prompt:5,spinner:3,pointer:6,marker:2
+'
 
 #
 # launch i3 
