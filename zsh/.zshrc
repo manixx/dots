@@ -139,6 +139,13 @@ export FZF_DEFAULT_OPTS='
 '
 
 #
+# setup dircolors 
+#
+
+[ -e ~/.dircolors ] && eval $(dircolors -b ~/.dircolors) || 
+  eval $(dircolors -b)
+
+#
 # launch i3 
 #  
 
