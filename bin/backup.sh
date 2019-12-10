@@ -1,14 +1,14 @@
 #!/bin/sh 
 
-cp ~/.zsh{env,rc} packages/1-zsh
+cp ~/.zsh{env,rc} zsh
 
-cp ~/.config/nvim/* packages/2-nvim 
+cp ~/.config/nvim/* nvim 
 
 cp ~/.xinitrc \
   ~/.Xresources \
   ~/.config/compton.conf \
-  packages/3-xorg 
+  xorg 
 
-cp ~/.config/i3/config       packages/3-xorg/i3-config
-cp ~/.config/i3status/config packages/3-xorg/i3status-config
-cp ~/.config/dunst/dunstrc   packages/3-xorg
+cp ~/.config/i3/config       xorg/i3-config
+cp ~/.config/i3status/config xorg/i3status-config
+cp ~/.config/dunst/dunstrc   xorg

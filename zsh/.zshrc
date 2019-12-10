@@ -100,11 +100,11 @@ n() { # launch nnn
 # todo why copy PROMPT? 
 function zle-line-init zle-keymap-select {
   VIM_PROMPT="%B%F{yellow}[INSERT]%f%b "
-  RPROMPT='${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}%F{black}[${?}]%f %F{magenta}%~%f$(vcs_data)'
+  RPROMPT='${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}%F{8}[${?}]%f %F{magenta}%~%f$(vcs_data)'
   zle reset-prompt
 }
 
-PROMPT='%F{black}$(date +"[%H:%M:%S]")%f %F{green}→%f '
+PROMPT='%F{8}$(date +"[%H:%M:%S]")%f %F{green}→%f '
 RPROMPT='%F{magenta}%~%f$(vcs_data)'
 
 #

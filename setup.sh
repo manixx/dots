@@ -26,11 +26,13 @@ packages=(
   man
   netctl 
   nnn
+  nmap
   nodejs
   npm
   openssh 
   otf-font-awesome
   pass 
+  perl-anyevent-i3
   python
   python-pip
   python2
