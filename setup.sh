@@ -50,6 +50,7 @@ packages=(
   urxvt-perls
   wget 
   wpa_supplicant 
+  xautolock
   xclip
   xf86-video-intel
   xorg-server

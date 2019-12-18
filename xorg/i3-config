@@ -223,4 +223,6 @@ for_window [instance="^nvim$"]     focus
 # Autostart 
 
 exec --no-startup-id redshift 
-
+exec --no-startup-id compton -b 
+exec --no-startup-id unclutter --timeout 1 
+exec --no-startup-id xautolock -time 2 -locker ~/.bin/lock-screen

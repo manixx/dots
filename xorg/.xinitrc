@@ -36,7 +36,4 @@ if [ -f ~/.fehbg ]; then
   ~/.fehbg
 fi 
 
-compton -b
-unclutter --timeout 1 & 
-
 exec i3
