@@ -16,7 +16,8 @@ set updatetime=300
 set shortmess+=c
 set signcolumn=yes
 set tabstop=8
-set shiftwidth=2 noexpandtab 
+set shiftwidth=2 
+set noexpandtab 
 set showtabline=2
 
 syntax on
@@ -38,8 +39,10 @@ Plug 'junegunn/vim-easy-align'
 Plug 'mcchrish/nnn.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
-Plug 'severin-lemaignan/vim-minimap'
 Plug 'easymotion/vim-easymotion'
+"Plug 'Yggdroot/indentLine' 
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
 
 " themes 
 Plug 'sainnhe/edge'
@@ -54,6 +57,8 @@ Plug 'delphinus/vim-firestore'
 " code completion & dev tools
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'editorconfig/editorconfig-vim'
+Plug 'andrewstuart/vim-kubernetes' 
+Plug 'shumphrey/fugitive-gitlab.vim' 
 
 call plug#end()
 
@@ -159,6 +164,16 @@ augroup end
 let g:NERDTreeChDirMode=1
 let g:NERDTreeShowHidden=1
 
+
+" store session and handle nerdtree properly 
+" Save session on quitting Vim
+"autocmd VimLeave * NERDTreeClose
+"autocmd VimLeave * mksession! ~/.session.vim
+
+" Restore session on starting Vim
+"autocmd VimEnter * source ~/.session.vim
+"autocmd VimEnter * NERDTree
+
 "
 " theme settings 
 "
@@ -185,22 +200,56 @@ endif
 "
 
 let g:lightline = {
-  \   'colorscheme': 'edge',
-  \   'separator': { 'left': '▙', 'right': '▟' },
-  \   'subseparator': { 'left': '▸', 'right': '◂' }, 
-  \   'active': {
-  \     'left': [ 
-  \       [ 'mode', 'paste' ],
-  \       [ 'ctrlpmark', 'cocstatus', 'readonly', 'filename', 'modified', 'method', 'git' ] 
-  \     ]
-  \   },
-  \   'component_function': {
-  \     'cocstatus': 'coc#status'
-  \   }
-  \ }
+      \   'colorscheme': 'edge',
+      \   'separator': { 'left': '▙', 'right': '▟' },
+      \   'subseparator': { 'left': '▸', 'right': '◂' }, 
+      \   'active': {
+      \     'left': [ 
+      \       [  'bufnum', 'mode', 'paste' ],
+      \       [ 'ctrlpmark', 'cocstatus', 'readonly', 'filename', 'modified', 'method' ], 
+      \       [ 'gitbranch', 'relativepath' ]
+      \     ], 
+      \     'right': [ 
+      \       [ 'lineinfo' ],
+      \       [ 'percent' ],
+      \       [ 'fileformat', 'fileencoding', 'filetype' ] 
+      \     ]
+      \   }, 
+      \   'inactive': {
+      \     'left': [ 
+      \       [ 'bufnum', 'filename' ], 
+      \       [ 'gitbranch', 'relativepath' ]
+      \     ],
+      \     'right': [ 
+      \       [ 'lineinfo' ],
+      \       [ 'percent' ]
+      \     ]
+      \   }, 
+      \   'tabline': {
+      \     'left': [ [ 'tabs' ] ],
+      \     'right': [ [] ] 
+      \   }, 
+      \   'component_function': {
+      \     'cocstatus': 'coc#status', 
+      \     'gitbranch': 'fugitive#head'
+      \   }
+      \ }
 
 "
 " fzf settings 
 " 
 
 let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
+
+" 
+" indentLine 
+"
+
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+"
+" fugitive-gitlab.vim
+"
+
+let g:fugitive_gitlab_domains = ['https://git.sclable.com']
+let g:gitlab_api_keys = {'git.sclable.com': 'gpr2co92v_gbxVVaZYoL'}
