@@ -5,15 +5,16 @@
 
 # Globals 
 
-set $white   #b7bec9
-set $black   #262729
-set $grey    #88909f
-set $red     #e77171
-set $green   #a1bf78
-set $cyan    #5ebaa5
-set $yellow  #dbb774
-set $blue    #73b3e7
-set $magenta #d390e7
+set $white    #b7bec9
+set $black    #262729
+set $grey     #88909f
+set $darkgrey #5b6371
+set $red      #e77171
+set $green    #a1bf78
+set $cyan     #5ebaa5
+set $yellow   #dbb774
+set $blue     #73b3e7
+set $magenta  #d390e7
 
 set $font        DejaVu Sans
 set $font_weight Bold
@@ -25,14 +26,13 @@ set $down  j
 set $left  h
 set $right l
 
-
 # General commands  
 
-font              pango:$font $font_size
+font              pango:$font $font_weight $font_size
 floating_modifier $mod
 
-bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
-bindsym $mod+q kill
+bindsym $mod+Return  exec --no-startup-id i3-sensible-terminal
+bindsym $mod+Shift+q kill
 bindsym $mod+Shift+t reload
 bindsym $mod+Shift+r restart
 
@@ -58,14 +58,10 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
 bindsym XF86AudioMicMute     exec --no-startup-id amixer set Capture toggle
 
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 && \
-  xbacklight -get | cut -d'.' -f 1 > /home/manfred/.config/backlight
+  xbacklight -get | cut -d'.' -f 1 > /home/manfred/.cache/backlight
 
 bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 5 && \
-  xbacklight -get | cut -d'.' -f 1 > /home/manfred/.config/backlight
-
-# bindsym XF86Tools     exec --no-startup-id urxvt -e nnn
-# bindsym XF86Display   exec --no-startup-id -- reserved for auth guard 
-# bindsym XF86Favorites exec --no-startup-id 
+  xbacklight -get | cut -d'.' -f 1 > /home/manfred/.cache/backlight
 
 # Spotify 
 
@@ -173,56 +169,57 @@ title_align       center
 
 for_window [class=".*"] border pixel 2
 
-# class                 border   bground  text     indic.   child_border
-client.focused          $black77 $black77 $white   $blue    $white
-client.focused_inactive $black00 $black00 $white77 $black00 $black00
-client.unfocused        $black00 $black00 $white77 $black00 $black00
-client.urgent           $black77 $black77 $red     $black77 $black77
-client.placeholder      $black77 $black77 $white77 $black77 $black77
-client.background       $black77
+# class                 border   bground  text      indic.   child_border
+client.focused          $whiteaa $whiteaa $black    $blue    $white
+client.focused_inactive $blackaa $blackaa $darkgrey $black00 $black00
+client.unfocused        $blackaa $blackaa $darkgrey $black00 $black00
+client.urgent           $blackaa $blackaa $red      $blackaa $blackaa
+client.placeholder      $blackaa $blackaa $whiteaa  $blackaa $blackaa
+client.background       $blackaa
 
 # Bar 
 
 bar {
-  status_command i3status 
-  i3bar_command i3bar --transparency
-
-  position top
-  tray_output none
+  status_command          i3status
+  i3bar_command           i3bar --transparency
+  position                top
+  tray_output             none
   strip_workspace_numbers yes
-  font pango:$font $font_weight $font_size
-  output eDP1
+  output                  eDP1
 
   colors {
-    background $blackaa
+    background $black00
     statusline $white
-    separator  $white00
+    separator  $white77
 
-#	                 border   bground  text
-    focused_workspace  $blackaa $blackaa $magenta
-    active_workspace   $blackaa $blackaa #949ba5
-    inactive_workspace $blackaa $blackaa #949ba5
-    urgent_workspace   $blackaa $blackaa $red
-    binding_mode       $blackaa $yellow  $black
+    #	               border   bground  text
+    focused_workspace  $black00 $black00 $magenta
+    active_workspace   $black00 $black00 $grey
+    inactive_workspace $black00 $black00 $grey
+    urgent_workspace   $black00 $black00 $red
+    binding_mode       $black00 $yellow  $black
   }
 }
 
 # Application assginments 
 
 assign [instance="^chromium$"]         $ws-browse 
+assign [instance="^Navigator$"]        $ws-browse
 assign [instance="^nvim$"]             $ws-code
 assign [instance="^web.whatsapp.com$"] $ws-messaging
 assign [instance="^matterhorn$"]       $ws-messaging
 assign [instance="^talk.sclable.com$"] $ws-messaging
 assign [instance="^telegram-desktop$"] $ws-messaging
 
-for_window [instance="^spotify$"]  move to workspace $ws-music 
-for_window [instance="^chromium$"] focus
-for_window [instance="^nvim$"]     focus
+for_window [instance="^spotify$"]   move to workspace $ws-music
+for_window [instance="^chromium$"]  focus
+for_window [instance="^nvim$"]      focus
+for_window [instance="^Navigator$"] focus
 
 # Autostart 
 
-exec --no-startup-id redshift 
+exec --no-startup-id ~/.fehbg
+exec --no-startup-id redshift -l 48.22:16.31
 exec --no-startup-id compton -b 
 exec --no-startup-id unclutter --timeout 1 
-exec --no-startup-id xautolock -time 2 -locker ~/.bin/lock-screen
+#exec --no-startup-id xautolock -time 5 -locker ~/.bin/lock-screen

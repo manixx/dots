@@ -5,7 +5,7 @@
 
 autoload -Uz compinit promptinit vcs_info edit-command-line bashcompinit
 
-compinit
+compinit -d ~/.cache/zsh/zcompdump
 promptinit
 bashcompinit
 
@@ -99,7 +99,7 @@ n() { # launch nnn
 
 # todo why copy PROMPT? 
 function zle-line-init zle-keymap-select {
-  VIM_PROMPT="%B%F{yellow}[INSERT]%f%b "
+  VIM_PROMPT="%B%F{yellow}[NORMAL]%f%b "
   RPROMPT='${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}%F{8}[${?}]%f %F{magenta}%~%f$(vcs_data)'
   zle reset-prompt
 }
@@ -111,7 +111,7 @@ RPROMPT='%F{magenta}%~%f$(vcs_data)'
 # history settings
 #
 
-HISTFILE=~/.zhistory
+HISTFILE=~/.cache/zsh/zhistory
 HISTSIZE=1000
 SAVEHIST=5000
 HISTCONTROL=ignorespace
@@ -130,6 +130,7 @@ alias downloads="cd ~/downloads"
 #
 
 export EDITOR=nvim
+export GOPATH=$(go env GOPATH)
 export NNN_TRASH=1 # use trash-cli
 export NNN_USE_EDITOR=1
 export NVM_DIR=~/.nvm

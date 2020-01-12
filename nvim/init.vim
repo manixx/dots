@@ -30,7 +30,7 @@ filetype plugin on
 call plug#begin('~/.vim/plugged')
 
 " tools 
-Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
+Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
@@ -40,9 +40,9 @@ Plug 'mcchrish/nnn.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'easymotion/vim-easymotion'
-"Plug 'Yggdroot/indentLine' 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
+"Plug 'Yggdroot/indentLine' 
 
 " themes 
 Plug 'sainnhe/edge'
@@ -53,15 +53,14 @@ Plug 'leafgarland/typescript-vim'
 Plug 'jparise/vim-graphql'
 Plug 'chr4/nginx.vim'
 Plug 'delphinus/vim-firestore'
+Plug 'fatih/vim-go'
 
 " code completion & dev tools
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'andrewstuart/vim-kubernetes' 
-Plug 'shumphrey/fugitive-gitlab.vim' 
 
 call plug#end()
-
 
 "
 " key bindings 
@@ -163,7 +162,7 @@ augroup end
 
 let g:NERDTreeChDirMode=1
 let g:NERDTreeShowHidden=1
-
+let g:NERDTreeWinPos = "right"
 
 " store session and handle nerdtree properly 
 " Save session on quitting Vim
@@ -205,7 +204,7 @@ let g:lightline = {
       \   'subseparator': { 'left': '▸', 'right': '◂' }, 
       \   'active': {
       \     'left': [ 
-      \       [  'bufnum', 'mode', 'paste' ],
+      \       [ 'mode', 'paste' ],
       \       [ 'ctrlpmark', 'cocstatus', 'readonly', 'filename', 'modified', 'method' ], 
       \       [ 'gitbranch', 'relativepath' ]
       \     ], 
@@ -217,7 +216,7 @@ let g:lightline = {
       \   }, 
       \   'inactive': {
       \     'left': [ 
-      \       [ 'bufnum', 'filename' ], 
+      \       [ 'filename' ], 
       \       [ 'gitbranch', 'relativepath' ]
       \     ],
       \     'right': [ 
@@ -227,7 +226,7 @@ let g:lightline = {
       \   }, 
       \   'tabline': {
       \     'left': [ [ 'tabs' ] ],
-      \     'right': [ [] ] 
+      \     'right': [] 
       \   }, 
       \   'component_function': {
       \     'cocstatus': 'coc#status', 
@@ -246,10 +245,3 @@ let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 "
 
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-
-"
-" fugitive-gitlab.vim
-"
-
-let g:fugitive_gitlab_domains = ['https://git.sclable.com']
-let g:gitlab_api_keys = {'git.sclable.com': 'gpr2co92v_gbxVVaZYoL'}

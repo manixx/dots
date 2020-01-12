@@ -16,7 +16,7 @@ general {
 }
 
 order += "read_file tasks"
-order += "read_file calendar"
+#order += "read_file calendar"
 order += "cpu_usage"
 order += "load"
 order += "memory"
@@ -44,7 +44,7 @@ battery all {
 }
 
 read_file backlight {
-  path = "/home/manfred/.config/backlight"
+  path = "/home/manfred/.cache/backlight"
   max_characters = 3
   format = "<span color='#b7bec9'> %content%</span>"
 }
@@ -92,5 +92,5 @@ volume master {
 
 ethernet _first_ {
   format_up = ""
-  format_down = ""
+  format_down = ""
 }
