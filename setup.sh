@@ -8,6 +8,7 @@ packages=(
   chromium 
   dhcpcd
   dmenu
+  dnscrypt-proxy
   docker
   docker-compose
   dunst
@@ -15,7 +16,6 @@ packages=(
   firefox 
   fzf 
   gcc # for .Xresoures parsing 
-  git
   git 
   i3-gaps
   i3lock
@@ -25,14 +25,15 @@ packages=(
   libnotify
   man
   netctl 
-  nnn
   nmap
+  nnn
   nodejs
   npm
   openssh 
   otf-font-awesome
   pass 
   perl-anyevent-i3
+  pulseaudio
   python
   python-pip
   python2
@@ -41,12 +42,14 @@ packages=(
   ruby 
   rxvt-unicode
   scrot
+  sshfs
   task 
   telegram-desktop
   the_silver_searcher
   trash-cli
   ttf-dejavu
   unclutter
+  unzip 
   urxvt-perls
   wget 
   wpa_supplicant 
@@ -73,6 +76,7 @@ aur_packages=(
 
 coc_extensions=(
   coc-angular
+  coc-calc
   coc-css
   coc-flutter
   coc-git
@@ -123,7 +127,6 @@ done
 # 
 
 cp ./zsh/.zsh{rc,env} ~
-
 chsh -s /bin/zsh
 
 #
@@ -158,7 +161,7 @@ npm i -g ${npm_packages[@]}
 # 
 
 if ! grep -Fxq "name_servers=127.0.0.1" /etc/resolvconf.conf; then
-  sudo "echo 'name_servers=127.0.0.1' >> /etc/resolvconf.conf"
+  sudo sh -c "echo 'name_servers=127.0.0.1' >> /etc/resolvconf.conf"
 fi
 
 sudo systemctl enable dnscrypt-proxy.service
@@ -194,7 +197,7 @@ sudo cp \
 # setup geoclue for redshift 
 
 if ! grep -Fxq "[redshift]" /etc/geoclue/geoclue.conf; then 
-  sudo sh -c "cat geoclue-redshift.conf >> /etc/geoclue/geoclue.conf"
+  sudo sh -c "cat xorg/geoclue-redshift.conf >> /etc/geoclue/geoclue.conf"
 fi
 
 if ! grep -Fxq "url=https://location.services.mozilla.com/v1/geolocate?key=geoclue" /etc/geoclue/geoclue.conf; then 
