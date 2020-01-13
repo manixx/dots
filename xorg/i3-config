@@ -52,10 +52,10 @@ bindsym --release $mod+Print exec --no-startup-id scrot -s
 
 # Multimedia Keys
 
-bindsym XF86AudioMute        exec --no-startup-id amixer set Master toggle
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%-
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+
-bindsym XF86AudioMicMute     exec --no-startup-id amixer set Capture toggle
+bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute 1 toggle
 
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 && \
   xbacklight -get | cut -d'.' -f 1 > /home/manfred/.cache/backlight
