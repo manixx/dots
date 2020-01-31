@@ -11,7 +11,7 @@ set rnu nu
 set cursorline
 set mouse=a
 set noshowmode
-set cmdheight=2
+set cmdheight=1
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
@@ -74,6 +74,7 @@ noremap <leader><tab>   :NERDTreeToggle<cr>
 noremap <leader><s-tab> :NERDTreeFocus<cr>
 noremap <leader>w       :NERDTree<space>
 noremap <leader>^       :NERDTreeFind<cr>
+noremap <leader><s-S>   :NERDTreeMirror<cr>
 
 " fzf 
 noremap <leader>f :Files<cr>
