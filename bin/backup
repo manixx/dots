@@ -8,4 +8,7 @@ directories=(
   ~/.task
   ~/.gnupg
   ~/.password-store
+  /etc/netctl/*
 )
+
+

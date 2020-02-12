@@ -8,7 +8,7 @@
 set -e
 
 # fetch list and remove comments and blank lines
-sed '/\(^$\|^#\)/d' bin/config-file-list | \
+sed '/\(^$\|^#\)/d' bin/file-list | \
   sed 's|~|'${HOME}'|g' | \
   while read line; do 
     files=($line)
