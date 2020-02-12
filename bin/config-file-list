@@ -21,3 +21,4 @@ nvim/                 ~/.config/nvim/
 
 applications/         ~/.local/share/applications/
 
+task/.taskrc          ~/.taskrc

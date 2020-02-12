@@ -1,0 +1,11 @@
+#!/bin/sh
+
+directories=(
+  ~/.bg 
+  ~/.bin
+  ~/.ssh 
+  ~/.npmrc
+  ~/.task
+  ~/.gnupg
+  ~/.password-store
+)
