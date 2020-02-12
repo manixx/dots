@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Neovim
-Exec=urxvt -name nvim -e nvim 
+Name=ATV
+Exec=chromium --app=https://atv.at
 Terminal=false
 Type=Application

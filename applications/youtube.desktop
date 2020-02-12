@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=YouTube
+Exec=chromium --app=https://youtube.com
+Terminal=false
+Type=Application

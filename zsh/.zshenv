@@ -1,4 +1,5 @@
 typeset -U path
+
 path=(
   ~/.bin 
   ~/.npm-global/bin
@@ -8,3 +9,5 @@ path=(
   /opt/az-cli/bin
   $path[@]
 )
+
+ZDOTDIR=~/.config/zsh

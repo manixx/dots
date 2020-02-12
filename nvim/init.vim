@@ -1,9 +1,4 @@
 "
-" neovim config 
-" Manfred Mjka <manixx90@gmail.com>
-"
-
-"
 " general settings
 "
 
@@ -19,6 +14,7 @@ set tabstop=8
 set shiftwidth=2 
 set noexpandtab 
 set showtabline=2
+set colorcolumn=80
 
 syntax on
 filetype plugin on
@@ -42,7 +38,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
-"Plug 'Yggdroot/indentLine' 
+Plug 'Yggdroot/indentLine' 
+Plug 'elzr/vim-json'
+Plug 'gcmt/taboo.vim'
 
 " themes 
 Plug 'sainnhe/edge'
@@ -62,9 +60,32 @@ Plug 'andrewstuart/vim-kubernetes'
 
 call plug#end()
 
+" 
+" plugins settings 
+"
+
+" indentLine 
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+" vim-json 
+let g:vim_json_syntax_conceal = 0
+
+" taboo 
+let g:taboo_tab_format = ' %N %f%m '
+let g:taboo_renamed_tab_format = ' %N [%l]%m '
+
+" NERDTree settings 
+let g:NERDTreeChDirMode=1
+let g:NERDTreeShowHidden=1
+let g:NERDTreeWinPos = "right"
+
 "
 " key bindings 
 " 
+
+" taboo 
+noremap <leader>tr :TabooRename<space>
+noremap <leader>to :TabooOpen<space> 
 
 " fugitive 
 noremap <leader>gb :Gblame<cr>
@@ -157,23 +178,6 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-" 
-" NERDTree settings 
-"
-
-let g:NERDTreeChDirMode=1
-let g:NERDTreeShowHidden=1
-let g:NERDTreeWinPos = "right"
-
-" store session and handle nerdtree properly 
-" Save session on quitting Vim
-"autocmd VimLeave * NERDTreeClose
-"autocmd VimLeave * mksession! ~/.session.vim
-
-" Restore session on starting Vim
-"autocmd VimEnter * source ~/.session.vim
-"autocmd VimEnter * NERDTree
-
 "
 " theme settings 
 "
@@ -200,49 +204,38 @@ endif
 "
 
 let g:lightline = {
-      \   'colorscheme': 'edge',
-      \   'separator': { 'left': '▙', 'right': '▟' },
-      \   'subseparator': { 'left': '▸', 'right': '◂' }, 
-      \   'active': {
-      \     'left': [ 
-      \       [ 'mode', 'paste' ],
-      \       [ 'ctrlpmark', 'cocstatus', 'readonly', 'filename', 'modified', 'method' ], 
-      \       [ 'gitbranch', 'relativepath' ]
-      \     ], 
-      \     'right': [ 
-      \       [ 'lineinfo' ],
-      \       [ 'percent' ],
-      \       [ 'fileformat', 'fileencoding', 'filetype' ] 
-      \     ]
-      \   }, 
-      \   'inactive': {
-      \     'left': [ 
-      \       [ 'filename' ], 
-      \       [ 'gitbranch', 'relativepath' ]
-      \     ],
-      \     'right': [ 
-      \       [ 'lineinfo' ],
-      \       [ 'percent' ]
-      \     ]
-      \   }, 
-      \   'tabline': {
-      \     'left': [ [ 'tabs' ] ],
-      \     'right': [] 
-      \   }, 
-      \   'component_function': {
-      \     'cocstatus': 'coc#status', 
-      \     'gitbranch': 'fugitive#head'
-      \   }
-      \ }
+  \   'colorscheme': 'edge',
+  \   'separator': { 'left': '▙', 'right': '▟' },
+  \   'subseparator': { 'left': '▸', 'right': '◂' }, 
+  \   'active': {
+  \     'left': [ 
+  \       [ 'mode', 'paste' ],
+  \       [ 'ctrlpmark', 'cocstatus', 'readonly', 'filename', 'modified', 'method' ], 
+  \       [ 'gitbranch', 'relativepath' ]
+  \     ], 
+  \     'right': [ 
+  \       [ 'lineinfo' ],
+  \       [ 'percent' ],
+  \       [ 'fileformat', 'fileencoding', 'filetype' ] 
+  \     ]
+  \   }, 
+  \   'inactive': {
+  \     'left': [ 
+  \       [ 'filename' ], 
+  \       [ 'gitbranch', 'relativepath' ]
+  \     ],
+  \     'right': [ 
+  \       [ 'lineinfo' ],
+  \       [ 'percent' ]
+  \     ]
+  \   }, 
+  \   'tabline': {
+  \     'left': [ [ 'tabs' ] ],
+  \     'right': [] 
+  \   }, 
+  \   'component_function': {
+  \     'cocstatus': 'coc#status', 
+  \     'gitbranch': 'fugitive#head'
+  \   }
+  \ }
 
-"
-" fzf settings 
-" 
-
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
-
-" 
-" indentLine 
-"
-
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']

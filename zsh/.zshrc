@@ -122,6 +122,9 @@ KEYTIMEOUT=1
 #
 
 alias ls="ls --color=auto"
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -i"
 alias dev="cd ~/dev" 
 alias downloads="cd ~/downloads"
 
@@ -134,6 +137,15 @@ export GOPATH=$(go env GOPATH)
 export NNN_TRASH=1 # use trash-cli
 export NNN_USE_EDITOR=1
 export NVM_DIR=~/.nvm
+export FZF_DEFAULT_COMMAND='fd \
+  --type f \
+  --hidden \
+  --follow \
+  --exclude .git \
+  --exclude .cache \
+  --exclude node_modules
+'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='
   --color fg:7,bg:-1,hl:5,fg+:7,bg+:-1,hl+:7
   --color info:4,prompt:5,spinner:3,pointer:6,marker:2

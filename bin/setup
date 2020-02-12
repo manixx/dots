@@ -7,6 +7,7 @@ aur_dir=~/.aur
 packages=(
   alsa-utils 
   base-devel # for AUR packages
+  canto-curses
   chromium 
   dhcpcd
   dmenu
@@ -170,12 +171,12 @@ npm i -g ${npm_packages[@]}
 # SETUP DNSCRYPT PROXY 
 #
 
-sudo systemctl enable dnscrypt-proxy.service
-sudo systemctl start  dnscrypt-proxy.service
-
 if ! grep -Fxq "name_servers=127.0.0.1" /etc/resolvconf.conf; then
   sudo sh -c "echo 'name_servers=127.0.0.1' >> /etc/resolvconf.conf"
 fi
+
+sudo systemctl enable dnscrypt-proxy.service
+sudo systemctl start  dnscrypt-proxy.service
 
 # TODO refresh resolv conf
 
@@ -183,4 +184,4 @@ fi
 # SETUP CONFIG CONFIG FILES 
 #
 
-exec ./import-config
+exec ./export-config

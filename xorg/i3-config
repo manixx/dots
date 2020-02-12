@@ -1,8 +1,3 @@
-#
-# i3 config file (v4)
-# Manfred Mjka <manixx90@gmail.com>
-#
-
 # Globals 
 
 set $white    #b7bec9
@@ -26,33 +21,46 @@ set $down  j
 set $left  h
 set $right l
 
+set $location 48.22:16.31
+
+set $ws-code      "1:&#xf121;"
+set $ws-browse    "2:&#xf57d;"
+set $ws-term      "3:&#xf120;"
+set $ws-messaging "4:&#xf086;"
+set $ws-music     "5:&#xf025;"
+
+set $ws-code-key      1
+set $ws-browse-key    2
+set $ws-term-key      3
+set $ws-messaging-key 4
+set $ws-music-key     5
+
 # General commands  
 
 font              pango:$font $font_weight $font_size
 floating_modifier $mod
 
-bindsym $mod+Return  exec --no-startup-id i3-sensible-terminal
-bindsym $mod+Shift+q kill
-bindsym $mod+Shift+t reload
-bindsym $mod+Shift+r restart
+bindsym $mod+Return          exec --no-startup-id urxvt
+bindsym $mod+Escape          exec --no-startup-id ~/.bin/lock-screen
+bindsym $mod+Shift+a         exec --no-startup-id ~/.bin/autostart
+bindsym $mod+Shift+q         kill
+bindsym $mod+BackSpace       reload
+bindsym $mod+Shift+BackSpace restart
 
 bindsym $mod+space exec --no-startup-id i3-dmenu-desktop \
   --dmenu="dmenu -i -l 5 -b -fn '$font-$font_size' -nf '$grey' -nb '$black' -sf '$black' -sb '$white'" 
 
-bindsym $mod+Shift+p exec --no-startup-id passmenu \
+bindsym $mod+p exec --no-startup-id passmenu \
   -i -l 5 -fn '$font-$font_size' -nf '$grey' -nb '$black' -sf '$black' -sb '$white'
 
 bindsym $mod+Shift+e exec \
-  "i3-nagbar --font 'pango:$font $font_size' -t warning -m 'Exit?' -B 'Hell yes!' 'i3-msg exit'"
-
-bindsym $mod+Escape  exec --no-startup-id ~/.bin/lock-screen
-bindsym $mod+Shift+a exec --no-startup-id ~/.bin/autostart
+  "i3-nagbar --font 'pango:$font $font_size' -t warning -m 'Exit?' -B 'Okay' 'i3-msg exit'"
 
 bindsym --release $mod+Print exec --no-startup-id scrot -s 
 
 # Multimedia Keys
 
-bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute 0 toggle
+bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   0 toggle
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
 bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute 1 toggle
@@ -92,9 +100,8 @@ bindsym $mod+c split h
 bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
-bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+s layout toggle split
 
 bindsym $mod+a focus parent
 bindsym $mod+y focus child
@@ -103,32 +110,24 @@ bindsym $mod+Shift+f     floating toggle
 bindsym $mod+Shift+space sticky toggle
 
 bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus       scratchpad show
+bindsym $mod+mius        scratchpad show
 
-bindsym $mod+g focus mode_toggle
+bindsym $mod+d focus     mode_toggle
+bindsym $mod+u workspace back_and_forth
 
 # Workspaces 
 
-set $ws-code      "1:&#xf121;"
-set $ws-browse    "2:&#xf57d;"
-set $ws-term      "3:&#xf120;"
-set $ws-messaging "4:&#xf086;"
-set $ws-music     "5:&#xf025;"
-set $ws-misc      "6:&#xf1e5;"
+bindsym $mod+$ws-code-key      workspace $ws-code
+bindsym $mod+$ws-browse-key    workspace $ws-browse
+bindsym $mod+$ws-term-key      workspace $ws-term
+bindsym $mod+$ws-messaging-key workspace $ws-messaging
+bindsym $mod+$ws-music-key     workspace $ws-music
 
-bindsym $mod+1 workspace $ws-code
-bindsym $mod+2 workspace $ws-browse
-bindsym $mod+3 workspace $ws-term
-bindsym $mod+4 workspace $ws-messaging
-bindsym $mod+5 workspace $ws-music 
-bindsym $mod+0 workspace $ws-misc
-
-bindsym $mod+Shift+1 move container to workspace $ws-code
-bindsym $mod+Shift+2 move container to workspace $ws-browse
-bindsym $mod+Shift+3 move container to workspace $ws-term
-bindsym $mod+Shift+4 move container to workspace $ws-messaging
-bindsym $mod+Shift+5 move container to workspace $ws-music 
-bindsym $mod+Shift+0 move container to workspace $ws-misc
+bindsym $mod+Shift+$ws-code-key      move container to workspace $ws-code
+bindsym $mod+Shift+$ws-browse-key    move container to workspace $ws-browse
+bindsym $mod+Shift+$ws-term-key      move container to workspace $ws-term
+bindsym $mod+Shift+$ws-messaging-key move container to workspace $ws-messaging
+bindsym $mod+Shift+$ws-music-key     move container to workspace $ws-music
 
 # Resize 
 
@@ -145,20 +144,19 @@ bindsym $mod+r mode "resize"
 
 mode "move ws" {
   bindsym 1 move workspace to output eDP1
-  bindsym 2 move workspace to output DP1
-  bindsym 3 move workspace to output HDMI2
+  bindsym 2 move workspace to output HDMI2
+  bindsym 3 move workspace to output DP1
   bindsym Escape mode "default" 
 }
-bindsym $mod+p mode "move ws" 
+bindsym $mod+m mode "move ws" 
 
 # Assign workspaces to screens 
 
-workspace $ws-code output DP1
-workspace $ws-browse output HDMI2
-workspace $ws-term output eDP1 
-workspace $ws-messaging output eDP1 
-workspace $ws-music output eDP1 
-workspace $ws-misc output DP1
+workspace $ws-code      output eDP1
+workspace $ws-browse    output DP2
+workspace $ws-term      output eDP1
+workspace $ws-messaging output DP2
+workspace $ws-music     output DP2
 
 # Styling 
 
@@ -167,9 +165,9 @@ smart_gaps        on
 hide_edge_borders smart
 title_align       center
 
-for_window [class=".*"] border pixel 2
+for_window [class=".*"] border pixel 1
 
-# class                 border   bground  text      indic.   child_border
+#                       border   bground  text      indic.   child_border
 client.focused          $whiteaa $whiteaa $black    $blue    $white
 client.focused_inactive $blackaa $blackaa $darkgrey $black00 $black00
 client.unfocused        $blackaa $blackaa $darkgrey $black00 $black00
@@ -190,7 +188,7 @@ bar {
   colors {
     background $black00
     statusline $white
-    separator  $white77
+    separator  $whiteaa
 
     #	               border   bground  text
     focused_workspace  $black00 $black00 $magenta
@@ -203,23 +201,28 @@ bar {
 
 # Application assginments 
 
-assign [instance="^chromium$"]         $ws-browse 
-assign [instance="^Navigator$"]        $ws-browse
 assign [instance="^nvim$"]             $ws-code
+assign [instance="^chromium$"]         $ws-browse
+assign [instance="^Navigator$"]        $ws-browse
+assign [instance="^youtube.com$"]      $ws-music
+assign [instance="^netflix.com$"]      $ws-music
+assign [instance="^atv.at$"]           $ws-music
 assign [instance="^web.whatsapp.com$"] $ws-messaging
 assign [instance="^matterhorn$"]       $ws-messaging
 assign [instance="^talk.sclable.com$"] $ws-messaging
 assign [instance="^telegram-desktop$"] $ws-messaging
 
 for_window [instance="^spotify$"]   move to workspace $ws-music
+for_window [instance="^urxvt$"]     focus
 for_window [instance="^chromium$"]  focus
 for_window [instance="^nvim$"]      focus
 for_window [instance="^Navigator$"] focus
 
 # Autostart 
 
-exec --no-startup-id ~/.fehbg
-exec --no-startup-id redshift -l 48.22:16.31
+exec --no-startup-id feh --no-fehbg --bg-scale ~/.bg/doodle.jpg
+exec --no-startup-id redshift -l $location
 exec --no-startup-id compton -b 
 exec --no-startup-id unclutter --timeout 1 
-#exec --no-startup-id xautolock -time 5 -locker ~/.bin/lock-screen
+exec --no-startup-id dunst 
+exec --no-startup-id xautolock -time 2 -locker ~/.bin/lock-screen
