@@ -156,9 +156,9 @@ bindsym $mod+m mode "move ws"
 
 # Assign workspaces to screens 
 
-workspace $ws-code      output DP2 eDP1
+workspace $ws-code      output DP2 
 workspace $ws-browse    output DP2
-workspace $ws-term      output DP2 eDP1
+workspace $ws-term      output DP2
 workspace $ws-messaging output eDP1
 workspace $ws-music     output eDP1
 
