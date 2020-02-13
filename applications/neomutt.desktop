@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=NeoMutt
+Exec=urxvt -name neomutt -e neomutt
+Terminal=false
+Type=Application

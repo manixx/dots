@@ -40,12 +40,14 @@ set $ws-music-key     5
 font              pango:$font $font_weight $font_size
 floating_modifier $mod
 
-bindsym $mod+Return          exec --no-startup-id urxvt
-bindsym $mod+Escape          exec --no-startup-id ~/.bin/lock-screen
-bindsym $mod+Shift+a         exec --no-startup-id ~/.bin/autostart
-bindsym $mod+Shift+q         kill
-bindsym $mod+BackSpace       reload
-bindsym $mod+Shift+BackSpace restart
+bindsym $mod+Return            exec --no-startup-id urxvt
+bindsym $mod+Escape            exec --no-startup-id ~/.bin/lock-screen
+bindsym $mod+Shift+a           exec --no-startup-id ~/.bin/autostart
+bindsym $mod+Shift+q           kill
+bindsym $mod+BackSpace         reload
+bindsym $mod+Shift+BackSpace   restart
+bindsym $mod+XF86Display       exec --no-startup-id ~/.bin/monitor-setup
+bindsym $mod+Shift+XF86Display exec --no-startup-id ~/.bin/monitor-reset
 
 bindsym $mod+space exec --no-startup-id i3-dmenu-desktop \
   --dmenu="dmenu -i -l 5 -b -fn '$font-$font_size' -nf '$grey' -nb '$black' -sf '$black' -sb '$white'" 
@@ -144,19 +146,21 @@ bindsym $mod+r mode "resize"
 
 mode "move ws" {
   bindsym 1 move workspace to output eDP1
-  bindsym 2 move workspace to output HDMI2
-  bindsym 3 move workspace to output DP1
+  bindsym 2 move workspace to output DP1
+  bindsym 3 move workspace to output DP2
+  bindsym 4 move workspace to output HDMI1
+  bindsym 5 move workspace to output HDMI2
   bindsym Escape mode "default" 
 }
 bindsym $mod+m mode "move ws" 
 
 # Assign workspaces to screens 
 
-workspace $ws-code      output eDP1
+workspace $ws-code      output DP2 eDP1
 workspace $ws-browse    output DP2
-workspace $ws-term      output eDP1
-workspace $ws-messaging output DP2
-workspace $ws-music     output DP2
+workspace $ws-term      output DP2 eDP1
+workspace $ws-messaging output eDP1
+workspace $ws-music     output eDP1
 
 # Styling 
 
@@ -220,7 +224,7 @@ for_window [instance="^Navigator$"] focus
 
 # Autostart 
 
-exec --no-startup-id feh --no-fehbg --bg-scale ~/.bg/doodle.jpg
+exec --no-startup-id ~/.fehbg
 exec --no-startup-id redshift -l $location
 exec --no-startup-id compton -b 
 exec --no-startup-id unclutter --timeout 1 
