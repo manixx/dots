@@ -1,14 +1,60 @@
 #!/bin/sh
 
+#set -e
+
+gpg_key=$1
+file_location=$2
+
+tmp_dir=/tmp
+tmp_dir_file_prefix=dots-backup
+
+data_backup=${tmp_dir}/${tmp_dir_file_prefix}-data
+gpg_backup=${tmp_dir}/${tmp_dir_file_prefix}-gpg
+key_backup=${tmp_dir}/${tmp_dir_file_prefix}-key
+db_backup=${tmp_dir}/${tmp_dir_file_prefix}-db
+
 directories=(
   ~/.bg 
-  ~/.bin
   ~/.ssh 
   ~/.npmrc
   ~/.task
-  ~/.gnupg
   ~/.password-store
-  /etc/netctl/*
+  ~/.bin
+  $(find /etc/netctl -maxdepth 1 -type f) # only netctl-profiles (not folders)
 )
 
+backup_files=(
+  ${data_backup}
+  ${gpg_backup}
+  ${key_backup}
+  ${db_backup}
+)
 
+if [ -z ${gpg_key} ]; then 
+  echo "Please specify GPG key (recipient) as first argument!"
+  exit 1
+fi 
+
+if [ -z ${file_location} ]; then 
+  echo "Please specify backup file location as second argument!"
+  exit 1
+fi 
+
+tar cfzP - ${directories[@]} | 
+  gpg --recipient $1 --encrypt - \
+  > ${data_backup}
+
+echo "Sensitive data packed, exporting GPG key symmetric encryption..."
+
+gpg --armor --export --export-options export-backup --output ${gpg_backup} $1
+gpg --armor --export-secret-keys --output ${key_backup} $1 
+gpg --export-ownertrust > ${db_backup}
+
+tar cfzP - ${backup_files[@]} | 
+  gpg --output ${file_location} --symmetric - 
+
+echo "Cleaning up..."
+rm -rf ${backup_files[@]}
+
+echo "Done, file is stored on ${file_location}, you can backup it on storage somewhere"
+echo -e "Bussi, baba\n"
