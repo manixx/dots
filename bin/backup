@@ -40,7 +40,7 @@ if [ -z ${file_location} ]; then
   exit 1
 fi 
 
-tar cfzP - ${directories[@]} | 
+tar cfzPp - ${directories[@]} | 
   gpg --recipient $1 --encrypt - \
   > ${data_backup}
 
