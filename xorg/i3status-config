@@ -8,6 +8,7 @@ general {
 }
 
 order += "read_file tasks"
+order += "read_file calendar"
 order += "cpu_usage"
 order += "load"
 order += "memory"
@@ -45,6 +46,11 @@ read_file backlight {
   path           = "/home/manfred/.cache/backlight"
   max_characters = 3
   format         = "<span color='#b7bec9'> %content%</span>"
+}
+
+read_file calendar {
+  path   = "/home/manfred/.cache/calendar"
+  format = "<span color='#b7bec9'> %content</span>"
 }
 
 read_file tasks {

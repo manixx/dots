@@ -46,5 +46,10 @@
       }
     }
   },
-  "coc.preferences.extensionUpdateCheck": "daily"
+  "coc.preferences.extensionUpdateCheck": "daily",
+  "cSpell.userWords": [
+    "adminer",
+    "contakt",
+    "entrypoint"
+  ]
 }
