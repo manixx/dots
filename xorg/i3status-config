@@ -49,8 +49,9 @@ read_file backlight {
 }
 
 read_file calendar {
-  path   = "/home/manfred/.cache/calendar"
-  format = "<span color='#b7bec9'> %content</span>"
+  path       = "/home/manfred/.cache/calendar"
+  format     = "<span color='#b7bec9'> %content</span>"
+	format_bad = ""
 }
 
 read_file tasks {

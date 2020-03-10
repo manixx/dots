@@ -9,7 +9,7 @@ set cmdheight=1
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
-set tabstop=8
+set tabstop=2
 set shiftwidth=2 
 set noexpandtab 
 set showtabline=2
@@ -73,6 +73,11 @@ let g:taboo_renamed_tab_format = ' %N [%l]%m '
 let g:NERDTreeChDirMode=1
 let g:NERDTreeShowHidden=1
 let g:NERDTreeWinPos = "right"
+
+" vim-go 
+
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 
 " KEY BINDINGS 
 

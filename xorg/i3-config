@@ -50,7 +50,7 @@ bindsym $mod+XF86Display       exec --no-startup-id ~/.bin/monitor-setup
 bindsym $mod+Shift+XF86Display exec --no-startup-id ~/.bin/monitor-reset
 
 bindsym $mod+space exec --no-startup-id i3-dmenu-desktop \
-  --dmenu="dmenu -i -l 5 -b -fn '$font-$font_size' -nf '$grey' -nb '$black' -sf '$black' -sb '$white'" 
+  --dmenu="dmenu -i -p run -b -fn '$font-$font_size' -nf '$grey' -nb '$black' -sf '$black' -sb '$white'" 
 
 bindsym $mod+p exec --no-startup-id passmenu \
   -i -l 5 -fn '$font-$font_size' -nf '$grey' -nb '$black' -sf '$black' -sb '$white'

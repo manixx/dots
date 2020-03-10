@@ -133,7 +133,7 @@ alias downloads="cd ~/downloads"
 #
 
 export EDITOR=nvim
-export GOPATH=$(go env GOPATH)
+export GOPATH=~/dev/go
 export NNN_TRASH=1 # use trash-cli
 export NNN_USE_EDITOR=1
 export NVM_DIR=~/.nvm
