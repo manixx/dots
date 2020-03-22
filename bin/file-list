@@ -13,7 +13,7 @@ xorg/dunstrc          ~/.config/dunst/dunstrc
 xorg/i3-config        ~/.config/i3/config
 xorg/i3status-config  ~/.config/i3status/config
 
-zsh/.dircolors        ~/.dircolors
+zsh/.dircolors        ~/.config/zsh/.dircolors
 zsh/.zshenv           ~/.zshenv
 zsh/.zshrc            ~/.config/zsh/.zshrc
 
@@ -23,4 +23,4 @@ applications/         ~/.local/share/applications/
 
 task/.taskrc          ~/.taskrc
 
-unixporn/firefox.css  ~/.mozilla/firefox/akvt739t.default-release/chrome/userChrome.css
+#unixporn/firefox.css  ~/.mozilla/firefox/akvt739t.default-release/chrome/userChrome.css

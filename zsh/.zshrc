@@ -89,7 +89,7 @@ n() { # launch nnn
   nnn "$@"
   if [ -f $NNN_TMPFILE ]; then
     . $NNN_TMPFILE
-    rm $NNN_TMPFILE
+    rm -f $NNN_TMPFILE
   fi
 }
 
@@ -121,7 +121,7 @@ KEYTIMEOUT=1
 # aliases 
 #
 
-alias ls="ls --color=auto"
+alias ls="exa"
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
@@ -137,14 +137,15 @@ export GOPATH=~/dev/go
 export NNN_TRASH=1 # use trash-cli
 export NNN_USE_EDITOR=1
 export NVM_DIR=~/.nvm
-export FZF_DEFAULT_COMMAND='fd \
-  --type f \
-  --hidden \
-  --follow \
-  --exclude .git \
-  --exclude .cache \
-  --exclude node_modules
-'
+export FZF_DEFAULT_COMMAND='find'
+#export FZF_DEFAULT_COMMAND='find \
+  #--type f \
+  #--hidden \
+  #--follow \
+  #--exclude .git \
+  #--exclude .cache \
+  #--exclude node_modules
+#'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='
   --color fg:7,bg:-1,hl:5,fg+:7,bg+:-1,hl+:7
@@ -155,7 +156,7 @@ export FZF_DEFAULT_OPTS='
 # setup dircolors 
 #
 
-[ -e ~/.dircolors ] && eval $(dircolors -b ~/.dircolors) || 
+[ -e ~/.config/zsh/.dircolors ] && eval $(dircolors -b ~/.config/zsh/.dircolors) || 
   eval $(dircolors -b)
 
 #

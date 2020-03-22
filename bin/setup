@@ -15,9 +15,9 @@ packages=(
   docker
   docker-compose
   dunst
+	exa 
   feh
   firefox 
-  fuse
   fzf 
   gcc # for .Xresoures parsing 
   git 
@@ -53,6 +53,7 @@ packages=(
   the_silver_searcher
   trash-cli
   ttf-dejavu
+  ttf-hack
   unclutter
   unzip 
   urxvt-perls
@@ -74,7 +75,6 @@ packages=(
 aur_packages=(
   ccls
   compton-tryone-git
-  spotify 
   urxvt-font-size-git
   zsh-fast-syntax-highlighting-git
 )
@@ -126,13 +126,11 @@ sudo pacman -S --needed ${packages[@]}
 # INSTALL AUR PACKAGES
 #
 
-gpg --recv-keys 4773BD5E130D1D45 # GPG Key for Spotify 
-
 mkdir -p ${aur_dir}
 for package in "${aur_packages[@]}"; do 
-  if [ ! -d ${aur_dir}${package} ]; then 
-    git clone https://aur.archlinux.org/${package} ${aur_dir}${package} 
-    (cd ${aur_dir}${package} && makepkg --needed -si) 
+  if [ ! -d ${aur_dir}/${package} ]; then 
+    git clone https://aur.archlinux.org/${package} ${aur_dir}/${package} 
+    (cd ${aur_dir}/${package} && makepkg --needed -si) 
   else 
     echo "Package \"${package}\" already there, skipping..."
   fi
@@ -178,10 +176,5 @@ fi
 sudo systemctl enable dnscrypt-proxy.service
 sudo systemctl start  dnscrypt-proxy.service
 
-# TODO refresh resolv conf
-
-#
-# SETUP CONFIG CONFIG FILES 
-#
-
-exec ./export-config
+# setup https://wiki.archlinux.org/index.php/Solid_state_drive#Maximizing_performance
+# periodic trim

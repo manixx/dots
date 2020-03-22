@@ -218,6 +218,8 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 
 hi CursorLineNr ctermbg=none cterm=bold 
 hi LineNr ctermfg=8
+hi HighlightedyankRegion cterm=bold
+hi Search ctermbg=8
 
 " if dark, disable background to make it transparent again 
 if &background == 'dark'

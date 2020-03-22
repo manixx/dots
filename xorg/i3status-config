@@ -13,14 +13,28 @@ order += "cpu_usage"
 order += "load"
 order += "memory"
 order += "disk /"
+order += "disk /home"
 order += "cpu_temperature 0"
 order += "path_exists nordvpn"
 order += "wireless _first_"
 order += "ethernet _first_" 
+order += "run_watch xautolock"
 order += "read_file backlight"
+order += "run_watch redshift"
 order += "volume master"
 order += "battery all"
 order += "tztime local"
+
+run_watch xautolock {
+	pidfile = "/home/manfred/.cache/xautolock.pid"
+	format = ""
+}
+
+run_watch redshift {
+	pidfile = "/home/manfred/.cache/redshift.pid"
+	format = "<span color='#b7bec9'></span>"
+	format_down = "<span color='#b7bec9'></span>"
+}
 
 path_exists nordvpn {
   path = "/proc/sys/net/ipv4/conf/tun0"
@@ -49,7 +63,7 @@ read_file backlight {
 }
 
 read_file calendar {
-  path       = "/home/manfred/.cache/calendar"
+  path       = "/home/manfred/.cache/next-event"
   format     = "<span color='#b7bec9'> %content</span>"
 	format_bad = ""
 }
@@ -60,7 +74,11 @@ read_file tasks {
 }
 
 disk "/" {
-  format = " %avail"
+  format = " / %avail"
+}
+
+disk "/home" {
+  format = " ~ %avail"
 }
 
 cpu_usage {

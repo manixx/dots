@@ -3,7 +3,6 @@
 set $white    #b7bec9
 set $black    #262729
 set $grey     #88909f
-set $darkgrey #5b6371
 set $red      #e77171
 set $green    #a1bf78
 set $cyan     #5ebaa5
@@ -20,8 +19,6 @@ set $up    k
 set $down  j
 set $left  h
 set $right l
-
-set $location 48.22:16.31
 
 set $ws-code      "1:&#xf121;"
 set $ws-browse    "2:&#xf57d;"
@@ -48,6 +45,8 @@ bindsym $mod+BackSpace         reload
 bindsym $mod+Shift+BackSpace   restart
 bindsym $mod+XF86Display       exec --no-startup-id ~/.bin/monitor-setup
 bindsym $mod+Shift+XF86Display exec --no-startup-id ~/.bin/monitor-reset
+bindsym $mod+Shift+x 					 exec --no-startup-id ~/.bin/toggle-xautolock
+bindsym $mod+Shift+r           exec --no-startup-id ~/.bin/toggle-redshift
 
 bindsym $mod+space exec --no-startup-id i3-dmenu-desktop \
   --dmenu="dmenu -i -p run -b -fn '$font-$font_size' -nf '$grey' -nb '$black' -sf '$black' -sb '$white'" 
@@ -55,7 +54,7 @@ bindsym $mod+space exec --no-startup-id i3-dmenu-desktop \
 bindsym $mod+p exec --no-startup-id passmenu \
   -i -l 5 -fn '$font-$font_size' -nf '$grey' -nb '$black' -sf '$black' -sb '$white'
 
-bindsym $mod+Shift+e exec \
+bindsym $mod+Shift+Escape exec \
   "i3-nagbar --font 'pango:$font $font_size' -t warning -m 'Exit?' -B 'Okay' 'i3-msg exit'"
 
 bindsym --release $mod+Print exec --no-startup-id scrot -s 
@@ -114,8 +113,8 @@ bindsym $mod+Shift+space sticky toggle
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus       scratchpad show
 
-bindsym $mod+d focus     mode_toggle
-bindsym $mod+u workspace back_and_forth
+bindsym $mod+d   focus     mode_toggle
+bindsym $mod+Tab workspace back_and_forth
 
 # Workspaces 
 
@@ -138,6 +137,9 @@ mode "resize" {
   bindsym $down       resize grow   height 10 px or 10 ppt
   bindsym $up         resize shrink height 10 px or 10 ppt
   bindsym $right      resize grow   width  10 px or 10 ppt
+
+	bindsym v resize set width 500 px height 281 px 
+
   bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
@@ -173,8 +175,8 @@ for_window [class=".*"] border pixel 1
 
 #                       border   bground  text      indic.   child_border
 client.focused          $whiteaa $whiteaa $black    $blue    $white
-client.focused_inactive $blackaa $blackaa $darkgrey $black00 $black00
-client.unfocused        $blackaa $blackaa $darkgrey $black00 $black00
+client.focused_inactive $blackaa $blackaa $grey     $black00 $black00
+client.unfocused        $blackaa $blackaa $grey     $black00 $black00
 client.urgent           $blackaa $blackaa $red      $blackaa $blackaa
 client.placeholder      $blackaa $blackaa $whiteaa  $blackaa $blackaa
 client.background       $blackaa
@@ -192,14 +194,14 @@ bar {
   colors {
     background $black00
     statusline $white
-    separator  $whiteaa
+    separator  $grey
 
     #	               border   bground  text
     focused_workspace  $black00 $black00 $magenta
     active_workspace   $black00 $black00 $grey
     inactive_workspace $black00 $black00 $grey
     urgent_workspace   $black00 $black00 $red
-    binding_mode       $black00 $yellow  $black
+    binding_mode       $black00 $yellow  $black00
   }
 }
 
@@ -221,12 +223,18 @@ for_window [instance="^urxvt$"]     focus
 for_window [instance="^chromium$"]  focus
 for_window [instance="^nvim$"]      focus
 for_window [instance="^Navigator$"] focus
+for_window [instance="^calw$"]      floating enable
+for_window [instance="^calw$"]      move position center
+for_window [instance="^calm$"]      floating enable 
+for_window [instance="^calm$"]      resize set 1000 800 
+for_window [instance="^calm$"]      move position center 
 
 # Autostart 
 
 exec --no-startup-id ~/.fehbg
-exec --no-startup-id redshift -l $location
+exec --no-startup-id ~/.bin/toggle-redshift
+exec --no-startup-id ~/.bin/toggle-xautolock
+
+exec --no-startup-id pgrep unclutter || unclutter --timeout 1
+exec --no-startup-id pgrep dunst     || dunst
 exec --no-startup-id compton -b 
-exec --no-startup-id unclutter --timeout 1 
-exec --no-startup-id dunst 
-exec --no-startup-id xautolock -time 2 -locker ~/.bin/lock-screen
