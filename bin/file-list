@@ -4,23 +4,27 @@
 # location in repo <space> location on system
 #
 
-xorg/.xinitrc         ~/.xinitrc
-xorg/.Xresources      ~/.Xresources
-xorg/20-intel.conf    /etc/X11/xorg.conf.d/20-intel.conf
-xorg/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
-xorg/compton.conf     ~/.config/compton.conf
-xorg/dunstrc          ~/.config/dunst/dunstrc
-xorg/i3-config        ~/.config/i3/config
-xorg/i3status-config  ~/.config/i3status/config
+xorg/.xinitrc                    ~/.xinitrc
+xorg/.Xresources                 ~/.Xresources
+xorg/20-intel.conf               /etc/X11/xorg.conf.d/20-intel.conf
+xorg/30-touchpad.conf            /etc/X11/xorg.conf.d/30-touchpad.conf
+xorg/lock-on-suspend@.service    /etc/systemd/system/lock-on-suspend@.service
+xorg/compton.conf                ~/.config/compton.conf
+xorg/dunstrc                     ~/.config/dunst/dunstrc
+xorg/i3-config                   ~/.config/i3/config
+xorg/i3status-config             ~/.config/i3status/config
 
-zsh/.dircolors        ~/.config/zsh/.dircolors
-zsh/.zshenv           ~/.zshenv
-zsh/.zshrc            ~/.config/zsh/.zshrc
+zsh/.dircolors                   ~/.config/zsh/.dircolors
+zsh/.zshenv                      ~/.zshenv
+zsh/.zshrc                       ~/.config/zsh/.zshrc
 
-nvim/                 ~/.config/nvim/
+nvim/                            ~/.config/nvim/
 
-applications/         ~/.local/share/applications/
+applications/                    ~/.local/share/applications/
 
-task/.taskrc          ~/.taskrc
+task/.taskrc                     ~/.taskrc
+
+systemd/fetch-next-event.timer   ~/.config/systemd/user/fetch-next-event.timer
+systemd/fetch-next-event.service ~/.config/systemd/user/fetch-next-event.service
 
 #unixporn/firefox.css  ~/.mozilla/firefox/akvt739t.default-release/chrome/userChrome.css

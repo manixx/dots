@@ -23,24 +23,20 @@ filetype plugin on
 call plug#begin('~/.vim/plugged')
 
 " tools 
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Yggdroot/indentLine' 
+Plug 'easymotion/vim-easymotion'
+Plug 'elzr/vim-json'
 Plug 'itchyny/lightline.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'mcchrish/nnn.vim'
 Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
-Plug 'easymotion/vim-easymotion'
-Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
-Plug 'Yggdroot/indentLine' 
-Plug 'elzr/vim-json'
-Plug 'gcmt/taboo.vim'
-
-" themes 
-Plug 'sainnhe/edge'
 
 " syntax highlight
 Plug 'pangloss/vim-javascript' 
@@ -55,6 +51,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'andrewstuart/vim-kubernetes' 
 
+" themes 
+Plug 'sainnhe/edge'
+
 call plug#end()
 
 " PLUGIN SETTINGS 
@@ -64,10 +63,6 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " vim-json 
 let g:vim_json_syntax_conceal = 0
-
-" taboo 
-let g:taboo_tab_format = ' %N %f%m '
-let g:taboo_renamed_tab_format = ' %N [%l]%m '
 
 " NERDTree settings 
 let g:NERDTreeChDirMode=1
@@ -81,23 +76,41 @@ let g:go_info_mode='gopls'
 
 " KEY BINDINGS 
 
-" taboo 
-noremap <leader>tr :TabooRename<space>
-noremap <leader>to :TabooOpen<space> 
+" disable arrow keys
+noremap  <Up> ""
+noremap! <Up> <Esc>
+noremap  <Down> ""
+noremap! <Down> <Esc>
+noremap  <Left> ""
+noremap! <Left> <Esc>
+noremap  <Right> ""
+noremap! <Right> <Esc>
+
+ "taboo 
+"noremap <leader>tr :TabooRename<space>
+"noremap <leader>to :TabooOpen<space> 
 
 " fugitive 
 noremap <leader>gb :Gblame<cr>
 
 " NERDTree
+
+function! ChangeCWD() 
+	call fzf#run({ 
+		\ 'source': 'fd --type d --hidden . ~', 
+		\ 'down': '~20%', 
+		\ 'sink': 'chdir' })
+endfunction
+
 noremap <leader><tab>   :NERDTreeToggle<cr>
 noremap <leader><s-tab> :NERDTreeFocus<cr>
-noremap <leader>w       :NERDTree<space>
+noremap <leader>w       :call ChangeCWD()<cr>
 noremap <leader>^       :NERDTreeFind<cr>
 noremap <leader><s-S>   :NERDTreeMirror<cr>
 
 " fzf 
 noremap <leader>f :Files<cr>
-noremap <leader>F :Files<space>
+noremap <leader>F :Files ~<cr>
 noremap <leader>l :Lines<cr>
 noremap <leader>s :Rg<cr>
 noremap <leader>c :Commits<cr>
@@ -217,55 +230,72 @@ colorscheme edge
 autocmd FileType json syntax match Comment +\/\/.\+$+
 
 hi CursorLineNr ctermbg=none cterm=bold 
-hi LineNr ctermfg=8
 hi HighlightedyankRegion cterm=bold
 hi Search ctermbg=8
 
 " if dark, disable background to make it transparent again 
 if &background == 'dark'
-  hi Normal       ctermbg=none
-  hi EndOfBuffer  ctermbg=none
-  hi SignColumn   ctermbg=none
-  hi LineNr       ctermbg=none
+	hi Normal       ctermbg=none
+	hi EndOfBuffer  ctermbg=none
+	hi SignColumn   ctermbg=none
+	hi LineNr       ctermbg=none
 endif 
 
 "
 " lightline settings
 "
 
+function! PrintWorkingDir() 
+	let home = getenv('HOME')
+	let cwd = getcwd()
+	return substitute(cwd, home, '~', '')
+endfunction
+
+" disable status line on nerdtree
+augroup filetype_nerdtree
+    au!
+    au FileType nerdtree call s:disable_lightline_on_nerdtree()
+    au WinEnter,BufWinEnter,TabEnter * call s:disable_lightline_on_nerdtree()
+augroup END
+
+fu s:disable_lightline_on_nerdtree() abort
+	let nerdtree_winnr = index(map(range(1, winnr('$')), {_,v -> getbufvar(winbufnr(v), '&ft')}), 'nerdtree') + 1
+	call timer_start(0, {-> nerdtree_winnr && setwinvar(nerdtree_winnr, '&stl', '%#Normal#')})
+endfu
+
 let g:lightline = {
-  \   'colorscheme': 'edge',
-  \   'separator': { 'left': '▙', 'right': '▟' },
-  \   'subseparator': { 'left': '▸', 'right': '◂' }, 
-  \   'active': {
-  \     'left': [ 
-  \       [ 'mode', 'paste' ],
-  \       [ 'ctrlpmark', 'cocstatus', 'readonly', 'filename', 'modified', 'method' ], 
-  \       [ 'gitbranch', 'relativepath' ]
-  \     ], 
-  \     'right': [ 
-  \       [ 'lineinfo' ],
-  \       [ 'percent' ],
-  \       [ 'fileformat', 'fileencoding', 'filetype' ] 
-  \     ]
-  \   }, 
-  \   'inactive': {
-  \     'left': [ 
-  \       [ 'filename' ], 
-  \       [ 'gitbranch', 'relativepath' ]
-  \     ],
-  \     'right': [ 
-  \       [ 'lineinfo' ],
-  \       [ 'percent' ]
-  \     ]
-  \   }, 
-  \   'tabline': {
-  \     'left': [ [ 'tabs' ] ],
-  \     'right': [] 
-  \   }, 
-  \   'component_function': {
-  \     'cocstatus': 'coc#status', 
-  \     'gitbranch': 'fugitive#head'
-  \   }
-  \ }
+  \ 'colorscheme': 'edge',
+  \ 'separator': { 'left': '▙', 'right': '▟' },
+  \ 'subseparator': { 'left': '▸', 'right': '◂' }, 
+  \ 'active': {
+  \  'left': [ 
+  \   [ 'mode', 'paste' ],
+  \   [ 'ctrlpmark', 'cocstatus', 'readonly', 'filename', 'modified', 'method' ], 
+  \   [ 'gitbranch', 'relativepath' ]
+  \  ], 
+  \  'right': [ 
+  \    [ 'lineinfo', 'percent' ],
+  \    [ 'cwd' ],
+  \    [ 'fileformat', 'fileencoding', 'filetype' ] 
+  \  ]
+  \  }, 
+  \  'inactive': {
+  \   'left': [ 
+  \    [ 'filename' ], 
+  \    [ 'gitbranch', 'relativepath' ]
+  \   ],
+  \   'right': [ 
+  \    [ 'lineinfo', 'percent' ]
+  \   ]
+  \  }, 
+  \  'tabline': {
+  \   'left': [ [ 'tabs' ] ],
+  \   'right': [] 
+  \  }, 
+  \  'component_function': {
+  \   'cocstatus': 'coc#status', 
+  \   'gitbranch': 'fugitive#head', 
+  \   'cwd': 'PrintWorkingDir'
+  \  }
+  \}
 

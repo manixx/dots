@@ -1,8 +1,9 @@
 [Unit]
-Description=Fetch next events
+Description=Fetch next event regularly
 
 [Timer]
-OnCalendar=*:0/15
+#OnCalendar=*:0/15
+OnCalendar=*:0/2
 Persistent=true
 
 [Install]

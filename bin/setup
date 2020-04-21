@@ -5,17 +5,22 @@ set -e
 aur_dir=~/.aur
 
 packages=(
+	exa 
+	go 
+	htop 
+	nmon
+	ntp 
+	powertop 
+	xorg-xinput 
   alsa-utils 
   base-devel # for AUR packages
   canto-curses
   chromium 
   dhcpcd
-  dmenu
   dnscrypt-proxy
   docker
   docker-compose
   dunst
-	exa 
   feh
   firefox 
   fzf 
@@ -74,9 +79,9 @@ packages=(
 
 aur_packages=(
   ccls
-  compton-tryone-git
   urxvt-font-size-git
   zsh-fast-syntax-highlighting-git
+	dmenu-git
 )
 
 coc_extensions=(
@@ -156,6 +161,12 @@ for extension in "${coc_extensions[@]}"; do
   nvim +"CocInstall -sync ${extension}" +qa
 done
 
+#
+# SETUP GO 
+# 
+
+mkdir -p ~/dev/go 
+
 # 
 # SETUP NPM PACKAGES
 #
@@ -173,8 +184,8 @@ if ! grep -Fxq "name_servers=127.0.0.1" /etc/resolvconf.conf; then
   sudo sh -c "echo 'name_servers=127.0.0.1' >> /etc/resolvconf.conf"
 fi
 
-sudo systemctl enable dnscrypt-proxy.service
-sudo systemctl start  dnscrypt-proxy.service
+sudo systemctl enable --now dnscrypt-proxy.service
+sudo systemctl enable --now ntpd.service 
 
 # setup https://wiki.archlinux.org/index.php/Solid_state_drive#Maximizing_performance
 # periodic trim

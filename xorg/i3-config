@@ -1,7 +1,7 @@
 # Globals 
 
 set $white    #b7bec9
-set $black    #262729
+set $black    #2c2e34
 set $grey     #88909f
 set $red      #e77171
 set $green    #a1bf78
@@ -66,10 +66,13 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%
 bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute 1 toggle
 
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 && \
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 && \
   xbacklight -get | cut -d'.' -f 1 > /home/manfred/.cache/backlight
-
-bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 5 && \
+bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 10 && \
+  xbacklight -get | cut -d'.' -f 1 > /home/manfred/.cache/backlight
+bindsym Shift+XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 && \
+  xbacklight -get | cut -d'.' -f 1 > /home/manfred/.cache/backlight
+bindsym Shift+XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 5 && \
   xbacklight -get | cut -d'.' -f 1 > /home/manfred/.cache/backlight
 
 # Spotify 
@@ -166,20 +169,20 @@ workspace $ws-music     output eDP1
 
 # Styling 
 
-gaps              inner 14
+gaps              inner 9
 smart_gaps        on
 hide_edge_borders smart
 title_align       center
 
 for_window [class=".*"] border pixel 1
 
-#                       border   bground  text      indic.   child_border
-client.focused          $whiteaa $whiteaa $black    $blue    $white
-client.focused_inactive $blackaa $blackaa $grey     $black00 $black00
-client.unfocused        $blackaa $blackaa $grey     $black00 $black00
-client.urgent           $blackaa $blackaa $red      $blackaa $blackaa
-client.placeholder      $blackaa $blackaa $whiteaa  $blackaa $blackaa
-client.background       $blackaa
+#                       border bg     text   indic. child_border
+client.focused          $white $white $black $blue  $white
+client.focused_inactive $black $black $grey  $black $black
+client.unfocused        $black $black $grey  $black $black
+client.urgent           $black $black $red   $black $black
+client.placeholder      $black $black $white $black $black
+client.background       $black
 
 # Bar 
 
@@ -192,16 +195,16 @@ bar {
   output                  eDP1
 
   colors {
-    background $black00
+    background $black
     statusline $white
     separator  $grey
 
     #	               border   bground  text
-    focused_workspace  $black00 $black00 $magenta
-    active_workspace   $black00 $black00 $grey
-    inactive_workspace $black00 $black00 $grey
-    urgent_workspace   $black00 $black00 $red
-    binding_mode       $black00 $yellow  $black00
+    focused_workspace  $black $black $magenta
+    active_workspace   $black $black $grey
+    inactive_workspace $black $black $grey
+    urgent_workspace   $black $black $red
+    binding_mode       $black $yellow  $black
   }
 }
 
@@ -237,4 +240,3 @@ exec --no-startup-id ~/.bin/toggle-xautolock
 
 exec --no-startup-id pgrep unclutter || unclutter --timeout 1
 exec --no-startup-id pgrep dunst     || dunst
-exec --no-startup-id compton -b 

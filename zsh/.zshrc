@@ -14,7 +14,6 @@ zle -N edit-command-line # to edit command in $EDITOR
 zle -N zle-line-init     # call on init (setting PROMPT to inital)
 zle -N zle-keymap-select # call on vim selection mode change
 
-
 # ignore commands with space prefixed 
 setopt HIST_IGNORE_SPACE
 
@@ -76,12 +75,12 @@ vcs_data() { # print branch name
   vcs_info
 
   if [ -n "$vcs_info_msg_0_" ]; then
-    echo " | ${vcs_info_msg_0_}"
+    echo " %F{8}|%f ${vcs_info_msg_0_}"
   fi
 }
 
 k8s_data() { # print k8s context 
-  echo " | %F{green}$(kubectl config current-context)%f"
+  echo " %F{8}|%f %F{green}$(kubectl config current-context)%f"
 }
 
 n() { # launch nnn 
@@ -100,12 +99,12 @@ n() { # launch nnn
 # todo why copy PROMPT? 
 function zle-line-init zle-keymap-select {
   VIM_PROMPT="%B%F{yellow}[NORMAL]%f%b "
-  RPROMPT='${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}%F{8}[${?}]%f %F{magenta}%~%f$(vcs_data)'
+  RPROMPT="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}%F{8}[${?}]%f"
   zle reset-prompt
 }
 
-PROMPT='%F{8}$(date +"[%H:%M:%S]")%f %F{green}→%f '
-RPROMPT='%F{magenta}%~%f$(vcs_data)'
+PROMPT='%F{8}$(date +"[%H:%M:%S]")%f %F{magenta}%~%f$(vcs_data)'$'\n'"%F{green}→%f "
+RPROMPT="" # needs to bet set - otherwise its zle-line-init is not loaded on startup
 
 #
 # history settings
@@ -137,20 +136,20 @@ export GOPATH=~/dev/go
 export NNN_TRASH=1 # use trash-cli
 export NNN_USE_EDITOR=1
 export NVM_DIR=~/.nvm
-export FZF_DEFAULT_COMMAND='find'
-#export FZF_DEFAULT_COMMAND='find \
-  #--type f \
-  #--hidden \
-  #--follow \
-  #--exclude .git \
-  #--exclude .cache \
-  #--exclude node_modules
-#'
+export FZF_DEFAULT_COMMAND='fd \
+	--type f \
+	--hidden \
+	--follow \
+	--exclude .git \
+	--exclude .cache \
+	--exclude node_modules
+'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_OPTS='
-  --color fg:7,bg:-1,hl:5,fg+:7,bg+:-1,hl+:7
+  --color fg:8,bg:-1,hl:5,fg+:7,bg+:-1,hl+:7
   --color info:4,prompt:5,spinner:3,pointer:6,marker:2
 '
+STARTX_LOG='~/.local/share/xorg/startx.log'
 
 #
 # setup dircolors 
@@ -164,5 +163,6 @@ export FZF_DEFAULT_OPTS='
 #  
 
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  exec startx
+	if [[ -f $STARTX_LOG ]]; then mv -f $STARTX_LOG $STARTX_LOG.old; fi
+	exec startx 1> ~/.local/share/xorg/startx.log 2>&1
 fi

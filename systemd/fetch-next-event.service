@@ -1,9 +1,6 @@
 [Unit]
-Description=Fetch next event
+Description=Fetch next event using gcalcli
 
 [Service]
-ExecStart=/home/manfred/.bin/fetch-next-event.sh
-User=manfred
-
-[Install]
-WantedBy=multi-user.target
+Type=oneshot
+ExecStart=/home/manfred/.bin/fetch-next-event
