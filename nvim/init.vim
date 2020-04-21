@@ -270,22 +270,20 @@ let g:lightline = {
   \ 'active': {
   \  'left': [ 
   \   [ 'mode', 'paste' ],
-  \   [ 'ctrlpmark', 'cocstatus', 'readonly', 'filename', 'modified', 'method' ], 
-  \   [ 'gitbranch', 'relativepath' ]
+  \   [ 'ctrlpmark', 'cocstatus', 'readonly', 'modified', 'method' ], 
+  \   [ 'relativepath', 'cwd', 'gitbranch' ]
   \  ], 
   \  'right': [ 
   \    [ 'lineinfo', 'percent' ],
-  \    [ 'cwd' ],
   \    [ 'fileformat', 'fileencoding', 'filetype' ] 
   \  ]
   \  }, 
   \  'inactive': {
   \   'left': [ 
   \    [ 'filename' ], 
-  \    [ 'gitbranch', 'relativepath' ]
   \   ],
   \   'right': [ 
-  \    [ 'lineinfo', 'percent' ]
+  \    [ 'percent' ]
   \   ]
   \  }, 
   \  'tabline': {
