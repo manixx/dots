@@ -1,0 +1,12 @@
+[Unit]
+Description=Lock the screen
+Before=sleep.target
+ 
+[Service]
+User=%I
+Type=forking
+Environment=DISPLAY=:0
+ExecStart=/home/%I/.bin/lock-screen 
+ 
+[Install]
+WantedBy=sleep.target

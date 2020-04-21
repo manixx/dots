@@ -6,6 +6,6 @@ efibootmgr \
 	--create \
 	--label "Arch Linux" \
 	--loader /vmlinuz-linux \
-	--unicode "cryptdevice=UUID=7487d1b4-53f3-491b-9e73-63aa8f32bac6:cryptlvm root=/dev/storage/root resume=/dev/storage/swap rw initrd=\initramfs-linux.img quiet splash" \
+	--unicode "cryptdevice=UUID=REPLACE_ME:cryptlvm root=/dev/storage/root resume=/dev/storage/swap rw initrd=\initramfs-linux.img quiet splash" \
 	--verbose 
 

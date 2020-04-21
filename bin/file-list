@@ -27,4 +27,4 @@ task/.taskrc                     ~/.taskrc
 systemd/fetch-next-event.timer   ~/.config/systemd/user/fetch-next-event.timer
 systemd/fetch-next-event.service ~/.config/systemd/user/fetch-next-event.service
 
-#unixporn/firefox.css  ~/.mozilla/firefox/akvt739t.default-release/chrome/userChrome.css
+systemd/lock-on-suspend@.service /etc/systemd/system/lock-on-suspend@.service 
