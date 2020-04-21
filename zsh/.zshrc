@@ -92,6 +92,10 @@ n() { # launch nnn
   fi
 }
 
+current_date() {
+	echo "%F{8}$(date +"[%H:%M:%S]")%f"
+}
+
 #
 # prompt
 #
@@ -103,7 +107,7 @@ function zle-line-init zle-keymap-select {
   zle reset-prompt
 }
 
-PROMPT='%F{8}$(date +"[%H:%M:%S]")%f %F{magenta}%~%f$(vcs_data)'$'\n'"%F{green}→%f "
+PROMPT='%F{magenta}%~%f$(vcs_data)'$'\n'"$(current_date) %F{green}→%f "
 RPROMPT="" # needs to bet set - otherwise its zle-line-init is not loaded on startup
 
 #
@@ -145,6 +149,7 @@ export FZF_DEFAULT_COMMAND='fd \
 	--exclude node_modules
 '
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND='fd --type d --hidden --base-directory ~'
 export FZF_DEFAULT_OPTS='
   --color fg:8,bg:-1,hl:5,fg+:7,bg+:-1,hl+:7
   --color info:4,prompt:5,spinner:3,pointer:6,marker:2

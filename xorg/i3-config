@@ -1,14 +1,14 @@
 # Globals 
 
-set $white    #b7bec9
-set $black    #2c2e34
-set $grey     #88909f
-set $red      #e77171
-set $green    #a1bf78
-set $cyan     #5ebaa5
-set $yellow   #dbb774
-set $blue     #73b3e7
-set $magenta  #d390e7
+set $white   #c5cdd9
+set $black   #2c2e34
+set $grey    #88909f
+set $red     #ec7279
+set $green   #a0c980
+set $cyan    #5dbbc1
+set $yellow  #deb974
+set $blue    #6cb6eb
+set $magenta #d38aea
 
 set $font        DejaVu Sans
 set $font_weight Bold

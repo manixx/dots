@@ -1,9 +1,9 @@
 general {
   colors         = true
   interval       = 2
-  color_good     = "#a1bf78"
-  color_degraded = "#dbb774"
-  color_bad      = "#e77171"
+  color_good     = "#a0c980"
+  color_degraded = "#deb974"
+  color_bad      = "#ec7279"
   markup         = "pango"
 }
 
@@ -32,14 +32,14 @@ run_watch xautolock {
 
 run_watch redshift {
 	pidfile = "/home/manfred/.cache/redshift.pid"
-	format = "<span color='#b7bec9'></span>"
-	format_down = "<span color='#b7bec9'></span>"
+	format = "<span color='#c5cdd9'></span>"
+	format_down = "<span color='#bc5cdd9'></span>"
 }
 
 path_exists nordvpn {
   path = "/proc/sys/net/ipv4/conf/tun0"
   format = ""
-  format_down = "<span color='#b7bec9'></span>"
+  format_down = "<span color='#c5cdd9'></span>"
 }
 
 wireless _first_ {
@@ -59,18 +59,18 @@ battery all {
 read_file backlight {
   path           = "/home/manfred/.cache/backlight"
   max_characters = 3
-  format         = "<span color='#b7bec9'> %content%</span>"
+  format         = "<span color='#c5cdd9'> %content%</span>"
 }
 
 read_file calendar {
   path       = "/home/manfred/.cache/next-event"
-  format     = "<span color='#b7bec9'> %content</span>"
+  format     = "<span color='#c5cdd9'> %content</span>"
 	format_bad = ""
 }
 
 read_file tasks {
   path   = "/home/manfred/.cache/tasks"
-  format = "<span color='#b7bec9'> %content</span>"
+  format = "<span color='#c5cdd9'> %content</span>"
 }
 
 disk "/" {
