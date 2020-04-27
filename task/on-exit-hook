@@ -1,0 +1,6 @@
+#!/bin/zsh 
+
+if [ ! -n "${SKIP_HOOKS}" ]; then 
+  export SKIP_HOOKS=1
+  echo "$(task count status:pending)" > ~/.cache/tasks
+fi 

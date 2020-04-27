@@ -29,6 +29,7 @@ packages=(
   i3-gaps
   i3lock
   i3status
+	ifplugd, 
   imagemagick # for screen locking effect 
   iw 
   libnotify
@@ -189,3 +190,11 @@ sudo systemctl enable --now ntpd.service
 
 # setup https://wiki.archlinux.org/index.php/Solid_state_drive#Maximizing_performance
 # periodic trim
+
+#
+# SETUP CUSTOM SERVICES 
+#
+
+systemctl --user enable fetch-next-event.timer 
+
+sudo systemctl enable lock-on-suspend@$USER.service 
