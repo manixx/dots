@@ -83,6 +83,9 @@ aur_packages=(
   urxvt-font-size-git
   zsh-fast-syntax-highlighting-git
 	dmenu-git
+	python-prompt_toolkit1
+	python-parsimonious
+	http-prompt
 )
 
 coc_extensions=(

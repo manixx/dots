@@ -34,3 +34,5 @@ modprobe.d/nowatchdog.conf       /etc/modprobe.d/nowatchdog.conf
 modprobe.d/powertop.conf         /etc/modprobe.d/powertop.conf
 
 sysctl.d/99-sysctl.conf          /etc/sysctl.d/99-sysctl.conf
+
+http-prompt/config.py            ~/.config/http-prompt/config.py
