@@ -86,6 +86,7 @@ aur_packages=(
 	python-prompt_toolkit1
 	python-parsimonious
 	http-prompt
+	gcalcli
 )
 
 coc_extensions=(
