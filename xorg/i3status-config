@@ -69,8 +69,9 @@ read_file calendar {
 }
 
 read_file tasks {
-  path   = "/home/manfred/.cache/tasks"
-  format = "<span color='#c5cdd9'> %content</span>"
+  path       = "/home/manfred/.cache/tasks"
+  format     = "<span color='#c5cdd9'> %content</span>"
+	format_bad = ""
 }
 
 disk "/" {

@@ -1,0 +1,47 @@
+#!/bin/sh 
+
+set -e
+
+cal="Gmail"
+now=$(date "+%F %R")
+end_of_day=$(date "+%F 23:59")
+event_started=0
+cache_file="${HOME}/.cache/next-event"
+
+events=`gcalcli agenda \
+	"${now}" \
+	"${end_of_day}" \
+	--tsv \
+	--details location \
+	--calendar ${cal} \
+	| expand -t 1`
+
+if [ -z "${events}" ]; then 
+	rm -f "${cache_file}"
+	exit 0
+fi 
+
+echo "${events}" | 
+	while IFS= read -r event; do 
+		event_start=$(echo ${event} | cut -d ' ' -f 1,2)
+		timestamp=$(date -d "${event_start}" +%s)
+
+		if [ ${timestamp} -le $(date +%s) ]; then 
+
+			# if another event started also, its conflicting 
+			if [ ${event_started} = 1 ]; then 
+				echo "Colliding events, please check Calendar" > "${cache_file}"
+				exit 1
+			fi
+
+			event_started=1
+		fi 
+	done 
+
+next_event=`echo "${events}" \
+	| head -1 \
+	| cut -d ' ' -f 2,4,5- \
+	| sed 's/ / - /' \
+	| sed 's/ /: /3'`
+
+echo ${next_event} > "${cache_file}"
