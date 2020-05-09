@@ -5,6 +5,9 @@ set -e
 aur_dir=~/.aur
 
 packages=(
+	bluez 
+	bluez-utils 
+	pulseaudio-bluetooth
 	exa 
 	go 
 	htop 

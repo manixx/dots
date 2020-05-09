@@ -43,10 +43,13 @@ bindsym $mod+Shift+a           exec --no-startup-id ~/.bin/autostart
 bindsym $mod+Shift+q           kill
 bindsym $mod+BackSpace         reload
 bindsym $mod+Shift+BackSpace   restart
-bindsym $mod+XF86Display       exec --no-startup-id ~/.bin/monitor-setup
-bindsym $mod+Shift+XF86Display exec --no-startup-id ~/.bin/monitor-reset
 bindsym $mod+Shift+x 					 exec --no-startup-id ~/.bin/toggle-xautolock
 bindsym $mod+Shift+r           exec --no-startup-id ~/.bin/toggle-redshift
+
+bindsym $mod+Shift+XF86Display exec --no-startup-id ~/.config/xrandr/reset
+bindsym $mod+XF86Display       exec --no-startup-id \
+	script=$(fd --base-directory ~/.config/xrandr | dmenu -i -p display -fn '$font-$font_size' -nf '$grey' -nb '$black' -sf '$black' -sb '$white') && \
+	sh ~/.config/xrandr/$script
 
 bindsym $mod+space exec --no-startup-id i3-dmenu-desktop \
   --dmenu="dmenu -i -p run -b -fn '$font-$font_size' -nf '$grey' -nb '$black' -sf '$black' -sb '$white'" 
@@ -211,6 +214,7 @@ bar {
 # Application assginments 
 
 assign [instance="^nvim$"]             $ws-code
+assign [instance="^urxvt$"]            $ws-term
 assign [instance="^chromium$"]         $ws-browse
 assign [instance="^Navigator$"]        $ws-browse
 assign [instance="^youtube.com$"]      $ws-music
