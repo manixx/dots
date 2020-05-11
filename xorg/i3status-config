@@ -37,7 +37,7 @@ run_watch redshift {
 }
 
 path_exists nordvpn {
-  path = "/proc/sys/net/ipv4/conf/tun0"
+  path = "/proc/net/dev_snmp6/nordlynx"
   format = ""
   format_down = "<span color='#c5cdd9'></span>"
 }

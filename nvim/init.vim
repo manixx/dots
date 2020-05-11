@@ -9,8 +9,8 @@ set cmdheight=1
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
-set tabstop=2
-set shiftwidth=2 
+set tabstop=2 
+set shiftwidth=2
 set noexpandtab 
 set showtabline=2
 set colorcolumn=80
@@ -223,6 +223,16 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " theme settings 
 "
 
+function! SwitchTheme() 
+	if &background == 'dark' 
+		set background=light 
+	else 
+		set background=dark
+	endif 
+endfunction
+
+nnoremap <leader>tt :call SwitchTheme()<cr>
+
 set background=dark
 colorscheme edge
 
@@ -233,13 +243,10 @@ hi CursorLineNr ctermbg=none cterm=bold
 hi HighlightedyankRegion cterm=bold
 hi Search ctermbg=8
 
-" if dark, disable background to make it transparent again 
-if &background == 'dark'
-	hi Normal       ctermbg=none
-	hi EndOfBuffer  ctermbg=none
-	hi SignColumn   ctermbg=none
-	hi LineNr       ctermbg=none
-endif 
+hi Normal       ctermbg=none
+hi EndOfBuffer  ctermbg=none
+hi SignColumn   ctermbg=none
+hi LineNr       ctermbg=none
 
 "
 " lightline settings
