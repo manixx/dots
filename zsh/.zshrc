@@ -64,7 +64,7 @@ bindkey -s '^b' 'n^M' # launch nnn
 zstyle ':vcs_info:*'   check-for-changes true
 zstyle ':vcs_info:*'   stagedstr '%F{green} •%f'
 zstyle ':vcs_info:*'   unstagedstr '%F{red} •%f'
-zstyle ':vcs_info:*'   formats '%F{red}%b%c%u%f'
+zstyle ':vcs_info:*'   formats '%F{yellow}%b%c%u%f'
 zstyle ':completion:*' special-dirs true # add slash on ./ ../
 
 #
@@ -75,13 +75,24 @@ vcs_data() { # print branch name
   vcs_info
 
   if [ -n "$vcs_info_msg_0_" ]; then
-    echo " %F{8}|%f ${vcs_info_msg_0_}"
+    echo " %F{8}| git%f %B${vcs_info_msg_0_}%b"
   fi
 }
 
 k8s_data() { # print k8s context 
-  echo " %F{8}|%f %F{green}$(kubectl config current-context)%f"
+	command -v kubectl && \
+		echo " %F{8}| k8s%f %F{green}$(kubectl config current-context)%f"
 }
+
+last_return_code() {
+  exit_code=$?
+	color=8
+
+  [[ $exit_code -ne 0 ]] && color=red
+
+	echo "%F{$color}[$exit_code]%f"
+}
+
 
 n() { # launch nnn 
   export NNN_TMPFILE=~/.config/nnn/.lastd
@@ -92,7 +103,7 @@ n() { # launch nnn
   fi
 }
 
-current_date() {
+current_time() {
 	echo "%F{8}$(date +"[%H:%M:%S]")%f"
 }
 
@@ -103,12 +114,12 @@ current_date() {
 # todo why copy PROMPT? 
 function zle-line-init zle-keymap-select {
   VIM_PROMPT="%B%F{yellow}[NORMAL]%f%b "
-  RPROMPT="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}%F{8}[${?}]%f"
+	RPROMPT='${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $(last_return_code)'
   zle reset-prompt
 }
 
-PROMPT='%F{magenta}%~%f$(vcs_data)'$'\n'"$(current_date) %F{green}→%f "
-RPROMPT="" # needs to bet set - otherwise its zle-line-init is not loaded on startup
+PROMPT='%F{magenta}%~%f$(vcs_data)$(k8s_data)'$'\n''$(current_time) %B%F{green}→%f%b '
+RPROMPT="" # needs to bet set - otherwise zle-line-init is not loaded on startup
 
 #
 # history settings

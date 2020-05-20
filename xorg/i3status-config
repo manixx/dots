@@ -33,7 +33,7 @@ run_watch xautolock {
 run_watch redshift {
 	pidfile = "/home/manfred/.cache/redshift.pid"
 	format = "<span color='#c5cdd9'></span>"
-	format_down = "<span color='#bc5cdd9'></span>"
+	format_down = "<span color='#c5cdd9'></span>"
 }
 
 path_exists nordvpn {
