@@ -9,6 +9,8 @@ general {
 
 order += "read_file tasks"
 order += "read_file calendar"
+order += "read_file time-tracking"
+order += "read_file mattermost"
 order += "cpu_usage"
 order += "load"
 order += "memory"
@@ -24,6 +26,18 @@ order += "run_watch redshift"
 order += "volume master"
 order += "battery all"
 order += "tztime local"
+
+read_file time-tracking {
+	path = '/home/manfred/.cache/time-tracking'
+	format = "<span color='#c5cdd9'> %content</span>"
+	format_bad = ""
+}
+
+read_file mattermost {
+	path = '/home/manfred/.cache/mattermost'
+	format = ' %content'
+	format_bad = ""
+}
 
 run_watch xautolock {
 	pidfile = "/home/manfred/.cache/xautolock.pid"
@@ -101,6 +115,7 @@ tztime local {
 
 cpu_temperature 0 {
   format = " %degrees °C"
+	max_threshold = 80
 }
 
 volume master {

@@ -1,58 +1,72 @@
 {
-  "languageserver": {
-    "dockerfile": {
-      "command": "docker-langserver",
-      "filetypes": ["dockerfile"],
-      "args": ["--stdio"]
-    }, 
-    "bash": {
-      "command": "bash-language-server",
-      "args": ["start"],
-      "filetypes": ["sh"],
-      "ignoredRootPaths": ["~"]
-    }, 
-    "ccls": {
-      "command": "ccls",
-      "filetypes": ["c", "cpp", "objc", "objcpp"],
-      "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-      "initializationOptions": {
-	"cache": {
-	  "directory": "/tmp/ccls"
-	}
-      }
-    }, 
-    "golang": {
-      "command": "gopls",
-      "rootPatterns": ["go.mod"],
-      "filetypes": ["go"]
-    },
-    "haskell": {
-      "command": "hie-wrapper",
-      "args": ["--lsp"],
-      "rootPatterns": [
-	"stack.yaml",
-	"cabal.config",
-	"package.yaml"
-      ],
-      "filetypes": [
-	"hs",
-	"lhs",
-	"haskell"
-      ],
-      "initializationOptions": {
-	"languageServerHaskell": {
-	  "hlintOn": true
-	}
-      }
-    }
-  },
-  "coc.preferences.extensionUpdateCheck": "daily",
-  "cSpell.userWords": [
+	"languageserver": {
+		"dockerfile": {
+			"command": "docker-langserver",
+			"filetypes": ["dockerfile"],
+			"args": ["--stdio"]
+		}, 
+		"bash": {
+			"command": "bash-language-server",
+			"args": ["start"],
+			"filetypes": ["sh"],
+			"ignoredRootPaths": ["~"]
+		}, 
+		"ccls": {
+			"command": "ccls",
+			"filetypes": ["c", "cpp", "objc", "objcpp"],
+			"rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+			"initializationOptions": {
+				"cache": {
+					"directory": "/tmp/ccls"
+				}
+			}
+		}, 
+		"golang": {
+			"command": "gopls",
+			"rootPatterns": ["go.mod"],
+			"filetypes": ["go"]
+		},
+		"haskell": {
+			"command": "hie-wrapper",
+			"args": ["--lsp"],
+			"rootPatterns": [
+				"stack.yaml",
+				"cabal.config",
+				"package.yaml"
+			],
+			"filetypes": [
+				"hs",
+				"lhs",
+				"haskell"
+			],
+			"initializationOptions": {
+				"languageServerHaskell": {
+					"hlintOn": true
+				}
+			}
+		}
+	},
+	"coc.preferences.extensionUpdateCheck": "daily",
+	"cSpell.userWords": [
+    "Feasability",
     "Firestore",
+    "Laravel",
+    "Neomerx",
+    "PGHOST",
     "Randomizer",
     "adminer",
+    "busybox",
     "contakt",
+    "dreamfactory",
     "entrypoint",
+    "gitlab",
+    "kubernetes",
+    "nameserver",
+    "odata",
+    "postgres",
+    "promisify",
+    "rapidm",
+    "toastr",
     "uuidv"
   ], 
 	"cSpellExt.enableDictionaries": ["german"], 

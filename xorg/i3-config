@@ -20,12 +20,14 @@ set $down  j
 set $left  h
 set $right l
 
+set $ws-test      "0:&#xf683;"
 set $ws-code      "1:&#xf121;"
 set $ws-browse    "2:&#xf57d;"
 set $ws-term      "3:&#xf120;"
 set $ws-messaging "4:&#xf086;"
 set $ws-music     "5:&#xf025;"
 
+set $ws-test-key      dead_circumflex
 set $ws-code-key      1
 set $ws-browse-key    2
 set $ws-term-key      3
@@ -38,6 +40,7 @@ font              pango:$font $font_weight $font_size
 floating_modifier $mod
 
 bindsym $mod+Return            exec --no-startup-id urxvt
+bindsym $mod+Shift+Return      exec --no-startup-id urxvt -name urxvt-temp
 bindsym $mod+Escape            exec --no-startup-id ~/.bin/lock-screen
 bindsym $mod+Shift+a           exec --no-startup-id ~/.bin/autostart
 bindsym $mod+Shift+q           kill
@@ -46,10 +49,10 @@ bindsym $mod+Shift+BackSpace   restart
 bindsym $mod+Shift+x 					 exec --no-startup-id ~/.bin/toggle-xautolock
 bindsym $mod+Shift+r           exec --no-startup-id ~/.bin/toggle-redshift
 
-bindsym $mod+Shift+XF86Display exec --no-startup-id ~/.config/xrandr/reset
-bindsym $mod+XF86Display       exec --no-startup-id \
+bindsym Shift+XF86Display exec --no-startup-id ~/.config/xrandr/reset
+bindsym XF86Display       exec --no-startup-id \
 	script=$(fd --base-directory ~/.config/xrandr | dmenu -i -p display -fn '$font-$font_size' -nf '$grey' -nb '$black' -sf '$black' -sb '$white') && \
-	sh ~/.config/xrandr/$script
+	sh ~/.config/xrandr/$script && sh ~/.fehbg 
 
 bindsym $mod+space exec --no-startup-id i3-dmenu-desktop \
   --dmenu="dmenu -i -p run -b -fn '$font-$font_size' -nf '$grey' -nb '$black' -sf '$black' -sb '$white'" 
@@ -77,6 +80,15 @@ bindsym Shift+XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 && \
   xbacklight -get | cut -d'.' -f 1 > /home/manfred/.cache/backlight
 bindsym Shift+XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 5 && \
   xbacklight -get | cut -d'.' -f 1 > /home/manfred/.cache/backlight
+
+# Time-tracking 
+
+bindsym $mod+Home exec --no-startup-id \
+	phase=$(node /home/manfred/.bin/time-tracking.js list | dmenu -p time-tracking -i -b -l 10) && \
+	node /home/manfred/.bin/time-tracking.js start $(echo $phase | cut -d ' ' -f 1)
+
+bindsym $mod+End exec --no-startup-id \
+	node /home/manfred/.bin/time-tracking.js stop 
 
 # Spotify 
 
@@ -124,12 +136,14 @@ bindsym $mod+Tab workspace back_and_forth
 
 # Workspaces 
 
+bindsym $mod+$ws-test-key      workspace $ws-test
 bindsym $mod+$ws-code-key      workspace $ws-code
 bindsym $mod+$ws-browse-key    workspace $ws-browse
 bindsym $mod+$ws-term-key      workspace $ws-term
 bindsym $mod+$ws-messaging-key workspace $ws-messaging
 bindsym $mod+$ws-music-key     workspace $ws-music
 
+bindsym $mod+Shift+$ws-test-key      move container to workspace $ws-test 
 bindsym $mod+Shift+$ws-code-key      move container to workspace $ws-code
 bindsym $mod+Shift+$ws-browse-key    move container to workspace $ws-browse
 bindsym $mod+Shift+$ws-term-key      move container to workspace $ws-term
@@ -144,7 +158,11 @@ mode "resize" {
   bindsym $up         resize shrink height 10 px or 10 ppt
   bindsym $right      resize grow   width  10 px or 10 ppt
 
-	bindsym v resize set width 500 px height 281 px 
+	bindsym v exec \
+		i3-msg floating enable && \
+		i3-msg resize set width 500 px height 281 px && \
+		i3-msg sticky enable && \
+		i3-msg move position mouse
 
   bindsym Escape mode "default"
 }
@@ -164,6 +182,7 @@ bindsym $mod+m mode "move ws"
 
 # Assign workspaces to screens 
 
+workspace $ws-test      output eDP1
 workspace $ws-code      output DP2 
 workspace $ws-browse    output HDMI2
 workspace $ws-term      output eDP1
@@ -195,7 +214,7 @@ bar {
   position                top
   tray_output             none
   strip_workspace_numbers yes
-  output                  eDP1
+  # output                  eDP1
 
   colors {
     background $black
@@ -224,17 +243,20 @@ assign [instance="^web.whatsapp.com$"] $ws-messaging
 assign [instance="^matterhorn$"]       $ws-messaging
 assign [instance="^talk.sclable.com$"] $ws-messaging
 assign [instance="^telegram-desktop$"] $ws-messaging
+assign [instance="^insomnia$"]         $ws-test
 
 for_window [instance="^spotify$"]   move to workspace $ws-music
 for_window [instance="^urxvt$"]     focus
 for_window [instance="^chromium$"]  focus
 for_window [instance="^nvim$"]      focus
 for_window [instance="^Navigator$"] focus
+for_window [instance="^insomnia$"]  focus
 for_window [instance="^calw$"]      floating enable
 for_window [instance="^calw$"]      move position center
-for_window [instance="^calm$"]      floating enable 
-for_window [instance="^calm$"]      resize set 1000 800 
-for_window [instance="^calm$"]      move position center 
+for_window [instance="^calm$"]      floating enable
+for_window [instance="^calm$"]      resize set 1000 800
+for_window [instance="^calm$"]      move position center
+for_window [title="^DevTools"]      move to workspace $ws-test
 
 # Autostart 
 
