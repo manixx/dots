@@ -5,6 +5,7 @@
 Xcursor.size: 16
 
 URxvt*font:           xft:Hack:size=9,xft:Font Awesome 5 Free:size=10:minspace=False
+URxvt*letterSpace: 0
 
 URxvt*scrollBar:       false
 URxvt*internalBorder:  21
@@ -13,7 +14,7 @@ URxvt*depth:           32
 URxvt*saveLines:       4000
 URxvt*cursorBlink:     true
 
-# Disable the scrollback buffer for the secondary screen (eg. less)
+! Disable the scrollback buffer for the secondary screen (eg. less)
 URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
 

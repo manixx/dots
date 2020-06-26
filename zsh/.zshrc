@@ -61,15 +61,47 @@ bindkey -s '^b' 'n^M' # launch nnn
 # style options 
 #
 
-zstyle ':vcs_info:*'   check-for-changes true
-zstyle ':vcs_info:*'   stagedstr '%F{green} •%f'
-zstyle ':vcs_info:*'   unstagedstr '%F{red} •%f'
-zstyle ':vcs_info:*'   formats '%F{yellow}%b%c%u%f'
-zstyle ':completion:*' special-dirs true # add slash on ./ ../
+zstyle ':vcs_info:*'             check-for-changes true
+zstyle ':vcs_info:*'             stagedstr '%F{green} •%f'
+zstyle ':vcs_info:*'             unstagedstr '%F{red} •%f'
+zstyle ':vcs_info:*'             formats '%F{yellow}%b%c%u%f'
+zstyle ':completion:*'           special-dirs true # add slash on ./ ../
+zstyle ':completion:*'           rehash true
+zstyle ':completion::complete:*' gain-privileges 1
 
 #
 # functions
 #
+
+preexec() {
+	LAST_COMMAND_EXEC_TIME=$(date +%s)
+}
+
+reset_last_exec_time() {
+	unset LAST_COMMAND_EXEC_TIME
+	zle .accept-line
+}
+zle -N accept-line reset_last_exec_time
+
+last_command_exec_time() {
+	if [ -n "$LAST_COMMAND_EXEC_TIME" ]; then 
+		now=$(date +%s)
+		exec_time=$(expr $now - $LAST_COMMAND_EXEC_TIME)
+		measurement="s"
+
+		if [ $exec_time -ge 60 ]; then 
+			exec_time=$(expr $exec_time / 60)
+			measurement="m"
+		fi 
+
+		if [ $exec_time -ge 60 ] && [ $measurement == "m" ]; then 
+			exec_time=$(expr $exec_time / 60)
+			measurement="h"
+		fi
+
+		echo " %F{8}[$exec_time$measurement]%f"
+	fi 
+}
 
 vcs_data() { # print branch name 
   vcs_info
@@ -96,7 +128,7 @@ last_return_code() {
 
 n() { # launch nnn 
   export NNN_TMPFILE=~/.config/nnn/.lastd
-  nnn "$@"
+  nnn -A -d -H "$@" 
   if [ -f $NNN_TMPFILE ]; then
     . $NNN_TMPFILE
     rm -f $NNN_TMPFILE
@@ -111,10 +143,9 @@ current_time() {
 # prompt
 #
 
-# todo why copy PROMPT? 
 function zle-line-init zle-keymap-select {
   VIM_PROMPT="%B%F{yellow}[NORMAL]%f%b "
-	RPROMPT='${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $(last_return_code)'
+	RPROMPT='${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $(last_return_code)$(last_command_exec_time)'
   zle reset-prompt
 }
 
