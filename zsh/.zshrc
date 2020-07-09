@@ -73,23 +73,19 @@ zstyle ':completion::complete:*' gain-privileges 1
 # functions
 #
 
+last_cmd_timestamp='' 
+
 preexec() {
-	LAST_COMMAND_EXEC_TIME=$(date +%s)
+	last_cmd_timestamp=$(date +%s) 
 }
 
-reset_last_exec_time() {
-	unset LAST_COMMAND_EXEC_TIME
-	zle .accept-line
-}
-zle -N accept-line reset_last_exec_time
-
-last_command_exec_time() {
-	if [ -n "$LAST_COMMAND_EXEC_TIME" ]; then 
+last_cmd_exec_time() {
+	if [ -n "$last_cmd_timestamp" ]; then
 		now=$(date +%s)
-		exec_time=$(expr $now - $LAST_COMMAND_EXEC_TIME)
+		exec_time=$(expr $now - $last_cmd_timestamp)
 		measurement="s"
 
-		if [ $exec_time -ge 60 ]; then 
+		if [ "$exec_time" -ge "60" ]; then 
 			exec_time=$(expr $exec_time / 60)
 			measurement="m"
 		fi 
@@ -103,6 +99,12 @@ last_command_exec_time() {
 	fi 
 }
 
+reset_last_cmd_timestamp () {
+	last_cmd_timestamp=''
+  zle .accept-line
+}
+zle -N accept-line reset_last_cmd_timestamp
+
 vcs_data() { # print branch name 
   vcs_info
 
@@ -112,19 +114,12 @@ vcs_data() { # print branch name
 }
 
 k8s_data() { # print k8s context 
-	command -v kubectl && \
-		echo " %F{8}| k8s%f %F{green}$(kubectl config current-context)%f"
+  echo " %F{8}| k8s%f %F{green}$(kubectl config current-context)%f"
 }
 
-last_return_code() {
-  exit_code=$?
-	color=8
-
-  [[ $exit_code -ne 0 ]] && color=red
-
-	echo "%F{$color}[$exit_code]%f"
+k8s_switch_context() {
+	kubectl config use-context $(kubectl config get-contexts -o name | fzf --height 10) > /dev/null
 }
-
 
 n() { # launch nnn 
   export NNN_TMPFILE=~/.config/nnn/.lastd
@@ -135,7 +130,15 @@ n() { # launch nnn
   fi
 }
 
-current_time() {
+last_return_code() {
+	exit_code=$?
+	color=8
+
+	[[ $exit_code -ne 0 ]] && color=red
+	echo "%F{$color}[$exit_code]%f"
+}
+
+current_date() {
 	echo "%F{8}$(date +"[%H:%M:%S]")%f"
 }
 
@@ -145,12 +148,12 @@ current_time() {
 
 function zle-line-init zle-keymap-select {
   VIM_PROMPT="%B%F{yellow}[NORMAL]%f%b "
-	RPROMPT='${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $(last_return_code)$(last_command_exec_time)'
+	RPROMPT='${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}$(last_return_code)$(last_cmd_exec_time)'
   zle reset-prompt
 }
 
-PROMPT='%F{magenta}%~%f$(vcs_data)$(k8s_data)'$'\n''$(current_time) %B%F{green}→%f%b '
-RPROMPT="" # needs to bet set - otherwise zle-line-init is not loaded on startup
+PROMPT='%F{magenta}%~%f$(vcs_data)$(k8s_data)'$'\n''$(current_date) %F{green}%B→%b%f '
+RPROMPT="" # needs to bet set - otherwise its zle-line-init is not loaded on startup
 
 #
 # history settings
@@ -172,6 +175,9 @@ alias mv="mv -i"
 alias rm="rm -i"
 alias dev="cd ~/dev" 
 alias downloads="cd ~/downloads"
+alias dockerc="docker-compose"
+
+alias gco="git checkout"
 
 #
 # global settings  

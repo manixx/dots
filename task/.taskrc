@@ -1,2 +1,3 @@
 data.location=~/.task
 include /usr/share/doc/task/rc/dark-256.theme
+project:df=Scale docker-in-docker deployment to 4 and upate haproxy

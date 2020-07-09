@@ -21,6 +21,11 @@
 				}
 			}
 		}, 
+		"golang": {
+			"command": "gopls",
+			"rootPatterns": ["go.mod"],
+			"filetypes": ["go"]
+		},
 		"haskell": {
 			"command": "hie-wrapper",
 			"args": ["--lsp"],
@@ -45,14 +50,29 @@
 	"cSpell.userWords": [
     "Firestore",
     "GPIO",
+    "Feasability",
+    "Firestore",
+    "Laravel",
+    "Neomerx",
+    "PGHOST",
     "Randomizer",
     "adminer",
+    "busybox",
     "contakt",
+    "dreamfactory",
     "entrypoint",
     "fsel",
     "graphql",
     "postgres",
     "postgresql",
+    "gitlab",
+    "kubernetes",
+    "nameserver",
+    "odata",
+    "postgres",
+    "promisify",
+    "rapidm",
+    "toastr",
     "uuidv"
   ], 
 	"cSpellExt.enableDictionaries": ["german"], 

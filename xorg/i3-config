@@ -52,7 +52,7 @@ bindsym $mod+Shift+r           exec --no-startup-id ~/.bin/toggle-redshift
 bindsym Shift+XF86Display exec --no-startup-id ~/.config/xrandr/reset
 bindsym XF86Display       exec --no-startup-id \
 	script=$(fd --base-directory ~/.config/xrandr | dmenu -i -p display -fn '$font-$font_size' -nf '$grey' -nb '$black' -sf '$black' -sb '$white') && \
-	sh ~/.config/xrandr/$script
+	sh ~/.config/xrandr/$script && sh ~/.fehbg 
 
 bindsym $mod+space exec --no-startup-id i3-dmenu-desktop \
   --dmenu="dmenu -i -p run -b -fn '$font-$font_size' -nf '$grey' -nb '$black' -sf '$black' -sb '$white'" 
@@ -80,6 +80,15 @@ bindsym Shift+XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 && \
   xbacklight -get | cut -d'.' -f 1 > /home/manfred/.cache/backlight
 bindsym Shift+XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 5 && \
   xbacklight -get | cut -d'.' -f 1 > /home/manfred/.cache/backlight
+
+# Time-tracking 
+
+bindsym $mod+Home exec --no-startup-id \
+	phase=$(node /home/manfred/.bin/time-tracking.js list | dmenu -p time-tracking -i -b -l 10) && \
+	node /home/manfred/.bin/time-tracking.js start $(echo $phase | cut -d ' ' -f 1)
+
+bindsym $mod+End exec --no-startup-id \
+	node /home/manfred/.bin/time-tracking.js stop 
 
 # Spotify 
 
@@ -149,7 +158,11 @@ mode "resize" {
   bindsym $up         resize shrink height 10 px or 10 ppt
   bindsym $right      resize grow   width  10 px or 10 ppt
 
-	bindsym v resize set width 500 px height 281 px 
+	bindsym v exec \
+		i3-msg floating enable && \
+		i3-msg resize set width 500 px height 281 px && \
+		i3-msg sticky enable && \
+		i3-msg move position mouse
 
   bindsym Escape mode "default"
 }
@@ -169,7 +182,7 @@ bindsym $mod+m mode "move ws"
 
 # Assign workspaces to screens 
 
-workspace $ws-test      output DP2
+workspace $ws-test      output eDP1
 workspace $ws-code      output DP2 
 workspace $ws-browse    output HDMI2
 workspace $ws-term      output eDP1
@@ -201,7 +214,7 @@ bar {
   position                top
   tray_output             none
   strip_workspace_numbers yes
-  output                  eDP1
+  # output                  eDP1
 
   colors {
     background $black
@@ -230,19 +243,21 @@ assign [instance="^web.whatsapp.com$"] $ws-messaging
 assign [instance="^matterhorn$"]       $ws-messaging
 assign [instance="^talk.sclable.com$"] $ws-messaging
 assign [instance="^telegram-desktop$"] $ws-messaging
+assign [instance="^insomnia$"]         $ws-test
 assign [instance="^spotify-tui"]       $ws-music
 
-for_window [instance="^spotify$"]    move to workspace $ws-music
-for_window [instance="^urxvt$"]      focus
-for_window [instance="^chromium$"]   focus
-for_window [instance="^nvim$"]       focus
-for_window [instance="^Navigator$"]  focus
-for_window [instance="^spotify-tui"] focus
-for_window [instance="^calw$"]       floating enable
-for_window [instance="^calw$"]       move position center
-for_window [instance="^calm$"]       floating enable
-for_window [instance="^calm$"]       resize set 1000 800
-for_window [instance="^calm$"]       move position center
+for_window [instance="^spotify$"]   move to workspace $ws-music
+for_window [instance="^urxvt$"]     focus
+for_window [instance="^chromium$"]  focus
+for_window [instance="^nvim$"]      focus
+for_window [instance="^Navigator$"] focus
+for_window [instance="^insomnia$"]  focus
+for_window [instance="^calw$"]      floating enable
+for_window [instance="^calw$"]      move position center
+for_window [instance="^calm$"]      floating enable
+for_window [instance="^calm$"]      resize set 1000 800
+for_window [instance="^calm$"]      move position center
+for_window [title="^DevTools"]      move to workspace $ws-test
 
 # Autostart 
 

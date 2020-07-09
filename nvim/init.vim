@@ -50,6 +50,8 @@ Plug 'fatih/vim-go'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'editorconfig/editorconfig-vim'
 Plug 'andrewstuart/vim-kubernetes' 
+Plug 'ctrlpvim/ctrlp.vim' 
+Plug 'majutsushi/tagbar'
 
 " themes 
 Plug 'sainnhe/edge'
@@ -73,6 +75,28 @@ let g:NERDTreeWinPos = "right"
 
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
+
+" tagbar 
+
+let g:tagbar_width = 60
+let g:tagbar_type_typescript = {                                                  
+  \ 'ctagsbin' : 'tstags',                                                        
+  \ 'ctagsargs' : '-f-',                                                           
+  \ 'kinds': [                                                                     
+    \ 'e:enums:0:1',                                                               
+    \ 'f:function:0:1',                                                            
+    \ 't:typealias:0:1',                                                           
+    \ 'M:Module:0:1',                                                              
+    \ 'I:import:0:1',                                                              
+    \ 'i:interface:0:1',                                                           
+    \ 'C:class:0:1',                                                               
+    \ 'm:method:0:1',                                                              
+    \ 'p:property:0:1',                                                            
+    \ 'v:variable:0:1',                                                            
+    \ 'c:const:0:1',                                                              
+  \ ],                                                                            
+  \ 'sort' : 0                                                                    
+\ }    
 
 " KEY BINDINGS 
 
@@ -108,12 +132,15 @@ noremap <leader>w       :call ChangeCWD()<cr>
 noremap <leader>^       :NERDTreeFind<cr>
 noremap <leader><s-S>   :NERDTreeMirror<cr>
 
+" tagbar 
+nnoremap <silent> <Leader>c :TagbarOpenAutoClose<CR>
+
 " fzf 
-noremap <leader>f :Files<cr>
-noremap <leader>F :Files ~<cr>
-noremap <leader>l :Lines<cr>
-noremap <leader>s :Rg<cr>
-noremap <leader>c :Commits<cr>
+noremap <leader>f  :Files<cr>
+noremap <leader>F  :Files ~<cr>
+noremap <leader>l  :Lines<cr>
+noremap <leader>s  :Rg<cr>
+noremap <leader>gc :Commits<cr>
 
 " nnn 
 noremap <leader>b :NnnPicker<cr>
@@ -161,6 +188,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <space>a :<C-u>CocAction<cr>
 nnoremap <silent> <space>e :<C-u>CocList extensions<cr>
 nnoremap <silent> <space>c :<C-u>CocList commands<cr>
 nnoremap <silent> <space>o :<C-u>CocList outline<cr>
@@ -207,6 +235,7 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <silent><expr> <c-space> coc#refresh()
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd BufWritePre *.md :%s/\s\+$//e
 
 nmap <expr> <silent> <C-d> <SID>select_current_word()
 

@@ -2,7 +2,7 @@
 
 set -e
 
-cal="Gmail"
+cal="sclable Privat"
 now=$(date "+%F %R")
 end_of_day=$(date "+%F 23:59")
 event_started=0
@@ -13,7 +13,7 @@ events=`gcalcli agenda \
 	"${end_of_day}" \
 	--tsv \
 	--details location \
-	--calendar ${cal} \
+	--calendar "${cal}" \
 	| expand -t 1`
 
 if [ -z "${events}" ]; then 
