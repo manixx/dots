@@ -1,0 +1,265 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/a3c87ab5/
+0	nvim/coc-settings.json	/^				"hs",$/;"	s	array:languageserver.haskell.filetypes
+0	nvim/coc-settings.json	/^				"stack.yaml",$/;"	s	array:languageserver.haskell.rootPatterns
+0	nvim/coc-settings.json	/^			"args": ["--lsp"],$/;"	s	array:languageserver.haskell.args
+0	nvim/coc-settings.json	/^			"args": ["--stdio"]$/;"	s	array:languageserver.dockerfile.args
+0	nvim/coc-settings.json	/^			"args": ["start"],$/;"	s	array:languageserver.bash.args
+0	nvim/coc-settings.json	/^			"filetypes": ["c", "cpp", "objc", "objcpp"],$/;"	s	array:languageserver.ccls.filetypes
+0	nvim/coc-settings.json	/^			"filetypes": ["dockerfile"],$/;"	s	array:languageserver.dockerfile.filetypes
+0	nvim/coc-settings.json	/^			"filetypes": ["go"]$/;"	s	array:languageserver.golang.filetypes
+0	nvim/coc-settings.json	/^			"filetypes": ["sh"],$/;"	s	array:languageserver.bash.filetypes
+0	nvim/coc-settings.json	/^			"ignoredRootPaths": ["~"]$/;"	s	array:languageserver.bash.ignoredRootPaths
+0	nvim/coc-settings.json	/^			"rootPatterns": [".ccls", "compile_commands.json", ".vim\/", ".git\/", ".hg\/"],$/;"	s	array:languageserver.ccls.rootPatterns
+0	nvim/coc-settings.json	/^			"rootPatterns": ["go.mod"],$/;"	s	array:languageserver.golang.rootPatterns
+0	nvim/coc-settings.json	/^	"cSpellExt.enableDictionaries": ["german"], $/;"	s	array:cSpellExt.enableDictionaries
+0	nvim/coc-settings.json	/^    "Firestore",$/;"	s	array:cSpell.userWords
+1	nvim/coc-settings.json	/^				"cabal.config",$/;"	s	array:languageserver.haskell.rootPatterns
+1	nvim/coc-settings.json	/^				"lhs",$/;"	s	array:languageserver.haskell.filetypes
+1	nvim/coc-settings.json	/^			"filetypes": ["c", "cpp", "objc", "objcpp"],$/;"	s	array:languageserver.ccls.filetypes
+1	nvim/coc-settings.json	/^			"rootPatterns": [".ccls", "compile_commands.json", ".vim\/", ".git\/", ".hg\/"],$/;"	s	array:languageserver.ccls.rootPatterns
+1	nvim/coc-settings.json	/^    "GPIO",$/;"	s	array:cSpell.userWords
+10	nvim/coc-settings.json	/^    "contakt",$/;"	s	array:cSpell.userWords
+11	nvim/coc-settings.json	/^    "dreamfactory",$/;"	s	array:cSpell.userWords
+12	nvim/coc-settings.json	/^    "entrypoint",$/;"	s	array:cSpell.userWords
+13	nvim/coc-settings.json	/^    "fsel",$/;"	s	array:cSpell.userWords
+14	nvim/coc-settings.json	/^    "graphql",$/;"	s	array:cSpell.userWords
+15	nvim/coc-settings.json	/^    "postgres",$/;"	s	array:cSpell.userWords
+16	nvim/coc-settings.json	/^    "postgresql",$/;"	s	array:cSpell.userWords
+17	nvim/coc-settings.json	/^    "gitlab",$/;"	s	array:cSpell.userWords
+18	nvim/coc-settings.json	/^    "kubernetes",$/;"	s	array:cSpell.userWords
+19	nvim/coc-settings.json	/^    "nameserver",$/;"	s	array:cSpell.userWords
+2	nvim/coc-settings.json	/^				"haskell"$/;"	s	array:languageserver.haskell.filetypes
+2	nvim/coc-settings.json	/^				"package.yaml"$/;"	s	array:languageserver.haskell.rootPatterns
+2	nvim/coc-settings.json	/^			"filetypes": ["c", "cpp", "objc", "objcpp"],$/;"	s	array:languageserver.ccls.filetypes
+2	nvim/coc-settings.json	/^			"rootPatterns": [".ccls", "compile_commands.json", ".vim\/", ".git\/", ".hg\/"],$/;"	s	array:languageserver.ccls.rootPatterns
+2	nvim/coc-settings.json	/^    "Feasability",$/;"	s	array:cSpell.userWords
+20	nvim/coc-settings.json	/^    "odata",$/;"	s	array:cSpell.userWords
+21	nvim/coc-settings.json	/^    "postgres",$/;"	s	array:cSpell.userWords
+22	nvim/coc-settings.json	/^    "promisify",$/;"	s	array:cSpell.userWords
+23	nvim/coc-settings.json	/^    "rapidm",$/;"	s	array:cSpell.userWords
+24	nvim/coc-settings.json	/^    "toastr",$/;"	s	array:cSpell.userWords
+25	nvim/coc-settings.json	/^    "uuidv"$/;"	s	array:cSpell.userWords
+3	nvim/coc-settings.json	/^			"filetypes": ["c", "cpp", "objc", "objcpp"],$/;"	s	array:languageserver.ccls.filetypes
+3	nvim/coc-settings.json	/^			"rootPatterns": [".ccls", "compile_commands.json", ".vim\/", ".git\/", ".hg\/"],$/;"	s	array:languageserver.ccls.rootPatterns
+3	nvim/coc-settings.json	/^    "Firestore",$/;"	s	array:cSpell.userWords
+4	nvim/coc-settings.json	/^			"rootPatterns": [".ccls", "compile_commands.json", ".vim\/", ".git\/", ".hg\/"],$/;"	s	array:languageserver.ccls.rootPatterns
+4	nvim/coc-settings.json	/^    "Laravel",$/;"	s	array:cSpell.userWords
+5	nvim/coc-settings.json	/^    "Neomerx",$/;"	s	array:cSpell.userWords
+6	nvim/coc-settings.json	/^    "PGHOST",$/;"	s	array:cSpell.userWords
+7	nvim/coc-settings.json	/^    "Randomizer",$/;"	s	array:cSpell.userWords
+8	nvim/coc-settings.json	/^    "adminer",$/;"	s	array:cSpell.userWords
+9	nvim/coc-settings.json	/^    "busybox",$/;"	s	array:cSpell.userWords
+<C-d>	nvim/init.vim	/^nmap <expr> <silent> <C-d> <SID>select_current_word()$/;"	m
+<Down>	nvim/init.vim	/^noremap  <Down> ""$/;"	m
+<Down>	nvim/init.vim	/^noremap! <Down> <Esc>$/;"	m
+<Leader>c	nvim/init.vim	/^nnoremap <silent> <Leader>c :TagbarOpenAutoClose<CR>$/;"	m
+<Left>	nvim/init.vim	/^noremap  <Left> ""$/;"	m
+<Left>	nvim/init.vim	/^noremap! <Left> <Esc>$/;"	m
+<Right>	nvim/init.vim	/^noremap  <Right> ""$/;"	m
+<Right>	nvim/init.vim	/^noremap! <Right> <Esc>$/;"	m
+<S-TAB>	nvim/init.vim	/^inoremap <expr><S-TAB> pumvisible() ? "\\<C-p>" : "\\<C-h>"$/;"	m
+<TAB>	nvim/init.vim	/^inoremap <silent><expr> <TAB>$/;"	m
+<TAB>	nvim/init.vim	/^nmap <silent> <TAB> <Plug>(coc-range-select)$/;"	m
+<TAB>	nvim/init.vim	/^xmap <silent> <TAB> <Plug>(coc-range-select)$/;"	m
+<Up>	nvim/init.vim	/^noremap  <Up> ""$/;"	m
+<Up>	nvim/init.vim	/^noremap! <Up> <Esc>$/;"	m
+<c-space>	nvim/init.vim	/^inoremap <silent><expr> <c-space> coc#refresh()$/;"	m
+<cr>	nvim/init.vim	/^inoremap <expr> <cr> pumvisible() ? "\\<C-y>" : "\\<C-g>u\\<CR>"$/;"	m
+<leader><esc>	nvim/init.vim	/^noremap <leader><esc> :noh<cr>$/;"	m
+<leader><s-S>	nvim/init.vim	/^noremap <leader><s-S>   :NERDTreeMirror<cr>$/;"	m
+<leader><s-tab>	nvim/init.vim	/^noremap <leader><s-tab> :NERDTreeFocus<cr>$/;"	m
+<leader><tab>	nvim/init.vim	/^noremap <leader><tab>   :NERDTreeToggle<cr>$/;"	m
+<leader>F	nvim/init.vim	/^noremap <leader>F  :Files ~<cr>$/;"	m
+<leader>^	nvim/init.vim	/^noremap <leader>^       :NERDTreeFind<cr>$/;"	m
+<leader>a	nvim/init.vim	/^nmap <leader>a <Plug>(coc-codeaction-selected)$/;"	m
+<leader>a	nvim/init.vim	/^xmap <leader>a <Plug>(coc-codeaction-selected)$/;"	m
+<leader>ac	nvim/init.vim	/^nmap <leader>ac  <Plug>(coc-codeaction)$/;"	m
+<leader>b	nvim/init.vim	/^noremap <leader>b :NnnPicker<cr>$/;"	m
+<leader>f	nvim/init.vim	/^noremap <leader>f  :Files<cr>$/;"	m
+<leader>gb	nvim/init.vim	/^noremap <leader>gb :Gblame<cr>$/;"	m
+<leader>gc	nvim/init.vim	/^noremap <leader>gc :Commits<cr>$/;"	m
+<leader>l	nvim/init.vim	/^noremap <leader>l  :Lines<cr>$/;"	m
+<leader>p	nvim/init.vim	/^nmap <leader>p <Plug>(coc-format-selected)$/;"	m
+<leader>p	nvim/init.vim	/^noremap <leader>p     "+p$/;"	m
+<leader>p	nvim/init.vim	/^xmap <leader>p <Plug>(coc-format-selected)$/;"	m
+<leader>qf	nvim/init.vim	/^nmap <leader>qf  <Plug>(coc-fix-current)$/;"	m
+<leader>rn	nvim/init.vim	/^nmap <leader>rn <Plug>(coc-rename)$/;"	m
+<leader>s	nvim/init.vim	/^noremap <leader>s  :Rg<cr>$/;"	m
+<leader>tt	nvim/init.vim	/^nnoremap <leader>tt :call SwitchTheme()<cr>$/;"	m
+<leader>w	nvim/init.vim	/^noremap <leader>w       :call ChangeCWD()<cr>$/;"	m
+<leader>y	nvim/init.vim	/^noremap <leader>y     "+y$/;"	m
+<space>a	nvim/init.vim	/^nnoremap <silent> <space>a :<C-u>CocAction<cr>$/;"	m
+<space>c	nvim/init.vim	/^nnoremap <silent> <space>c :<C-u>CocList commands<cr>$/;"	m
+<space>d	nvim/init.vim	/^nnoremap <silent> <space>d :<C-u>CocList diagnostics<cr>$/;"	m
+<space>e	nvim/init.vim	/^nnoremap <silent> <space>e :<C-u>CocList extensions<cr>$/;"	m
+<space>j	nvim/init.vim	/^nnoremap <silent> <space>j :<C-u>CocNext<CR>$/;"	m
+<space>k	nvim/init.vim	/^nnoremap <silent> <space>k :<C-u>CocPrev<CR>$/;"	m
+<space>l	nvim/init.vim	/^nnoremap <silent> <space>l :<C-u>CocList lines<cr>$/;"	m
+<space>o	nvim/init.vim	/^nnoremap <silent> <space>o :<C-u>CocList outline<cr>$/;"	m
+<space>p	nvim/init.vim	/^nnoremap <silent> <space>p :<C-u>CocListResume<CR>$/;"	m
+<space>s	nvim/init.vim	/^nnoremap <silent> <space>s :<C-u>CocList -I symbols<cr>$/;"	m
+<space>y	nvim/init.vim	/^nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>$/;"	m
+Before	systemd/lock-on-suspend@.service	/^Before=sleep.target$/;"	k	section:Unit
+Before	xorg/lock-on-suspend@.service	/^Before=sleep.target$/;"	k	section:Unit
+ChangeCWD	nvim/init.vim	/^function! ChangeCWD() $/;"	f
+Description	systemd/fetch-next-event.service	/^Description=Fetch next event using gcalcli$/;"	k	section:Unit
+Description	systemd/fetch-next-event.timer	/^Description=Fetch next event regularly$/;"	k	section:Unit
+Description	systemd/lock-on-suspend@.service	/^Description=Lock the screen$/;"	k	section:Unit
+Description	xorg/lock-on-suspend@.service	/^Description=Lock the screen$/;"	k	section:Unit
+Environment	systemd/lock-on-suspend@.service	/^Environment=DISPLAY=:0$/;"	k	section:Service
+Environment	xorg/lock-on-suspend@.service	/^Environment=DISPLAY=:0$/;"	k	section:Service
+ExecStart	systemd/fetch-next-event.service	/^ExecStart=\/home\/manfred\/.bin\/fetch-next-event$/;"	k	section:Service
+ExecStart	systemd/lock-on-suspend@.service	/^ExecStart=\/home\/%I\/.bin\/lock-screen $/;"	k	section:Service
+ExecStart	xorg/lock-on-suspend@.service	/^ExecStart=\/home\/%I\/.bin\/lock-screen $/;"	k	section:Service
+Fold	nvim/init.vim	/^command! -nargs=? Fold :call     CocAction('fold', <f-args>)$/;"	c
+Format	nvim/init.vim	/^command! -nargs=0 Format :call CocAction('format')$/;"	c
+Install	systemd/fetch-next-event.timer	/^[Install]$/;"	s
+Install	systemd/lock-on-suspend@.service	/^[Install]$/;"	s
+Install	xorg/lock-on-suspend@.service	/^[Install]$/;"	s
+K	nvim/init.vim	/^nnoremap <silent> K :call <SID>show_documentation()<CR>$/;"	m
+OR	nvim/init.vim	/^command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')$/;"	c
+OnCalendar	systemd/fetch-next-event.timer	/^OnCalendar=*:0\/2$/;"	k	section:Timer
+Persistent	systemd/fetch-next-event.timer	/^Persistent=true$/;"	k	section:Timer
+PrintWorkingDir	nvim/init.vim	/^function! PrintWorkingDir() $/;"	f
+Service	systemd/fetch-next-event.service	/^[Service]$/;"	s
+Service	systemd/lock-on-suspend@.service	/^[Service]$/;"	s
+Service	xorg/lock-on-suspend@.service	/^[Service]$/;"	s
+SwitchTheme	nvim/init.vim	/^function! SwitchTheme() $/;"	f
+Timer	systemd/fetch-next-event.timer	/^[Timer]$/;"	s
+Type	systemd/fetch-next-event.service	/^Type=oneshot$/;"	k	section:Service
+Type	systemd/lock-on-suspend@.service	/^Type=forking$/;"	k	section:Service
+Type	xorg/lock-on-suspend@.service	/^Type=forking$/;"	k	section:Service
+Unit	systemd/fetch-next-event.service	/^[Unit]$/;"	s
+Unit	systemd/fetch-next-event.timer	/^[Unit]$/;"	s
+Unit	systemd/lock-on-suspend@.service	/^[Unit]$/;"	s
+Unit	xorg/lock-on-suspend@.service	/^[Unit]$/;"	s
+User	systemd/lock-on-suspend@.service	/^User=%I$/;"	k	section:Service
+User	xorg/lock-on-suspend@.service	/^User=%I$/;"	k	section:Service
+WantedBy	systemd/fetch-next-event.timer	/^WantedBy=timers.target$/;"	k	section:Install
+WantedBy	systemd/lock-on-suspend@.service	/^WantedBy=sleep.target$/;"	k	section:Install
+WantedBy	xorg/lock-on-suspend@.service	/^WantedBy=sleep.target$/;"	k	section:Install
+[g	nvim/init.vim	/^nmap <silent> [g <Plug>(coc-diagnostic-prev)$/;"	m
+]g	nvim/init.vim	/^nmap <silent> ]g <Plug>(coc-diagnostic-next)$/;"	m
+af	nvim/init.vim	/^omap af <Plug>(coc-funcobj-a)$/;"	m
+af	nvim/init.vim	/^xmap af <Plug>(coc-funcobj-a)$/;"	m
+args	nvim/coc-settings.json	/^			"args": ["--lsp"],$/;"	a	object:languageserver.haskell
+args	nvim/coc-settings.json	/^			"args": ["--stdio"]$/;"	a	object:languageserver.dockerfile
+args	nvim/coc-settings.json	/^			"args": ["start"],$/;"	a	object:languageserver.bash
+backend	xorg/compton.conf	/^backend = "glx";$/;"	k
+background	xorg/compton.conf	/^blur-background = true;$/;"	k
+bash	nvim/coc-settings.json	/^		"bash": {$/;"	o	object:languageserver
+cSpell.language	nvim/coc-settings.json	/^	"cSpell.language": "en,de"$/;"	s
+cSpell.userWords	nvim/coc-settings.json	/^	"cSpell.userWords": [$/;"	a
+cSpellExt.enableDictionaries	nvim/coc-settings.json	/^	"cSpellExt.enableDictionaries": ["german"], $/;"	a
+cache	nvim/coc-settings.json	/^				"cache": {$/;"	o	object:languageserver.ccls.initializationOptions
+ccls	nvim/coc-settings.json	/^		"ccls": {$/;"	o	object:languageserver
+coc.preferences.extensionUpdateCheck	nvim/coc-settings.json	/^	"coc.preferences.extensionUpdateCheck": "daily",$/;"	s
+command	nvim/coc-settings.json	/^			"command": "bash-language-server",$/;"	s	object:languageserver.bash
+command	nvim/coc-settings.json	/^			"command": "ccls",$/;"	s	object:languageserver.ccls
+command	nvim/coc-settings.json	/^			"command": "docker-langserver",$/;"	s	object:languageserver.dockerfile
+command	nvim/coc-settings.json	/^			"command": "gopls",$/;"	s	object:languageserver.golang
+command	nvim/coc-settings.json	/^			"command": "hie-wrapper",$/;"	s	object:languageserver.haskell
+command_style	http-prompt/config.py	/^command_style = 'monokai'$/;"	v
+corners	xorg/compton.conf	/^detect-rounded-corners = false;$/;"	k
+dbe	xorg/compton.conf	/^dbe = false;$/;"	k
+directory	nvim/coc-settings.json	/^					"directory": "\/tmp\/ccls"$/;"	s	object:languageserver.ccls.initializationOptions.cache
+dirty_writeback_centisecs	sysctl.d/99-sysctl.conf	/^vm.dirty_writeback_centisecs = 1500$/;"	k
+dockerfile	nvim/coc-settings.json	/^		"dockerfile": {$/;"	o	object:languageserver
+dots	README.md	/^# dots$/;"	c
+exclude	xorg/compton.conf	/^blur-background-exclude = [$/;"	k
+exclusionRules	xorg/vimium-options.json	/^  "exclusionRules": [],$/;"	a
+fading	xorg/compton.conf	/^fading = false;$/;"	k
+filetype_nerdtree	nvim/init.vim	/^augroup filetype_nerdtree$/;"	a
+filetypes	nvim/coc-settings.json	/^			"filetypes": ["c", "cpp", "objc", "objcpp"],$/;"	a	object:languageserver.ccls
+filetypes	nvim/coc-settings.json	/^			"filetypes": ["dockerfile"],$/;"	a	object:languageserver.dockerfile
+filetypes	nvim/coc-settings.json	/^			"filetypes": ["go"]$/;"	a	object:languageserver.golang
+filetypes	nvim/coc-settings.json	/^			"filetypes": ["sh"],$/;"	a	object:languageserver.bash
+filetypes	nvim/coc-settings.json	/^			"filetypes": [$/;"	a	object:languageserver.haskell
+filterLinkHints	xorg/vimium-options.json	/^  "filterLinkHints": false,$/;"	b
+fixed	xorg/compton.conf	/^blur-background-fixed = true;$/;"	k
+focused	xorg/compton.conf	/^mark-ovredir-focused = false;$/;"	k
+focused	xorg/compton.conf	/^mark-wmwin-focused = false;$/;"	k
+frame	xorg/compton.conf	/^blur-background-frame = false;$/;"	k
+front	xorg/compton.conf	/^glx-copy-from-front = false;$/;"	k
+g:NERDTreeChDirMode	nvim/init.vim	/^let g:NERDTreeChDirMode=1$/;"	v
+g:NERDTreeShowHidden	nvim/init.vim	/^let g:NERDTreeShowHidden=1$/;"	v
+g:NERDTreeWinPos	nvim/init.vim	/^let g:NERDTreeWinPos = "right"$/;"	v
+g:go_def_mode	nvim/init.vim	/^let g:go_def_mode='gopls'$/;"	v
+g:go_info_mode	nvim/init.vim	/^let g:go_info_mode='gopls'$/;"	v
+g:indentLine_char_list	nvim/init.vim	/^let g:indentLine_char_list = ['|', '¦', '┆', '┊']$/;"	v
+g:lightline	nvim/init.vim	/^let g:lightline = {$/;"	v
+g:tagbar_type_typescript	nvim/init.vim	/^let g:tagbar_type_typescript = {                                                  $/;"	v
+g:tagbar_width	nvim/init.vim	/^let g:tagbar_width = 60$/;"	v
+g:vim_json_syntax_conceal	nvim/init.vim	/^let g:vim_json_syntax_conceal = 0$/;"	v
+ga	nvim/init.vim	/^nmap ga <Plug>(EasyAlign)$/;"	m
+ga	nvim/init.vim	/^xmap ga <Plug>(EasyAlign)$/;"	m
+gd	nvim/init.vim	/^nmap <silent> gd <Plug>(coc-definition)$/;"	m
+gi	nvim/init.vim	/^nmap <silent> gi <Plug>(coc-implementation)$/;"	m
+golang	nvim/coc-settings.json	/^		"golang": {$/;"	o	object:languageserver
+gr	nvim/init.vim	/^nmap <silent> gr <Plug>(coc-references)$/;"	m
+grabBackFocus	xorg/vimium-options.json	/^  "grabBackFocus": false,$/;"	b
+gy	nvim/init.vim	/^nmap <silent> gy <Plug>(coc-type-definition)$/;"	m
+haskell	nvim/coc-settings.json	/^		"haskell": {$/;"	o	object:languageserver
+hideHud	xorg/vimium-options.json	/^  "hideHud": false,$/;"	b
+hlintOn	nvim/coc-settings.json	/^					"hlintOn": true$/;"	b	object:languageserver.haskell.initializationOptions.languageServerHaskell
+if	nvim/init.vim	/^omap if <Plug>(coc-funcobj-i)$/;"	m
+if	nvim/init.vim	/^xmap if <Plug>(coc-funcobj-i)$/;"	m
+ignoreKeyboardLayout	xorg/vimium-options.json	/^  "ignoreKeyboardLayout": false,$/;"	b
+ignoredRootPaths	nvim/coc-settings.json	/^			"ignoredRootPaths": ["~"]$/;"	a	object:languageserver.bash
+initializationOptions	nvim/coc-settings.json	/^			"initializationOptions": {$/;"	o	object:languageserver.ccls
+initializationOptions	nvim/coc-settings.json	/^			"initializationOptions": {$/;"	o	object:languageserver.haskell
+kern	xorg/compton.conf	/^blur-kern = "5x5box";$/;"	k
+keyMappings	xorg/vimium-options.json	/^  "keyMappings": "# Insert your preferred key mappings here.",$/;"	s
+languageServerHaskell	nvim/coc-settings.json	/^				"languageServerHaskell": {$/;"	o	object:languageserver.haskell.initializationOptions
+languageserver	nvim/coc-settings.json	/^	"languageserver": {$/;"	o
+leader	xorg/compton.conf	/^detect-client-leader = false;$/;"	k
+linkHintCharacters	xorg/vimium-options.json	/^  "linkHintCharacters": "sadfjklewcmpgh",$/;"	s
+linkHintNumbers	xorg/vimium-options.json	/^  "linkHintNumbers": "0123456789",$/;"	s
+method	xorg/compton.conf	/^blur-method = "kawase";$/;"	k
+method	xorg/compton.conf	/^glx-swap-method = "undefined";$/;"	k
+newTabUrl	xorg/vimium-options.json	/^  "newTabUrl": "about:newtab",$/;"	s
+nextPatterns	xorg/vimium-options.json	/^  "nextPatterns": "next,more,newer,>,›,→,»,≫,>>",$/;"	s
+nmi_watchdog	sysctl.d/99-sysctl.conf	/^kernel.nmi_watchdog = 0$/;"	k
+opacity	xorg/compton.conf	/^detect-client-opacity = false;$/;"	k
+opacity	xorg/compton.conf	/^shadow-opacity = 0.4;$/;"	k
+options snd_hda_intel power_save	modprobe.d/powertop.conf	/^options snd_hda_intel power_save=1$/;"	k
+output_style	http-prompt/config.py	/^output_style = None$/;"	v
+overlay	xorg/compton.conf	/^paint-on-overlay = true;$/;"	k
+pager	http-prompt/config.py	/^pager = 'less'$/;"	v
+previousPatterns	xorg/vimium-options.json	/^  "previousPatterns": "prev,previous,back,older,<,‹,←,«,≪,<<",$/;"	s
+radius	xorg/compton.conf	/^shadow-radius = 12;$/;"	k
+rate	xorg/compton.conf	/^refresh-rate = 0;$/;"	k
+regexFindMode	xorg/vimium-options.json	/^  "regexFindMode": false,$/;"	b
+rootPatterns	nvim/coc-settings.json	/^			"rootPatterns": [".ccls", "compile_commands.json", ".vim\/", ".git\/", ".hg\/"],$/;"	a	object:languageserver.ccls
+rootPatterns	nvim/coc-settings.json	/^			"rootPatterns": ["go.mod"],$/;"	a	object:languageserver.golang
+rootPatterns	nvim/coc-settings.json	/^			"rootPatterns": [$/;"	a	object:languageserver.haskell
+s:check_back_space	nvim/init.vim	/^function! s:check_back_space() abort$/;"	f
+s:disable_lightline_on_nerdtree	nvim/init.vim	/^fu s:disable_lightline_on_nerdtree() abort$/;"	f
+s:select_current_word	nvim/init.vim	/^function! s:select_current_word()$/;"	f
+s:show_documentation	nvim/init.vim	/^function! s:show_documentation()$/;"	f
+scrollStepSize	xorg/vimium-options.json	/^  "scrollStepSize": 60,$/;"	n
+searchEngines	xorg/vimium-options.json	/^  "searchEngines": "w: https:\/\/www.wikipedia.org\/w\/index.php?title=Special:Search&search=%s /;"	s
+searchUrl	xorg/vimium-options.json	/^  "searchUrl": "https:\/\/duckduckgo.com\/?q=",$/;"	s
+set_cookies	http-prompt/config.py	/^set_cookies = 'auto'$/;"	v
+settingsVersion	xorg/vimium-options.json	/^  "settingsVersion": "1.66",$/;"	s
+shadow	xorg/compton.conf	/^clear-shadow = true;$/;"	k
+shadow	xorg/compton.conf	/^no-dnd-shadow = true;$/;"	k
+shadow	xorg/compton.conf	/^no-dock-shadow = true;$/;"	k
+shadow	xorg/compton.conf	/^shadow = true;$/;"	k
+smoothScroll	xorg/vimium-options.json	/^  "smoothScroll": true,$/;"	b
+strength	xorg/compton.conf	/^blur-strength = 6;$/;"	k
+transient	xorg/compton.conf	/^detect-transient = false;$/;"	k
+userDefinedLinkHintCss	xorg/vimium-options.json	/^  "userDefinedLinkHintCss": "div > .vimiumHintMarker {\\n\\tbackground: rgba(44, 46, 52, 0.9); \\/;"	s
+vi	http-prompt/config.py	/^vi = True$/;"	v
+vsync	xorg/compton.conf	/^vsync = "none";$/;"	k
+waitForEnterForFilteredHints	xorg/vimium-options.json	/^  "waitForEnterForFilteredHints": true,$/;"	b
+watchdog	sysctl.d/99-sysctl.conf	/^kernel.watchdog = 0$/;"	k
+x	xorg/compton.conf	/^shadow-offset-x = -18;$/;"	k
+y	xorg/compton.conf	/^shadow-offset-y = -18;$/;"	k
