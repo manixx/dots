@@ -18,6 +18,8 @@ zsh/.dircolors                   ~/.config/zsh/.dircolors
 zsh/.zshenv                      ~/.zshenv
 zsh/.zshrc                       ~/.config/zsh/.zshrc
 
+tmux/tmux.conf 									 ~/.tmux.conf
+
 nvim/                            ~/.config/nvim/
 
 applications/                    ~/.local/share/applications/

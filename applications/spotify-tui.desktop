@@ -1,5 +1,5 @@
 [Desktop Entry]
 Name=Spotify TUI
-Exec=urxvt -name spotify-tui -e spt 
+Exec=st -n spotify-tui -e spt 
 Terminal=false
 Type=Application

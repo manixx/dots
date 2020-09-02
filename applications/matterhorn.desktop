@@ -1,5 +1,5 @@
 [Desktop Entry]
 Name=Matterhorn
-Exec=urxvt -name matterhorn -e matterhorn 
+Exec=st -n matterhorn -e matterhorn 
 Terminal=false
 Type=Application
