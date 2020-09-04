@@ -17,6 +17,7 @@ xorg/i3status-config             ~/.config/i3status/config
 zsh/.dircolors                   ~/.config/zsh/.dircolors
 zsh/.zshenv                      ~/.zshenv
 zsh/.zshrc                       ~/.config/zsh/.zshrc
+zsh/functions/                   ~/.config/zsh/functions/
 
 tmux/tmux.conf 									 ~/.tmux.conf
 

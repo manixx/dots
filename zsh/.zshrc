@@ -1,8 +1,3 @@
-#
-# zsh config 
-# Manfred Mjka <manixx90@gmail.com>
-# 
-
 autoload -Uz compinit promptinit vcs_info edit-command-line bashcompinit
 
 compinit -d ~/.cache/zsh/zcompdump
@@ -10,12 +5,11 @@ promptinit
 bashcompinit
 
 setopt prompt_subst      # to enable functions in prompt
+setopt HIST_IGNORE_SPACE # ignore commands with space prefixed 
+
 zle -N edit-command-line # to edit command in $EDITOR
 zle -N zle-line-init     # call on init (setting PROMPT to inital)
 zle -N zle-keymap-select # call on vim selection mode change
-
-# ignore commands with space prefixed 
-setopt HIST_IGNORE_SPACE
 
 #
 # external sources 
@@ -43,23 +37,22 @@ fi
 # key bindings 
 #
 
-bindkey -v 
+bindkey -v # vim bindings
+
 bindkey '^j' up-history
 bindkey '^k' down-history
 bindkey '^w' backward-kill-word
 bindkey '^a' beginning-of-line
-bindkey '^e' end-of-line 
-bindkey '^h' backward-word 
+bindkey '^e' end-of-line
+bindkey '^h' backward-word
 bindkey '^l' forward-word
 bindkey '^o' edit-command-line
 bindkey '^p' clear-screen
 bindkey "^?" backward-delete-char # delete chars after mode switch 
 
-bindkey -s '^b' 'n^M' # launch nnn
+# custom bindings
 
-if command -v k9s &> /dev/null; then 
-	bindkey -s '^k' 'k9s^M'
-fi
+bindkey -s '^b' 'n^M' # launch nnn
 
 #
 # style options 
@@ -71,43 +64,11 @@ zstyle ':vcs_info:*'             unstagedstr '%F{red} •%f'
 zstyle ':vcs_info:*'             formats '%F{yellow}%b%c%u%f'
 zstyle ':completion:*'           special-dirs true # add slash on ./ ../
 zstyle ':completion:*'           rehash true
-zstyle ':completion::complete:*' gain-privileges 1
+zstyle ':completion::complete:*' gain-privileges 1 # auto-complete sudo cmds
 
 #
 # functions
 #
-
-last_cmd_timestamp='' 
-
-preexec() {
-	last_cmd_timestamp=$(date +%s) 
-}
-
-last_cmd_exec_time() {
-	if [ -n "$last_cmd_timestamp" ]; then
-		now=$(date +%s)
-		exec_time=$(expr $now - $last_cmd_timestamp)
-		measurement="s"
-
-		if [ "$exec_time" -ge "60" ]; then 
-			exec_time=$(expr $exec_time / 60)
-			measurement="m"
-		fi 
-
-		if [ $exec_time -ge 60 ] && [ $measurement == "m" ]; then 
-			exec_time=$(expr $exec_time / 60)
-			measurement="h"
-		fi
-
-		echo " %F{8}[$exec_time$measurement]%f"
-	fi 
-}
-
-reset_last_cmd_timestamp () {
-	last_cmd_timestamp=''
-  zle .accept-line
-}
-zle -N accept-line reset_last_cmd_timestamp
 
 vcs_data() { # print branch name 
   vcs_info
@@ -123,15 +84,6 @@ k8s_data() { # print k8s context
 	fi
 }
 
-n() { # launch nnn 
-  export NNN_TMPFILE=~/.config/nnn/.lastd
-  nnn -A -d -H "$@" 
-  if [ -f $NNN_TMPFILE ]; then
-    . $NNN_TMPFILE
-    rm -f $NNN_TMPFILE
-  fi
-}
-
 last_return_code() {
 	exit_code=$?
 	color=8
@@ -143,6 +95,8 @@ last_return_code() {
 current_date() {
 	echo "%F{8}$(date +"[%H:%M:%S]")%f"
 }
+
+source ~/.config/zsh/functions/*
 
 #
 # prompt
@@ -187,7 +141,6 @@ alias kctl="kubectl"
 #
 
 export EDITOR=nvim
-export GOPATH=~/dev/go
 export NNN_TRASH=1 # use trash-cli
 export NNN_USE_EDITOR=1
 export NVM_DIR=~/.nvm

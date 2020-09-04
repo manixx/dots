@@ -39,7 +39,7 @@ set $ws-music-key     5
 font              pango:$font $font_weight $font_size
 floating_modifier $mod
 
-bindsym $mod+Return            exec --no-startup-id st
+bindsym $mod+Return            exec --no-startup-id st -n st
 bindsym $mod+Shift+Return      exec --no-startup-id st -n st-temp
 bindsym $mod+Escape            exec --no-startup-id ~/.bin/lock-screen
 bindsym $mod+Shift+a           exec --no-startup-id ~/.bin/autostart
@@ -81,15 +81,6 @@ bindsym Shift+XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 && \
 bindsym Shift+XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 5 && \
   xbacklight -get | cut -d'.' -f 1 > /home/manfred/.cache/backlight
 
-# Time-tracking 
-
-bindsym $mod+Home exec --no-startup-id \
-	phase=$(node /home/manfred/.bin/time-tracking.js list | dmenu -p time-tracking -i -b -l 10) && \
-	node /home/manfred/.bin/time-tracking.js start $(echo $phase | cut -d ' ' -f 1)
-
-bindsym $mod+End exec --no-startup-id \
-	node /home/manfred/.bin/time-tracking.js stop 
-
 # Spotify 
 
 bindsym $mod+XF86AudioMute        exec --no-startup-id \
@@ -100,6 +91,9 @@ bindsym $mod+XF86AudioLowerVolume exec --no-startup-id \
 
 bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id \
   dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
+
+bindsym $mod+Shift+s exec --no-startup-id \
+	"pkill -x spotify; gtk-launch spotify"
 
 # Movement 
 
@@ -210,54 +204,49 @@ client.background       $black
 
 bar {
   status_command          i3status
-  i3bar_command           i3bar --transparency
+  i3bar_command           i3bar 
   position                top
   tray_output             none
   strip_workspace_numbers yes
-  # output                  eDP1
 
   colors {
     background $black
     statusline $white
     separator  $grey
 
-    #	               border   bground  text
-    focused_workspace  $black $black $magenta
-    active_workspace   $black $black $grey
-    inactive_workspace $black $black $grey
-    urgent_workspace   $black $black $red
-    binding_mode       $black $yellow  $black
+    #	                 border bground text
+    focused_workspace  $black $black  $magenta
+    active_workspace   $black $black  $grey
+    inactive_workspace $black $black  $grey
+    urgent_workspace   $black $black  $red
+    binding_mode       $black $yellow $black
   }
 }
 
 # Application assginments 
 
 assign [instance="^nvim$"]             $ws-code
-assign [instance="^st-256color$"]               $ws-term
+assign [instance="^st$"]               $ws-term
 assign [instance="^chromium$"]         $ws-browse
-assign [instance="^Navigator$"]        $ws-browse
+assign [instance="^Navigator$"]        $ws-browse # firefox
 assign [instance="^youtube.com$"]      $ws-music
 assign [instance="^netflix.com$"]      $ws-music
 assign [instance="^atv.at$"]           $ws-music
+assign [instance="^spotify-tui"]       $ws-music
 assign [instance="^web.whatsapp.com$"] $ws-messaging
 assign [instance="^matterhorn$"]       $ws-messaging
 assign [instance="^talk.sclable.com$"] $ws-messaging
 assign [instance="^telegram-desktop$"] $ws-messaging
 assign [instance="^insomnia$"]         $ws-test
-assign [instance="^spotify-tui"]       $ws-music
 
 for_window [instance="^spotify$"]   move to workspace $ws-music
-for_window [instance="^st-256color$"]        focus
+for_window [instance="^st$"]        focus
 for_window [instance="^chromium$"]  focus
 for_window [instance="^nvim$"]      focus
 for_window [instance="^Navigator$"] focus
 for_window [instance="^insomnia$"]  focus
-for_window [instance="^calw$"]      floating enable
-for_window [instance="^calw$"]      move position center
-for_window [instance="^calm$"]      floating enable
-for_window [instance="^calm$"]      resize set 1000 800
-for_window [instance="^calm$"]      move position center
-for_window [title="^DevTools"]      move to workspace $ws-test
+
+for_window [title="^DevTools"]      move to workspace $ws-test # chromium dev tools
 
 # Autostart 
 
@@ -265,5 +254,5 @@ exec --no-startup-id ~/.fehbg
 exec --no-startup-id ~/.bin/toggle-redshift
 exec --no-startup-id ~/.bin/toggle-xautolock
 
-exec --no-startup-id pgrep unclutter || unclutter --timeout 1
-exec --no-startup-id pgrep dunst     || dunst
+exec --no-startup-id pgrep -x unclutter || unclutter --timeout 1
+exec --no-startup-id pgrep -x dunst     || dunst
