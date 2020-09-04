@@ -3,4 +3,5 @@
 /src/
 /st-*.tar.gz
 /st-*.tar.zst
+/st-*.pkg.tar.zst
 /st-*.diff
