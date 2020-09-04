@@ -57,6 +57,10 @@ bindkey "^?" backward-delete-char # delete chars after mode switch
 
 bindkey -s '^b' 'n^M' # launch nnn
 
+if command -v k9s &> /dev/null; then 
+	bindkey -s '^k' 'k9s^M'
+fi
+
 #
 # style options 
 #
@@ -114,11 +118,9 @@ vcs_data() { # print branch name
 }
 
 k8s_data() { # print k8s context 
-  echo " %F{8}| k8s%f %F{green}$(kubectl config current-context)%f"
-}
-
-k8s_switch_context() {
-	kubectl config use-context $(kubectl config get-contexts -o name | fzf --height 10) > /dev/null
+	if command -v kubectl &> /dev/null; then	
+		echo " %F{8}| k8s%f %F{green}$(kubectl config current-context)%f"
+	fi
 }
 
 n() { # launch nnn 
@@ -178,6 +180,7 @@ alias downloads="cd ~/downloads"
 alias dockerc="docker-compose"
 
 alias gco="git checkout"
+alias kctl="kubectl"
 
 #
 # global settings  
@@ -219,3 +222,4 @@ if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
 	if [[ -f $STARTX_LOG ]]; then mv -f $STARTX_LOG $STARTX_LOG.old; fi
 	exec startx 1> ~/.local/share/xorg/startx.log 2>&1
 fi
+

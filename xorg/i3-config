@@ -39,8 +39,8 @@ set $ws-music-key     5
 font              pango:$font $font_weight $font_size
 floating_modifier $mod
 
-bindsym $mod+Return            exec --no-startup-id urxvt
-bindsym $mod+Shift+Return      exec --no-startup-id urxvt -name urxvt-temp
+bindsym $mod+Return            exec --no-startup-id st
+bindsym $mod+Shift+Return      exec --no-startup-id st -n st-temp
 bindsym $mod+Escape            exec --no-startup-id ~/.bin/lock-screen
 bindsym $mod+Shift+a           exec --no-startup-id ~/.bin/autostart
 bindsym $mod+Shift+q           kill
@@ -233,7 +233,7 @@ bar {
 # Application assginments 
 
 assign [instance="^nvim$"]             $ws-code
-assign [instance="^urxvt$"]            $ws-term
+assign [instance="^st-256color$"]               $ws-term
 assign [instance="^chromium$"]         $ws-browse
 assign [instance="^Navigator$"]        $ws-browse
 assign [instance="^youtube.com$"]      $ws-music
@@ -247,7 +247,7 @@ assign [instance="^insomnia$"]         $ws-test
 assign [instance="^spotify-tui"]       $ws-music
 
 for_window [instance="^spotify$"]   move to workspace $ws-music
-for_window [instance="^urxvt$"]     focus
+for_window [instance="^st-256color$"]        focus
 for_window [instance="^chromium$"]  focus
 for_window [instance="^nvim$"]      focus
 for_window [instance="^Navigator$"] focus
