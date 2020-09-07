@@ -164,11 +164,12 @@ STARTX_LOG='~/.local/share/xorg/startx.log'
 # setup dircolors 
 #
 
-[ -e ~/.config/zsh/.dircolors ] && eval $(dircolors -b ~/.config/zsh/.dircolors) || 
-  eval $(dircolors -b)
+[ -e ~/.config/zsh/.dircolors ]  \
+	&& eval $(dircolors -b ~/.config/zsh/.dircolors) \
+	|| eval $(dircolors -b)
 
 #
-# launch i3 
+# launch x
 #  
 
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
