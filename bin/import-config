@@ -7,6 +7,13 @@
 
 set -e
 
+read -p "This will overwrite your LOCAL files, are you sure?" -n 1 -r
+echo
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then 
+	echo -n "Ok, we'll wait."
+	exit 0
+fi
+
 # fetch list and remove comments and blank lines
 sed '/\(^$\|^#\)/d' bin/file-list | \
   sed 's|~|'${HOME}'|g' | \

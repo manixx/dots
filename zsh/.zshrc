@@ -177,3 +177,11 @@ if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
 	exec startx 1> ~/.local/share/xorg/startx.log 2>&1
 fi
 
+#
+# launch tmux 
+#
+
+if [[ $- == *i* ]] && [[ -z "$TMUX" ]]; then
+	exec tmux
+fi
+
