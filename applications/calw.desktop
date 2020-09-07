@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=Calendar Week 
-Exec=urxvt -name calw -e sh -c "gcalcli calw && read"
-Terminal=false
-Type=Application

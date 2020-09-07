@@ -8,8 +8,6 @@ xorg/.xinitrc                    ~/.xinitrc
 xorg/.Xresources                 ~/.Xresources
 xorg/20-intel.conf               /etc/X11/xorg.conf.d/20-intel.conf
 xorg/30-touchpad.conf            /etc/X11/xorg.conf.d/30-touchpad.conf
-xorg/lock-on-suspend@.service    /etc/systemd/system/lock-on-suspend@.service
-xorg/compton.conf                ~/.config/compton.conf
 xorg/dunstrc                     ~/.config/dunst/dunstrc
 xorg/i3-config                   ~/.config/i3/config
 xorg/i3status-config             ~/.config/i3status/config

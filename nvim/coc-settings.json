@@ -10,43 +10,9 @@
 			"args": ["start"],
 			"filetypes": ["sh"],
 			"ignoredRootPaths": ["~"]
-		}, 
-		"ccls": {
-			"command": "ccls",
-			"filetypes": ["c", "cpp", "objc", "objcpp"],
-			"rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-			"initializationOptions": {
-				"cache": {
-					"directory": "/tmp/ccls"
-				}
-			}
-		}, 
-		"golang": {
-			"command": "gopls",
-			"rootPatterns": ["go.mod"],
-			"filetypes": ["go"]
-		},
-		"haskell": {
-			"command": "hie-wrapper",
-			"args": ["--lsp"],
-			"rootPatterns": [
-				"stack.yaml",
-				"cabal.config",
-				"package.yaml"
-			],
-			"filetypes": [
-				"hs",
-				"lhs",
-				"haskell"
-			],
-			"initializationOptions": {
-				"languageServerHaskell": {
-					"hlintOn": true
-				}
-			}
 		}
 	},
-	"coc.preferences.extensionUpdateCheck": "daily",
+	"coc.preferences.extensionUpdateCheck": "weekly",
 	"cSpell.userWords": [
     "Docx",
     "Docxtemplater",
