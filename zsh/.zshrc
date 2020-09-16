@@ -52,7 +52,7 @@ bindkey "^?" backward-delete-char # delete chars after mode switch
 
 # custom bindings
 
-bindkey -s '^b' 'n^M' # launch nnn
+bindkey -s '^b' 'launch_nnn^M' # launch nnn
 
 #
 # style options 
@@ -70,33 +70,9 @@ zstyle ':completion::complete:*' gain-privileges 1 # auto-complete sudo cmds
 # functions
 #
 
-vcs_data() { # print branch name 
-  vcs_info
-
-  if [ -n "$vcs_info_msg_0_" ]; then
-    echo " %F{8}| git%f %B${vcs_info_msg_0_}%b"
-  fi
-}
-
-k8s_data() { # print k8s context 
-	if command -v kubectl &> /dev/null; then	
-		echo " %F{8}| k8s%f %F{green}$(kubectl config current-context)%f"
-	fi
-}
-
-last_return_code() {
-	exit_code=$?
-	color=8
-
-	[[ $exit_code -ne 0 ]] && color=red
-	echo "%F{$color}[$exit_code]%f"
-}
-
-current_date() {
-	echo "%F{8}$(date +"[%H:%M:%S]")%f"
-}
-
-source ~/.config/zsh/functions/*
+for file in ~/.config/zsh/functions/*.zsh; do 
+	source ${file}
+done
 
 #
 # prompt
