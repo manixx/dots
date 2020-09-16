@@ -1,5 +1,5 @@
 [Desktop Entry]
 Name=Spotify TUI
-Exec=st -n spotify-tui -e spt 
+Exec=st -n spotify-tui -e tmux new spt 
 Terminal=false
 Type=Application

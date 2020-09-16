@@ -181,7 +181,7 @@ fi
 # launch tmux 
 #
 
-if [[ $- == *i* ]] && [[ -z "$TMUX" ]]; then
+if [[ ! -z $DISPLAY ]] && [[ $- == *i* ]] && [[ -z "$TMUX" ]]; then
 	exec tmux
 fi
 
