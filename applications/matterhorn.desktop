@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=Matterhorn
-Exec=st -n matterhorn -e tmux new matterhorn 
-Terminal=false
-Type=Application

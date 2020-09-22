@@ -2,7 +2,7 @@
 
 set -e
 
-cal="sclable Privat"
+cal="$1"
 now=$(date "+%F %R")
 end_of_day=$(date "+%F 23:59")
 event_started=0
