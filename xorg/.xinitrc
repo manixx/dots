@@ -33,8 +33,8 @@ xset r rate 220 40
 $HOME/.bin/toggle-redshift
 $HOME/.bin/toggle-xautolock
 
-pgrep -x unclutter || unclutter --timeout 1
-pgrep -x dunst     || dunst
+pgrep -x unclutter || unclutter --timeout 1 &
+pgrep -x dunst     || dunst &
 pgrep -x xbindkeys || xbindkeys
 
 while true; do
