@@ -1,0 +1,65 @@
+"~/.bin/lock-screen"
+  m:0x40 + c:9
+	Mod4 + Escape
+
+"~/.bin/toggle-xautolock"
+  m:0x41 + c:53
+	Shift+Mod4 + x
+
+"~/.bin/toggle-redshift"
+  m:0x41 + c:27
+	Shift+Mod4 + r
+
+"passmenu -i -l 5 -fn 'DejaVu Sans-8' -nf '#88909f' -nb '#2c2e34' -sf '#2c2e34' -sb '#c5cdd9'"
+	m:0x40 + c:33
+	Mod4 + p
+
+"scrot -s"
+    m:0x40 + c:54
+    Mod4 + c
+
+#
+# audio 
+#
+
+"pactl set-sink-mute @DEFAULT_SINK@ toggle"
+	XF86AudioMute
+
+"pactl set-sink-volume @DEFAULT_SINK@ -5%"
+	XF86AudioLowerVolume
+
+"pactl set-sink-volume 0 +5%"
+	XF86AudioRaiseVolume
+
+"pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+	XF86AudioMicMute
+
+#
+# backlight 
+#
+
+"xbacklight -dec 10 && xbacklight -get | cut -d'.' -f 1 > /home/manfred/.cache/backlight"
+	XF86MonBrightnessDown
+
+"xbacklight -inc 10 && xbacklight -get | cut -d'.' -f 1 > /home/manfred/.cache/backlight"
+	XF86MonBrightnessUp
+
+"xbacklight -dec 5 && xbacklight -get | cut -d'.' -f 1 > /home/manfred/.cache/backlight"
+	Shift + XF86MonBrightnessDown
+
+"xbacklight -inc 5 && xbacklight -get | cut -d'.' -f 1 > /home/manfred/.cache/backlight"
+	Shift + XF86MonBrightnessUp
+
+# 
+# spotify 
+# 
+
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+	Mod4 + XF86AudioMute
+
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+	Mod4 + XF86AudioLowerVolume
+
+"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+	Mod4 + XF86AudioRaiseVolume
+

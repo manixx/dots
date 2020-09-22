@@ -11,7 +11,7 @@ xorg/30-touchpad.conf            /etc/X11/xorg.conf.d/30-touchpad.conf
 xorg/dunstrc                     ~/.config/dunst/dunstrc
 xorg/i3-config                   ~/.config/i3/config
 xorg/i3status-config             ~/.config/i3status/config
-xorg/.xbindkeys                  ~/.xbindkeys
+xorg/.xbindkeysrc                  ~/.xbindkeysrc
 
 zsh/.dircolors                   ~/.config/zsh/.dircolors
 zsh/.zshenv                      ~/.zshenv
