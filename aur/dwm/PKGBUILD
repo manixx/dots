@@ -25,7 +25,7 @@ _patchopts=" -p1 --forward -i"
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
-	git apply ${srcdir}/dwm-gaps-6.0.diff 
+	git apply ${srcdir}/dwm-gaps-6.0.diff # doesnt work! 
 
   cp "$srcdir/../config.h" config.h
 }

@@ -1,5 +1,7 @@
 #!/bin/sh 
 
+set -x 
+
 location="48.22:16.31" # vienna 
 
 if ! pgrep -x redshift; then 

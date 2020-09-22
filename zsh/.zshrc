@@ -101,7 +101,6 @@ KEYTIMEOUT=1
 # aliases 
 #
 
-alias cat="bat"
 alias ls="exa"
 alias cp="cp -i"
 alias mv="mv -i"

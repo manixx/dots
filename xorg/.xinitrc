@@ -30,4 +30,14 @@ fi
 
 xset r rate 220 40
 
-exec i3
+while true; do
+	export now=$(cat /sys/class/power_supply/BAT0/energy_now)
+	export full=$(cat /sys/class/power_supply/BAT0/energy_full)
+
+	bat=$(echo | awk ' { printf "%0.2f%\n", (ENVIRON["now"] / ENVIRON["full"] * 100); } ')
+
+	xsetroot -name " ${bat} | $(date +"%a %d.%b %y %H:%M:%S")"
+	sleep 2 
+done &
+
+exec dwm

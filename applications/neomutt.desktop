@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=NeoMutt
+Exec=st -n neomutt -e tmux new neomutt
+Terminal=false
+Type=Application
