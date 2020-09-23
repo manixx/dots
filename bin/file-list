@@ -44,5 +44,6 @@ my-bin/fetch-next-event          ~/.bin/fetch-next-event
 my-bin/lock-screen               ~/.bin/lock-screen
 my-bin/toggle-redshift           ~/.bin/toggle-redshift
 my-bin/toggle-xautolock          ~/.bin/toggle-xautolock
+my-bin/dmenu-desktop             ~/.bin/dmenu-desktop
 
 xrandr/													 ~/.config/xrandr/

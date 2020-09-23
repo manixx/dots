@@ -12,7 +12,7 @@ static const char col_black[]      = "#2c2e34";
 static const char col_magenta[]    = "#d38aea";
 static const char *colors[][3]     = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_white, col_black, col_black },
+	[SchemeNorm] = { col_white, col_black,   col_black   },
 	[SchemeSel]  = { col_black, col_white, col_magenta },
 };
 
@@ -24,9 +24,13 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
+	/* class instance  title       tags mask     isfloating   monitor */
 	//{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ NULL, "chromium",       NULL,       1 << 1,       0,           -1 },
+	{ NULL, "chromium",   NULL,       1 << 1,       0,           1 },
+	{ NULL, "nvim",       NULL,       1,            0,           0 },
+	{ NULL, "st",         NULL,       1 << 2,       0,           0 },
+	{ NULL, "matterhorn", NULL,       1 << 3,       0,           0 },
+	{ NULL, "k9s",        NULL,       1 << 5,       0,           0 }, 
 };
 
 /* layout(s) */
@@ -54,7 +58,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_black, "-nf", col_white, "-sb", col_white, "-sf", col_black, NULL };
+static const char *dmenucmd[] = { "dmenu-desktop", "-m", dmenumon, "-fn", dmenufont, "-nb", col_black, "-nf", col_white, "-sb", col_white, "-sf", col_black, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
