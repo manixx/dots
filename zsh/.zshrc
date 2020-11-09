@@ -1,37 +1,53 @@
-autoload -Uz compinit promptinit vcs_info edit-command-line bashcompinit
+autoload -Uz \
+	compinit \
+	promptinit \
+	vcs_info \
+	edit-command-line \
+	bashcompinit
 
 compinit -d ~/.cache/zsh/zcompdump
 promptinit
 bashcompinit
 
+typeset -U path          # enable path array
+
 setopt prompt_subst      # to enable functions in prompt
-setopt HIST_IGNORE_SPACE # ignore commands with space prefixed 
+setopt HIST_IGNORE_SPACE # ignore commands with space prefixed
 
 zle -N edit-command-line # to edit command in $EDITOR
 zle -N zle-line-init     # call on init (setting PROMPT to inital)
 zle -N zle-keymap-select # call on vim selection mode change
 
 #
+# path
+#
+
+path=(
+  ~/.bin 
+  ~/.npm-global/bin
+  /opt/google-cloud-sdk/bin
+  /opt/az-cli/bin
+  $path[@]
+)
+
+#
 # external sources 
 #
 
-source /usr/share/bash-completion/completions
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/fzf/completion.zsh
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+plugins=(
+	/usr/share/bash-completion/completions
+	/usr/share/doc/fzf/completion.zsh
+	/usr/share/doc/fzf/key-bindings.zsh
+	/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+	/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+	/opt/az-cli/az.completion
+	/opt/google-cloud-sdk/completion.zsh.inc
+	~/.vim/plugged/edge/zsh/.zsh-theme-edge-dark
+)
 
-if [ -f ~/.vim/plugged/edge/zsh/.zsh-pure-power-light ]; then 
-  source ~/.vim/plugged/edge/zsh/.zsh-pure-power-light
-fi 
-
-if [ -f /opt/az-cli/az.completion ]; then
-  source /opt/az-cli/az.completion
-fi 
-
-if [ -f /opt/google-cloud-sdk/completion.zsh.inc ]; then
-  source /opt/google-cloud-sdk/completion.zsh.inc
-fi 
+for file in ${plugins[@]}; do 
+	source ${file}
+done
 
 #
 # key bindings 
@@ -62,9 +78,9 @@ zstyle ':vcs_info:*'             check-for-changes true
 zstyle ':vcs_info:*'             stagedstr '%F{green} •%f'
 zstyle ':vcs_info:*'             unstagedstr '%F{red} •%f'
 zstyle ':vcs_info:*'             formats '%F{yellow}%b%c%u%f'
-zstyle ':completion:*'           special-dirs true # add slash on ./ ../
+zstyle ':completion:*'           special-dirs true 						# add slash on ./ ../
 zstyle ':completion:*'           rehash true
-zstyle ':completion::complete:*' gain-privileges 1 # auto-complete sudo cmds
+zstyle ':completion::complete:*' gain-privileges 1 						# auto-complete sudo cmds
 
 #
 # functions
@@ -105,10 +121,10 @@ alias ls="exa"
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
+alias cat="bat"
 alias dev="cd ~/dev" 
 alias downloads="cd ~/downloads"
 alias dockerc="docker-compose"
-
 alias gco="git checkout"
 alias kctl="kubectl"
 
@@ -117,9 +133,10 @@ alias kctl="kubectl"
 #
 
 export EDITOR=nvim
+
 export NNN_TRASH=1 # use trash-cli
 export NNN_USE_EDITOR=1
-export NVM_DIR=~/.nvm
+
 export FZF_DEFAULT_COMMAND='fd \
 	--type f \
 	--hidden \
@@ -134,27 +151,28 @@ export FZF_DEFAULT_OPTS='
   --color fg:8,bg:-1,hl:5,fg+:7,bg+:-1,hl+:7
   --color info:4,prompt:5,spinner:3,pointer:6,marker:2
 '
-STARTX_LOG='~/.local/share/xorg/startx.log'
 
 #
 # setup dircolors 
 #
 
-[ -e ~/.config/zsh/.dircolors ]  \
-	&& eval $(dircolors -b ~/.config/zsh/.dircolors) \
-	|| eval $(dircolors -b)
+eval $(dircolors -b ~/.config/zsh/.dircolors)
 
 #
 # launch x
 #  
 
-if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+export STARTX_LOG="$HOME/.local/share/xorg/startx.log"
+
+
+if [[ ! $DISPLAY && $(tty) == "/dev/tty1" ]]; then
 	if [[ -f $STARTX_LOG ]]; then mv -f $STARTX_LOG $STARTX_LOG.old; fi
-	exec startx 1> ~/.local/share/xorg/startx.log 2>&1
+	exec startx 1> $STARTX_LOG 2>&1
 fi
 
 #
-# launch tmux 
+# launch tmux if display is set (x server running), interactive and 
+# no tmux session is running
 #
 
 if [[ ! -z $DISPLAY ]] && [[ $- == *i* ]] && [[ -z "$TMUX" ]]; then
