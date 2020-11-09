@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=K9S
-Exec=st -n k9s -e k9s 
-Terminal=false
-Type=Application

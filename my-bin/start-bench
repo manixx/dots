@@ -1,0 +1,10 @@
+#!/bin/zsh
+
+name="bench"
+
+if ! tmux switch -t ${name}; then
+	tmux new-window
+	tmux rename-session ${name}
+fi 
+
+

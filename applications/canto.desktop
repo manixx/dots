@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=Canto
-Exec=urxvt -name canto -e canto-curses 
-Terminal=false
-Type=Application

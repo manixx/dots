@@ -1,0 +1,10 @@
+#!/bin/zsh 
+
+name="nvim"
+
+if ! tmux switch -t ${name}; then 
+	tmux rename-session ${name}
+	tmux new-window nvim 
+	tmux kill-window -t 0
+fi 
+
