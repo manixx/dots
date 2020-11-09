@@ -1,3 +1,7 @@
+#
+# utils 
+#
+
 "~/.bin/lock-screen"
   m:0x40 + c:9
 	Mod4 + Escape
@@ -6,17 +10,9 @@
   m:0x41 + c:53
 	Shift+Mod4 + x
 
-"~/.bin/toggle-redshift"
-  m:0x41 + c:27
-	Shift+Mod4 + r
-
 "passmenu -i -l 5 -fn 'DejaVu Sans-8' -nf '#88909f' -nb '#2c2e34' -sf '#2c2e34' -sb '#c5cdd9'"
 	m:0x40 + c:33
 	Mod4 + p
-
-"scrot -s"
-    m:0x40 + c:54
-    Mod4 + c
 
 #
 # audio 

@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=Sclable Social
-Exec=st -n matterhorn -e tmux new-session start-matterhorn 
-Terminal=false
-Type=Application

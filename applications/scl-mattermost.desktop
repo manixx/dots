@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=Sclable Mattermost
-Exec=chromium --app=https://talk.sclable.com
-Terminal=false
-Type=Application

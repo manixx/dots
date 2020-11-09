@@ -2,5 +2,5 @@
 
 xrandr \
 	--output eDP1 --off \
-	--output HDMI2 --auto \
+	--output HDMI2 --mode 2560x1440 --primary \
 	--output DP1 --mode 2560x1440 --right-of HDMI2 
