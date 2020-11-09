@@ -12,7 +12,6 @@ bashcompinit
 typeset -U path          # enable path array
 
 setopt prompt_subst      # to enable functions in prompt
-setopt HIST_IGNORE_SPACE # ignore commands with space prefixed
 
 zle -N edit-command-line # to edit command in $EDITOR
 zle -N zle-line-init     # call on init (setting PROMPT to inital)
@@ -25,8 +24,10 @@ zle -N zle-keymap-select # call on vim selection mode change
 path=(
   ~/.bin 
   ~/.npm-global/bin
+
   /opt/google-cloud-sdk/bin
   /opt/az-cli/bin
+
   $path[@]
 )
 
@@ -40,8 +41,10 @@ plugins=(
 	/usr/share/doc/fzf/key-bindings.zsh
 	/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 	/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 	/opt/az-cli/az.completion
 	/opt/google-cloud-sdk/completion.zsh.inc
+
 	~/.vim/plugged/edge/zsh/.zsh-theme-edge-dark
 )
 
@@ -107,11 +110,15 @@ RPROMPT="" # needs to bet set - otherwise its zle-line-init is not loaded on sta
 # history settings
 #
 
-HISTFILE=~/.cache/zsh/zhistory
-HISTSIZE=1000
-SAVEHIST=5000
-HISTCONTROL=ignorespace
-KEYTIMEOUT=1
+export HISTFILE=~/.cache/zsh/zhistory
+export HISTSIZE=1000
+export SAVEHIST=5000
+export HISTCONTROL=ignorespace
+setopt INC_APPEND_HISTORY   # add commands directly to history (no on closing)
+setopt HIST_IGNORE_SPACE    # ignore commands with space prefixed
+setopt HIST_FIND_NO_DUPS    # skip duplicates in history file
+setopt HIST_IGNORE_ALL_DUPS # do not write duplicates to history file
+setopt SHARE_HISTORY        # share history between sessions
 
 #
 # aliases 
@@ -152,6 +159,8 @@ export FZF_DEFAULT_OPTS='
   --color info:4,prompt:5,spinner:3,pointer:6,marker:2
 '
 
+export KEYTIMEOUT=1 # Make Vi mode transitions faster
+
 #
 # setup dircolors 
 #
@@ -159,11 +168,10 @@ export FZF_DEFAULT_OPTS='
 eval $(dircolors -b ~/.config/zsh/.dircolors)
 
 #
-# launch x
+# launch x only on tty1
 #  
 
 export STARTX_LOG="$HOME/.local/share/xorg/startx.log"
-
 
 if [[ ! $DISPLAY && $(tty) == "/dev/tty1" ]]; then
 	if [[ -f $STARTX_LOG ]]; then mv -f $STARTX_LOG $STARTX_LOG.old; fi
