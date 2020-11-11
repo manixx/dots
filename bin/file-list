@@ -9,9 +9,7 @@ xorg/.Xresources                 ~/.Xresources
 xorg/20-intel.conf               /etc/X11/xorg.conf.d/20-intel.conf
 xorg/30-touchpad.conf            /etc/X11/xorg.conf.d/30-touchpad.conf
 xorg/dunstrc                     ~/.config/dunst/dunstrc
-xorg/i3-config                   ~/.config/i3/config
-xorg/i3status-config             ~/.config/i3status/config
-xorg/.xbindkeysrc                  ~/.xbindkeysrc
+xorg/.xbindkeysrc                ~/.xbindkeysrc
 
 zsh/.dircolors                   ~/.config/zsh/.dircolors
 zsh/.zshenv                      ~/.zshenv
@@ -28,13 +26,7 @@ applications/                    ~/.local/share/applications/
 task/on-exit-hook                ~/.task/hooks/on-exit
 task/.taskrc                     ~/.taskrc
 
-systemd/fetch-next-event.timer   ~/.config/systemd/user/fetch-next-event.timer
-systemd/fetch-next-event.service ~/.config/systemd/user/fetch-next-event.service
-
-systemd/lock-on-suspend@.service /etc/systemd/system/lock-on-suspend@.service
-
 modprobe.d/nowatchdog.conf       /etc/modprobe.d/nowatchdog.conf
-modprobe.d/powertop.conf         /etc/modprobe.d/powertop.conf
 
 sysctl.d/99-sysctl.conf          /etc/sysctl.d/99-sysctl.conf
 
@@ -45,5 +37,7 @@ my-bin/lock-screen               ~/.bin/lock-screen
 my-bin/toggle-redshift           ~/.bin/toggle-redshift
 my-bin/toggle-xautolock          ~/.bin/toggle-xautolock
 my-bin/dmenu-desktop             ~/.bin/dmenu-desktop
+my-bin/start-bench 						   ~/.bin/start-bench
+my-bin/start-nvim 						   ~/.bin/start-nvim
 
 xrandr/													 ~/.config/xrandr/

@@ -14,6 +14,7 @@ export LIBVA_DRIVER_NAME=iHD
 
 packages=(
 	bat 
+	chromium
 	dejavu-fonts-ttf
 	dmenu
 	exa
@@ -24,15 +25,24 @@ packages=(
 	gcc
 	git
 	htop
+	intel-video-accel
 	make
+	mesa-dri 
 	neovim
 	nnn
 	pass
+	passmenu
+	redshift 
 	setxkbmap
+	task
 	tmux
 	trash-cli
+	urlview
+	unclutter
+	xbindkeys
 	xclip
 	xcursor-vanilla-dmz-aa
+	xf86-video-intel
 	xinit 
 	xorg-minimal
 	xrandr
@@ -41,14 +51,6 @@ packages=(
 	zsh
 	zsh-autosuggestions
 	zsh-syntax-highlighting	
-	intel-video-accel
-	mesa-dri 
-	xf86-video-intel
-	chromium
-	unclutter
-	xbindkeys
-	redshift 
-	task
 )
 
 sudo xbps-install "${packages[@]}"

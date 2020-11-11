@@ -174,7 +174,7 @@ eval $(dircolors -b ~/.config/zsh/.dircolors)
 export STARTX_LOG="$HOME/.local/share/xorg/startx.log"
 
 if [[ ! $DISPLAY && $(tty) == "/dev/tty1" ]]; then
-	if [[ -f $STARTX_LOG ]]; then mv -f $STARTX_LOG $STARTX_LOG.old; fi
+	[[ -f $STARTX_LOG ]] && mv -f $STARTX_LOG $STARTX_LOG.old
 	exec startx 1> $STARTX_LOG 2>&1
 fi
 

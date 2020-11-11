@@ -1,11 +1,11 @@
-#!/bin/sh
+#!/bin/zsh
 
 # repo -> host
 #
 # This script takes the `./file-list` and copies these files from the repo to 
 # the host. 
 
-set -e
+set -ex
 
 read -p "This will overwrite your LOCAL files, are you sure?" -n 1 -r
 echo
