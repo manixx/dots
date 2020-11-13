@@ -1,26 +1,27 @@
-#!/bin/sh
+#!/bin/bash
 
 # host -> repo
 #
 # This script takes the `./file-list` and copies these files from the host to 
 # the repository. 
 
-set -e
+set -x
 
 # fetch list and remove comments and blank lines
 sed '/\(^$\|^#\)/d' bin/file-list | \
+	sed -e "s/[[:space:]]\+/ /g" | \
   sed 's|~|'${HOME}'|g' | \
   while read line; do 
-    files=($line)
+		files=($line)
 
-    repo_location=${files[0]}
-    host_location=${files[1]}
+		repo_location=${files[0]}
+		host_location=${files[1]}
 
-    # if host has / add * 
-    if [[ ${host_location} == */ ]]; then 
-      host_location="${host_location}*"
-    fi 
+		# if host has / add * 
+		if [[ ${host_location} == */ ]]; then 
+			host_location="${host_location}*"
+		fi 
 
-    cp --force -r ${host_location} ${repo_location}
-    echo "${host_location} -> ${repo_location}"
+		cp --force -r ${host_location} ${repo_location}
+		echo "${host_location} -> ${repo_location}"
   done
