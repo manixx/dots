@@ -41,3 +41,6 @@ my-bin/start-bench 						   ~/.bin/start-bench
 my-bin/start-nvim 						   ~/.bin/start-nvim
 
 xrandr/													 ~/.config/xrandr/
+
+kernel.d/post-install/20-dracut         /etc/kernel.d/post-install/20-dracut
+kernel.d/post-install/30-vmlinuz-rename /etc/kernel.d/post-install/30-vmlinuz-rename

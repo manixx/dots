@@ -38,7 +38,7 @@ packages=(
 	tmux
 	trash-cli
 	urlview
-	unclutter
+	unclutter-xfixes
 	xbindkeys
 	xclip
 	xcursor-vanilla-dmz-aa
