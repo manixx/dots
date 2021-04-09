@@ -2,5 +2,9 @@
 
 xrandr \
 	--output eDP1 --off \
-	--output HDMI2 --mode 2560x1440 --primary \
-	--output DP1 --mode 2560x1440 --right-of HDMI2 
+	--output DP1 --mode 2560x1440 \
+	--output DP2-3 --mode 2560x1440 --right-of DP1
+
+$HOME/.fehbg
+
+pkill -x xautolock
