@@ -171,7 +171,7 @@ eval $(dircolors -b ~/.config/zsh/.dircolors)
 # launch x only on tty1
 #  
 
-export STARTX_LOG="$HOME/.local/share/xorg/startx.log"
+STARTX_LOG="$HOME/.local/share/xorg/startx.log"
 
 if [[ ! $DISPLAY && $(tty) == "/dev/tty1" ]]; then
 	[[ -f $STARTX_LOG ]] && mv -f $STARTX_LOG $STARTX_LOG.old

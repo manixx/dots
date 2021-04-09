@@ -2,7 +2,6 @@
 
 if ! pgrep -x xautolock; then 
 	xautolock -time 1 -locker ~/.bin/lock-screen &
-	pgrep -x xautolock > ~/.cache/xautolock.pid
 else 
 	pkill -x xautolock 
 fi 

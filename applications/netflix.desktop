@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=Netflix
-Exec=chromium --app=https://netflix.com
-Terminal=false
-Type=Application

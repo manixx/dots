@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=Bench
-Exec=st -n bench -e tmux new-session start-bench
-Terminal=false
-Type=Application

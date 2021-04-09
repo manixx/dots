@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=ATV
-Exec=chromium --app=https://atv.at
-Terminal=false
-Type=Application

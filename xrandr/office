@@ -1,6 +1,0 @@
-#!/bin/sh 
-
-xrandr \
-	--output eDP1 --auto \
-	--output DP1 --auto --right-of eDP1 --primary \
-	--output HDMI2 --auto --right-of DP1

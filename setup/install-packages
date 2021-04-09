@@ -1,12 +1,4 @@
-#!/bin/bash
-
-#
-# setup branches 
-# * system (wifi, internet connection, dracut handling)
-
-# * user management (no ui) 
-# 	* user and home directory 
-# 	* zsh, cli tools 
+#!/bin/sh 
 
 set -ex
 
@@ -54,6 +46,3 @@ packages=(
 )
 
 sudo xbps-install "${packages[@]}"
-
-# TODO install dwm & st
-

@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
@@ -21,31 +21,22 @@ if [ -f "$usermodmap" ]; then
 	xmodmap "$usermodmap"
 fi
 
-if [ -d /etc/X11/xinit/xinitrc.d ] ; then
-	for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+	for f in /etc/X11/xinit/xinitrc.d/?*.sh; do
 		[ -x "$f" ] && . "$f"
 	done
 	unset f
 fi
 
 xset r rate 220 40
-setxkbmap de
 
-~/.bin/toggle-redshift
-~/.bin/toggle-xautolock
+$HOME/.bin/toggle-redshift
+$HOME/.bin/toggle-xautolock
+$HOME/.fehbg
 
 pgrep -x unclutter || unclutter --timeout 1 &
 pgrep -x dunst     || dunst &
 pgrep -x xbindkeys || xbindkeys
-
-while true; do
-	export now=$(cat /sys/class/power_supply/BAT0/energy_now)
-	export full=$(cat /sys/class/power_supply/BAT0/energy_full)
-
-	bat=$(echo | awk ' { printf "%0.2f%\n", (ENVIRON["now"] / ENVIRON["full"] * 100); } ')
-
-	xsetroot -name "  ${bat} | $(date +"%a %d.%b %y %H:%M")"
-	sleep 4 
-done &
+pgrep -x dwmstatus || dwmstatus &
 
 exec dwm

@@ -1,6 +1,6 @@
 #/bin/sh
 
-set -x 
+set -ex 
 
 if sudo efibootmgr | grep "Boot0001\* Void Linux"; then 
 	echo "Entry for Void Linux is present"

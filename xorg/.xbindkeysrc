@@ -2,16 +2,16 @@
 # utils 
 #
 
-"~/.bin/lock-screen"
-  m:0x40 + c:9
+"~/.local/bin/lock-screen"
 	Mod4 + Escape
 
-"~/.bin/toggle-xautolock"
-  m:0x41 + c:53
+"~/.local/bin/toggle-redshift"
+	Shift+Mod4 + r
+
+"~/.local/bin/toggle-xautolock"
 	Shift+Mod4 + x
 
 "passmenu -i -l 5 -fn 'DejaVu Sans-8' -nf '#88909f' -nb '#2c2e34' -sf '#2c2e34' -sb '#c5cdd9'"
-	m:0x40 + c:33
 	Mod4 + p
 
 #
