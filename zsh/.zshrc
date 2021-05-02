@@ -17,44 +17,38 @@ zle -N edit-command-line # to edit command in $EDITOR
 zle -N zle-line-init     # call on init (setting PROMPT to inital)
 zle -N zle-keymap-select # call on vim selection mode change
 
-#
-# path
-#
-
 path=(
-  ~/.bin 
-  ~/.npm-global/bin
-
-  /opt/google-cloud-sdk/bin
-  /opt/az-cli/bin
-
+  ~/.local/bin 
   $path[@]
 )
 
-#
+################################################################################
 # external sources 
-#
+################################################################################
 
 plugins=(
 	/usr/share/bash-completion/completions
 	/usr/share/doc/fzf/completion.zsh
 	/usr/share/doc/fzf/key-bindings.zsh
 	/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-	/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-	/opt/az-cli/az.completion
-	/opt/google-cloud-sdk/completion.zsh.inc
-
-	~/.vim/plugged/edge/zsh/.zsh-theme-edge-dark
+	~/dev/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 )
 
 for file in ${plugins[@]}; do 
-	source ${file}
+	source "${file}"
 done
 
-#
-# key bindings 
-#
+eval $(dircolors -b ~/.config/zsh/.dircolors)
+
+# local zsh tools
+for file in ~/.config/zsh/functions/*.zsh; do 
+	source "${file}"
+done
+
+################################################################################
+# key bindings
+################################################################################
 
 bindkey -v # vim bindings
 
@@ -69,47 +63,25 @@ bindkey '^o' edit-command-line
 bindkey '^p' clear-screen
 bindkey "^?" backward-delete-char # delete chars after mode switch 
 
-# custom bindings
-
-bindkey -s '^b' 'launch_nnn^M' # launch nnn
-
-#
-# style options 
-#
+################################################################################
+# zstyle config
+################################################################################
 
 zstyle ':vcs_info:*'             check-for-changes true
 zstyle ':vcs_info:*'             stagedstr '%F{green} •%f'
 zstyle ':vcs_info:*'             unstagedstr '%F{red} •%f'
 zstyle ':vcs_info:*'             formats '%F{yellow}%b%c%u%f'
-zstyle ':completion:*'           special-dirs true 						# add slash on ./ ../
+
+zstyle ':completion:*'           special-dirs true			# add slash on ./ ../
 zstyle ':completion:*'           rehash true
-zstyle ':completion::complete:*' gain-privileges 1 						# auto-complete sudo cmds
+zstyle ':completion::complete:*' gain-privileges 1			# auto-complete sudo cmds
+zstyle ':completion:*' 		 matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 	# case insensitive completion
 
-#
-# functions
-#
+################################################################################
+# zsh options
+################################################################################
 
-for file in ~/.config/zsh/functions/*.zsh; do 
-	source ${file}
-done
-
-#
-# prompt
-#
-
-function zle-line-init zle-keymap-select {
-  VIM_PROMPT="%B%F{yellow}[NORMAL]%f%b "
-	RPROMPT='${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}$(last_return_code)$(last_cmd_exec_time)'
-  zle reset-prompt
-}
-
-PROMPT='%F{magenta}%~%f$(vcs_data)$(k8s_data)'$'\n''$(current_date) %F{green}%B→%b%f '
-RPROMPT="" # needs to bet set - otherwise its zle-line-init is not loaded on startup
-
-#
-# history settings
-#
-
+# history
 export HISTFILE=~/.cache/zsh/zhistory
 export HISTSIZE=1000
 export SAVEHIST=5000
@@ -120,56 +92,66 @@ setopt HIST_FIND_NO_DUPS    # skip duplicates in history file
 setopt HIST_IGNORE_ALL_DUPS # do not write duplicates to history file
 setopt SHARE_HISTORY        # share history between sessions
 
-#
-# aliases 
-#
+# completion
+ZLE_RPROMPT_INDENT=0	# disable right padding
+KEYTIMEOUT=1 		# make vi mode transitions faster
+
+################################################################################
+# aliases
+################################################################################
 
 alias ls="exa"
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -i"
 alias cat="bat"
-alias dev="cd ~/dev" 
-alias downloads="cd ~/downloads"
+alias kctl="kubectl"
 alias dockerc="docker-compose"
 alias gco="git checkout"
-alias kctl="kubectl"
 
-#
-# global settings  
-#
+################################################################################
+# tool options
+################################################################################
 
+# globals
 export EDITOR=nvim
 
-export NNN_TRASH=1 # use trash-cli
-export NNN_USE_EDITOR=1
-
+# fzf
 export FZF_DEFAULT_COMMAND='fd \
 	--type f \
 	--hidden \
 	--follow \
 	--exclude .git \
 	--exclude .cache \
-	--exclude node_modules
-'
+	--exclude node_modules'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND='fd --type d --hidden . ~'
 export FZF_DEFAULT_OPTS='
   --color fg:8,bg:-1,hl:5,fg+:7,bg+:-1,hl+:7
-  --color info:4,prompt:5,spinner:3,pointer:6,marker:2
-'
+  --color info:4,prompt:5,spinner:3,pointer:6,marker:2'
 
-export KEYTIMEOUT=1 # Make Vi mode transitions faster
+# nnn
+export NNN_TRASH=1 # use trash-cli
 
-#
-# setup dircolors 
-#
+# bat 
+export BAT_THEME="ansi"
 
-eval $(dircolors -b ~/.config/zsh/.dircolors)
+################################################################################
+# prompt
+################################################################################
 
-#
-# launch x only on tty1
-#  
+function zle-line-init zle-keymap-select {
+  VIM_PROMPT="%B%F{yellow}[NORMAL]%f%b "
+	RPROMPT='${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}$(last_return_code)$(last_cmd_exec_time)'
+  zle reset-prompt
+}
+
+PROMPT='%F{magenta}%~%f$(vcs_data)$(k8s_data)'$'\n''$(current_date) %F{green}%B→%b%f '
+RPROMPT="" # needs to bet set - otherwise its zle-line-init is not loaded on startup
+
+################################################################################
+# startup
+################################################################################
 
 STARTX_LOG="$HOME/.local/share/xorg/startx.log"
 
@@ -186,4 +168,3 @@ fi
 if [[ ! -z $DISPLAY ]] && [[ $- == *i* ]] && [[ -z "$TMUX" ]]; then
 	exec tmux
 fi
-

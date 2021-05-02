@@ -1,0 +1,17 @@
+#!/bin/sh 
+
+set -x 
+
+mkdir -p ~/.config/zsh
+
+ln -s ~/dev/dots/applications   ~/.local/share/applications
+ln -s ~/dev/dots/.tmux.conf     ~/.tmux.conf
+ln -s ~/dev/dots/bin            ~/.local/bin
+ln -s ~/dev/dots/.Xresources    ~/.Xresources
+ln -s ~/dev/dots/.xinitrc       ~/.xinitrc
+ln -s ~/dev/dots/.xbindkeysrc   ~/.xbindkeysrc
+ln -s ~/dev/dots/zsh/.zshenv    ~/.zshenv
+ln -s ~/dev/dots/zsh/.zshrc     ~/.config/zsh/.zshrc
+ln -s ~/dev/dots/zsh/.dircolors ~/.config/zsh/.dircolors
+ln -s ~/dev/dots/zsh/functions  ~/.config/zsh/functions
+ln -s ~/dev/dots/nvim           ~/.config/nvim

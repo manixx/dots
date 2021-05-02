@@ -1,7 +1,7 @@
 #!/bin/sh
 
 IMAGE_PATH=~/.cache/lock.png
-RICK_IMAGE_PATH=~/.bg/rick.png
+RICK_IMAGE_PATH=~/.local/bg/rick.png
 
 # pause spotify 
 dbus-send \
@@ -15,4 +15,4 @@ import -silent -window root png:- \
   | composite -gravity center ${RICK_IMAGE_PATH} png:- png:- \
   > ${IMAGE_PATH}
 
-pgrep -x i3lock || i3lock -i ${IMAGE_PATH} && rm ${IMAGE_PATH}
+pgrep -x i3lock || i3lock -i ${IMAGE_PATH} && rm -f ${IMAGE_PATH}

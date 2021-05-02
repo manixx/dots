@@ -1,9 +1,0 @@
-#!/bin/sh 
-
-location="48.22:16.31" # vienna 
-
-if ! pgrep -x redshift; then 
-	redshift -l $location &
-else 
-	pkill -x redshift 
-fi 
