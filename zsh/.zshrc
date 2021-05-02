@@ -19,6 +19,7 @@ zle -N zle-keymap-select # call on vim selection mode change
 
 path=(
   ~/.local/bin 
+	~/.npm-global/bin
   $path[@]
 )
 
