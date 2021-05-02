@@ -9,10 +9,13 @@ ln -s ~/dev/dots/bin            -t ~/.local
 ln -s ~/dev/dots/zsh/functions  -t ~/.config/zsh
 ln -s ~/dev/dots/nvim           -t ~/.config
 
-ln -s ~/dev/dots/.tmux.conf     ~/.tmux.conf
-ln -s ~/dev/dots/.Xresources    ~/.Xresources
-ln -s ~/dev/dots/.xinitrc       ~/.xinitrc
-ln -s ~/dev/dots/.xbindkeysrc   ~/.xbindkeysrc
-ln -s ~/dev/dots/zsh/.zshenv    ~/.zshenv
-ln -s ~/dev/dots/zsh/.zshrc     ~/.config/zsh/.zshrc
-ln -s ~/dev/dots/zsh/.dircolors ~/.config/zsh/.dircolors
+ln -s ~/dev/dots/.tmux.conf                ~/.tmux.conf
+ln -s ~/dev/dots/.Xresources               ~/.Xresources
+ln -s ~/dev/dots/.xinitrc                  ~/.xinitrc
+ln -s ~/dev/dots/.xbindkeysrc              ~/.xbindkeysrc
+ln -s ~/dev/dots/zsh/.zshenv               ~/.zshenv
+ln -s ~/dev/dots/zsh/.zshrc                ~/.config/zsh/.zshrc
+ln -s ~/dev/dots/zsh/.dircolors            ~/.config/zsh/.dircolors
+ln -s ~/dev/dots/gnupg/gpg-agent.conf      ~/.gnupg
+ln -s ~/dev/dots/gnupg/pinentry-dmenu.conf ~/.gnupg
+

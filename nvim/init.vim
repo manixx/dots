@@ -8,6 +8,11 @@ Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 
+" lsp 
+Plug 'neovim/nvim-lspconfig'
+
+" syntax
+
 call plug#end()
 
 " ##############################################################################
@@ -86,3 +91,8 @@ noremap <leader><s-tab> :NERDTreeFocus<cr>
 noremap <leader>^       :NERDTreeFind<cr>
 noremap <leader><s-S>   :NERDTreeMirror<cr>
 
+" ##############################################################################
+" ## lsp settings
+" ##############################################################################
+
+lua require("lsp-config") 
