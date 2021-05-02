@@ -63,6 +63,8 @@ bindkey '^o' edit-command-line
 bindkey '^p' clear-screen
 bindkey "^?" backward-delete-char # delete chars after mode switch 
 
+bindkey -s '^b' 'launch_nnn^M' # launch nnn
+
 ################################################################################
 # zstyle config
 ################################################################################
