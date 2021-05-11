@@ -75,10 +75,10 @@ zstyle ':vcs_info:*'             stagedstr '%F{green} •%f'
 zstyle ':vcs_info:*'             unstagedstr '%F{red} •%f'
 zstyle ':vcs_info:*'             formats '%F{yellow}%b%c%u%f'
 
-zstyle ':completion:*'           special-dirs true			# add slash on ./ ../
-zstyle ':completion:*'           rehash true
-zstyle ':completion::complete:*' gain-privileges 1			# auto-complete sudo cmds
-zstyle ':completion:*' 		 matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 	# case insensitive completion
+zstyle ':completion:*'           special-dirs true                     # add slash on ./ ../
+zstyle ':completion::complete:*' gain-privileges 1                     # auto-complete sudo cmds
+zstyle ':completion:*'           rehash true                           # update external commands on every search
+zstyle ':completion:*'           matcher-list '' 'm:{a-zA-Z}={A-Za-z}' # case insensitive completion
 
 ################################################################################
 # zsh options
@@ -96,8 +96,8 @@ setopt HIST_IGNORE_ALL_DUPS # do not write duplicates to history file
 setopt SHARE_HISTORY        # share history between sessions
 
 # completion
-ZLE_RPROMPT_INDENT=0	# disable right padding
-KEYTIMEOUT=1 		# make vi mode transitions faster
+ZLE_RPROMPT_INDENT=0 # disable right padding
+KEYTIMEOUT=1         # make vi mode transitions faster
 
 ################################################################################
 # aliases
