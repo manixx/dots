@@ -1,0 +1,5 @@
+#!/bin/sh
+
+export DISPLAY=:0
+
+exec redshift -l 48.22:16.31 

@@ -9,6 +9,7 @@ ln -s ~/dev/dots/bin           -t ~/.local
 ln -s ~/dev/dots/zsh/functions -t ~/.config/zsh
 ln -s ~/dev/dots/nvim          -t ~/.config
 ln -s ~/dev/dots/service       -t ~/.config
+ln -s ~/dev/dots/x-service      -t ~/.config
 
 ln -s ~/dev/dots/.tmux.conf                ~/.tmux.conf
 ln -s ~/dev/dots/.Xresources               ~/.Xresources
@@ -25,4 +26,3 @@ sudo mkdir -p /etc/sv/runsvdir-manfred
 sudo ln -s $HOME/dev/dots/xorg/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
 sudo ln -s $HOME/dev/dots/xorg/20-intel.conf    /etc/X11/xorg.conf.d/20-intel.conf
 sudo ln -s $HOME/dev/dots/runsvdir-manfred      /etc/sv/runsvdir-manfred/run
-
