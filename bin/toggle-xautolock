@@ -1,7 +1,0 @@
-#!/bin/sh 
-
-if ! pgrep -x xautolock; then 
-	xautolock -time 1 -locker ~/.bin/lock-screen &
-else 
-	pkill -x xautolock 
-fi 
