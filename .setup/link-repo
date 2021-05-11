@@ -8,6 +8,7 @@ ln -s ~/dev/dots/applications   -t ~/.local/share
 ln -s ~/dev/dots/bin            -t ~/.local
 ln -s ~/dev/dots/zsh/functions  -t ~/.config/zsh
 ln -s ~/dev/dots/nvim           -t ~/.config
+ln -s ~/dev/dots/x-service      -t ~/.config
 
 ln -s ~/dev/dots/.tmux.conf     ~/.tmux.conf
 ln -s ~/dev/dots/.Xresources    ~/.Xresources
