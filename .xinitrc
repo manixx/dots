@@ -32,6 +32,6 @@ $HOME/.fehbg       # set background image
 xset r rate 220 40 # update keyboard update rate
 setxkbmap de       # set keyboard layout
 
-runsvdir $HOME/.config/x-services # start xorg services
+runsvdir $HOME/.config/x-service & # start xorg services
 
 exec dwm
