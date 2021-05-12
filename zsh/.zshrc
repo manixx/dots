@@ -112,6 +112,7 @@ alias kctl="kubectl"
 alias dockerc="docker-compose"
 alias gco="git checkout"
 alias sv-user="SVDIR=~/.config/service sv" 
+alias sv-x="SVDIR=~/.config/x-service sv"
 
 ################################################################################
 # tool options

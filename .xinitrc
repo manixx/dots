@@ -28,12 +28,10 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-$HOME/.fehbg
-xset r rate 220 40
-setxkbmap de
-unclutter --timeout 1 &
-dwmstatus &
-redshift -l 48.22:16.31 & # vienna location
-xbindkeys
+$HOME/.fehbg       # set background image
+xset r rate 220 40 # update keyboard update rate
+setxkbmap de       # set keyboard layout
+
+runsvdir $HOME/.config/x-service & # start xorg services
 
 exec dwm
