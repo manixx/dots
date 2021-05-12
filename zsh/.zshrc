@@ -111,6 +111,7 @@ alias cat="bat"
 alias kctl="kubectl"
 alias dockerc="docker-compose"
 alias gco="git checkout"
+alias sv-user="SVDIR=~/.config/service sv" 
 
 ################################################################################
 # tool options

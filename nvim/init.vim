@@ -10,6 +10,8 @@ Plug 'itchyny/lightline.vim'
 
 " lsp 
 Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
+Plug 'hrsh7th/vim-vsnip'
 
 " syntax
 
