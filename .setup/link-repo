@@ -26,3 +26,9 @@ sudo mkdir -p /etc/sv/runsvdir-manfred
 sudo ln -s $HOME/dev/dots/xorg/30-touchpad.conf /etc/X11/xorg.conf.d/30-touchpad.conf
 sudo ln -s $HOME/dev/dots/xorg/20-intel.conf    /etc/X11/xorg.conf.d/20-intel.conf
 sudo ln -s $HOME/dev/dots/runsvdir-manfred      /etc/sv/runsvdir-manfred/run
+
+sudo mkdir -p /var/log/socklog/connmand && sudo chmod 2750 /var/log/socklog/connmand
+sudo ln -s $HOME/dev/dots/socklog/connmand /var/log/socklog/connmand/config
+
+sudo mkdir -p /var/log/socklog/docker && sudo chmod 2750 /var/log/socklog/docker
+sudo ln -s $HOME/dev/dots/socklog/docker /var/log/socklog/docker/config

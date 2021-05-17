@@ -11,9 +11,10 @@ Plug 'itchyny/lightline.vim'
 " lsp 
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
-Plug 'hrsh7th/vim-vsnip'
+" Plug 'hrsh7th/vim-vsnip'
 
 " syntax
+Plug 'jelera/vim-javascript-syntax'
 
 call plug#end()
 
@@ -23,18 +24,19 @@ call plug#end()
 
 set colorcolumn=80
 set rnu nu
-set list          " show hidden characters
+set list                         " show hidden characters
 set cursorline
-set mouse=a       " enable mouse integration
+set mouse=a                      " enable mouse integration
 set signcolumn=yes
 set background=dark 
-set termguicolors " enable true colors
-set showtabline=2 " always show tabbar
-set noshowmode    " lightline takes care
+set termguicolors                " enable true colors
+set showtabline=2                " always show tabbar
+set noshowmode                   " lightline takes care
 set tabstop=2
+set completeopt=menuone,noselect " nvim-compe requiremenets
 
-syntax      on
-filetype    plugin on
+syntax      enable    " enable syntax highlights
+filetype    plugin on " enable plugins
 colorscheme edge
 
 hi CursorLineNr gui=bold
@@ -98,3 +100,5 @@ noremap <leader><s-S>   :NERDTreeMirror<cr>
 " ##############################################################################
 
 lua require("lsp-config") 
+
+au BufRead,BufNewFile go.mod set filetype=gomod

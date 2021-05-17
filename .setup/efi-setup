@@ -19,6 +19,9 @@ opts="
 	rd.lvm.lv=storage/root 
 	rd.lvm.lv=storage/home 
 	rd.vlm.lv=storage/swap 
+
+	quiet
+	i915.enable_psr=0
 "
 
 opts=`echo "${opts}" | xargs`
