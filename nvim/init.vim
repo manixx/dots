@@ -2,11 +2,15 @@ call plug#begin('~/.vim/plugged')
 
 " common tools
 Plug 'sainnhe/edge' " main theme
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'itchyny/lightline.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-fugitive'
+Plug 'Yggdroot/indentLine' 
 
 " lsp 
 Plug 'neovim/nvim-lspconfig'
@@ -15,6 +19,8 @@ Plug 'hrsh7th/nvim-compe'
 
 " syntax
 Plug 'jelera/vim-javascript-syntax'
+Plug 'jparise/vim-graphql'
+Plug 'towolf/vim-helm'
 
 call plug#end()
 
@@ -33,7 +39,7 @@ set termguicolors                " enable true colors
 set showtabline=2                " always show tabbar
 set noshowmode                   " lightline takes care
 set tabstop=2
-set completeopt=menuone,noselect " nvim-compe requiremenets
+set completeopt=menuone,noselect " show menu on one element, do not preselect
 
 syntax      enable    " enable syntax highlights
 filetype    plugin on " enable plugins
@@ -59,13 +65,17 @@ let g:NERDTreeChDirMode=1
 let g:NERDTreeShowHidden=1
 let g:NERDTreeWinPos = "right"
 
+" indentLine
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:vim_json_syntax_conceal = 0 " dependency of indentLine
+
 " ##############################################################################
 " ## keybindings
 " ##############################################################################
 
 " common
-noremap <leader><esc>   :noh<cr>
-noremap <leader>w       :call ChangeCWD()<cr>
+noremap <leader><esc> :noh<cr>
+noremap <leader>w     :call ChangeCWD()<cr>
 
 function! ChangeCWD() 
 	call fzf#run({ 
@@ -95,10 +105,18 @@ noremap <leader><s-tab> :NERDTreeFocus<cr>
 noremap <leader>^       :NERDTreeFind<cr>
 noremap <leader><s-S>   :NERDTreeMirror<cr>
 
+" fugitive 
+noremap <leader>gb :Git blame<cr>
+
+" ##############################################################################
+" ## custom syntax files 
+" ##############################################################################
+
+" go 
+au BufRead,BufNewFile go.mod set filetype=gomod
+
 " ##############################################################################
 " ## lsp settings
 " ##############################################################################
 
 lua require("lsp-config") 
-
-au BufRead,BufNewFile go.mod set filetype=gomod
