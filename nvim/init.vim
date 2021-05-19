@@ -40,6 +40,7 @@ set showtabline=2                " always show tabbar
 set noshowmode                   " lightline takes care
 set tabstop=2
 set completeopt=menuone,noselect " show menu on one element, do not preselect
+set shortmess+=c                 " Disable Pattern not found error
 
 syntax      enable    " enable syntax highlights
 filetype    plugin on " enable plugins
