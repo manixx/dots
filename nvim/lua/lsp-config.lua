@@ -1,51 +1,70 @@
 local lsp = require("lspconfig")
 
 -- #############################################################################
+-- keybindings
+-- #############################################################################
+vim.lsp.set_log_level("debug")
+
+local on_attach = function(client, bufnr) 
+				local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+				local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+				local opts = {}
+
+				--buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+				buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+				buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+				buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+				buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+				--buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+end
+
+-- #############################################################################
 -- compe 
 -- #############################################################################
 
-require'compe'.setup {
-  enabled = true;
-  autocomplete = true;
-  debug = false;
-  min_length = 1;
-  preselect = 'always';
-  throttle_time = 80;
-  source_timeout = 200;
-  incomplete_delay = 400;
-  max_abbr_width = 100;
-  max_kind_width = 100;
-  max_menu_width = 100;
-  documentation = true;
+--require'compe'.setup {
+  --enabled = false;
+  --autocomplete = true;
+  --debug = false;
+  --min_length = 1;
+  --preselect = 'always';
+  --throttle_time = 80;
+  --source_timeout = 200;
+  --incomplete_delay = 400;
+  --max_abbr_width = 100;
+  --max_kind_width = 100;
+  --max_menu_width = 100;
+  --documentation = true;
 
-  source = {
-    path = true;
-    buffer = true;
-    calc = true;
-    nvim_lsp = true;
-    nvim_lua = true;
-    vsnip = true;
-    ultisnips = true;
-  };
-}
+  --source = {
+    --path = true;
+    --buffer = true;
+    --calc = true;
+    --nvim_lsp = true;
+    --nvim_lua = true;
+    --vsnip = true;
+    --ultisnips = true;
+  --};
+--}
 
 -- #############################################################################
 -- tsserver 
 -- #############################################################################
 
-lsp.tsserver.setup{}
+lsp.tsserver.setup{ on_attach = on_attach }
 
 -- #############################################################################
 -- gopls 
 -- #############################################################################
 
-lsp.gopls.setup{}
+-- lsp.gopls.setup{}
 
 -- #############################################################################
 -- Dockerfiles
 -- #############################################################################
 
-lsp.dockerls.setup{}
+-- lsp.dockerls.setup{}
 
 -- #############################################################################
 -- lua 
