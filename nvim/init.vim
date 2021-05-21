@@ -15,12 +15,13 @@ Plug 'Yggdroot/indentLine'
 " lsp 
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
-" Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/vim-vsnip'
 
 " syntax
 Plug 'jelera/vim-javascript-syntax'
 Plug 'jparise/vim-graphql'
 Plug 'towolf/vim-helm'
+Plug 'leafgarland/typescript-vim' 
 
 call plug#end()
 
