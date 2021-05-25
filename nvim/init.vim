@@ -2,6 +2,7 @@ call plug#begin('~/.vim/plugged')
 
 " common tools
 Plug 'sainnhe/edge' " main theme
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree'
@@ -80,11 +81,10 @@ noremap <leader><esc> :noh<cr>
 noremap <leader>w     :call ChangeCWD()<cr>
 
 function! ChangeCWD() 
-	call fzf#run({ 
+	call fzf#run(fzf#wrap({ 
 		\ 'source': 'fd --type d --hidden . ~', 
-		\ 'options': '--color fg:#5F6471', 
-		\ 'down': '~20%', 
-		\ 'sink': 'chdir' })
+		\ 'options': ['--prompt', 'cwd > '], 
+		\ 'sink': 'chdir' }))
 endfunction
 
 " fzf
