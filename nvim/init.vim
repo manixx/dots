@@ -23,6 +23,7 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'jparise/vim-graphql'
 Plug 'towolf/vim-helm'
 Plug 'leafgarland/typescript-vim' 
+Plug 'hashivim/vim-terraform' 
 
 call plug#end()
 
