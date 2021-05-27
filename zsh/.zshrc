@@ -127,8 +127,7 @@ export FZF_DEFAULT_COMMAND='fd \
 	--hidden \
 	--follow \
 	--exclude .git \
-	--exclude .cache \
-	--exclude node_modules'
+	--exclude .cache'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND='fd --type d --hidden . ~'
 export FZF_DEFAULT_OPTS='

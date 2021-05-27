@@ -12,6 +12,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'Yggdroot/indentLine' 
+Plug 'airblade/vim-gitgutter'
 
 " lsp 
 Plug 'neovim/nvim-lspconfig'
@@ -44,6 +45,7 @@ set noshowmode                   " lightline takes care
 set tabstop=2
 set completeopt=menuone,noselect " show menu on one element, do not preselect
 set shortmess+=c                 " Disable Pattern not found error
+set updatetime=100
 
 syntax      enable    " enable syntax highlights
 filetype    plugin on " enable plugins
@@ -72,6 +74,9 @@ let g:NERDTreeWinPos = "right"
 " indentLine
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:vim_json_syntax_conceal = 0 " dependency of indentLine
+
+" gitgutter
+let g:gitgutter_map_keys = 0
 
 " ##############################################################################
 " ## keybindings
@@ -110,6 +115,12 @@ noremap <leader><s-S>   :NERDTreeMirror<cr>
 
 " fugitive 
 noremap <leader>gb :Git blame<cr>
+noremap <leader>gs :Gstatus<cr>
+
+" gitgutter
+nmap 		]c 				 <Plug>(GitGutterNextHunk)
+nmap    [c 				 <Plug>(GitGutterPrevHunk)
+noremap <leader>gf :GitGutterFold<cr> 
 
 " ##############################################################################
 " ## custom syntax files 
