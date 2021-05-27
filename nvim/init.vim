@@ -115,7 +115,7 @@ noremap <leader><s-S>   :NERDTreeMirror<cr>
 
 " fugitive 
 noremap <leader>gb :Git blame<cr>
-noremap <leader>gs :Gstatus<cr>
+noremap <leader>gs :Git<cr>
 
 " gitgutter
 nmap 		]c 				 <Plug>(GitGutterNextHunk)
