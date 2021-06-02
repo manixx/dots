@@ -10,6 +10,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 
+
 -- lsp 
 local on_attach = function(client, bufnr) 
 	local opts = { noremap=true, silent=true }
@@ -17,6 +18,7 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
 	buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
 	buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+	buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 	buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 
 	buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
@@ -25,19 +27,32 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap('n', '<space>d', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
 	buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 	buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+	
+	-- compe 
+	local compeOpts = { expr = true, silent = true }
 
-	buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+	buf_set_keymap("i", "<C-Space>", "compe#complete()", compeOpts)
+	buf_set_keymap("i", "<C-e>", [[compe#close("<C-e>")]], compeOpts)
+	buf_set_keymap("i", "<CR>", [[compe#confirm("<CR>")]], compeOpts)
+
+	buf_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+	buf_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+
+	-- auto highlight 
+	if client.resolved_capabilities.document_highlight then
+		vim.api.nvim_exec([[
+			hi LspReferenceRead  guibg=#394634
+			hi LspReferenceText  guibg=#414550
+			hi LspReferenceWrite guibg=#55393d
+
+			augroup lsp_document_highlight
+				autocmd! * <buffer>
+				autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+				autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+			augroup END
+			]], false)
+	end
 end
-
--- compe 
-local compeOpts = { expr = true, silent = true }
-
-buf_set_keymap("i", "<C-Space>", "compe#complete()", compeOpts)
-buf_set_keymap("i", "<C-e>", [[compe#close("<C-e>")]], compeOpts)
-buf_set_keymap("i", "<CR>", [[compe#confirm("<CR>")]], compeOpts)
-
-buf_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-buf_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 
 -- #############################################################################
 -- compe 
