@@ -18,6 +18,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'hrsh7th/vim-vsnip'
+Plug 'ojroques/nvim-lspfuzzy'
 
 " syntax
 Plug 'jelera/vim-javascript-syntax'
@@ -42,10 +43,11 @@ set background=dark
 set termguicolors                " enable true colors
 set showtabline=2                " always show tabbar
 set noshowmode                   " lightline takes care
-set tabstop=2
 set completeopt=menuone,noselect " show menu on one element, do not preselect
 set shortmess+=c                 " Disable Pattern not found error
 set updatetime=100
+set shiftwidth=2
+set tabstop=2
 
 syntax      enable    " enable syntax highlights
 filetype    plugin on " enable plugins
@@ -61,10 +63,10 @@ hi SignColumn   guibg=none
 
 " lightline 
 let g:lightline = {
-	\ 'colorscheme': 'edge',
-	\ 'separator': { 'left': '▙', 'right': '▟' },
-	\ 'subseparator': { 'left': '▸', 'right': '◂' }, 
-	\ }
+			\ 'colorscheme': 'edge',
+			\ 'separator': { 'left': '▙', 'right': '▟' },
+			\ 'subseparator': { 'left': '▸', 'right': '◂' }, 
+			\ }
 
 " nerdtree
 let g:NERDTreeChDirMode=1
@@ -88,9 +90,9 @@ noremap <leader>w     :call ChangeCWD()<cr>
 
 function! ChangeCWD() 
 	call fzf#run(fzf#wrap({ 
-		\ 'source': 'fd --type d --hidden . ~', 
-		\ 'options': ['--prompt', 'cwd > '], 
-		\ 'sink': 'chdir' }))
+				\ 'source': 'fd --type d --hidden . ~', 
+				\ 'options': ['--prompt', 'cwd > '], 
+				\ 'sink': 'chdir' }))
 endfunction
 
 " fzf
