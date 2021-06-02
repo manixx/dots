@@ -3,6 +3,7 @@
 set -x 
 
 mkdir -p ~/.config/zsh
+mkdir -p ~/.config/dunst
 
 ln -s ~/dev/dots/applications  -t ~/.local/share
 ln -s ~/dev/dots/bin           -t ~/.local
@@ -20,6 +21,7 @@ ln -s ~/dev/dots/zsh/.zshrc                ~/.config/zsh/.zshrc
 ln -s ~/dev/dots/zsh/.dircolors            ~/.config/zsh/.dircolors
 ln -s ~/dev/dots/gnupg/gpg-agent.conf      ~/.gnupg
 ln -s ~/dev/dots/gnupg/pinentry-dmenu.conf ~/.gnupg
+ln -s ~/dev/dots/xorg/dunstrc              ~/.config/dunst/dunstrc
 
 sudo mkdir -p /etc/sv/runsvdir-manfred
 

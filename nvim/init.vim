@@ -53,7 +53,7 @@ colorscheme edge
 
 hi CursorLineNr gui=bold
 hi Search       gui=bold
-hi SignColumn		guibg=none
+hi SignColumn   guibg=none
 
 " ##############################################################################
 " ## plugin config
@@ -118,16 +118,13 @@ noremap <leader>gb :Git blame<cr>
 noremap <leader>gs :Git<cr>
 
 " gitgutter
-nmap 		]c 				 <Plug>(GitGutterNextHunk)
-nmap    [c 				 <Plug>(GitGutterPrevHunk)
-noremap <leader>gf :GitGutterFold<cr> 
+nmap    ]c         <Plug>(GitGutterNextHunk)
+nmap    [c         <Plug>(GitGutterPrevHunk)
+noremap <leader>gf :GitGutterFold<cr>
 
 " ##############################################################################
 " ## custom syntax files 
 " ##############################################################################
-
-" go 
-au BufRead,BufNewFile go.mod set filetype=gomod
 
 " ##############################################################################
 " ## lsp settings
