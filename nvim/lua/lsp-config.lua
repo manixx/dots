@@ -42,7 +42,7 @@ local on_attach = function(client, bufnr)
 	if client.resolved_capabilities.document_highlight then
 		vim.api.nvim_exec([[
 			hi LspReferenceRead  guibg=#394634
-			hi LspReferenceText  guibg=#414550
+			hi LspReferenceText  guibg=#414550 gui=bold
 			hi LspReferenceWrite guibg=#55393d
 
 			augroup lsp_document_highlight
@@ -118,3 +118,10 @@ lsp.tsserver.setup{ on_attach = on_attach }
 -- #############################################################################
 
 lsp.gopls.setup{ on_attach = on_attach }
+
+-- #############################################################################
+-- ccls  
+-- #############################################################################
+
+lsp.ccls.setup{ on_attach = on_attach }
+
