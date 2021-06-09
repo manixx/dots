@@ -1,8 +1,11 @@
 ImageMagick
 acpid
+arduino
 base
 base
 bat
+bluez
+ccls
 chromium
 chrony
 cmake
@@ -14,11 +17,14 @@ dhcpcd
 dmenu
 docker
 docker
+dosfstools
+dunst
 e2fsprogs
 efibootmgr
 exa
 fd
 feh
+file
 font
 font
 freecad
@@ -31,6 +37,7 @@ i3lock
 iproute2
 iputils
 iw
+jq
 kbd
 libX11
 libXft
@@ -52,6 +59,7 @@ pinentry
 powertop
 pulseaudio
 redshift
+rpi
 setxkbmap
 socklog
 spotifyd
@@ -72,6 +80,7 @@ xclip
 xcursor
 xf86
 xorg
+xrandr
 xrdb
 xset
 zsh

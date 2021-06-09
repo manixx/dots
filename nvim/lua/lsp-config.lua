@@ -125,3 +125,8 @@ lsp.gopls.setup{ on_attach = on_attach }
 
 lsp.ccls.setup{ on_attach = on_attach }
 
+-- #############################################################################
+-- ccls  
+-- #############################################################################
+
+lsp.yamlls.setup{ on_attach = on_attach }
