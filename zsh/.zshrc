@@ -167,5 +167,5 @@ fi
 #
 
 if [[ ! -z $DISPLAY ]] && [[ $- == *i* ]] && [[ -z "$TMUX" ]]; then
-	exec tmux
+	exec tmux -u
 fi

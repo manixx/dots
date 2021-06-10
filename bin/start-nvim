@@ -1,6 +1,6 @@
 #!/bin/zsh 
 
-name="nvim"
+name="code"
 
 if ! tmux switch -t ${name}; then 
 	tmux rename-session ${name}
