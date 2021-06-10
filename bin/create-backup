@@ -1,0 +1,29 @@
+#!/bin/zsh
+
+set -ex
+
+backup_dir="${HOME}/.backup"
+backup_file="${HOME}/backup.tar" 
+folder_to_backup=(
+	~/.gnupg 
+	~/.ssh 
+	~/.local/bg 
+	~/.npmrc
+)
+
+mkdir -p ${backup_dir}
+for folder in $folder_to_backup; do 
+	if [[ ! -d ${folder} ]]; then 
+		echo "\n [WARNING] Folder ${folder} was not found.\n" 
+		continue
+	fi
+
+	cp -R ${folder} ${backup_dir}
+done
+
+tar cvf ${backup_file} ${backup_dir}
+gpg2 --symmetric --output "${backup_file}.gpg" ${backup_file}
+
+rm -rf ${backup_dir} ${backup_file}
+
+echo "\n Backup done: ${backup_file}.gpg \n"
