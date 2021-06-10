@@ -7,12 +7,12 @@
     shrink = no
     transparency = 0
     notification_height = 0
-    separator_height = 0
+    separator_height = 1
     padding = 8
     horizontal_padding = 8
     frame_width = 1
     frame_color = "#deb974"
-    separator_color = frame
+    separator_color = "#828a98"
     sort = yes
     idle_threshold = 120
     font = DejaVu Sans 8

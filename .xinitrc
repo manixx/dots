@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bish
 
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
@@ -32,6 +32,8 @@ $HOME/.fehbg       # set background image
 xset r rate 220 40 # update keyboard update rate
 setxkbmap de       # set keyboard layout
 
-runsvdir $HOME/.config/x-service & # start xorg services
+runsvdir $HOME/.config/x-service & # start xorg service
+
+eval $(dbus-launch --sh-syntax) # setup user dbus session
 
 exec dwm
