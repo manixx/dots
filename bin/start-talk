@@ -1,0 +1,10 @@
+#!/bin/zsh 
+
+name="talk"
+
+if ! tmux switch -t ${name}; then 
+	tmux rename-session ${name}
+	tmux new-window /opt/matterhorn/matterhorn 
+	tmux kill-window -t 0
+fi 
+

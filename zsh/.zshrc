@@ -20,6 +20,8 @@ zle -N zle-keymap-select # call on vim selection mode change
 path=(
   ~/.local/bin 
 	~/.npm-global/bin
+	/opt/google-cloud-sdk/bin
+	/opt/azure-cli/bin
   $path[@]
 )
 
@@ -32,6 +34,10 @@ plugins=(
 	/usr/share/doc/fzf/completion.zsh
 	/usr/share/doc/fzf/key-bindings.zsh
 	/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+	/opt/google-cloud-sdk/completion.zsh.inc 
+	/opt/google-cloud-sdk/path.zsh.inc
+	/opt/azure-cli/az.completion
 
 	~/dev/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 )
