@@ -43,6 +43,7 @@ plugins=(
 )
 
 for file in ${plugins[@]}; do 
+	[[ ! -r $file ]] && continue
 	source "${file}"
 done
 
