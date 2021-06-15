@@ -1,0 +1,4 @@
+#!/bin/sh 
+[ ! -d /run/connmand ] && mkdir -p /run/connman
+
+OPTS="--nodnsproxy"

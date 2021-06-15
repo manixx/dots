@@ -36,5 +36,9 @@ sudo ln -s $HOME/dev/dots/socklog/connmand /var/log/socklog/connmand/config
 sudo mkdir -p /var/log/socklog/docker && sudo chmod 2750 /var/log/socklog/docker
 sudo ln -s $HOME/dev/dots/socklog/docker /var/log/socklog/docker/config
 
+sudo mkdir -p /var/log/socklog/dnscrypt-proxy && sudo chmod 2750 /var/log/socklog/dnscrypt-proxy
+sudo ln -s $HOME/dev/dots/socklog/dnscrypt-proxy /var/log/socklog/dnscrypt-proxy/config
+
 sudo mkdir -p /etc/connman 
-sudo ln -s $HOME/dev/dots/connman-config.conf /etc/connman/main.conf
+sudo ln -s $HOME/dev/dots/connman/main.conf /etc/connman/main.conf
+sudo ln -s $HOME/dev/dots/connman/flags     /etc/sv/connmand/conf
