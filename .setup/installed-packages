@@ -1,6 +1,7 @@
 ImageMagick
 acpid
 arduino-cli
+audacity
 base-devel
 base-minimal
 bat
@@ -15,6 +16,7 @@ curl
 dejavu-fonts-ttf
 dhcpcd
 dmenu
+dnscrypt-proxy
 docker
 docker-compose
 dosfstools
@@ -49,6 +51,7 @@ lua
 lvm2
 man-db
 ncurses
+net-tools
 ninja
 nnn
 nodejs
@@ -63,7 +66,6 @@ redshift
 rpi-imager
 setxkbmap
 socklog-void
-spotifyd
 sudo
 task
 telegram-desktop
@@ -74,6 +76,7 @@ trash-cli
 unclutter-xfixes
 upower
 urlview
+vlc
 wget
 wpa_supplicant
 xautolock
