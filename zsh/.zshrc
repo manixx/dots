@@ -22,6 +22,7 @@ path=(
 	~/.npm-global/bin
 	/opt/google-cloud-sdk/bin
 	/opt/azure-cli/bin
+	/opt/terraform
   $path[@]
 )
 
@@ -143,6 +144,8 @@ export FZF_DEFAULT_OPTS='
 
 # nnn
 export NNN_TRASH=1 # use trash-cli
+
+export CLOUDSDK_PYTHON="python2"
 
 ################################################################################
 # prompt

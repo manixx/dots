@@ -1,0 +1,3 @@
+#!/bin/sh 
+
+sv check connmand || exit 1 # otherwise containers has no internet connections

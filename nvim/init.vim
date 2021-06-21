@@ -26,6 +26,7 @@ Plug 'jparise/vim-graphql'
 Plug 'towolf/vim-helm'
 Plug 'leafgarland/typescript-vim' 
 Plug 'hashivim/vim-terraform' 
+Plug 'vim-scripts/nginx.vim'
 
 call plug#end()
 
