@@ -49,6 +49,7 @@ set shortmess+=c                 " Disable Pattern not found error
 set updatetime=100
 set shiftwidth=2
 set tabstop=2
+set conceallevel=0               " show quotes on JSONS
 
 syntax      enable    " enable syntax highlights
 filetype    plugin on " enable plugins

@@ -30,6 +30,7 @@ fi
 
 $HOME/.fehbg       # set background image
 xset r rate 220 40 # update keyboard update rate
+xset -dpms s off   # disable monitor saving mode 
 setxkbmap de       # set keyboard layout
 
 runsvdir $HOME/.config/x-service & # start xorg service
