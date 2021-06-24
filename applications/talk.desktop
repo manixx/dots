@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=Talk
-Exec=st -n talk -e tmux new-session start-talk 
-Terminal=false
-Type=Application
