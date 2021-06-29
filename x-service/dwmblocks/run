@@ -2,4 +2,4 @@
 
 export DISPLAY=:0
 
-exec dwmstatus 
+exec dwmblocks 
