@@ -24,6 +24,7 @@ dunst
 e2fsprogs
 efibootmgr
 exa
+exfat-utils
 fd
 feh
 file
@@ -51,6 +52,7 @@ lua
 lvm2
 man-db
 ncurses
+neovim
 net-tools
 ninja
 nnn

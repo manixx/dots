@@ -5,7 +5,7 @@ desktop_dirs=(
 	~/.local/share/applications/*.desktop
 )
 
-app_name=`grep '^Name=' ${desktop_dirs[@]} -h | cut -d'=' -f 2 | uniq | dmenu -i $@`
+app_name=`grep '^Name=' ${desktop_dirs[@]} -h | cut -d'=' -f 2 | sort | uniq | dmenu -i $@`
 
 if [ -z "${app_name}" ]; then 
 	exit 0

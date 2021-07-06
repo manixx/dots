@@ -155,7 +155,7 @@ function zle-line-init zle-keymap-select {
   zle reset-prompt
 }
 
-PROMPT='$(hr)'$'\n''%F{magenta}%~%f$(vcs_data)$(k8s_data)'$'\n''$(current_date) %F{green}%B→%b%f '
+PROMPT='%F{magenta}%~%f$(vcs_data)$(k8s_data)'$'\n''$(current_date) %F{green}%B→%b%f '
 RPROMPT="" # needs to bet set - otherwise its zle-line-init is not loaded on startup
 
 ################################################################################

@@ -9,6 +9,7 @@ folder_to_backup=(
 	~/.ssh 
 	~/.local/bg 
 	~/.npmrc
+	~/.password-store
 )
 
 mkdir -p ${backup_dir}
