@@ -5,4 +5,4 @@ set -e
 full=$(cat /sys/class/power_supply/BAT0/energy_full) 
 now=$(cat /sys/class/power_supply/BAT0/energy_now) 
 
-echo ${now} ${full} | awk '{ printf "%.1f%\n", ($1 / $2) * 100 }'
+echo ${now} ${full} | awk '{ printf "%d%\n", ($1 / $2) * 100 }'

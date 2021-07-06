@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e 
+
+if [[ -z $1 ]]; then 
+	echo "Please define shutdown command (e.g. poweroff)"
+	exit 1
+fi 
+
+pkill -x chromium 
+while ! pgrep -x chromium > /dev/null; do 
+	wait 1 
+done 
+
+sudo $1
