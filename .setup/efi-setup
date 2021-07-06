@@ -22,7 +22,6 @@ opts="
 
 	quiet
 	i915.enable_psr=0
-	net.ifnames=0
 "
 
 opts=`echo "${opts}" | xargs`
