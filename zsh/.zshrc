@@ -20,8 +20,6 @@ zle -N zle-keymap-select # call on vim selection mode change
 path=(
   ~/.local/bin 
 	~/.npm-global/bin
-	/opt/google-cloud-sdk/bin
-	/opt/azure-cli/bin
 	/opt/terraform
   $path[@]
 )
@@ -79,7 +77,7 @@ bindkey -s '^b' 'launch_nnn^M' # launch nnn
 ################################################################################
 
 zstyle ':vcs_info:*'             check-for-changes true
-zstyle ':vcs_info:*'             stagedstr '%F{green} •%f'
+zstyle ':vcs_info:*'             stagedstr '%F{blue} •%f'
 zstyle ':vcs_info:*'             unstagedstr '%F{red} •%f'
 zstyle ':vcs_info:*'             formats '%F{yellow}%b%c%u%f'
 
@@ -121,6 +119,8 @@ alias dockerc="docker-compose"
 alias gco="git checkout"
 alias sv-user="SVDIR=~/.config/service sv" 
 alias sv-x="SVDIR=~/.config/x-service sv"
+alias az="/opt/azure-cli/bin/az" 
+alias gcloud="/opt/google-cloud-sdk/bin/gcloud" 
 
 ################################################################################
 # tool options
@@ -145,8 +145,6 @@ export FZF_DEFAULT_OPTS='
 # nnn
 export NNN_TRASH=1 # use trash-cli
 
-export CLOUDSDK_PYTHON="python2"
-
 ################################################################################
 # prompt
 ################################################################################
@@ -157,7 +155,7 @@ function zle-line-init zle-keymap-select {
   zle reset-prompt
 }
 
-PROMPT='%F{magenta}%~%f$(vcs_data)$(k8s_data)'$'\n''$(current_date) %F{green}%B→%b%f '
+PROMPT='$(hr)'$'\n''%F{magenta}%~%f$(vcs_data)$(k8s_data)'$'\n''$(current_date) %F{green}%B→%b%f '
 RPROMPT="" # needs to bet set - otherwise its zle-line-init is not loaded on startup
 
 ################################################################################
