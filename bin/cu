@@ -7,9 +7,10 @@ if [[ -z $1 ]]; then
 	exit 1
 fi 
 
-pkill -x chromium 
-while ! pgrep -x chromium > /dev/null; do 
-	wait 1 
-done 
+if pkill -x chromium; then
+	while ! pgrep -x chromium > /dev/null; do 
+		wait 1 
+	done 
+fi
 
 sudo $1
