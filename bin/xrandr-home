@@ -1,8 +1,10 @@
-#!/bin/sh
+#!/bin/zsh
 
 xrandr \
 	--output eDP1 --off \
 	--output DP1 --mode 2560x1440 \
 	--output DP2-3 --mode 2560x1440 --right-of DP1 \
-	&& $HOME/.fehbg
+	&& $HOME/.fehbg 
+
+SVDIR=~/.config/x-service sv stop xautolock
 

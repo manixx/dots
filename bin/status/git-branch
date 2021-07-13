@@ -1,0 +1,7 @@
+#!/bin/zsh 
+
+if ! git rev-parse --git-dir 1>/dev/null; then
+	exit 0
+fi
+
+git branch --show-current

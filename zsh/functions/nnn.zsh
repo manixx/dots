@@ -12,4 +12,6 @@ launch_nnn ()
 		. "$NNN_TMPFILE"
 		rm -f "$NNN_TMPFILE" > /dev/null
 	fi
+
+	zle reset-prompt
 }

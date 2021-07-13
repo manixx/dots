@@ -50,6 +50,7 @@ set updatetime=100
 set shiftwidth=2
 set tabstop=2
 set conceallevel=0               " show quotes on JSONS
+set smartcase                    " use case if any caps used
 
 syntax      enable    " enable syntax highlights
 filetype    plugin on " enable plugins

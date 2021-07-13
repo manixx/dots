@@ -20,9 +20,19 @@ zle -N zle-keymap-select # call on vim selection mode change
 path=(
   ~/.local/bin 
 	~/.npm-global/bin
-	/opt/terraform
   $path[@]
 )
+
+precmd() {
+	(tmux set status-right "$(update_tmux_status)" &) > /dev/null
+}
+
+update_tmux_status() {
+	echo -n "
+	#[fg=colour5] $(print_cwd) 
+	#[fg=colour8]| k8s #[fg=colour2]$(print_k8s_context)
+	$(vcs_data_tmux)"
+}
 
 ################################################################################
 # external sources 
@@ -76,11 +86,6 @@ bindkey -s '^b' 'launch_nnn^M' # launch nnn
 # zstyle config
 ################################################################################
 
-zstyle ':vcs_info:*'             check-for-changes true
-zstyle ':vcs_info:*'             stagedstr '%F{blue} •%f'
-zstyle ':vcs_info:*'             unstagedstr '%F{red} •%f'
-zstyle ':vcs_info:*'             formats '%F{yellow}%b%c%u%f'
-
 zstyle ':completion:*'           special-dirs true                     # add slash on ./ ../
 zstyle ':completion::complete:*' gain-privileges 1                     # auto-complete sudo cmds
 zstyle ':completion:*'           rehash true                           # update external commands on every search
@@ -112,15 +117,17 @@ KEYTIMEOUT=1         # make vi mode transitions faster
 alias ls="exa"
 alias cp="cp -i"
 alias mv="mv -i"
-alias rm="rm -i"
+alias rm="rm -I --one-file-system"
 alias cat="bat"
 alias kctl="kubectl"
 alias dockerc="docker-compose"
 alias gco="git checkout"
 alias sv-user="SVDIR=~/.config/service sv" 
 alias sv-x="SVDIR=~/.config/x-service sv"
+
 alias az="/opt/azure-cli/bin/az" 
 alias gcloud="/opt/google-cloud-sdk/bin/gcloud" 
+alias terraform="/opt/terraform/terraform"
 
 ################################################################################
 # tool options
@@ -145,6 +152,9 @@ export FZF_DEFAULT_OPTS='
 # nnn
 export NNN_TRASH=1 # use trash-cli
 
+# bat 
+export BAT_THEME="ansi"
+
 ################################################################################
 # prompt
 ################################################################################
@@ -155,7 +165,7 @@ function zle-line-init zle-keymap-select {
   zle reset-prompt
 }
 
-PROMPT='%F{magenta}%~%f$(vcs_data)$(k8s_data)'$'\n''$(current_date) %F{green}%B→%b%f '
+PROMPT='%F{green}%B→%b%f '
 RPROMPT="" # needs to bet set - otherwise its zle-line-init is not loaded on startup
 
 ################################################################################

@@ -1,0 +1,9 @@
+#!/bin/zsh
+
+git_branch=$(~/.local/bin/status/git-branch)
+
+if [[ ! -z "${git_branch}" ]]; then 
+	echo -n "git ${git_branch} | "
+fi 
+
+echo -n "${git_branch} $(pwd) k8s $(~/.local/bin/status/k8s-context)"
