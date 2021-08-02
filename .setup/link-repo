@@ -42,3 +42,6 @@ sudo ln -s $HOME/dev/dots/socklog/dnscrypt-proxy /var/log/socklog/dnscrypt-proxy
 sudo mkdir -p /etc/connman 
 sudo ln -s $HOME/dev/dots/connman/main.conf /etc/connman/main.conf
 sudo ln -s $HOME/dev/dots/connman/flags     /etc/sv/connmand/conf
+
+sudo mkdir -p /etc/sv/dbus/control 
+sudo ln -s $HOME/dev/dots/dbus/terminate-chromium /etc/sv/dbus/control/t

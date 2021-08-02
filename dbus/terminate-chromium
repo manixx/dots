@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Chromium will exit not gracefully when dbus gets killed 
+# during poweroff, which leads to an annoying error message 
+# on the next startup.
+if pkill -x chromium; then
+	while ! pgrep -x chromium > /dev/null; do 
+		wait 1 
+	done 
+fi
+
+# In order to forward the signal to the service we have 
+# to exit with non-zero. 
+# Check: http://smarden.org/runit/runsv.8.html
+exit 1
