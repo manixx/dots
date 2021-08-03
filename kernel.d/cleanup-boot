@@ -1,0 +1,7 @@
+#!/bin/sh 
+
+# I use EFISTUB instead of Grub, and I don't need versioning. This 
+# script drops all unecessary files on the /boot partition.
+mv -f /boot/initramfs-* /boot/initramfs
+mv -f /boot/vmlinuz-* /boot/vmlinuz
+rm -rf /boot/config*
