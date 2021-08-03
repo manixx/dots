@@ -1,5 +1,4 @@
-launch_nnn ()
-{
+launch_nnn () {
 	if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
 		echo "nnn is already running"
 		return

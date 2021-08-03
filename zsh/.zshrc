@@ -1,3 +1,13 @@
+path=(
+	~/.local/bin 
+	~/.npm-global/bin
+	$path[@]
+)
+
+################################################################################
+# zsh options
+################################################################################
+
 autoload -Uz \
 	compinit \
 	promptinit \
@@ -9,19 +19,35 @@ compinit -d ~/.cache/zsh/zcompdump
 promptinit
 bashcompinit
 
-typeset -U path          # enable path array
+setopt INC_APPEND_HISTORY   # add commands directly to history (not on closing)
+setopt HIST_IGNORE_SPACE    # ignore commands with space prefixed
+setopt HIST_FIND_NO_DUPS    # skip duplicates in history file
+setopt HIST_IGNORE_ALL_DUPS # do not write duplicates to history file
+setopt SHARE_HISTORY        # share history between sessions
+setopt PROMPT_SUBST         # to enable functions in prompt
 
-setopt prompt_subst      # to enable functions in prompt
+ZLE_RPROMPT_INDENT=0           # disable right padding in prompt
+KEYTIMEOUT=1                   # make vi mode transitions faster
+HISTFILE=~/.cache/zsh/zhistory # hint: must be created manually
+HISTSIZE=1000
+SAVEHIST=5000
 
 zle -N edit-command-line # to edit command in $EDITOR
 zle -N zle-line-init     # call on init (setting PROMPT to init)
 zle -N zle-keymap-select # call on vim selection mode change
 
-path=(
-  ~/.local/bin 
-	~/.npm-global/bin
-  $path[@]
-)
+################################################################################
+# prompt
+################################################################################
+
+function zle-line-init zle-keymap-select {
+  VIM_PROMPT="%B%F{yellow}[NORMAL]%f%b "
+	RPROMPT='${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}'
+  zle reset-prompt
+}
+
+PROMPT='%F{magenta}%~%f$(vcs_data)'$'\n''%F{green}%B→%b%f '
+RPROMPT="" # needs to bet set for zle-line-init is not loaded on startup
 
 ################################################################################
 # external sources 
@@ -33,11 +59,11 @@ plugins=(
 	/usr/share/doc/fzf/key-bindings.zsh
 	/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+	~/dev/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+
 	/opt/google-cloud-sdk/completion.zsh.inc 
 	/opt/google-cloud-sdk/path.zsh.inc
 	/opt/azure-cli/az.completion
-
-	~/dev/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 )
 
 for file in ${plugins[@]}; do 
@@ -45,10 +71,24 @@ for file in ${plugins[@]}; do
 	source "${file}"
 done
 
-# local zsh tools
 for file in ~/.config/zsh/functions/*.zsh; do 
 	source "${file}"
 done
+
+################################################################################
+# aliases
+################################################################################
+
+alias ls="exa"
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -I --one-file-system"
+alias cat="bat"
+alias kctl="kubectl"
+alias dockerc="docker-compose"
+alias gco="git checkout"
+alias sv-user="SVDIR=~/.config/service sv" 
+alias sv-x="SVDIR=~/.config/x-service sv"
 
 ################################################################################
 # key bindings
@@ -66,53 +106,10 @@ bindkey '^o' edit-command-line
 bindkey '^p' clear-screen
 bindkey '^?' backward-delete-char # delete chars after mode switch
 
-bindkey -s '^b' 'launch_nnn^M' # launch nnn
-
 ################################################################################
-# zstyle config
+# settings
 ################################################################################
 
-zstyle ':completion:*'           special-dirs true # add slash on ./ ../
-zstyle ':completion::complete:*' gain-privileges 1 # auto-complete sudo cmds
-zstyle ':completion:*'           rehash true       # update external commands on every search
-zstyle ':completion:*'           matcher-list '' 'm:{a-zA-Z}={A-Za-z}' # case insenstiive
-
-################################################################################
-# zsh options
-################################################################################
-
-setopt INC_APPEND_HISTORY   # add commands directly to history (not on closing)
-setopt HIST_IGNORE_SPACE    # ignore commands with space prefixed
-setopt HIST_FIND_NO_DUPS    # skip duplicates in history file
-setopt HIST_IGNORE_ALL_DUPS # do not write duplicates to history file
-setopt SHARE_HISTORY        # share history between sessions
-
-ZLE_RPROMPT_INDENT=0           # disable right padding in prompt
-KEYTIMEOUT=1                   # make vi mode transitions faster
-HISTFILE=~/.cache/zsh/zhistory # hint: must be created manually
-HISTSIZE=1000
-SAVEHIST=5000
-
-################################################################################
-# aliases
-################################################################################
-
-alias ls="exa"
-alias cp="cp -i"
-alias mv="mv -i"
-alias rm="rm -i"
-alias cat="bat"
-alias kctl="kubectl"
-alias dockerc="docker-compose"
-alias gco="git checkout"
-alias sv-user="SVDIR=~/.config/service sv" 
-alias sv-x="SVDIR=~/.config/x-service sv"
-
-################################################################################
-# options
-################################################################################
-
-# globals
 export EDITOR=nvim
 
 # fzf
@@ -139,20 +136,7 @@ export FZF_DEFAULT_OPTS='
 export NNN_TRASH=1 # use trash-cli
 
 ################################################################################
-# prompt
-################################################################################
-
-function zle-line-init zle-keymap-select {
-  VIM_PROMPT="%B%F{yellow}[NORMAL]%f%b "
-	RPROMPT='${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}'
-  zle reset-prompt
-}
-
-PROMPT='%F{magenta}%~%f$(vcs_data)'$'\n''%F{green}%B→%b%f '
-RPROMPT="" # needs to bet set - otherwise its zle-line-init is not loaded on startup
-
-################################################################################
-# startup
+# init
 ################################################################################
 
 STARTX_LOG="$HOME/.local/share/xorg/startx.log"
