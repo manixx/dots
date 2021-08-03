@@ -1,4 +1,4 @@
-#!/bish
+#!/zsh
 
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
@@ -28,13 +28,11 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-$HOME/.fehbg       # set background image
-xset r rate 220 40 # update keyboard update rate
-xset -dpms s off   # disable monitor saving mode 
-setxkbmap de       # set keyboard layout
-
+$HOME/.fehbg                       # set background image
+xset r rate 220 40                 # update keyboard update rate
+xset -dpms s off                   # disable monitor saving mode
+setxkbmap de                       # set keyboard layout
 runsvdir $HOME/.config/x-service & # start xorg service
-
-eval $(dbus-launch --sh-syntax) # setup user dbus session
+eval $(dbus-launch --sh-syntax)    # setup user dbus session
 
 exec dwm
