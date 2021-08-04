@@ -5,10 +5,12 @@ launch_nnn () {
 	fi
 
 	NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-	nnn -d -H "$@"
+	nnn -dUH "$@"
 
 	if [ -f "$NNN_TMPFILE" ]; then
 		. "$NNN_TMPFILE"
 		rm -f "$NNN_TMPFILE" > /dev/null
 	fi
 }
+
+zle -N launch_nnn

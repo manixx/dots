@@ -33,17 +33,18 @@ HISTSIZE=1000
 SAVEHIST=5000
 
 zle -N edit-command-line # to edit command in $EDITOR
-zle -N zle-line-init     # call on init (setting PROMPT to init)
-zle -N zle-keymap-select # call on vim selection mode change
 
 ################################################################################
 # prompt
 ################################################################################
 
+zle -N zle-line-init     # call on init (setting PROMPT to init)
+zle -N zle-keymap-select # call on vim selection mode change
+
 function zle-line-init zle-keymap-select {
-  VIM_PROMPT="%B%F{yellow}[NORMAL]%f%b "
+	VIM_PROMPT="%B%F{yellow}[NORMAL]%f%b "
 	RPROMPT='${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}'
-  zle reset-prompt
+	zle reset-prompt
 }
 
 PROMPT='%F{magenta}%~%f$(vcs_data)'$'\n''%F{green}%B→%b%f '
@@ -95,6 +96,7 @@ alias sv-x="SVDIR=~/.config/x-service sv"
 ################################################################################
 
 bindkey -v                        # vim bindings
+bindkey '^?' backward-delete-char # delete chars after mode switch
 bindkey '^j' up-history
 bindkey '^k' down-history
 bindkey '^w' backward-kill-word
@@ -104,7 +106,8 @@ bindkey '^h' backward-word
 bindkey '^l' forward-word
 bindkey '^o' edit-command-line
 bindkey '^p' clear-screen
-bindkey '^?' backward-delete-char # delete chars after mode switch
+
+bindkey -s '^b' 'launch_nnn^M' 
 
 ################################################################################
 # settings
@@ -133,7 +136,9 @@ export FZF_DEFAULT_OPTS='
   --color info:4,prompt:5,spinner:3,pointer:6,marker:2'
 
 # nnn
-export NNN_TRASH=1 # use trash-cli
+export NNN_TRASH=1         # use trash-cli
+export NNN_USE_EDITOR=1
+export NNN_NO_AUTOSELECT=1 # disable auto-select in navigate-as-you-type
 
 ################################################################################
 # init

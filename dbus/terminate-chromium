@@ -5,7 +5,7 @@
 # on the next startup.
 if pkill -x chromium; then
 	while ! pgrep -x chromium > /dev/null; do 
-		wait 1 
+		sleep 0.5 
 	done 
 fi
 
