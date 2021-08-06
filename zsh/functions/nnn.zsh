@@ -12,5 +12,3 @@ launch_nnn () {
 		rm -f "$NNN_TMPFILE" > /dev/null
 	fi
 }
-
-zle -N launch_nnn

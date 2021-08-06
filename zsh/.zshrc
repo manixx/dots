@@ -42,12 +42,18 @@ zle -N zle-line-init     # call on init (setting PROMPT to init)
 zle -N zle-keymap-select # call on vim selection mode change
 
 function zle-line-init zle-keymap-select {
-	VIM_PROMPT="%B%F{yellow}[NORMAL]%f%b "
-	RPROMPT='${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}'
+	VIM_PROMPT="%B%F{yellow}[NORMAL]%f%b"
+	RPROMPT='${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} \
+$(last_exit)\
+$(last_cmd_exec_time)'
 	zle reset-prompt
 }
 
-PROMPT='%F{magenta}%~%f$(vcs_data)'$'\n''%F{green}%B→%b%f '
+PROMPT='%F{magenta}%~%f\
+$(vcs_data)\
+$(k8s_context)\
+'$'\n''\
+%F{green}%B→%b%f '
 RPROMPT="" # needs to bet set for zle-line-init is not loaded on startup
 
 ################################################################################
