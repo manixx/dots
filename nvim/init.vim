@@ -49,6 +49,17 @@ set shortmess+=c                 " Disable Pattern not found error
 set updatetime=100
 set shiftwidth=2
 set tabstop=2
+set foldmethod=syntax
+set foldlevelstart=1
+
+let javaScript_fold=1         " JavaScript
+let perl_fold=1               " Perl
+let php_folding=1             " PHP
+let r_syntax_folding=1        " R
+let ruby_fold=1               " Ruby
+let sh_fold_enabled=1         " sh
+let vimsyn_folding='af'       " Vim script
+let xml_syntax_folding=1      " XML
 
 syntax      enable    " enable syntax highlights
 filetype    plugin on " enable plugins
@@ -100,12 +111,18 @@ endfunction
 noremap <leader>f   :Files<cr>
 noremap <leader>F   :Files ~<cr>
 noremap <leader>s   :Ag<cr>
-noremap <leader>bl  :BLines<cr>
 noremap <leader>l   :Lines<cr>
 noremap <leader>gc  :Commits<cr>
 noremap <leader>gbc :BCommits<cr>
 noremap <leader>sy  :Filetypes<cr>
 noremap <leader>bu  :Buffers<cr>
+
+command! -bang -nargs=* LinesWithPreview
+			\ call fzf#vim#grep(
+			\   'rg --with-filename --column --line-number --no-heading --color=always --smart-case . '.fnameescape(expand('%')), 1,
+			\   fzf#vim#with_preview({'options': '--delimiter : --nth 4.. --no-sort'}, 'up:50%', '?'),
+			\   1)
+nnoremap <leader>bl :LinesWithPreview<CR>
 
 " easy align  
 xmap ga <Plug>(EasyAlign)

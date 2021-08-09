@@ -146,6 +146,9 @@ export NNN_TRASH=1         # use trash-cli
 export NNN_USE_EDITOR=1
 export NNN_NO_AUTOSELECT=1 # disable auto-select in navigate-as-you-type
 
+# bat 
+export BAT_THEME='edge'
+
 ################################################################################
 # init
 ################################################################################
