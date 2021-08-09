@@ -34,6 +34,11 @@ SAVEHIST=5000
 
 zle -N edit-command-line # to edit command in $EDITOR
 
+zstyle ':completion:*'           special-dirs true                     # add slash on ./ ../
+zstyle ':completion::complete:*' gain-privileges 1                     # auto-complete sudo cmds
+zstyle ':completion:*'           rehash true                           # update external commands on every search
+zstyle ':completion:*'           matcher-list '' 'm:{a-zA-Z}={A-Za-z}' # case insenstiive
+
 ################################################################################
 # prompt
 ################################################################################

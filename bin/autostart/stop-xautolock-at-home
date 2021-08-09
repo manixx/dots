@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -e
+
+script_name=`basename $0`
+current_ssid=`iw wlp0s20f3 info | grep -Po '(?<=ssid ).*'`
+current_router_mac=`arp -a  | grep -w "192.168.50.1" | cut -d ' ' -f 4`
+
+if [ -f ~/.config/autostart/$script_name ]; then 
+	source ~/.config/autostart/$script_name
+
+	if [ "$SSID" == "$current_ssid" ] && [ "$ROUTER_MAC" == "$current_router_mac" ]; then 
+		SVDIR="$HOME/.config/x-service" sv stop xautolock 
+		exit 0
+	fi 
+fi 
+
+echo "No configuration file found, check if SSID and ROUTER_MAC is set"
+echo "in ~/.config/autostart/$script_name."
+exit 0
