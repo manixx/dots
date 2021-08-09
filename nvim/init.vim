@@ -94,6 +94,7 @@ noremap <leader>gc  :Commits<cr>
 noremap <leader>gbc :BCommits<cr>
 noremap <leader>sy  :Filetypes<cr>
 noremap <leader>bu  :Buffers<cr>
+noremap <leader>bl  :Lines<cr>
 
 " easy align  
 xmap ga <Plug>(EasyAlign)
