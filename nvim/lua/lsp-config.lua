@@ -1,5 +1,12 @@
 local lsp = require("lspconfig")
 
+
+require('lspfuzzy').setup {}
+
+-- #############################################################################
+-- custom setup
+-- #############################################################################
+
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 	vim.lsp.diagnostic.on_publish_diagnostics, { update_in_insert = true }
 )
@@ -9,7 +16,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 -- #############################################################################
 
 local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-
 
 -- lsp 
 local on_attach = function(client, bufnr) 
@@ -28,16 +34,6 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 	buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
 	
-	-- compe 
-	local compeOpts = { expr = true, silent = true }
-
-	buf_set_keymap("i", "<C-Space>", "compe#complete()", compeOpts)
-	buf_set_keymap("i", "<C-e>", [[compe#close("<C-e>")]], compeOpts)
-	buf_set_keymap("i", "<CR>", [[compe#confirm("<CR>")]], compeOpts)
-
-	buf_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-	buf_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-
 	-- auto highlight 
 	if client.resolved_capabilities.document_highlight then
 		vim.api.nvim_exec([[
@@ -52,7 +48,30 @@ local on_attach = function(client, bufnr)
 			augroup END
 			]], false)
 	end
+
+	-- compe
+	local compeOpts = { expr = true, silent = true }
+
+	buf_set_keymap("i", "<C-Space>", "compe#complete()", compeOpts)
+	buf_set_keymap("i", "<C-e>", [[compe#close("<C-e>")]], compeOpts)
+	buf_set_keymap("i", "<CR>", [[compe#confirm("<CR>")]], compeOpts)
+
+	buf_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+	buf_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 end
+
+lsp.tsserver.setup{ on_attach = on_attach }
+lsp.gopls.setup{ on_attach = on_attach }
+lsp.bashls.setup{ on_attach = on_attach }
+lsp.angularls.setup{ on_attach = on_attach }
+lsp.ccls.setup{ on_attach = on_attach }
+lsp.dockerls.setup{ on_attach = on_attach }
+lsp.graphql.setup{ on_attach = on_attach }
+lsp.html.setup{ on_attach = on_attach }
+lsp.jsonls.setup{ on_attach = on_attach }
+lsp.sqls.setup{ on_attach = on_attach }
+lsp.vimls.setup{ on_attach = on_attach }
+lsp.yamlls.setup{ on_attach = on_attach }
 
 -- #############################################################################
 -- compe 
@@ -100,33 +119,3 @@ _G.tab_complete = function()
 		return t("<Tab>")
 	end
 end
-
--- #############################################################################
--- lspfuzzy 
--- #############################################################################
-
-require('lspfuzzy').setup {}
-
--- #############################################################################
--- tsserver 
--- #############################################################################
-
-lsp.tsserver.setup{ on_attach = on_attach }
-
--- #############################################################################
--- gopls 
--- #############################################################################
-
-lsp.gopls.setup{ on_attach = on_attach }
-
--- #############################################################################
--- ccls  
--- #############################################################################
-
-lsp.ccls.setup{ on_attach = on_attach }
-
--- #############################################################################
--- ccls  
--- #############################################################################
-
-lsp.yamlls.setup{ on_attach = on_attach }
