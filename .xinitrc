@@ -1,4 +1,4 @@
-#!/zsh
+#!/bin/zsh
 
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
@@ -34,6 +34,6 @@ xset -dpms s off                   # disable monitor saving mode
 setxkbmap de                       # set keyboard layout
 runsvdir $HOME/.config/x-service & # start xorg service
 eval $(dbus-launch --sh-syntax)    # setup user dbus session
-./$HOME/.local/bin/autostart/* &   # automation scripts
+./.local/bin/autostart/*  &        # automation scripts
 
 exec dwm

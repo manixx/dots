@@ -21,6 +21,8 @@ Plug 'hrsh7th/vim-vsnip'
 Plug 'ojroques/nvim-lspfuzzy'
 
 " syntax 
+Plug 'jparise/vim-graphql'
+Plug 'pangloss/vim-javascript'
 
 call plug#end()
 
@@ -76,6 +78,9 @@ let g:vim_json_conceal=0
 
 " gitgutter
 let g:gitgutter_map_keys = 0
+
+" vim-javascript 
+let g:javascript_plugin_jsdoc = 1
 
 " ##############################################################################
 " ## keybindings
