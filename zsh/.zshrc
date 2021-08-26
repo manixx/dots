@@ -117,6 +117,7 @@ bindkey '^h' backward-word
 bindkey '^l' forward-word
 bindkey '^o' edit-command-line
 bindkey '^p' clear-screen
+bindkey -r '^z'                   # remove suspend shortcut
 
 bindkey -s '^b' 'launch_nnn^M' 
 

@@ -23,6 +23,7 @@ Plug 'ojroques/nvim-lspfuzzy'
 " syntax 
 Plug 'jparise/vim-graphql'
 Plug 'pangloss/vim-javascript'
+Plug 'ekalinin/Dockerfile.vim'
 
 call plug#end()
 

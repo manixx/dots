@@ -1,7 +1,9 @@
-http
-http-prompt
-https
-pip
-pip3
-pip3.9
-pygmentize
+*
+!autostart
+!create-backup
+!dmenu-desktop
+!dwmblocks
+!lock-screen
+!xrandr-home
+!xrandr-office
+!xrandr-reset
