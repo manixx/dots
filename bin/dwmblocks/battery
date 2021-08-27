@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/sh
 
 set -e
 
@@ -6,12 +6,16 @@ battery_dir="/sys/class/power_supply/BAT0"
 
 capacity=$(cat $battery_dir/capacity)
 power_now=$(cat $battery_dir/power_now)
-
-energy_full=$(cat $battery_dir/energy_full) 
 energy_now=$(cat $battery_dir/energy_now) 
+status=$(cat $battery_dir/status) 
 
-remaning_minutes=$(echo ${power_now} ${energy_now} | awk '{ printf "%d", $2 / $1 * 60 }')
-until_empty=$(date -d "+${remaning_minutes} minutes" "+%H:%M")
+if [ $status = 'Unknown' ]; then 
+	echo "" # usually means full 
+	exit 0
+else 
+	remaning_minutes=$(echo ${power_now} ${energy_now} | awk '{ printf "%d", $2 / $1 * 60 }')
+	until_empty=$(date -d "+${remaning_minutes} minutes" "+%H:%M")
+fi 
 
 echo \
 	${capacity} \
