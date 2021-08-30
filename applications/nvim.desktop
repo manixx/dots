@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=Neovim
-Exec=st -n nvim -e tmux new-session -A -s code nvim 
-Terminal=false
-Type=Application

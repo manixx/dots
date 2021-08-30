@@ -1,2 +1,4 @@
-mimeinfo.cache
-userapp-Telegram*
+*
+!chromium.desktop 
+!matterhorn.desktop
+!whatsapp.desktop

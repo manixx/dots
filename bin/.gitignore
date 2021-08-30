@@ -1,5 +1,4 @@
 *
-!autostart
 !create-backup
 !dmenu-desktop
 !dwmblocks
