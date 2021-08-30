@@ -19,11 +19,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'ojroques/nvim-lspfuzzy'
-
-" syntax 
-Plug 'jparise/vim-graphql'
-Plug 'pangloss/vim-javascript'
-Plug 'ekalinin/Dockerfile.vim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 call plug#end()
 
