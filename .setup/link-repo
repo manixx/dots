@@ -2,6 +2,7 @@
 
 set -x 
 
+
 mkdir -p ~/.config/zsh
 mkdir -p ~/.config/dunst
 
@@ -9,9 +10,9 @@ ln -s ~/dev/dots/applications  -t ~/.local/share
 ln -s ~/dev/dots/bin           -t ~/.local
 ln -s ~/dev/dots/zsh/functions -t ~/.config/zsh
 ln -s ~/dev/dots/nvim          -t ~/.config
-ln -s ~/dev/dots/service       -t ~/.config
 ln -s ~/dev/dots/x-service     -t ~/.config
 ln -s ~/dev/dots/bat           -t ~/.config
+ln -s ~/dev/dots/user-service  -T ~/.config/service
 
 ln -s ~/dev/dots/.tmux.conf                ~/.tmux.conf
 ln -s ~/dev/dots/.Xresources               ~/.Xresources
@@ -43,3 +44,7 @@ sudo ln -s $HOME/dev/dots/connman/flags     /etc/sv/connmand/conf
 
 sudo mkdir -p /etc/sv/dbus/control 
 sudo ln -s $HOME/dev/dots/dbus/terminate-chromium /etc/sv/dbus/control/t
+
+for  sv in ~/dev/dots/service/*; do 
+	sudo ln -s $sv -t /etc/sv
+done

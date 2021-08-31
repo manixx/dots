@@ -1,0 +1,12 @@
+#!/bin/sh
+# Thanks to: https://github.com/madand/runit-services/tree/master/backlight
+
+# Restore saved brightness for each card, if any.
+for card in $(find /sys/class/backlight/ -type l); do
+    storage_file="/var/cache/backlight/$(basename $card)-brightness-old"
+    if [ -r "$storage_file" ]; then
+        cp "$storage_file" "$card/brightness"
+    fi
+done
+
+exec chpst -b backlight pause
