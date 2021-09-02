@@ -73,7 +73,6 @@ lsp.graphql.setup{ on_attach = on_attach }
 lsp.sqls.setup{ on_attach = on_attach }
 lsp.vimls.setup{ on_attach = on_attach }
 lsp.yamlls.setup{ on_attach = on_attach }
-lsp.angularls.setup{ on_attach = on_attach }
 lsp.jsonls.setup{ 
 	on_attach = on_attach,
 	capabilities = capabilities,
@@ -83,6 +82,46 @@ lsp.html.setup{
 	capabilities = capabilities,
 }
 
+local project_library_path = "/home/manfred/.npm-global/lib/node_modules/typescript/lib"
+local cmd = {"ngserver", "--stdio", "--tsProbeLocations", project_library_path , "--ngProbeLocations", project_library_path}
+
+lsp.angularls.setup{
+	cmd = cmd,
+	on_new_config = function(new_config,new_root_dir)
+		new_config.cmd = cmd
+	end, 
+	on_attach = on_attach 
+}
+
+local system_name = "Linux"
+local sumneko_root_path = '/home/manfred/dev/lua-language-server'
+local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
+local runtime_path = vim.split(package.path, ';')
+
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
+
+lsp.sumneko_lua.setup{
+	on_attach = on_attach,
+	cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+	settings = {
+		Lua = {
+			runtime = {
+				version = 'LuaJIT',
+				path = runtime_path,
+			},
+			diagnostics = {
+				globals = {'vim'},
+			},
+			workspace = {
+				library = vim.api.nvim_get_runtime_file("", true),
+			},
+			telemetry = {
+				enable = false,
+			},
+		},
+	},
+}
 
 -- #############################################################################
 -- compe 

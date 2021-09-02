@@ -10,7 +10,8 @@ npm i -g \
 	vim-language-server \
 	yaml-language-server \
 	vscode-langservers-extracted \
-	@angular/language-server
+	@angular/language-server \
+	@angular/language-service
 
 go get \
 	github.com/lighttiger2505/sqls
@@ -18,3 +19,5 @@ go get \
 sudo xbps-install -S \
 	gopls \
 	ccls
+
+# for lua check: https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)
