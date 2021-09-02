@@ -13,12 +13,8 @@ opts="
 	initrd=\initramfs
 	resume=/dev/storage/swap
 
-	rd.luks.uuid=9dff7ce9-df99-4d05-a9f7-02d19050fd4f
-
+	rd.luks.uuid=7487d1b4-53f3-491b-9e73-63aa8f32bac6                  
 	rd.lvm.vg=storage 
-	rd.lvm.lv=storage/root 
-	rd.lvm.lv=storage/home 
-	rd.vlm.lv=storage/swap 
 
 	quiet
 	loglevel=3
@@ -32,7 +28,7 @@ opts=`echo "${opts}" | xargs`
 
 efibootmgr \
 	--disk /dev/nvme0n1 \
-	--part 1 \
+	--part 5 \
 	--create \
 	--label "Void Linux" \
 	--loader /vmlinuz \

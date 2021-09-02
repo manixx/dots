@@ -2,7 +2,6 @@
 
 set -x 
 
-
 mkdir -p ~/.config/zsh
 mkdir -p ~/.config/dunst
 
