@@ -60,18 +60,29 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 end
 
+--Enable (broadcasting) snippet capability for completion
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 lsp.tsserver.setup{ on_attach = on_attach }
 lsp.gopls.setup{ on_attach = on_attach }
 lsp.bashls.setup{ on_attach = on_attach }
---lsp.angularls.setup{ on_attach = on_attach }
 lsp.ccls.setup{ on_attach = on_attach }
 lsp.dockerls.setup{ on_attach = on_attach }
 lsp.graphql.setup{ on_attach = on_attach }
-lsp.html.setup{ on_attach = on_attach }
-lsp.jsonls.setup{ on_attach = on_attach }
 lsp.sqls.setup{ on_attach = on_attach }
 lsp.vimls.setup{ on_attach = on_attach }
 lsp.yamlls.setup{ on_attach = on_attach }
+lsp.angularls.setup{ on_attach = on_attach }
+lsp.jsonls.setup{ 
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+lsp.html.setup{ 
+	on_attach = on_attach,
+	capabilities = capabilities,
+}
+
 
 -- #############################################################################
 -- compe 
