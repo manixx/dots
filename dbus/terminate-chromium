@@ -11,4 +11,4 @@ pid=`pgrep -P1 chromium`
 pkill chromium &
 tail --pid=$pid -f /dev/null
 
-exit 1
+pkill dbus
