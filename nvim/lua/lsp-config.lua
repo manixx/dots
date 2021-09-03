@@ -1,7 +1,7 @@
 local lsp = require("lspconfig")
 
 
-require('lspfuzzy').setup {}
+require'lspfuzzy'.setup {}
 
 -- #############################################################################
 -- custom setup
