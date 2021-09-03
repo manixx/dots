@@ -59,6 +59,7 @@ $(last_cmd_exec_time)'
 PROMPT='%F{magenta}%~%f\
 $(vcs_data)\
 $(k8s_context)\
+$(check_jobs)\
 '$'\n''\
 %F{green}%B→%b%f '
 RPROMPT="" # needs to bet set for zle-line-init is not loaded on startup
@@ -119,7 +120,6 @@ bindkey '^h' backward-word
 bindkey '^l' forward-word
 bindkey '^o' edit-command-line
 bindkey '^p' clear-screen
-bindkey -r '^z'                   # remove suspend shortcut
 
 bindkey -s '^b' 'launch_nnn^M' 
 
