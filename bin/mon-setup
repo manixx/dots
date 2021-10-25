@@ -1,0 +1,43 @@
+#!/bin/sh
+
+export SVDIR=~/.config/x-service
+
+mode=${1}
+
+if [ -z ${mode} ]; then 
+	echo "Please specify mode." 
+	exit 1 
+fi
+
+case ${mode} in 
+
+	home) 
+		xrandr \
+			--output eDP1 --off \
+			--output DP1 --mode 2560x1440 \
+			--output DP2-3 --mode 2560x1440 --right-of DP1
+
+		sv stop xautolock
+		;;
+	
+	reset) 
+		xrandr \
+			--output eDP1 --primary --auto \
+			--output DP1 --off \
+			--output DP2 --off \
+			--output DP2-1 --off \
+			--output DP2-2 --off \
+			--output DP2-3 --off \
+			--output HDMI1 --off \
+			--output HDMI2 --off 
+
+		sv start xautolock
+		;;
+
+	*)
+		echo "Mode ${mode} not found." 
+		exit 1
+esac
+
+$HOME/.fehbg
+unset SVDIR

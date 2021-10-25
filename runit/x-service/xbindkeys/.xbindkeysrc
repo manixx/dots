@@ -1,26 +1,14 @@
-################################################################################
-# common
-################################################################################
-
 "lock-screen"
 	Mod4 + Escape
 
 "passmenu -i -l 5 -fn 'DejaVu Sans-8' -nf '#88909f' -nb '#2c2e34' -sf '#2c2e34' -sb '#c5cdd9'"
 	Mod4 + p
 
-################################################################################
-# backlight 
-################################################################################
-
 "xbacklight -dec 10"
 	XF86MonBrightnessDown
 
 "xbacklight -inc 10"
 	XF86MonBrightnessUp
-
-################################################################################
-# audio
-################################################################################
 
 "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 	XF86AudioMute
@@ -34,10 +22,6 @@
 "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
 	XF86AudioMicMute
 
-################################################################################
-# spotify 
-################################################################################
-
 "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 	Mod4 + XF86AudioMute
 
@@ -46,4 +30,3 @@
 
 "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 	Mod4 + XF86AudioRaiseVolume
-
