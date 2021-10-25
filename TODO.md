@@ -1,3 +1,0 @@
-- [x] Install `az` and `gcloud` properly 
-- [ ] Move zsh fast syntax highlighting package into Void repo 
-- [x] Rethink and refactor own zsh functions
