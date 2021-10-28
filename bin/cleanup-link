@@ -46,6 +46,7 @@ trash ~/.Xresources
 trash ~/.config/dunst
 trash ~/.config/service
 trash ~/.config/x-service
+trash ~/.zshenv
 
 sudo rm -f /etc/X11/xorg.conf.d/30-touchpad.conf
 sudo rm -f /etc/X11/xorg.conf.d/20-intel.conf

@@ -18,6 +18,7 @@ ln -sf ${repoPath}/gnupg/*                -t ~/.gnupg
 ln -sf ${repoPath}/nvim                   -t ~/.config
 ln -sf ${repoPath}/zsh                    -t ~/.config
 ln -sf ${repoPath}/tmux/.*                -t ~
+ln -sf ${repoPath}/zsh/.zshenv            -t ~
 ln -sf ${repoPath}/xorg/.xinitrc          -t ~
 ln -sf ${repoPath}/xorg/.Xresources       -t ~
 ln -sf ${repoPath}/xorg/dunstrc           -t ~/.config/dunst
