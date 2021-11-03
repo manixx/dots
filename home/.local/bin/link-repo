@@ -1,15 +1,11 @@
 #!/bin/zsh
 
-setopt dotglob
-
-#set -x
-
 scriptPath=$(realpath "$0") 
 repoPath="$(dirname ${scriptPath})/../../.."
 
 linkFiles() {
 	destDir=${2}
-	prefix=${3}
+	prefix=${3} # used for sudo 
 	normalized=''
 
 	# if destination is home directory normalize 
@@ -21,13 +17,12 @@ linkFiles() {
 	for file in ${repoPath}/${1}/**/*; do 
 		file=$(realpath --relative-base=${repoPath} $file)
 
-		if [ -d ${file} ]; then 
+		if [ -d ${repoPath}/${file} ]; then 
 			${prefix} mkdir -p ${destDir}${file#"$normalized"}
 		fi 
 
-		if [ -f ${file} ]; then 
-			${prefix} ln -sf ${repoPath}/${file} \
-				-t ${destDir}$(dirname ${file#"${normalized}"})
+		if [ -f ${repoPath}/${file} ]; then 
+			${prefix} ln -sf ${repoPath}/${file} -t ${destDir}$(dirname ${file#"${normalized}"})
 		fi 
 	done 
 }
