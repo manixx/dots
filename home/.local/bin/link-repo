@@ -1,0 +1,40 @@
+#!/bin/zsh
+
+setopt dotglob
+
+#set -x
+
+scriptPath=$(realpath "$0") 
+repoPath="$(dirname ${scriptPath})/../../.."
+
+linkFiles() {
+	destDir=${2}
+	prefix=${3}
+	normalized=''
+
+	# if destination is home directory normalize 
+	# path of parent folder
+	if [[ "${2}" = ${HOME}* ]]; then
+		normalized=${1}/
+	fi 
+
+	for file in ${repoPath}/${1}/**/*; do 
+		file=$(realpath --relative-base=${repoPath} $file)
+
+		if [ -d ${file} ]; then 
+			${prefix} mkdir -p ${destDir}${file#"$normalized"}
+		fi 
+
+		if [ -f ${file} ]; then 
+			${prefix} ln -sf ${repoPath}/${file} \
+				-t ${destDir}$(dirname ${file#"${normalized}"})
+		fi 
+	done 
+}
+
+setopt dotglob
+
+linkFiles home ${HOME}/
+linkFiles etc  /        sudo
+
+unsetopt dotglob

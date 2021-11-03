@@ -2,9 +2,7 @@
 
 set -x
 
-# TODO default directory
-
-scriptPath=$(realpath "$(dirname "$0")") 
+scriptPath=$(realpath "$0") 
 repoPath="${scriptPath}/.."
 
 for app in ${repoPath}/applications/*; do 
