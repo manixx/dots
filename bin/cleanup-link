@@ -50,3 +50,8 @@ trash ~/.zshenv
 
 sudo rm -f /etc/X11/xorg.conf.d/30-touchpad.conf
 sudo rm -f /etc/X11/xorg.conf.d/20-intel.conf
+sudo rm -f /etc/default/efibootmgr-kernel-hook
+
+for config in ${repoPath}/kernel.d/*; do 
+	sudo rm -f /etc/kernel.d/post-install/$(basename ${config})
+done

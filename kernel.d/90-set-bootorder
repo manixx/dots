@@ -1,0 +1,19 @@
+#!/bin/sh
+
+PKGNAME="$1"
+VERSION="$2"
+
+# get major version, e.g. "4.8" for "linux4.8"
+major_version=$(echo $PKGNAME | cut -c 6-)
+
+# previous hook should've installed the entry already
+bootnum=$(efibootmgr | grep "kernel ${major_version}" | cut -c 5-8)
+bootorder=$(efibootmgr | grep "BootOrder: " | cut -c 12-)
+
+if ! echo $bootorder | grep $bootnum; then 
+	efibootmgr -qo "$bootnum,$bootorder" 
+else 
+	echo "\n [WARNING] Found bootnum already, double check BootOrder!\n" 
+	efibootmgr 
+fi 
+
