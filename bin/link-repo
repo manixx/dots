@@ -23,10 +23,13 @@ ln -sf ${repoPath}/xorg/.xinitrc          -t ~
 ln -sf ${repoPath}/xorg/.Xresources       -t ~
 ln -sf ${repoPath}/xorg/dunstrc           -t ~/.config/dunst
 
+sudo mkdir -p /etc/connman
+
 sudo ln -sf ${repoPath}/xorg/30-touchpad.conf          -t /etc/X11/xorg.conf.d
 sudo ln -sf ${repoPath}/xorg/20-intel.conf             -t /etc/X11/xorg.conf.d
 sudo ln -sf ${repoPath}/default/efibootmgr-kernel-hook -t /etc/default
 sudo ln -sf ${repoPath}/kernel.d/*                     -t /etc/kernel.d/post-install
+sudo ln -sf ${repoPath}/connmand/*                     -t /etc/connman
 
 link_runsvdir() {
 	setopt dotglob
