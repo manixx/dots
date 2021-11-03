@@ -1,8 +1,7 @@
 #!/bin/zsh
 
+# TODO check scriptPath 
 set -x
-
-# TODO default directory
 
 scriptPath=$(realpath "$(dirname "$0")") 
 repoPath="${scriptPath}/.."
@@ -23,14 +22,6 @@ ln -sf ${repoPath}/xorg/.xinitrc          -t ~
 ln -sf ${repoPath}/xorg/.Xresources       -t ~
 ln -sf ${repoPath}/xorg/dunstrc           -t ~/.config/dunst
 
-sudo mkdir -p /etc/connman
-
-sudo ln -sf ${repoPath}/xorg/30-touchpad.conf          -t /etc/X11/xorg.conf.d
-sudo ln -sf ${repoPath}/xorg/20-intel.conf             -t /etc/X11/xorg.conf.d
-sudo ln -sf ${repoPath}/default/efibootmgr-kernel-hook -t /etc/default
-sudo ln -sf ${repoPath}/kernel.d/*                     -t /etc/kernel.d/post-install
-sudo ln -sf ${repoPath}/connmand/*                     -t /etc/connman
-
 link_runsvdir() {
 	setopt dotglob
 	${3} mkdir -p ${2}
@@ -48,3 +39,13 @@ link_runsvdir() {
 link_runsvdir user-service ~/.config/service
 link_runsvdir x-service    ~/.config/x-service
 link_runsvdir service      /etc/sv sudo
+
+for file in etc/**/*; do 
+	if [ -d ${repoPath}/${file} ]; then 
+		sudo mkdir -p /${file}
+	fi 
+
+	if [ -f ${repoPath}/${file} ]; then 
+		sudo ln -sf ${repoPath}/${file} -t /$(dirname ${file})
+	fi 
+done
