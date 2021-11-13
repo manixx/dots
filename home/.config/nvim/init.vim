@@ -42,8 +42,6 @@ set shortmess+=c                 " disable 'Pattern not found error'
 set updatetime=100               " update various parts faster (lsp server)
 set shiftwidth=2
 set tabstop=2
-"set foldmethod=syntax
-"set foldlevelstart=1
 
 syntax      enable    " enable syntax highlights
 filetype    plugin on " enable plugins
