@@ -70,8 +70,8 @@ RPROMPT="" # needs to bet set for zle-line-init is not loaded on startup
 
 plugins=(
 	/usr/share/bash-completion/completions
-	/usr/share/doc/fzf/completion.zsh
-	/usr/share/doc/fzf/key-bindings.zsh
+	/usr/share/fzf/completion.zsh
+	/usr/share/fzf/key-bindings.zsh
 	/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 	~/dev/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
@@ -153,6 +153,10 @@ export FZF_DEFAULT_OPTS='
 export NNN_TRASH=1         # use trash-cli
 export NNN_USE_EDITOR=1
 export NNN_NO_AUTOSELECT=1 # disable auto-select in navigate-as-you-type
+
+# gcloud cli is broken with current python3 setup 
+# use phython2 until this is fixed 
+export CLOUDSDK_PYTHON=python2
 
 ################################################################################
 # init
