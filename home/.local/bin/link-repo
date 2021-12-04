@@ -22,11 +22,11 @@ linkFiles() {
 		fi 
 
 		if [ -f ${repoPath}/${file} ]; then 
-			if [ -z ${prefix} ]; do 
-				${prefix} ln -sf ${repoPath}/${file} -t ${destDir}$(dirname ${file#"${normalized}"})
+			if [ -z ${prefix} ]; then 
+				ln -sf ${repoPath}/${file} -t ${destDir}$(dirname ${file#"${normalized}"})
 			else 
-				${prefix} cp -i ${repoPath}/${file} ${destDir}$(dirname ${file#"${normalized}"})
-			done 
+				${prefix} cp -if ${repoPath}/${file} ${destDir}$(dirname ${file#"${normalized}"})
+			fi 
 		fi 
 	done 
 }
