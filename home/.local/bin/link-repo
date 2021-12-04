@@ -22,12 +22,16 @@ linkFiles() {
 		fi 
 
 		if [ -f ${repoPath}/${file} ]; then 
-			${prefix} ln -sf ${repoPath}/${file} -t ${destDir}$(dirname ${file#"${normalized}"})
+			if [ -z ${prefix} ]; do 
+				${prefix} ln -sf ${repoPath}/${file} -t ${destDir}$(dirname ${file#"${normalized}"})
+			else 
+				${prefix} cp -i ${repoPath}/${file} ${destDir}$(dirname ${file#"${normalized}"})
+			done 
 		fi 
 	done 
 }
 
-setopt dotglob
+setopt dotglob # include dot files
 
 linkFiles home ${HOME}/
 linkFiles etc  /        sudo

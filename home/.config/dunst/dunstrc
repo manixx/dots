@@ -1,12 +1,11 @@
 [global]
     monitor = 0
+		origin = bottom-center
     follow = mouse
-		geometry = "400x100-800-32"
     progress_bar = false
     indicate_hidden = yes
     shrink = no
     transparency = 0
-    notification_height = 0
     separator_height = 1
     padding = 8
     horizontal_padding = 8
@@ -36,10 +35,6 @@
     mouse_left_click = close_current
     mouse_middle_click = do_action, close_current
     mouse_right_click = close_all
-
-[shortcuts]
-		 close = ctrl+space
-		 close_all = ctrl+shift+space
 
 [urgency_low]
     background = "#2c2e34"

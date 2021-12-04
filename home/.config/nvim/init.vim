@@ -13,6 +13,8 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
 Plug 'Yggdroot/indentLine' 
 Plug 'airblade/vim-gitgutter'
+Plug 'towolf/vim-helm' 
+Plug 'tpope/vim-surround'
 
 " lsp 
 Plug 'neovim/nvim-lspconfig'
