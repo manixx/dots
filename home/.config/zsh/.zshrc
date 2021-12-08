@@ -1,5 +1,5 @@
 path=(
-	~/.local/bin 
+	~/.local/bin
 	~/.npm-global/bin
 	$(go env GOPATH)/bin
 	$path[@]
@@ -16,9 +16,9 @@ autoload -Uz \
 	edit-command-line \
 	bashcompinit
 
-if [ ! -d ~/.cache/zsh ]; then 
+if [ ! -d ~/.cache/zsh ]; then
 	mkdir -p ~/.cache/zsh
-fi 
+fi
 
 compinit -d ~/.cache/zsh/zcompdump
 promptinit
@@ -34,12 +34,12 @@ setopt AUTO_CD              # just use .. and omit cd
 
 ZLE_RPROMPT_INDENT=0           # disable right padding in prompt
 KEYTIMEOUT=1                   # make vi mode transitions faster
-HISTFILE=~/.cache/zsh/zhistory 
+HISTFILE=~/.cache/zsh/zhistory
 HISTSIZE=1000
 SAVEHIST=5000
 
 # hist file must be created manually
-if [ ! -f ${HISTFILE} ]; then 
+if [ ! -f ${HISTFILE} ]; then
 	mkdir -p $(dirname ${HISTFILE})
 	touch ${HISTFILE}
 fi
@@ -75,7 +75,7 @@ $(check_jobs)\
 RPROMPT="" # needs to bet set for zle-line-init is not loaded on startup
 
 ################################################################################
-# external sources 
+# external sources
 ################################################################################
 
 plugins=(
@@ -83,14 +83,14 @@ plugins=(
 	/usr/share/fzf/*.zsh
 	/usr/share/zsh/plugins/*/*.plugin.zsh
 
-	/opt/google-cloud-sdk/completion.zsh.inc 
+	/opt/google-cloud-sdk/completion.zsh.inc
 	/opt/google-cloud-sdk/path.zsh.inc
 	/opt/azure-cli/az.completion
 
 	~/.config/zsh/functions/*.zsh
 )
 
-for file in ${plugins[@]}; do 
+for file in ${plugins[@]}; do
 	[[ ! -r $file ]] && continue
 	source "$file"
 done
@@ -107,7 +107,7 @@ alias cat="bat"
 alias kctl="kubectl"
 alias dockerc="docker-compose"
 alias gco="git checkout"
-alias sv-user="SVDIR=~/.config/service sv" 
+alias sv-user="SVDIR=~/.config/service sv"
 alias sv-x="SVDIR=~/.config/x-service sv"
 
 ################################################################################
@@ -126,7 +126,7 @@ bindkey '^l' forward-word
 bindkey '^o' edit-command-line
 bindkey '^p' clear-screen
 
-bindkey -s '^b' 'launch_nnn^M' 
+bindkey -s '^b' 'launch_nnn^M'
 
 ################################################################################
 # settings
@@ -160,8 +160,11 @@ export NNN_USE_EDITOR=1
 export NNN_NO_AUTOSELECT=1 # disable auto-select in navigate-as-you-type
 export NNN_PLUG='f:fzplug'
 
-# gcloud cli is broken with current python3 setup 
-# use phython2 until this is fixed 
+# bat
+export BAT_THEME="my-ansi"
+
+# gcloud cli is broken with current python3 setup
+# use phython2 until this is fixed
 export CLOUDSDK_PYTHON=python2
 
 ################################################################################
@@ -175,7 +178,7 @@ if [[ ! $DISPLAY && $(tty) == "/dev/tty1" ]]; then
 	exec startx 1> $STARTX_LOG 2>&1
 fi
 
-# launch tmux if display is set (x server running), interactive and 
+# launch tmux if display is set (x server running), interactive and
 # no tmux session is running. Force utf-8 output (-u).
 if [[ ! -z $DISPLAY ]] && [[ $- == *i* ]] && [[ -z "$TMUX" ]]; then
 	exec tmux -u

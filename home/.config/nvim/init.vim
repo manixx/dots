@@ -11,17 +11,18 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdcommenter'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
-Plug 'Yggdroot/indentLine' 
+Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
-Plug 'towolf/vim-helm' 
+Plug 'towolf/vim-helm'
 Plug 'tpope/vim-surround'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'windwp/nvim-autopairs'
 
-" lsp 
+" lsp
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'ojroques/nvim-lspfuzzy'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 call plug#end()
 
@@ -35,7 +36,7 @@ set list                         " show hidden characters
 set cursorline                   " highlight line where cursor is
 set mouse=a                      " enable mouse integration
 set signcolumn=yes               " show always
-set background=dark 
+set background=dark
 set termguicolors                " enable true colors
 set showtabline=2                " always show tabbar
 set noshowmode                   " lightline takes care
@@ -54,14 +55,21 @@ hi Search       gui=bold
 hi SignColumn   guibg=none
 
 " ##############################################################################
+" ## buffer settings
+" ##############################################################################
+
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd BufWritePre * execute 'norm m`' | %s/\s\+$//e | norm g``
+
+" ##############################################################################
 " ## plugin config
 " ##############################################################################
 
-" lightline 
+" lightline
 let g:lightline = {
 			\ 'colorscheme': 'edge',
 			\ 'separator': { 'left': '▙', 'right': '▟' },
-			\ 'subseparator': { 'left': '▸', 'right': '◂' }, 
+			\ 'subseparator': { 'left': '▸', 'right': '◂' },
 			\ }
 
 " nerdtree
@@ -76,8 +84,25 @@ let g:vim_json_conceal=0
 " gitgutter
 let g:gitgutter_map_keys = 0
 
-" vim-javascript 
+" vim-javascript
 let g:javascript_plugin_jsdoc = 1
+
+" treesitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  sync_install = true,
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = true,
+  },
+}
+EOF
+
+" autopairs
+lua <<EOF
+require('nvim-autopairs').setup{}
+EOF
 
 " ##############################################################################
 " ## keybindings
@@ -92,13 +117,14 @@ noremap <leader>f   :Files<cr>
 noremap <leader>F   :Files ~<cr>
 noremap <leader>s   :Rg<cr>
 noremap <leader>l   :Lines<cr>
+noremap <leader>lb  :BLines<cr>
 noremap <leader>gc  :Commits<cr>
 noremap <leader>gbc :BCommits<cr>
 noremap <leader>sy  :Filetypes<cr>
 noremap <leader>bu  :Buffers<cr>
 noremap <leader>bl  :Lines<cr>
 
-" easy align  
+" easy align
 xmap ga <Plug>(EasyAlign)
 
 " nerdtree
@@ -107,7 +133,7 @@ noremap <leader><s-tab> :NERDTreeFocus<cr>
 noremap <leader>^       :NERDTreeFind<cr>
 noremap <leader><s-S>   :NERDTreeMirror<cr>
 
-" fugitive 
+" fugitive
 noremap <leader>gb :Git blame<cr>
 noremap <leader>gs :Git<cr>
 
@@ -116,20 +142,31 @@ nmap    ]c         <Plug>(GitGutterNextHunk)
 nmap    [c         <Plug>(GitGutterPrevHunk)
 noremap <leader>gf :GitGutterFold<cr>
 
+" compe
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm(luaeval("require 'nvim-autopairs'.autopairs_cr()"))
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+
+" lsp
+noremap <leader>ldb :LspDiagnostics 0<cr>
+noremap <leader>lda :LspDiagnosticsAll<cr>
+
 " ##############################################################################
 " ## custom functions
 " ##############################################################################
 
-" sets the current working dir, by opening an FZF session 
+" sets the current working dir, by opening an FZF session
 " with an list all dirs from starting from the home dir.
-function! ChangeCWD() 
-	call fzf#run(fzf#wrap({ 
-				\ 'source': 'fd --type d --hidden --no-ignore . ~', 
-				\ 'options': ['--prompt', 'cwd > '], 
+function! ChangeCWD()
+	call fzf#run(fzf#wrap({
+				\ 'source': 'fd --type d --hidden --no-ignore . ~',
+				\ 'options': ['--prompt', 'cwd > '],
 				\ 'sink': 'chdir' }))
 endfunction
 
-" hides lightline on the nerdtree window 
+" hides lightline on the nerdtree window
 augroup filetype_nerdtree
 	au!
 	au FileType nerdtree call s:disable_lightline_on_nerdtree()
