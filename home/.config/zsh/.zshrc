@@ -1,7 +1,7 @@
 path=(
 	~/.local/bin 
 	~/.npm-global/bin
-	~/go/bin
+	$(go env GOPATH)/bin
 	$path[@]
 )
 
@@ -15,6 +15,10 @@ autoload -Uz \
 	vcs_info \
 	edit-command-line \
 	bashcompinit
+
+if [ ! -d ~/.cache/zsh ]; then 
+	mkdir -p ~/.cache/zsh
+fi 
 
 compinit -d ~/.cache/zsh/zcompdump
 promptinit
@@ -30,9 +34,15 @@ setopt AUTO_CD              # just use .. and omit cd
 
 ZLE_RPROMPT_INDENT=0           # disable right padding in prompt
 KEYTIMEOUT=1                   # make vi mode transitions faster
-HISTFILE=~/.cache/zsh/zhistory # hint: must be created manually
+HISTFILE=~/.cache/zsh/zhistory 
 HISTSIZE=1000
 SAVEHIST=5000
+
+# hist file must be created manually
+if [ ! -f ${HISTFILE} ]; then 
+	mkdir -p $(dirname ${HISTFILE})
+	touch ${HISTFILE}
+fi
 
 zle -N edit-command-line # to edit command in $EDITOR
 
@@ -70,23 +80,18 @@ RPROMPT="" # needs to bet set for zle-line-init is not loaded on startup
 
 plugins=(
 	/usr/share/bash-completion/completions
-	/usr/share/fzf/completion.zsh
-	/usr/share/fzf/key-bindings.zsh
-	/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-	~/dev/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
+	/usr/share/fzf/*.zsh
+	/usr/share/zsh/plugins/*/*.plugin.zsh
 
 	/opt/google-cloud-sdk/completion.zsh.inc 
 	/opt/google-cloud-sdk/path.zsh.inc
 	/opt/azure-cli/az.completion
+
+	~/.config/zsh/functions/*.zsh
 )
 
 for file in ${plugins[@]}; do 
 	[[ ! -r $file ]] && continue
-	source "$file"
-done
-
-for file in ~/.config/zsh/functions/*.zsh; do 
 	source "$file"
 done
 
@@ -153,6 +158,7 @@ export FZF_DEFAULT_OPTS='
 export NNN_TRASH=1         # use trash-cli
 export NNN_USE_EDITOR=1
 export NNN_NO_AUTOSELECT=1 # disable auto-select in navigate-as-you-type
+export NNN_PLUG='f:fzplug'
 
 # gcloud cli is broken with current python3 setup 
 # use phython2 until this is fixed 
