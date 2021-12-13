@@ -1,5 +1,3 @@
 #!/bin/sh
 
-export DISPLAY=:0
-
-exec unclutter --timeout 1 
+exec unclutter --timeout 1

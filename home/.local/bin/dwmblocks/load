@@ -1,6 +1,4 @@
-#!/bin/zsh
-
-set -e
+#!/bin/sh
 
 cat /proc/loadavg \
 	| awk '{ printf "[1] %1.2f [5] %1.2f [15] %1.2f", $1, $2, $3 }'

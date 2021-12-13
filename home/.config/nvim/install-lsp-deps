@@ -4,20 +4,12 @@ npm i -g \
 	typescript \
 	typescript-language-server \
 	bash-language-server \
-	pyright \
 	dockerfile-language-server-nodejs \
-	graphql-language-service-cli \
-	vim-language-server \
-	yaml-language-server \
-	vscode-langservers-extracted \
-	@angular/language-server \
-	@angular/language-service
+	vim-language-server
 
 go get \
 	github.com/lighttiger2505/sqls
- 
+
 sudo xbps-install -S \
 	gopls \
 	ccls
-
-# for lua check: https://github.com/sumneko/lua-language-server/wiki/Build-and-Run-(Standalone)

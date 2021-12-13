@@ -11,7 +11,7 @@ zstyle ':vcs_info:git*+set-message:*' hooks             git-untracked
 	fi
 }
 
-vcs_data() { # print branch name 
+vcs_data() { # print branch name
 	vcs_info
 
 	if [ -n "$vcs_info_msg_0_" ]; then

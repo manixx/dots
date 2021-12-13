@@ -1,7 +1,5 @@
 #!/bin/sh
 
-set -e
-
 battery_dir="/sys/class/power_supply/BAT0"
 
 capacity=$(cat $battery_dir/capacity)
