@@ -1,34 +1,34 @@
 #!/bin/zsh
 
-scriptPath=$(realpath "$0") 
+scriptPath=$(realpath "$0")
 repoPath="$(dirname ${scriptPath})/../../.."
 
 linkFiles() {
 	destDir=${2}
-	prefix=${3} # used for sudo 
+	prefix=${3} # used for sudo
 	normalized=''
 
-	# if destination is home directory normalize 
+	# if destination is home directory normalize
 	# path of parent folder
 	if [[ "${2}" = ${HOME}* ]]; then
 		normalized=${1}/
-	fi 
+	fi
 
-	for file in ${repoPath}/${1}/**/*; do 
+	for file in ${repoPath}/${1}/**/*; do
 		file=$(realpath --relative-base=${repoPath} $file)
 
-		if [ -d ${repoPath}/${file} ]; then 
+		if [ -d ${repoPath}/${file} ]; then
 			${prefix} mkdir -p ${destDir}${file#"$normalized"}
-		fi 
+		fi
 
-		if [ -f ${repoPath}/${file} ]; then 
-			if [ -z ${prefix} ]; then 
+		if [ -f ${repoPath}/${file} ]; then
+			if [ -z ${prefix} ]; then
 				ln -sf ${repoPath}/${file} -t ${destDir}$(dirname ${file#"${normalized}"})
-			else 
-				${prefix} cp -if ${repoPath}/${file} ${destDir}$(dirname ${file#"${normalized}"})
-			fi 
-		fi 
-	done 
+			else
+				${prefix} cp -if --remove-destination ${repoPath}/${file} ${destDir}$(dirname ${file#"${normalized}"})
+			fi
+		fi
+	done
 }
 
 setopt dotglob # include dot files
