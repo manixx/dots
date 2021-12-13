@@ -14,7 +14,7 @@
 	separator_color = "#828a98"
 	sort = yes
 	idle_threshold = 120
-	font = DejaVu Sans 8
+	font = Bitstream Vera Sans 8
 	line_height = 0
 	markup = full
 	format = "<b>%s</b>\n%b"

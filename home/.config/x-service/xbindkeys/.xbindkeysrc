@@ -1,7 +1,7 @@
 "lock-screen"
 	Mod4 + Escape
 
-"passmenu -i -l 5 -fn 'DejaVu Sans-8' -nf '#88909f' -nb '#2c2e34' -sf '#2c2e34' -sb '#c5cdd9'"
+"passmenu -i -l 5 -fn 'Bitstream Vera Sans-8' -nf '#88909f' -nb '#2c2e34' -sf '#2c2e34' -sb '#c5cdd9'"
 	Mod4 + p
 
 "xbacklight -dec 10"
@@ -31,7 +31,7 @@
 "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 	Mod4 + XF86AudioRaiseVolume
 
-"scrot -s -e 'xclip -sel cliclipboard -t "image/png" -i $f && mkdir -p ~/screenshots && mv $f ~/screenshots/$f'" 
+"scrot -s -e 'xclip -sel cliclipboard -t "image/png" -i $f && mkdir -p ~/screenshots && mv $f ~/screenshots/$f'"
 	Mod4 + c
 
 "dunstctl close"
