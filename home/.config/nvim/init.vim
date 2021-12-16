@@ -45,6 +45,10 @@ set shortmess+=c                 " disable 'Pattern not found error'
 set updatetime=100               " update various parts faster (lsp server)
 set shiftwidth=2
 set tabstop=2
+set incsearch
+set hlsearch
+set spelllang=en,de
+set spell
 
 syntax      enable    " enable syntax highlights
 filetype    plugin on " enable plugins

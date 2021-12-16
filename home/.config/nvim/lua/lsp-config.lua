@@ -79,6 +79,7 @@ require'compe'.setup {
 		nvim_lsp  = true;
 		nvim_lua  = true;
 		vsnip     = true;
+		spell     = true;
 		ultisnips = false;
 	};
 }
