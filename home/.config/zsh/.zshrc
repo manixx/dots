@@ -49,7 +49,8 @@ zle -N edit-command-line # to edit command in $EDITOR
 zstyle ':completion:*'           special-dirs true                     # add slash on ./ ../
 zstyle ':completion::complete:*' gain-privileges 1                     # auto-complete sudo cmds
 zstyle ':completion:*'           rehash true                           # update external commands on every search
-zstyle ':completion:*'           matcher-list '' 'm:{a-zA-Z}={A-Za-z}' # case insenstiive
+zstyle ':completion:*'           matcher-list '' 'm:{a-zA-Z}={A-Za-z}' # case insensitive
+zstyle ':completion:*'           menu select                           # show menu and select by tab
 
 ################################################################################
 # prompt
@@ -114,8 +115,9 @@ alias sv-x="SVDIR=~/.config/x-service sv"
 # key bindings
 ################################################################################
 
-bindkey -v                        # vim bindings
-bindkey '^?' backward-delete-char # delete chars after mode switch
+bindkey -v                           # vim bindings
+bindkey '^?' backward-delete-char    # delete chars after mode switch
+bindkey '^[[Z' reverse-menu-complete # on menu use shift+tab to go back
 bindkey '^j' up-history
 bindkey '^k' down-history
 bindkey '^w' backward-kill-word
