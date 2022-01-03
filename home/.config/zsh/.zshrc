@@ -5,10 +5,6 @@ path=(
 	$path[@]
 )
 
-################################################################################
-# zsh options
-################################################################################
-
 autoload -Uz \
 	compinit \
 	promptinit \
@@ -16,6 +12,7 @@ autoload -Uz \
 	edit-command-line \
 	bashcompinit
 
+# Zsh cache stuff must be created beforehand
 if [ ! -d ~/.cache/zsh ]; then
 	mkdir -p ~/.cache/zsh
 fi
@@ -44,17 +41,20 @@ if [ ! -f ${HISTFILE} ]; then
 	touch ${HISTFILE}
 fi
 
+# Yank to the system clipboard while in normale mode
+function vi-yank-xclip {
+    zle vi-yank
+   echo "$CUTBUFFER" | xclip -in -sel cli
+}
+
 zle -N edit-command-line # to edit command in $EDITOR
+zle -N vi-yank-xclip
 
 zstyle ':completion:*'           special-dirs true                     # add slash on ./ ../
 zstyle ':completion::complete:*' gain-privileges 1                     # auto-complete sudo cmds
 zstyle ':completion:*'           rehash true                           # update external commands on every search
 zstyle ':completion:*'           matcher-list '' 'm:{a-zA-Z}={A-Za-z}' # case insensitive
 zstyle ':completion:*'           menu select                           # show menu and select by tab
-
-################################################################################
-# prompt
-################################################################################
 
 zle -N zle-line-init     # call on init (setting PROMPT to init)
 zle -N zle-keymap-select # call on vim selection mode change
@@ -75,10 +75,6 @@ $(check_jobs)\
 %F{green}%B→%b%f '
 RPROMPT="" # needs to bet set for zle-line-init is not loaded on startup
 
-################################################################################
-# external sources
-################################################################################
-
 plugins=(
 	/usr/share/bash-completion/completions
 	/usr/share/fzf/*.zsh
@@ -96,10 +92,6 @@ for file in ${plugins[@]}; do
 	source "$file"
 done
 
-################################################################################
-# aliases
-################################################################################
-
 alias ls="exa"
 alias cp="cp -i"
 alias mv="mv -i"
@@ -110,10 +102,6 @@ alias dockerc="docker-compose"
 alias gco="git checkout"
 alias sv-user="SVDIR=~/.config/service sv"
 alias sv-x="SVDIR=~/.config/x-service sv"
-
-################################################################################
-# key bindings
-################################################################################
 
 bindkey -v                           # vim bindings
 bindkey '^?' backward-delete-char    # delete chars after mode switch
@@ -129,10 +117,7 @@ bindkey '^o' edit-command-line
 bindkey '^p' clear-screen
 
 bindkey -s '^b' 'launch_nnn^M'
-
-################################################################################
-# settings
-################################################################################
+bindkey -M vicmd 'y' vi-yank-xclip
 
 export EDITOR=nvim
 
@@ -160,7 +145,6 @@ export FZF_DEFAULT_OPTS='
 export NNN_TRASH=1         # use trash-cli
 export NNN_USE_EDITOR=1
 export NNN_NO_AUTOSELECT=1 # disable auto-select in navigate-as-you-type
-export NNN_PLUG='f:fzplug'
 
 # bat
 export BAT_THEME="my-ansi"
@@ -168,10 +152,6 @@ export BAT_THEME="my-ansi"
 # gcloud cli is broken with current python3 setup
 # use phython2 until this is fixed
 export CLOUDSDK_PYTHON=python2
-
-################################################################################
-# init
-################################################################################
 
 STARTX_LOG="$HOME/.local/share/xorg/startx.log"
 

@@ -34,6 +34,8 @@ linkFiles() {
 setopt dotglob # include dot files
 
 linkFiles home ${HOME}/
-linkFiles etc  /        sudo
+if read -q "REPLY?Also copy /?"; then
+	linkFiles etc / sudo
+fi
 
 unsetopt dotglob

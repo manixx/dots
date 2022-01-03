@@ -29,10 +29,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 eval $(dbus-launch --sh-syntax)    # setup user dbus session
-$HOME/.fehbg                       # set background image
-xset -dpms s off                   # disable monitor saving mode
 runsvdir $HOME/.config/x-service & # start xorg service
-xset r rate 220 40                 # update keyboard update rate
-setxkbmap de                       # set keyboard layout
 
 exec dwm

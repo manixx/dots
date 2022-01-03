@@ -1,5 +1,4 @@
 #!/bin/sh
-
 free -m \
 	| grep Mem \
 	| awk '{ printf "%1.2fGiB (%d%)", $3 / 1024, $3 / $2 * 100.0 }'

@@ -6,5 +6,5 @@
 
 # Save current brightness of each card.
 for card in `find /sys/class/backlight/ -type l`; do
-    cp "$card/brightness" "/var/cache/backlight/$(basename $card)-brightness-old"
+		cp "$card/brightness" "/var/cache/backlight/$(basename $card)-brightness-old"
 done

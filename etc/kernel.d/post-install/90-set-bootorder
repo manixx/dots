@@ -10,10 +10,9 @@ major_version=$(echo $PKGNAME | cut -c 6-)
 bootnum=$(efibootmgr | grep "kernel ${major_version}" | cut -c 5-8)
 bootorder=$(efibootmgr | grep "BootOrder: " | cut -c 12-)
 
-if ! echo $bootorder | grep $bootnum; then 
-	efibootmgr -qo "$bootnum,$bootorder" 
-else 
-	echo "\n [WARNING] Found bootnum already, double check BootOrder!\n" 
-	efibootmgr 
-fi 
-
+if ! echo $bootorder | grep $bootnum; then
+	efibootmgr -qo "$bootnum,$bootorder"
+else
+	echo "\n [WARNING] Found bootnum already, double check BootOrder!\n"
+	efibootmgr
+fi
