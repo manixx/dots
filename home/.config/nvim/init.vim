@@ -16,37 +16,35 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'windwp/nvim-autopairs'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'towolf/vim-helm'
 
 " lsp
-"Plug 'neovim/nvim-lspconfig'
-"Plug 'hrsh7th/vim-vsnip'
-"Plug 'ojroques/nvim-lspfuzzy'
+Plug 'neovim/nvim-lspconfig'
+Plug 'ojroques/nvim-lspfuzzy'
 
-" cmp (completion)
-"Plug 'hrsh7th/cmp-nvim-lsp'
-"Plug 'hrsh7th/cmp-buffer'
-"Plug 'hrsh7th/cmp-path'
-"Plug 'hrsh7th/cmp-cmdline'
-"Plug 'hrsh7th/nvim-cmp'
-"Plug 'hrsh7th/cmp-vsnip'
-"Plug 'hrsh7th/vim-vsnip'
+" completion
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp' " Lsp integration
+Plug 'hrsh7th/cmp-vsnip'    " Snippet cmp integration
+Plug 'hrsh7th/vim-vsnip'    " Snippets engine
+Plug 'hrsh7th/cmp-buffer'   " Buffer words
+Plug 'hrsh7th/cmp-cmdline'  " Command line completion
 
 call plug#end()
 
-set colorcolumn=80 " draw line at col 80
-set rnu nu         " line numbers, relative
-set list           " show hidden characters
-set cursorline     " highlight line where cursor is
-set signcolumn=yes " show always
+set colorcolumn=80                    " draw line at col 80
+set rnu nu                            " line numbers, relative
+set list                              " show hidden characters
+set cursorline                        " highlight line where cursor is
+set signcolumn=yes                    " show always
 set background=dark
-set termguicolors  " enable true colors
-set showtabline=2  " always show tabbar
-set noshowmode     " lightline takes care
-set shiftwidth=2   " make tabstops default
-set tabstop=2
-set incsearch
-set hlsearch
-set spelllang=en,de
+set termguicolors                     " enable true colors
+set showtabline=2                     " always show tabbar
+set noshowmode                        " lightline takes care
+set shiftwidth=2
+set tabstop=2                         " width of one tab
+set spelllang=en,de                   " not enabled by default, check bindings
+set completeopt=menu,menuone,noselect " cpm-nvim menu control
 
 syntax      enable    " enable syntax highlights
 filetype    plugin on " enable plugins
@@ -57,8 +55,8 @@ hi Search       gui=bold
 hi SignColumn   guibg=none
 
 " Set soft-tabs on YAML files
-autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-" Strip trailing spaces but keep cursor position
+autocmd FileType yaml,helm setlocal ts=2 sts=2 sw=2 expandtab
+" Strip trailing spaces, but keep cursor position
 autocmd BufWritePre * execute 'norm m`' | %s/\s\+$//e | norm g``
 
 " lightline
@@ -76,7 +74,6 @@ let g:NERDTreeWinPos = "right"
 " indentLine
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_defaultGroup = 'SpecialKey'
-let g:indentLine_setConceal = 0
 
 " gitgutter
 let g:gitgutter_map_keys = 0
@@ -96,10 +93,78 @@ require'nvim-treesitter.configs'.setup {
   sync_install = true,
   highlight = {
     enable = true,
-    disable = { "vim", "rust" },
+		disable = { "vim" }, -- looks better
     additional_vim_regex_highlighting = false,
   },
 }
+EOF
+
+" lspfuzzy
+lua <<EOF
+	require('lspfuzzy').setup {}
+EOF
+
+" lsp & completion
+lua <<EOF
+	local cmp = require'cmp'
+	local lsp = require'lspconfig'
+
+	cmp.setup({
+		snippet = {
+			expand = function(args)
+				vim.fn["vsnip#anonymous"](args.body)
+				end,
+		},
+		mapping = {
+			['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+			['<CR>'] = cmp.mapping.confirm({ select = true }),
+		},
+		sources = cmp.config.sources({
+			{ name = 'nvim_lsp' },
+			{ name = 'vsnip' },
+		}, {
+			{ name = 'buffer' },
+		})
+	})
+
+	cmp.setup.cmdline('/', {
+		sources = {
+			{ name = 'buffer' }
+		}
+	})
+
+	local on_attach = function(_, bufnr)
+		local opts = { noremap = true, silent = true }
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD',         '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd',         '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K',          '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi',         '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>',      '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>D',  '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr',         '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>e',  '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d',         '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d',         '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+		vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>q',  '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+		vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+	end
+
+	local capabilities = require'cmp_nvim_lsp'.update_capabilities(
+		vim.lsp.protocol.make_client_capabilities()
+	)
+	local servers = {
+		'bashls',
+		'vimls',
+		'gopls',
+	}
+	for _, server in ipairs(servers) do
+		lsp[server].setup { capabilities = capabilities, on_attach = on_attach }
+	end
 EOF
 
 " common
@@ -129,12 +194,18 @@ noremap <leader>^       :NERDTreeFind<cr>
 
 " fugitive
 noremap <leader>gb :Git blame<cr>
-noremap <leader>gs :Git<cr>
+noremap <leader>gg :Git<cr>
 
 " gitgutter
 nmap    ]c         <Plug>(GitGutterNextHunk)
 nmap    [c         <Plug>(GitGutterPrevHunk)
 noremap <leader>gf :GitGutterFold<cr>
+
+" lsp
+noremap <leader>lss :LspInfo<cr>
+
+" lspfuzzy
+noremap <leader>lsd :LspDiagnostics 0<cr>
 
 " sets the current working dir, by opening an FZF session
 " with an list all dirs from starting from the home dir.
