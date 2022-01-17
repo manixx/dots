@@ -2,6 +2,7 @@
 
 scriptPath=$(realpath "$0")
 repoPath="$(dirname ${scriptPath})/../../.."
+dumpOnly=$1
 
 linkFiles() {
 	destDir=${2}
@@ -21,7 +22,12 @@ linkFiles() {
 			${prefix} mkdir -p ${destDir}${file#"$normalized"}
 		fi
 
+
 		if [ -f ${repoPath}/${file} ]; then
+			if [ ! -z ${dumpOnly} ]; then
+				echo ${destDir}${file#"${normalized}"}
+			fi
+
 			if [ -z ${prefix} ]; then
 				ln -sf ${repoPath}/${file} -t ${destDir}$(dirname ${file#"${normalized}"})
 			else
