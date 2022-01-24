@@ -35,4 +35,13 @@
 	Mod4 + c
 
 "dunstctl close"
-	Control+Alt + space
+	Control + Alt + space
+
+"SVDIR=~/.config/x-service sv restart session"
+	Shift + Mod4 + s
+
+"mon-setup home"
+	Shift + Mod4 + h
+
+"mon-setup reset"
+	Shift + Mod4 + r
