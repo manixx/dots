@@ -1,5 +1,5 @@
 [Desktop Entry]
 Name=WhatsApp
-Exec=chromium --enable-features=VaapiVideoDecoder --app=https://web.whatsapp.com
+Exec=chromium --enable-features=VaapiVideoDecoder,VaapiVideoEncoder --app=https://web.whatsapp.com
 Terminal=false
 Type=Application
