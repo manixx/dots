@@ -1,0 +1,82 @@
+# globals
+set mail_check_stats
+set editor     = "nvim"
+set sort       = reverse-date
+set sort_aux   = last-date-received
+set mail_check = 90
+set timeout    = 15
+
+alternative_order text/plain text/enriched text/html
+
+# make sure to create them beforehand
+set header_cache     = ~/.cache/neomutt/headers
+set message_cachedir = ~/.cache/neomutt/bodies
+set certificate_file = ~/.cache/neomutt/certificates
+
+# sidebar settings
+set sidebar_visible
+set sidebar_width  = 30
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+
+set realname  = "`pass neomutt/pass | sed -n 3p`"
+set from      = "`pass neomutt/pass | sed -n 2p`@gmail.com"
+set folder    = "imaps://imap.gmail.com/"
+set spoolfile = +INBOX
+set record    = "+[Gmail]/Gesendet"
+set postponed = "+[Gmail]/Entwürfe"
+
+set imap_user           = "$from"
+set imap_pass           = `pass neomutt/pass | head -1`
+set smtp_url            = "smtps://`pass neomutt/pass | sed -n 3p`@smtp.gmail.com:465/"
+set smtp_authenticators = "gssapi:login"
+set smtp_user           = "$from"
+set smtp_pass           = "$imap_pass"
+
+mailboxes \
+	=INBOX \
+	=[Gmail]/"Alle Nachrichten" \
+	=[Gmail]/Entwürfe \
+	=[Gmail]/Gesendet \
+	=[Gmail]/Markiert \
+	=[Gmail]/Papierkorb \
+	=[Gmail]/Spam \
+	=[Gmail]/Wichtig \
+
+# SSL hardening
+set ssl_force_tls      = yes
+set ssl_starttls       = yes
+set ssl_use_sslv2      = no
+set ssl_use_sslv3      = no
+set ssl_use_tlsv1      = no
+set ssl_use_tlsv1_1    = no
+set ssl_use_tlsv1_2    = yes
+set ssl_use_tlsv1_3    = yes
+set ssl_verify_dates   = yes
+set ssl_verify_host    = yes
+set ssl_usesystemcerts = yes
+
+# bindings
+bind index,pager \CP sidebar-prev
+bind index,pager \CN sidebar-next
+bind index,pager \CO sidebar-open
+bind index,pager B sidebar-toggle-visible
+bind pager g top
+bind pager G bottom
+bind attach,index g first-entry
+bind attach,index G last-entry
+
+# theming
+color index           color8 default '.*'
+color index_collapsed bold   yellow  default
+color index_author    blue   default '.*'
+color index_subject   white  default '.*'
+color index_flags     bold   cyan    default '.*'
+color indicator       bold   black   color8  # selected line
+
+color sidebar_indicator bold   black magenta
+color sidebar_highlight bold   black color8
+color sidebar_divider   color8 default
+color sidebar_unread    black  yellow
+
+color progress        black  cyan            # progress bars
+color status          bold   black   magenta # main top / bottom bars
