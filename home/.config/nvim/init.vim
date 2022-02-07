@@ -163,6 +163,7 @@ lua <<EOF
 		'bashls',
 		'vimls',
 		'gopls',
+		'yamlls',
 	}
 	for _, server in ipairs(servers) do
 		lsp[server].setup { capabilities = capabilities, on_attach = on_attach }
