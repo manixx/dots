@@ -1,0 +1,35 @@
+#!/bin/zsh
+# Custom session script to gracefully shutdown. Close applications and check
+# if nvim is open before shutting down.
+
+command=$1
+
+pre_actions() {
+	# Check if nvim is open, maybe it has unsaved stuff. Notify user and skip
+	# shutdown.
+	if pgrep -x nvim; then
+		notify-send -u critical "Session $command stopped" "Neovim may has unsaved work, close it before."
+		exit 0
+	fi
+
+	killall chromium --wait
+}
+
+if [ -z "$command" ]; then
+	echo "Usage: session [poweroff|reboot]"
+	exit 1
+fi
+
+case $command in
+	poweroff)
+		pre_actions
+		sudo poweroff
+	;;
+	reboot)
+		pre_actions
+		sudo reboot
+	;;
+	*)
+		echo "session command $command not found."
+esac
+
