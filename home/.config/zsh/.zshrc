@@ -149,7 +149,7 @@ export NNN_USE_EDITOR=1
 export NNN_NO_AUTOSELECT=1 # disable auto-select in navigate-as-you-type
 
 # bat
-export BAT_THEME="my-ansi"
+export BAT_THEME="ansi"
 
 # gcloud cli is broken with current python3 setup
 # use phython2 until this is fixed
