@@ -1,0 +1,42 @@
+#################################
+#             Shadows           #
+#################################
+
+shadow = false;
+
+#################################
+#           Fading              #
+#################################
+
+fading = false;
+
+#################################
+#   Transparency / Opacity      #
+#################################
+
+#################################
+#           Corners             #
+#################################
+
+corner-radius = 0
+
+#################################
+#     Background-Blurring       #
+#################################
+
+blur-method = "dual_kawase"
+blur-strength = 4
+
+# Exclude conditions for background blur.
+blur-background-exclude = [
+  "window_type = 'dock'",
+  "window_type = 'desktop'",
+  "_GTK_FRAME_EXTENTS@:c"
+];
+
+#################################
+#       General Settings        #
+#################################
+
+backend = "glx";
+vsync = true;
