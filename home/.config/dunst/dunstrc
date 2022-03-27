@@ -5,7 +5,7 @@
 	progress_bar = false
 	indicate_hidden = yes
 	shrink = no
-	transparency = 0
+	transparency = 27
 	separator_height = 1
 	padding = 8
 	horizontal_padding = 8
