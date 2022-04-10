@@ -55,6 +55,7 @@ hi Search       gui=bold
 hi SignColumn   guibg=none
 hi EndOfBuffer  guibg=none
 hi Normal       guibg=none
+hi Visual       guibg=Gray
 
 " Set soft-tabs on YAML files
 autocmd FileType yaml,helm setlocal ts=2 sts=2 sw=2 expandtab
