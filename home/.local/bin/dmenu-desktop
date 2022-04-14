@@ -7,13 +7,13 @@ desktop_dirs=(
 
 app_name=`grep '^Name=' ${desktop_dirs[@]} -h | cut -d'=' -f 2 | sort | uniq | dmenu -i $@`
 
-if [ -z "${app_name}" ]; then 
+if [ -z "${app_name}" ]; then
 	exit 0
-fi 
+fi
 
 file_path=`grep "^Name=${app_name}$" ${desktop_dirs[@]}  -l`
 file_path=`basename ${file_path}`
 
-if [ ! -z ${file_path} ]; then 
+if [ ! -z ${file_path} ]; then
 	gtk-launch "${file_path}"
 fi

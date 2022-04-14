@@ -1,4 +1,5 @@
 #!/bin/zsh
+
 paste <(cat /sys/class/thermal/thermal_zone*/type) <(cat /sys/class/thermal/thermal_zone*/temp) \
 	| sed 's/\(.\)..$/.\1°C/' \
 	| grep x86_pkg_temp \

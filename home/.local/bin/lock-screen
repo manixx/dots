@@ -3,7 +3,7 @@
 IMAGE_PATH=~/.cache/lock.png
 RICK_IMAGE_PATH=~/.local/bg/rick.png
 
-# pause spotify 
+# pause spotify
 dbus-send \
 	--print-reply \
 	--dest=org.mpris.MediaPlayer2.spotify \
