@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo xpbs-install -Sy \
+sudo xbps-install -Sy \
 	nodejs \
 	gopls
 
