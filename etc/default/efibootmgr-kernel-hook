@@ -1,12 +1,12 @@
 MODIFY_EFI_ENTRIES=1
 DISK="/dev/nvme0n1"
-PART=5
+PART=1
 
 OPTIONS="
 	root=/dev/storage/root rw
 	resume=/dev/storage/swap
 
-	rd.luks.uuid=7487d1b4-53f3-491b-9e73-63aa8f32bac6
+	rd.luks.uuid=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	rd.lvm.vg=storage
 
 	apparmor=1

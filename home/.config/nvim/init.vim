@@ -17,6 +17,7 @@ Plug 'tpope/vim-surround'
 Plug 'windwp/nvim-autopairs'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'towolf/vim-helm'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install'  }
 
 " lsp
 Plug 'neovim/nvim-lspconfig'

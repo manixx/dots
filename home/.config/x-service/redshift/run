@@ -1,2 +1,3 @@
 #!/bin/sh
+
 exec redshift -l 48.22:16.31

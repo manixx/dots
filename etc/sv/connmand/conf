@@ -1,3 +1,5 @@
 #!/bin/sh
-[ ! -d /run/connmand ] && mkdir -p /run/connman
+
+[ ! -d /run/connmand ] && mkdir -p /run/connman # prevent writes to /etc/resolv.conf
+
 OPTS="--nodnsproxy" # we use diffrent dns

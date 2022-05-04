@@ -40,14 +40,8 @@
 "SVDIR=~/.config/x-service sv restart session"
 	Shift + Mod4 + s
 
-"mon-setup home"
-	Shift + Mod4 + h
-
 "mon-setup reset"
 	Shift + Mod4 + r
 
 "~/.local/bin/session poweroff"
 	Shift + Mod4 + p
-
-"~/.local/bin/session reboot"
-	Shift + Mod4 + o

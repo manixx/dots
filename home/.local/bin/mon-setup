@@ -11,15 +11,6 @@ fi
 
 case ${mode} in
 
-	home)
-		xrandr \
-			--output eDP1 --off \
-			--output DP1 --mode 2560x1440 \
-			--output DP2-2 --mode 2560x1440 --left-of DP1
-
-		sv stop xautolock
-		;;
-
 	reset)
 		xrandr \
 			--output eDP1 --primary --auto \

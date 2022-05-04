@@ -112,7 +112,6 @@ xf86-video-intel
 xorg-minimal
 xrandr
 xrdb
-xset
 xtools
 zsh
 zsh-autosuggestions

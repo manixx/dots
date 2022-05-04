@@ -1,2 +1,3 @@
 #!/bin/sh
-sv check connmand || exit 1 # otherwise containers have no internet connections
+
+sv check connmand || exit 1 # wait for connmand - otherwise containers have no internet connections
