@@ -1,0 +1,7 @@
+#!/bin/sh
+
+export SVDIR=~/.config/x-service
+
+sv status xautolock | grep down -q \
+	&& sv start xautolock \
+	|| sv stop xautolock

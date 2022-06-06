@@ -40,6 +40,9 @@
 "SVDIR=~/.config/x-service sv restart session"
 	Shift + Mod4 + s
 
+"toggle-xautolock"
+	Shift + Mod4 + l
+
 "mon-setup reset"
 	Shift + Mod4 + r
 
