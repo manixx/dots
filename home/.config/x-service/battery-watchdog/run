@@ -1,0 +1,14 @@
+#!/bin/zsh
+
+current_battery=$(cat /sys/class/power_supply/BAT0/capacity)
+
+while true; do
+	if [[ ${current_battery} -le 10 ]]; then
+		notify-send \
+			-u critical \
+			"Batterie wird leer!" \
+			"Batterie bei ${current_battery}%. Lieber anstecken!"
+	fi
+
+	sleep 30
+done
