@@ -4,10 +4,7 @@ current_battery=$(cat /sys/class/power_supply/BAT0/capacity)
 state=$(cat /sys/class/power_supply/BAT0/status)
 
 while true; do
-	if [[ ${state} == "Charging" ]]; then
-		continue
-	fi
-	if [[ ${current_battery} -le 10 ]]; then
+	if [[ ${current_battery} -le 10 ]] && [[ ${state} != "Charging" ]]; then
 		notify-send \
 			-u critical \
 			"Batterie wird leer!" \

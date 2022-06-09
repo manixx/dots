@@ -5,6 +5,11 @@ path=(
 	$path[@]
 )
 
+fpath=(
+	~/.config/zsh/completion
+	$fpath[@]
+)
+
 autoload -Uz \
 	compinit \
 	promptinit \
