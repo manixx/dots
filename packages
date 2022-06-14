@@ -3,8 +3,10 @@ QLC+
 Signal-Desktop
 acpi
 acpid
+alsa-plugins-pulseaudio
 apparmor
 arduino-cli
+audacity
 base-devel
 base-minimal
 bat
@@ -52,6 +54,7 @@ k9s
 kbd
 kopia
 kubernetes-helm
+kubernetes-kind
 libX11-devel
 libXft-devel
 libXinerama-devel
@@ -82,12 +85,14 @@ picom
 pinentry-dmenu
 podman
 podman-compose
+powertop
 psmisc
 pulseaudio
 python3-devel
 python3-pip
 redshift
 ripgrep
+rsync
 scrot
 setxkbmap
 socklog-void
