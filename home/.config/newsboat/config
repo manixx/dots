@@ -1,7 +1,7 @@
 color info              black  blue
-color listfocus         blue   black  bold
-color listnormal_unread yellow black
-color listfocus_unread  black  yellow bold
+color listfocus         black  blue
+color listnormal_unread yellow black  bold
+color listfocus_unread  black  blue bold
 color article           white  black
 color listnormal        white  black
 color info              black  blue   bold
@@ -20,9 +20,7 @@ bind-key j next
 bind-key k prev
 bind-key h quit
 bind-key l open
-bind-key t toggle-show-read-feeds
 bind-key m toggle-article-read
-bind-key M mark-feed-read
 bind-key r reload-all
 bind-key g home
 bind-key G end
