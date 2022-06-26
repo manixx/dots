@@ -49,8 +49,8 @@ fi
 
 # Yank to the system clipboard while in normale mode
 function vi-yank-xclip {
-    zle vi-yank
-   echo "$CUTBUFFER" | xclip -in -sel cli
+	zle vi-yank
+	echo "$CUTBUFFER" | xclip -in -sel cli
 }
 
 zle -N edit-command-line # to edit command in $EDITOR
@@ -76,6 +76,7 @@ $(last_cmd_exec_time)'
 PROMPT='%F{magenta}%~%f\
 $(vcs_data)\
 $(k8s_context)\
+$(timew_status)\
 $(check_jobs)\
 '$'\n''\
 %F{green}%B→%b%f '
@@ -91,6 +92,7 @@ plugins=(
 	/opt/azure-cli/az.completion
 
 	~/.config/zsh/functions/*.zsh
+	~/.config/zsh/bash-completion/*
 )
 
 for file in ${plugins[@]}; do
