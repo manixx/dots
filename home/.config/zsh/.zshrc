@@ -95,10 +95,12 @@ plugins=(
 	~/.config/zsh/bash-completion/*
 )
 
+setopt +o nomatch # disable error message when no files were found
 for file in ${plugins[@]}; do
 	[[ ! -r $file ]] && continue
 	source "$file"
 done
+setopt -o nomatch
 
 alias ls="exa -g"
 alias cp="cp -i"
