@@ -100,7 +100,7 @@ for file in ${plugins[@]}; do
 	source "$file"
 done
 
-alias ls="exa"
+alias ls="exa -g"
 alias cp="cp -i"
 alias mv="mv -i"
 alias rm="rm -I --one-file-system"
@@ -111,19 +111,22 @@ alias gco="git checkout"
 alias sv-user="SVDIR=~/.config/service sv"
 alias sv-x="SVDIR=~/.config/x-service sv"
 
-bindkey -v                           # vim bindings
-bindkey '^?' backward-delete-char    # delete chars after mode switch
-bindkey '^[[Z' reverse-menu-complete # on menu use shift+tab to go back
-bindkey '^j' up-history
-bindkey '^k' down-history
-bindkey '^w' backward-kill-word
-bindkey '^a' beginning-of-line
-bindkey '^e' end-of-line
-bindkey '^h' backward-word
-bindkey '^l' forward-word
-bindkey '^o' edit-command-line
-bindkey '^p' clear-screen
-bindkey -M vicmd 'y' vi-yank-xclip
+bindkey -v                            # vim bindings
+bindkey '^?'    backward-delete-char  # delete chars after mode switch
+bindkey '^[[Z'  reverse-menu-complete # on menu use shift+tab to go back
+bindkey "\e[3~" delete-char           # delete char on delete key
+bindkey '^j'    up-history
+bindkey '^k'    down-history
+bindkey '^w'    backward-kill-word
+bindkey '^a'    beginning-of-line
+bindkey '^e'    end-of-line
+bindkey '^h'    backward-word
+bindkey '^l'    forward-word
+bindkey '^o'    edit-command-line
+bindkey '^p'    clear-screen
+
+bindkey -M vicmd "\e[3~" delete-char   # delete char on delete key
+bindkey -M vicmd 'y'     vi-yank-xclip
 
 bindkey -s '^[b' 'launch_nnn^M'
 bindkey -s '^[n' 'tmux new-window newsboat^M'
