@@ -92,7 +92,7 @@ plugins=(
 	/opt/azure-cli/az.completion
 
 	~/.config/zsh/functions/*.zsh
-	~/.config/zsh/bash-completion/*
+	#~/.config/zsh/bash-completion/*
 )
 
 setopt +o nomatch # disable error message when no files were found

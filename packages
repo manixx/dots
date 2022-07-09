@@ -20,6 +20,7 @@ cronie
 cryptsetup
 cups
 curl
+dateutils
 dhcpcd
 dmenu
 dnscrypt-proxy
@@ -64,6 +65,7 @@ linux
 lnav
 lvm2
 lynis
+maim
 man-db
 man-pages
 minikube
@@ -92,12 +94,13 @@ python3-pip
 redshift
 ripgrep
 rsync
-scrot
 setxkbmap
 socklog-void
 spotify
 sudo
+task
 telegram-desktop
+timewarrior
 tlp
 tmux
 trash-cli
