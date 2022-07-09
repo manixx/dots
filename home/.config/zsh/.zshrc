@@ -82,6 +82,7 @@ $(check_jobs)\
 %F{green}%B→%b%f '
 RPROMPT="" # needs to bet set for zle-line-init is not loaded on startup
 
+setopt +o nomatch
 plugins=(
 	/usr/share/bash-completion/completions
 	/usr/share/fzf/*.zsh
@@ -92,15 +93,14 @@ plugins=(
 	/opt/azure-cli/az.completion
 
 	~/.config/zsh/functions/*.zsh
-	#~/.config/zsh/bash-completion/*
+	~/.config/zsh/bash-completion/*
 )
+setopt -o nomatch
 
-setopt +o nomatch # disable error message when no files were found
 for file in ${plugins[@]}; do
 	[[ ! -r $file ]] && continue
 	source "$file"
 done
-setopt -o nomatch
 
 alias ls="exa -g"
 alias cp="cp -i"
