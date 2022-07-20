@@ -53,13 +53,12 @@ iw
 jq
 k9s
 kbd
-kopia
+kubectl
 kubernetes-helm
 kubernetes-kind
 libX11-devel
 libXft-devel
 libXinerama-devel
-libqmi
 libva-intel-driver
 linux
 lnav
@@ -68,7 +67,6 @@ lynis
 maim
 man-db
 man-pages
-minikube
 ncdu
 ncurses
 neovim
