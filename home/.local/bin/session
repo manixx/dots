@@ -6,7 +6,6 @@
 # sudo visudo
 #
 # manfred ALL=(ALL) NOPASSWD: /bin/poweroff
-# manfred ALL=(ALL) NOPASSWD: /bin/reboot
 
 command=$1
 
@@ -30,10 +29,6 @@ case $command in
 	poweroff)
 		pre_actions
 		sudo poweroff
-	;;
-	reboot)
-		pre_actions
-		sudo reboot
 	;;
 	*)
 		echo "session command $command not found."
