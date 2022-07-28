@@ -47,8 +47,8 @@ set tabstop=2                         " width of one tab
 set spelllang=en,de                   " not enabled by default, check bindings
 set completeopt=menu,menuone,noselect " cpm-nvim menu control
 
-syntax      enable    " enable syntax highlights
-filetype    plugin on " enable plugins
+syntax      enable           " enable syntax highlights
+filetype    plugin indent on " enable plugins
 colorscheme edge
 
 hi CursorLineNr gui=bold
@@ -59,7 +59,7 @@ hi Normal       guibg=none
 hi Visual       guibg=Gray
 
 " Set soft-tabs on YAML files
-autocmd FileType yaml,helm setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType yaml,helm setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=<:>
 " Strip trailing spaces, but keep cursor position
 autocmd BufWritePre * execute 'norm m`' | %s/\s\+$//e | norm g``
 
