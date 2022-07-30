@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -ex
+
 IMAGE_PATH=~/.cache/lock.png
 RICK_IMAGE_PATH=~/.local/bg/rick.png
 
@@ -7,14 +9,16 @@ if ! pgrep -x i3lock; then
 	# pause spotify
 	dbus-send \
 		--print-reply \
-		--dest = org.mpris.MediaPlayer2.spotify \
+		--dest=org.mpris.MediaPlayer2.spotify \
 		/org/mpris/MediaPlayer2 \
-		org.mpris.MediaPlayer2.Player.Pause
+		org.mpris.MediaPlayer2.Player.Pause \
+		|| true
 
 	import -silent -window root png:- \
 		| convert -scale 10% -scale 1000% png:- png:- \
 		| composite -gravity center ${RICK_IMAGE_PATH} png:- png:- \
 		> ${IMAGE_PATH}
 
-	exec i3lock -i ${IMAGE_PATH} && rm -f ${IMAGE_PATH}
+	i3lock -n -i ${IMAGE_PATH}
+	#rm -f ${IMAGE_PATH}
 fi
