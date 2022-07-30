@@ -20,5 +20,5 @@ if ! pgrep -x i3lock; then
 		> ${IMAGE_PATH}
 
 	i3lock -n -i ${IMAGE_PATH}
-	#rm -f ${IMAGE_PATH}
+	rm -f ${IMAGE_PATH}
 fi
