@@ -59,6 +59,7 @@ kubernetes-kind
 libX11-devel
 libXft-devel
 libXinerama-devel
+libXrandr-devel
 libva-intel-driver
 linux
 lnav
@@ -117,6 +118,7 @@ xbindkeys
 xclip
 xcursor-vanilla-dmz-aa
 xf86-video-intel
+xmodmap
 xorg-minimal
 xrandr
 xrdb

@@ -168,6 +168,11 @@ export BAT_THEME="ansi"
 # use phython2 until this is fixed
 export CLOUDSDK_PYTHON=python2
 
+# disable chromium warnings
+export GOOGLE_API_KEY="no"
+export GOOGLE_DEFAULT_CLIENT_ID="no"
+export GOOGLE_DEFAULT_CLIENT_SECRET="no"
+
 STARTX_LOG="$HOME/.local/share/xorg/startx.log"
 
 if [[ ! $DISPLAY && $(tty) == "/dev/tty1" ]]; then
