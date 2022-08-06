@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+SVDIR=$HOME/.config/service sv check pipewire || exit 1
+
+source $HOME/.config/zsh/.zshrc
+exec pipewire-pulse

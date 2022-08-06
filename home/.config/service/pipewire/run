@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+source $HOME/.config/zsh/.zshrc
+exec pipewire

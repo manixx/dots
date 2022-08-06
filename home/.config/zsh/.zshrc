@@ -168,10 +168,19 @@ export BAT_THEME="ansi"
 # use phython2 until this is fixed
 export CLOUDSDK_PYTHON=python2
 
+if test -z "${XDG_RUNTIME_DIR}"; then
+	export XDG_RUNTIME_DIR=/tmp/${UID}-runtime-dir
+	if ! test -d "${XDG_RUNTIME_DIR}"; then
+		mkdir "${XDG_RUNTIME_DIR}"
+		chmod 0700 "${XDG_RUNTIME_DIR}"
+	fi
+fi
+
 STARTX_LOG="$HOME/.local/share/xorg/startx.log"
 
 if [[ ! $DISPLAY && $(tty) == "/dev/tty1" ]]; then
 	[[ -f $STARTX_LOG ]] && mv -f $STARTX_LOG $STARTX_LOG.old
+
 	exec startx 1> $STARTX_LOG 2>&1
 fi
 

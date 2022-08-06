@@ -3,7 +3,6 @@ QLC+
 Signal-Desktop
 acpi
 acpid
-alsa-plugins-pulseaudio
 apparmor
 arduino-cli
 audacity
@@ -60,6 +59,7 @@ libX11-devel
 libXft-devel
 libXinerama-devel
 libXrandr-devel
+libspa-bluetooth
 libva-intel-driver
 linux
 lnav
@@ -84,10 +84,10 @@ passmenu
 pavucontrol
 picom
 pinentry-dmenu
+pipewire
 podman
 powertop
 psmisc
-pulseaudio
 python3-devel
 python3-pip
 redshift
