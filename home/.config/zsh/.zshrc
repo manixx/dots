@@ -82,7 +82,7 @@ $(check_jobs)\
 %F{green}%B→%b%f '
 RPROMPT="" # needs to bet set for zle-line-init is not loaded on startup
 
-setopt +o nomatch
+setopt +o nomatch # if folder doesn't exist, skip no matches found error
 plugins=(
 	/usr/share/bash-completion/completions
 	/usr/share/fzf/*.zsh
@@ -108,7 +108,7 @@ alias mv="mv -i"
 alias rm="rm -I --one-file-system"
 alias cat="bat"
 alias kctl="kubectl"
-alias dockerc="docker-compose"
+alias dockerc="docker compose"
 alias gco="git checkout"
 alias sv-user="SVDIR=~/.config/service sv"
 alias sv-x="SVDIR=~/.config/x-service sv"
@@ -132,7 +132,6 @@ bindkey -M vicmd 'y'     vi-yank-xclip
 
 bindkey -s '^[b' 'launch_nnn^M'
 bindkey -s '^[n' 'tmux new-window newsboat^M'
-bindkey -s '^[m' 'tmux new-window neomutt^M'
 
 export EDITOR=nvim
 
@@ -164,12 +163,8 @@ export NNN_NO_AUTOSELECT=1 # disable auto-select in navigate-as-you-type
 # bat
 export BAT_THEME="ansi"
 
-# gcloud cli is broken with current python3 setup
-# use phython2 until this is fixed
-export CLOUDSDK_PYTHON=python2
-
 if test -z "${XDG_RUNTIME_DIR}"; then
-	export XDG_RUNTIME_DIR=/tmp/${UID}-runtime-dir
+	export XDG_RUNTIME_DIR=/run/user/$(id -u)
 	if ! test -d "${XDG_RUNTIME_DIR}"; then
 		mkdir "${XDG_RUNTIME_DIR}"
 		chmod 0700 "${XDG_RUNTIME_DIR}"

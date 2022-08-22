@@ -46,5 +46,5 @@
 "mon-setup reset"
 	Shift + Mod4 + r
 
-"~/.local/bin/session poweroff"
+"session poweroff"
 	Shift + Mod4 + p

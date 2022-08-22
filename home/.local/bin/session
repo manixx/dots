@@ -1,11 +1,12 @@
 #!/bin/zsh
+
 # Custom session script to gracefully shutdown. Close applications and check
 # if nvim is open before shutting down.
 # Setup:
 #
 # sudo visudo
 #
-# manfred ALL=(ALL) NOPASSWD: /bin/poweroff
+# manfred ALL=(ALL) NOPASSWD: /bin/poweroff /bin/zzz /bin/ZZZ
 
 command=$1
 
@@ -21,7 +22,7 @@ pre_actions() {
 }
 
 if [ -z "$command" ]; then
-	echo "Usage: session [poweroff|reboot]"
+	echo "Usage: session [poweroff|zzz|ZZZ]"
 	exit 1
 fi
 

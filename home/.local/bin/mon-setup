@@ -20,9 +20,10 @@ case ${mode} in
 			--output DP2-2 --off \
 			--output DP2-3 --off \
 			--output HDMI1 --off \
-			--output HDMI2 --off
+			--output HDMI2--off
 
 		sv start xautolock
+		sv restart session
 		;;
 
 	*)
@@ -30,5 +31,4 @@ case ${mode} in
 		exit 1
 esac
 
-$HOME/.fehbg
 unset SVDIR

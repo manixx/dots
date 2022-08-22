@@ -11,7 +11,7 @@ if [ -z "${app_name}" ]; then
 	exit 0
 fi
 
-file_path=`grep "^Name=${app_name}$" ${desktop_dirs[@]}  -l`
+file_path=`grep "^Name=${app_name}$" ${desktop_dirs[@]} -l`
 file_path=`basename ${file_path}`
 
 if [ ! -z ${file_path} ]; then
