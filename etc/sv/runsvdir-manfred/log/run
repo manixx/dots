@@ -1,2 +1,2 @@
 #!/bin/sh
-exec vlogger -p runsvdir-manfred
+exec vlogger -p user
