@@ -163,6 +163,8 @@ export NNN_NO_AUTOSELECT=1 # disable auto-select in navigate-as-you-type
 # bat
 export BAT_THEME="ansi"
 
+# create XDG_RUNTIME_DIR for programs, which require it
+# (e.g. pipewire).
 if test -z "${XDG_RUNTIME_DIR}"; then
 	export XDG_RUNTIME_DIR=/tmp/${UID}-runtime-dir
 	if ! test -d "${XDG_RUNTIME_DIR}"; then
