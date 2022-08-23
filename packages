@@ -19,7 +19,6 @@ cronie
 cryptsetup
 cups
 curl
-dateutils
 dhcpcd
 dmenu
 dnscrypt-proxy
