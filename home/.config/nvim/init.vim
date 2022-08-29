@@ -58,6 +58,8 @@ let g:lightline = {
 let g:NERDTreeChDirMode=1
 let g:NERDTreeShowHidden=1
 let g:NERDTreeWinPos = "right"
+let g:NERDTreeRemoveFileCmd = 'trash '
+let g:NERDTreeRemoveDirCmd = 'trash '
 
 " indentLine
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
