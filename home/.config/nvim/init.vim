@@ -15,6 +15,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'windwp/nvim-autopairs'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install'  }
+Plug 'neovim/nvim-lspconfig'
 
 call plug#end()
 
@@ -42,7 +43,7 @@ hi Normal       guibg=none
 hi EndOfBuffer  guibg=none
 hi Visual       guibg=Gray
 
-" Set soft-tabs on YAML files
+" Set soft-tabs on YAML files and disable annoying auto indent
 autocmd FileType yaml,helm setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=<:>
 " Strip trailing spaces, but keep cursor position
 autocmd BufWritePre * execute 'norm m`' | %s/\s\+$//e | norm g``
@@ -58,8 +59,8 @@ let g:lightline = {
 let g:NERDTreeChDirMode=1
 let g:NERDTreeShowHidden=1
 let g:NERDTreeWinPos = "right"
-let g:NERDTreeRemoveFileCmd = 'trash '
-let g:NERDTreeRemoveDirCmd = 'trash '
+let g:NERDTreeRemoveFileCmd = 'trash ' " use trash-cli
+let g:NERDTreeRemoveDirCmd = 'trash '  " use trash-cli
 
 " indentLine
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
@@ -67,6 +68,9 @@ let g:indentLine_defaultGroup = 'SpecialKey'
 
 " gitgutter
 let g:gitgutter_map_keys = 0
+
+" json.vim
+let g:vim_json_conceal = 0 " do not hide quotes on JSON files
 
 " autopairs
 lua <<EOF

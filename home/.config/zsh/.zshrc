@@ -132,6 +132,7 @@ bindkey -M vicmd 'y'     vi-yank-xclip
 
 bindkey -s '^[b' 'launch_nnn^M'
 bindkey -s '^[n' 'tmux new-window newsboat^M'
+bindkey -s '^[m' 'tmux new-window neomutt^M'
 
 export EDITOR=nvim
 
