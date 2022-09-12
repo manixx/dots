@@ -74,7 +74,12 @@ let g:vim_json_conceal = 0 " do not hide quotes on JSON files
 
 " autopairs
 lua <<EOF
-require('nvim-autopairs').setup{}
+require'nvim-autopairs'.setup{}
+EOF
+
+" lsp-config
+lua <<EOF
+require'lspconfig'.tsserver.setup{}
 EOF
 
 " common

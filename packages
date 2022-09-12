@@ -8,6 +8,7 @@ arduino-cli
 audacity
 base-devel
 base-minimal
+bash
 bat
 bluez
 ccls
@@ -45,6 +46,7 @@ go
 gopls
 htop
 i3lock
+intel-ucode
 iproute2
 iputils
 iw
@@ -67,8 +69,12 @@ lynis
 maim
 man-db
 man-pages
+man-pages-devel
+man-pages-posix
+mdocml
 ncdu
 ncurses
+neomutt
 neovim
 net-tools
 newsboat
@@ -108,6 +114,7 @@ unclutter-xfixes
 urlview
 usbutils
 vlc
+void-repo-nonfree
 wget
 wpa_supplicant
 xautolock
