@@ -168,7 +168,7 @@ local on_attach = function(client, bufnr)
 end
 
 lsp['tsserver'].setup { on_attach = on_attach, capabilities = capabilities }
-lsp['bashls'].setup   { on_attach = on_attach, capabilities = capabilities }
+lsp['bashls'].setup   { on_attach = on_attach, capabilities = capabilities, filetypes = { "sh", "zsh" }}
 lsp['gopls'].setup    { on_attach = on_attach, capabilities = capabilities }
 lsp['yamlls'].setup   { on_attach = on_attach, capabilities = capabilities }
 lsp['dockerls'].setup { on_attach = on_attach, capabilities = capabilities }
