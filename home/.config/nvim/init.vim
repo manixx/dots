@@ -81,6 +81,7 @@ let g:gitgutter_map_keys = 0
 " json.vim
 let g:vim_json_conceal = 0 " do not hide quotes on JSON files
 
+" lsp integration and autocomplete
 lua <<EOF
 require'nvim-autopairs'.setup{}
 require'lspfuzzy'.setup {}
@@ -96,8 +97,8 @@ cmp.setup({
 	mapping = cmp.mapping.preset.insert({
 		['<C-d>'] = cmp.mapping.scroll_docs(-4),
 		['<C-f>'] = cmp.mapping.scroll_docs(4),
-		['<C-e>']     = cmp.mapping.abort(),
-		['<CR>']      = cmp.mapping.confirm({ select = false }),
+		['<C-e>'] = cmp.mapping.abort(),
+		['<CR>']  = cmp.mapping.confirm({ select = false }),
 	}),
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
