@@ -158,9 +158,8 @@ export FZF_DEFAULT_OPTS='
   --color info:4,prompt:5,spinner:3,pointer:6,marker:2'
 
 # nnn
-export NNN_TRASH=1         # use trash-cli
+export NNN_TRASH=1  # use trash-cli
 export NNN_USE_EDITOR=1
-export NNN_NO_AUTOSELECT=1 # disable auto-select in navigate-as-you-type
 
 # bat
 export BAT_THEME="ansi"
