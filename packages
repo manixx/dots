@@ -94,6 +94,7 @@ podman
 powertop
 psmisc
 python3-pip
+rclone
 redshift
 ripgrep
 rsync
