@@ -54,6 +54,8 @@ hi Visual       guibg=Gray
 
 " Set soft-tabs on YAML files and disable annoying auto indent
 autocmd FileType yaml,helm setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=<:>
+" Enable spell on markdown files
+autocmd Filetype markdown execute 'set spell'
 " Strip trailing spaces, but keep cursor position
 autocmd BufWritePre * execute 'norm m`' | %s/\s\+$//e | norm g``
 
