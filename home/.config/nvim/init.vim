@@ -14,7 +14,8 @@ Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'windwp/nvim-autopairs'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install'  }
+Plug 'iamcco/markdown-preview.nvim',    { 'do': 'cd app && npm install'  }
+Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/vim-vsnip'      " snippet engine
 Plug 'hrsh7th/nvim-cmp'       " completion engine
@@ -82,6 +83,14 @@ let g:gitgutter_map_keys = 0
 
 " json.vim
 let g:vim_json_conceal = 0 " do not hide quotes on JSON files
+
+" treesitter
+lua<<EOF
+require'nvim-treesitter.configs'.setup{
+	ensure_installed = { "javascript", "typescript", "lua", "c" },
+	highlight = { enable = true },
+}
+EOF
 
 " lsp integration and autocomplete
 lua <<EOF
