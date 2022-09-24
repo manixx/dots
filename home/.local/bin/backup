@@ -15,6 +15,6 @@ gpg \
 	--symmetric \
 	${backup_tar}
 
-rclone sync ${backup_gpg} gdrive:/backup
+rclone sync ${backup_gpg} gdrive:/Backup
 
 rm ${backup_tar} ${backup_gpg}
