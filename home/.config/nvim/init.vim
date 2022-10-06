@@ -184,6 +184,8 @@ lsp['bashls'].setup   { on_attach = on_attach, capabilities = capabilities, file
 lsp['gopls'].setup    { on_attach = on_attach, capabilities = capabilities }
 lsp['yamlls'].setup   { on_attach = on_attach, capabilities = capabilities }
 lsp['dockerls'].setup { on_attach = on_attach, capabilities = capabilities }
+lsp['html'].setup     { on_attach = on_attach, capabilities = capabilities }
+lsp['lemminx'].setup  { on_attach = on_attach, capabilities = capabilities }
 EOF
 
 " common
