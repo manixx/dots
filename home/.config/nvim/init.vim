@@ -73,6 +73,7 @@ let g:NERDTreeShowHidden=1
 let g:NERDTreeWinPos = "right"
 let g:NERDTreeRemoveFileCmd = 'trash ' " use trash-cli
 let g:NERDTreeRemoveDirCmd = 'trash '  " use trash-cli
+let g:NERDTreeMinimalMenu=1
 
 " indentLine
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
