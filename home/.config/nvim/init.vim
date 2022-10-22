@@ -147,7 +147,7 @@ cmp.setup.cmdline(':', {
 	})
 })
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require'cmp_nvim_lsp'.default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local lsp = require'lspconfig'
 
 local opts = { noremap=true, silent=true }
@@ -171,7 +171,7 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
 	vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
 	vim.keymap.set('n', '<space>wl', function()
-	print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 	end, bufopts)
 	vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
 	vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
@@ -181,12 +181,12 @@ local on_attach = function(client, bufnr)
 end
 
 lsp['tsserver'].setup { on_attach = on_attach, capabilities = capabilities }
-lsp['bashls'].setup   { on_attach = on_attach, capabilities = capabilities, filetypes = { "sh", "zsh" }}
 lsp['gopls'].setup    { on_attach = on_attach, capabilities = capabilities }
 lsp['yamlls'].setup   { on_attach = on_attach, capabilities = capabilities }
 lsp['dockerls'].setup { on_attach = on_attach, capabilities = capabilities }
 lsp['html'].setup     { on_attach = on_attach, capabilities = capabilities }
 lsp['lemminx'].setup  { on_attach = on_attach, capabilities = capabilities }
+lsp['bashls'].setup  { on_attach = on_attach, capabilities = capabilities }
 EOF
 
 " common
