@@ -1,7 +1,6 @@
 ImageMagick
 QLC+
 Signal-Desktop
-acpi
 acpid
 apparmor
 arduino-cli
@@ -11,7 +10,6 @@ base-minimal
 bash
 bat
 bluez
-ccls
 chromium
 chrony
 cmake
@@ -25,7 +23,6 @@ dmenu
 dnscrypt-proxy
 docker
 docker-compose
-dosfstools
 duf
 dunst
 e2fsprogs
@@ -34,7 +31,6 @@ exa
 exfat-utils
 fd
 feh
-ffmpeg
 file
 font-awesome5
 font-hack-ttf
@@ -43,8 +39,6 @@ fwupd
 fzf
 gimp
 git
-go
-gopls
 htop
 i3lock
 inkscape
@@ -62,8 +56,6 @@ libX11-devel
 libXft-devel
 libXinerama-devel
 libXrandr-devel
-libreoffice
-libspa-bluetooth
 libva-intel-driver
 linux
 lnav
@@ -76,14 +68,10 @@ man-pages-posix
 mdocml
 ncdu
 ncpamixer
-ncurses
-neomutt
 neovim
 net-tools
 newsboat
-nmap
 nnn
-nodejs
 ofono
 openssh
 openvpn
@@ -94,21 +82,16 @@ picom
 pinentry-dmenu
 pipewire
 podman
-powertop
 psmisc
-python3-pip
 qrencode
-rclone
 redshift
 ripgrep
-rsync
 setxkbmap
 socklog-void
 spotify
 sudo
 task
 telegram-desktop
-timewarrior
 tlp
 tmux
 trash-cli
@@ -117,7 +100,6 @@ twemoji
 ufw
 unclutter-xfixes
 urlview
-usbutils
 vlc
 void-repo-nonfree
 wget

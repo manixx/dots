@@ -2,7 +2,6 @@ path=(
 	~/.local/bin
 	~/.npm-global/bin
 	~/.krew/bin
-	$(go env GOPATH)/bin
 	$path[@]
 )
 
