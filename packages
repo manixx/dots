@@ -62,6 +62,7 @@ libX11-devel
 libXft-devel
 libXinerama-devel
 libXrandr-devel
+libreoffice
 libspa-bluetooth
 libva-intel-driver
 linux
@@ -74,6 +75,7 @@ man-pages
 man-pages-posix
 mdocml
 ncdu
+ncpamixer
 ncurses
 neomutt
 neovim
@@ -95,6 +97,7 @@ podman
 powertop
 psmisc
 python3-pip
+qrencode
 rclone
 redshift
 ripgrep

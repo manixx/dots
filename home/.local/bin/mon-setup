@@ -22,7 +22,6 @@ case ${mode} in
 			--output HDMI1 --off \
 			--output HDMI2--off
 
-		sv start xautolock
 		sv restart session
 		;;
 
