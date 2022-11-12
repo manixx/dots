@@ -31,7 +31,6 @@ exa
 exfat-utils
 fd
 feh
-file
 font-awesome5
 font-hack-ttf
 fuse
@@ -69,6 +68,7 @@ man-pages-posix
 mdocml
 ncdu
 ncpamixer
+ncurses
 neovim
 net-tools
 newsboat
