@@ -1,5 +1,4 @@
 #!/bin/sh
 
 exec picom \
-	--config ./conf \
-	--experimental-backends
+	--config ./conf
