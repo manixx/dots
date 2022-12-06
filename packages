@@ -1,5 +1,4 @@
 ImageMagick
-QLC+
 Signal-Desktop
 acpid
 apparmor
@@ -9,10 +8,10 @@ base-devel
 base-minimal
 bash
 bat
+bind-utils
 bluez
 chromium
 chrony
-cmake
 connman
 cronie
 cryptsetup
