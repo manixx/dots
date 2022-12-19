@@ -38,6 +38,7 @@ hi SignColumn   guibg=none
 hi Normal       guibg=none
 hi EndOfBuffer  guibg=none
 hi Visual       guibg=Gray
+hi NormalNC     guibg=none
 
 autocmd FileType yaml,helm setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=<:>
 autocmd BufWritePre * execute 'norm m`' | %s/\s\+$//e | norm g``
