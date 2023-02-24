@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export SVDIR=~/.config/x-service
+export SVDIR=~/.local/x-service
 
 sv status xautolock | egrep ^down -q \
 	&& sv start xautolock \

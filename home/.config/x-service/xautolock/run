@@ -1,6 +1,0 @@
-#!/bin/sh
-
-script=~/.local/bin/lock-screen
-[ ! -x ${script} ] && exit 1
-
-exec xautolock -time 1 -locker ${script}

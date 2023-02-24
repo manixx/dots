@@ -109,8 +109,8 @@ alias cat="bat"
 alias kctl="kubectl"
 alias dockerc="docker compose"
 alias gco="git checkout"
-alias sv-user="SVDIR=~/.config/service sv"
-alias sv-x="SVDIR=~/.config/x-service sv"
+alias sv-user="SVDIR=~/.local/service sv"
+alias sv-x="SVDIR=~/.local/x-service sv"
 
 bindkey -v                            # vim bindings
 bindkey '^?'    backward-delete-char  # delete chars after mode switch

@@ -37,7 +37,7 @@
 "dunstctl close"
 	Control + Alt + space
 
-"SVDIR=~/.config/x-service sv restart session"
+"SVDIR=~/.local/x-service sv restart session"
 	Shift + Mod4 + s
 
 "toggle-xautolock"

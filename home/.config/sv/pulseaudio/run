@@ -1,0 +1,2 @@
+#!/bin/sh
+exec pulseaudio --daemonize=no --exit-idle-time=-1

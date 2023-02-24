@@ -1,5 +1,0 @@
-#!/bin/sh
-
-exec xbindkeys \
-	--file $(dirname $0)/.xbindkeysrc \
-	--nodaemon
