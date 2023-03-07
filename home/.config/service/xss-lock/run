@@ -1,0 +1,3 @@
+#!/bin/sh
+xset s 60
+exec xss-lock slock +resetsaver

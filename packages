@@ -2,8 +2,6 @@ ImageMagick
 Signal-Desktop
 acpid
 apparmor
-arduino-cli
-audacity
 base-devel
 base-minimal
 bash
@@ -15,7 +13,6 @@ chrony
 connman
 cronie
 cryptsetup
-cups
 curl
 dhcpcd
 dmenu
@@ -59,7 +56,6 @@ libva-intel-driver
 linux
 lnav
 lvm2
-lynis
 maim
 man-db
 man-pages
@@ -72,6 +68,7 @@ neovim
 net-tools
 newsboat
 nnn
+nodejs
 ofono
 openssh
 openvpn
@@ -80,7 +77,6 @@ passmenu
 pavucontrol
 picom
 pinentry-dmenu
-podman
 psmisc
 pulseaudio
 qrencode

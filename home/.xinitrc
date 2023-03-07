@@ -29,6 +29,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 eval $(dbus-launch --sh-syntax)
-runsvdir $HOME/.local/x-service &
+runsvdir $HOME/.config/service &
 
 exec dwm

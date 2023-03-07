@@ -1,2 +1,0 @@
-#!/bin/sh
-exec xautolock -time 1 -locker ~/.local/bin/lock-screen

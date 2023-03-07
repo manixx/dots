@@ -109,8 +109,8 @@ alias cat="bat"
 alias kctl="kubectl"
 alias dockerc="docker compose"
 alias gco="git checkout"
-alias sv-user="SVDIR=~/.local/service sv"
-alias sv-x="SVDIR=~/.local/x-service sv"
+alias svu="SVDIR=~/.config/service sv"
+#alias svx="SVDIR=~/.local/x-service sv"
 
 bindkey -v                            # vim bindings
 bindkey '^?'    backward-delete-char  # delete chars after mode switch
@@ -161,16 +161,6 @@ export NNN_USE_EDITOR=1
 
 # bat
 export BAT_THEME="ansi"
-
-# create XDG_RUNTIME_DIR for programs, which require it
-# (e.g. pipewire).
-if test -z "${XDG_RUNTIME_DIR}"; then
-	export XDG_RUNTIME_DIR=/tmp/${UID}-runtime-dir
-	if ! test -d "${XDG_RUNTIME_DIR}"; then
-		mkdir "${XDG_RUNTIME_DIR}"
-		chmod 0700 "${XDG_RUNTIME_DIR}"
-	fi
-fi
 
 STARTX_LOG="$HOME/.local/share/xorg/startx.log"
 
