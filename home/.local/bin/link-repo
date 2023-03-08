@@ -41,7 +41,9 @@ setopt dotglob # include dot files
 
 linkFiles home ${HOME}/
 if read -q "REPLY?Also copy /?"; then
-	linkFiles etc / sudo
+	for f in $(find ${repoPath} -maxdepth 1 -type d -not -name home -not -name .git | tail +2); do
+		linkFiles $(basename ${f}) / sudo
+	done
 fi
 
 unsetopt dotglob

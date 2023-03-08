@@ -11,6 +11,7 @@ pre_actions() {
 	fi
 
 	killall chromium --wait
+	sudo user-poweroff
 }
 
 if [ -z "$command" ]; then
