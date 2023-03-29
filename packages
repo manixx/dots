@@ -36,6 +36,7 @@ gimp
 git
 htop
 i3lock
+imlib2-devel
 inkscape
 intel-ucode
 iproute2
@@ -77,9 +78,11 @@ passmenu
 pavucontrol
 picom
 pinentry-dmenu
+pipewire
 psmisc
 pulseaudio
 qrencode
+rawtherapee
 redshift
 ripgrep
 setxkbmap
@@ -105,10 +108,12 @@ xbindkeys
 xclip
 xcursor-vanilla-dmz-aa
 xf86-video-intel
+xmirror
 xmodmap
 xorg-minimal
 xrandr
 xrdb
+xss-lock
 xtools
 zsh
 zsh-autosuggestions

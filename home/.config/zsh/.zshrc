@@ -75,7 +75,6 @@ $(last_cmd_exec_time)'
 PROMPT='%F{magenta}%~%f\
 $(vcs_data)\
 $(k8s_context)\
-$(task_status)\
 $(check_jobs)\
 '$'\n''\
 %F{green}%B→%b%f '

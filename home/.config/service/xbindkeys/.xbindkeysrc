@@ -31,20 +31,8 @@
 "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 	Mod4 + XF86AudioRaiseVolume
 
-"screen-capture"
+"capture-screen"
 	Mod4 + c
 
 "dunstctl close"
 	Control + Alt + space
-
-"SVDIR=~/.local/service-x sv restart session"
-	Shift + Mod4 + s
-
-"toggle-xautolock"
-	Shift + Mod4 + l
-
-"mon-setup reset"
-	Shift + Mod4 + r
-
-"session poweroff"
-	Shift + Mod4 + p

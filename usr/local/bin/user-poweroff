@@ -1,4 +1,0 @@
-#!/bin/sh
-# Small script to accelerate poweroff as connmand seems to struggle
-# when system is shutting down. Not a pretty solution, but yeah...
-sv stop connmand

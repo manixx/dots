@@ -1,9 +1,0 @@
-#!/bin/sh
-
-export SVDIR=~/.local/service-x
-
-sv status xautolock | egrep ^down -q \
-	&& sv start xautolock \
-	|| sv stop xautolock
-
-sv restart dwmblocks
