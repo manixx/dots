@@ -1,4 +1,4 @@
-"lock-screen"
+"slock"
 	Mod4 + Escape
 
 "passmenu -i -l 5 -fn 'Bitstream Vera Sans-8' -nf '#88909f' -nb '#2c2e34' -sf '#2c2e34' -sb '#c5cdd9'"
