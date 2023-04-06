@@ -36,3 +36,6 @@
 
 "dunstctl close"
 	Control + Alt + space
+
+"SVDIR=~/.config/service sv restart session"
+	Mod4 + Shift + s
