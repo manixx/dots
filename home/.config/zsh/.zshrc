@@ -109,7 +109,7 @@ alias kctl="kubectl"
 alias dockerc="docker compose"
 alias gco="git checkout"
 alias svu="SVDIR=~/.config/service sv"
-#alias svx="SVDIR=~/.local/x-service sv"
+alias bctl="sudo bluetoothctl"
 
 bindkey -v                            # vim bindings
 bindkey '^?'    backward-delete-char  # delete chars after mode switch
