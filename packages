@@ -18,6 +18,7 @@ dhcpcd
 dmenu
 dnscrypt-proxy
 docker
+docker-buildx
 docker-compose
 duf
 dunst
@@ -48,6 +49,7 @@ kbd
 kubectl
 kubernetes-helm
 kubernetes-kind
+lftp
 libX11-devel
 libXft-devel
 libXinerama-devel
@@ -68,6 +70,7 @@ ncurses
 neovim
 net-tools
 newsboat
+nmap
 nnn
 nodejs
 ofono
@@ -82,7 +85,6 @@ pipewire
 psmisc
 pulseaudio
 qrencode
-rawtherapee
 redshift
 ripgrep
 setxkbmap
