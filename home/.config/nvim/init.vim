@@ -11,7 +11,7 @@ Plug 'Yggdroot/indentLine'
 call plug#end()
 
 set colorcolumn=80
-set rnu nu
+set nu rnu
 set list
 set cursorline
 set signcolumn=yes
@@ -24,6 +24,7 @@ set tabstop=2
 set spell
 set spelllang=en,de
 set listchars=tab:→\ ,multispace:·,trail:•,extends:↩
+set statuscolumn=%l\ %s%C%=%T%r│%T
 
 syntax      enable
 filetype    plugin indent on
