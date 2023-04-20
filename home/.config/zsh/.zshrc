@@ -152,7 +152,8 @@ export FZF_ALT_C_COMMAND='fd \
 	~'
 export FZF_DEFAULT_OPTS='
   --color fg:8,bg:-1,hl:5,fg+:7,bg+:-1,hl+:7
-  --color info:4,prompt:5,spinner:3,pointer:6,marker:2'
+  --color info:4,prompt:5,spinner:3,pointer:6,marker:2
+	--bind up:preview-up,down:preview-down'
 
 # nnn
 export NNN_TRASH=1  # use trash-cli
