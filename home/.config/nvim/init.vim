@@ -8,6 +8,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'Yggdroot/indentLine'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 set colorcolumn=80
@@ -78,3 +79,13 @@ noremap ]c              <Plug>(GitGutterNextHunk)
 noremap [c              <Plug>(GitGutterPrevHunk)
 noremap <leader>gf      :GitGutterFold<cr>
 xmap    ga              <Plug>(EasyAlign)
+
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+	ensure_installed = { "terraform" },
+	auto_install = false,
+	highlight = {
+		enable = true,
+	}
+}
+EOF
