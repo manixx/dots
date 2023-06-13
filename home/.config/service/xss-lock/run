@@ -1,4 +1,0 @@
-#!/bin/sh
-xset s on
-xset s 60
-exec xss-lock slock +resetsaver

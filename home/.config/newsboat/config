@@ -26,3 +26,4 @@ bind-key m toggle-article-read
 bind-key r reload-all
 bind-key g home
 bind-key G end
+bind-key A mark-feed-read
