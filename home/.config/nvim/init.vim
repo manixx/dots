@@ -3,11 +3,11 @@ Plug 'sainnhe/edge'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree'
+Plug 'Yggdroot/indentLine'
+Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'Yggdroot/indentLine'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
@@ -57,7 +57,7 @@ let g:NERDTreeRemoveDirCmd = 'trash '
 let g:NERDTreeMinimalMenu=1
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:gitgutter_map_keys = 0
-let g:vim_json_conceal = 0 " show JSON quotes
+let g:vim_json_conceal = 0     " show JSON quotes
 let g:indentLine_setColors = 0 " use theme colours
 
 noremap <leader>f       :Files<cr>
@@ -69,7 +69,6 @@ noremap <leader>c       :Commits<cr>
 noremap <leader>bc      :BCommits<cr>
 noremap <leader>sy      :Filetypes<cr>
 noremap <leader>bu      :Buffers<cr>
-noremap <leader>m       :Marks<cr>
 noremap <leader><tab>   :NERDTreeToggle<cr>
 noremap <leader><s-tab> :NERDTreeFocus<cr>
 noremap <leader>^       :NERDTreeFind<cr>
@@ -79,13 +78,3 @@ noremap ]c              <Plug>(GitGutterNextHunk)
 noremap [c              <Plug>(GitGutterPrevHunk)
 noremap <leader>gf      :GitGutterFold<cr>
 xmap    ga              <Plug>(EasyAlign)
-
-lua << EOF
-require'nvim-treesitter.configs'.setup {
-	ensure_installed = { "terraform" },
-	auto_install = false,
-	highlight = {
-		enable = true,
-	}
-}
-EOF
