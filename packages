@@ -111,6 +111,7 @@ xbindkeys
 xclip
 xcursor-vanilla-dmz-aa
 xf86-video-intel
+xmodmap
 xorg-minimal
 xrandr
 xrdb
