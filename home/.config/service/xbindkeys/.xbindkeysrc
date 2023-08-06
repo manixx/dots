@@ -10,6 +10,12 @@
 "xbacklight -inc 10"
 	XF86MonBrightnessUp
 
+"xbacklight -set 1"
+	Shift + XF86MonBrightnessDown
+
+"xbacklight -set 100"
+	Shift + XF86MonBrightnessUp
+
 "pactl set-sink-mute @DEFAULT_SINK@ toggle"
 	XF86AudioMute
 
