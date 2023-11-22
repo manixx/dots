@@ -75,6 +75,7 @@ $(last_cmd_exec_time)'
 PROMPT='%F{magenta}%~%f\
 $(vcs_data)\
 $(k8s_context)\
+$(aws_profile)\
 $(check_jobs)\
 '$'\n''\
 %F{green}%B→%b%f '
@@ -91,7 +92,7 @@ plugins=(
 	/opt/azure-cli/az.completion
 
 	~/.config/zsh/functions/*.zsh
-	~/.config/zsh/bash-completion/*
+	~/.config/zsh/completion/*
 )
 setopt -o nomatch
 
