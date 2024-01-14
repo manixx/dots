@@ -1,8 +1,6 @@
 #!/bin/sh
 
-$HOME/.fehbg       # set background
-xset r rate 220 40 # update keyboard update rate
-setxkbmap de       # set keyboard layout
-xset -dpms s off   # disable monitor saving mode
+$HOME/.fehbg     # set background
+xset -dpms s off # disable monitor saving mode
 
 exec chpst -b session pause

@@ -24,7 +24,6 @@ dunst
 e2fsprogs
 efibootmgr
 exa
-exfat-utils
 exiftool
 fd
 feh
@@ -92,6 +91,7 @@ socklog-void
 spotify
 sudo
 telegram-desktop
+terraform
 tlp
 tmux
 traceroute
@@ -111,6 +111,7 @@ xbindkeys
 xclip
 xcursor-vanilla-dmz-aa
 xf86-video-intel
+xmirror
 xmodmap
 xorg-minimal
 xrandr
