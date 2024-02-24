@@ -36,6 +36,7 @@ gimp
 git
 go
 gopls
+htop
 imlib2-devel
 inkscape
 intel-ucode
@@ -85,9 +86,11 @@ psmisc
 qrencode
 redshift
 ripgrep
+rpi-imager
 rsync
 setxkbmap
 socklog-void
+sof-firmware
 spotify
 sudo
 telegram-desktop

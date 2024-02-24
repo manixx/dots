@@ -18,6 +18,7 @@ OPTIONS="
 	net.ifnames=0
 	vga=current
 	udev.log_level=3
+	fbcon=nodefer
 "
 
 OPTIONS=$(echo $OPTIONS | xargs)
