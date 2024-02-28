@@ -1,4 +1,3 @@
 manfred ALL=(ALL) ALL
 manfred ALL=(ALL) NOPASSWD: /bin/poweroff
-manfred ALL=(ALL) NOPASSWD: /bin/ZZZ
 manfred ALL=(ALL) NOPASSWD: /bin/bluetoothctl
