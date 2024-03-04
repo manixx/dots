@@ -118,7 +118,6 @@ xmodmap
 xorg-minimal
 xrandr
 xrdb
-xss-lock
 xtools
 zsh
 zsh-autosuggestions
