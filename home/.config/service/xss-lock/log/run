@@ -1,0 +1,2 @@
+#!/bin/sh
+exec vlogger -t xss-lock
