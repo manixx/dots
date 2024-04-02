@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+set -eu pipefail
+
+sudo xbps-remove -Oo
+sudo vkpurge rm all
+
+sudo xbps-install -Su
+
+test $(command -v gcloud) \
+	&& gcloud components update
+
+test $(command -v az) \
+	&& az upgrade
+
+sudo makewhatis
