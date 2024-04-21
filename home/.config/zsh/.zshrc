@@ -163,6 +163,9 @@ export NNN_USE_EDITOR=1
 # bat
 export BAT_THEME="ansi"
 
+# hidpi
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+
 STARTX_LOG="$HOME/.local/share/xorg/startx.log"
 
 if [[ ! $DISPLAY && $(tty) == "/dev/tty1" ]]; then
