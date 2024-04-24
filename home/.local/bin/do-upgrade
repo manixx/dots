@@ -6,6 +6,7 @@ sudo xbps-remove -Oo
 sudo vkpurge rm all
 
 sudo xbps-install -Su
+xlocate -S
 
 test $(command -v gcloud) \
 	&& gcloud components update
