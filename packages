@@ -8,11 +8,15 @@ bat
 bind-utils
 bluez
 calc
+ccache
+ccls
 chromium
 chrony
+cmake
 connman
 cryptsetup
 curl
+dfu-util
 dhcpcd
 dmenu
 dnscrypt-proxy
@@ -36,6 +40,7 @@ gimp
 git
 go
 gopls
+gperf
 imlib2-devel
 inkscape
 intel-ucode
@@ -69,6 +74,7 @@ ncurses
 neovim
 net-tools
 newsboat
+ninja
 nmap
 nnn
 ntfs-3g
