@@ -1,7 +1,8 @@
 require'nvim-treesitter.configs'.setup {
 	ensure_installed = {
 		"terraform",
-		"go"
+		"go",
+		"c",
 	},
 	auto_install = false,
 	highlight    = { enable = true }

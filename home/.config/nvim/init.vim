@@ -10,6 +10,11 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'towolf/vim-helm'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'L3MON4D3/LuaSnip'
 call plug#end()
 
 set colorcolumn=80
@@ -44,6 +49,7 @@ hi NormalNC     guibg=none
 
 autocmd FileType yaml,helm setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=0# indentkeys-=<:>
 autocmd BufWritePre * execute 'norm m`' | %s/\s\+$//e | norm g``
+autocmd FileType markdown setlocal textwidth=80
 
 let g:lightline = {
 	\ 'colorscheme': 'edge',
@@ -64,7 +70,6 @@ let g:indentLine_setColors = 0 " use theme colours
 noremap <leader>f       :Files<cr>
 noremap <leader>F       :Files ~<cr>
 noremap <leader>s       :Rg<cr>
-noremap <leader>l       :Lines<cr>
 noremap <leader>bl      :BLines<cr>
 noremap <leader>c       :Commits<cr>
 noremap <leader>bc      :BCommits<cr>
@@ -74,8 +79,6 @@ noremap <leader><tab>   :NERDTreeToggle<cr>
 noremap <leader><s-tab> :NERDTreeFocus<cr>
 noremap <leader>^       :NERDTreeFind<cr>
 noremap <leader>gb      :Git blame<cr>
-noremap <leader>g       :Git<cr>
 noremap ]c              <Plug>(GitGutterNextHunk)
 noremap [c              <Plug>(GitGutterPrevHunk)
-noremap <leader>gf      :GitGutterFold<cr>
 xmap    ga              <Plug>(EasyAlign)
