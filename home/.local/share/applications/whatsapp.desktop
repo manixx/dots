@@ -1,5 +1,0 @@
-[Desktop Entry]
-Name=WhatsApp
-Exec=chromium --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,Vulkan --app=https://web.whatsapp.com
-Terminal=false
-Type=Application

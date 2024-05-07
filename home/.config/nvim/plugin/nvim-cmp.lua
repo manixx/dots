@@ -18,6 +18,7 @@ cmp.setup({
 		{ name = 'nvim_lsp' },
 		{ name = 'vsnip' },
 		{ name = 'buffer' },
+		{ name = 'path' },
 	},
 })
 
@@ -26,4 +27,8 @@ cmp.setup.cmdline('/', {
 	sources = {
 		{ name = 'buffer' }
 	}
+})
+
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, {
+	noremap = true, silent = true
 })

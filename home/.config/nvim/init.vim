@@ -11,6 +11,9 @@ Plug 'tpope/vim-fugitive'      " git integration
 Plug 'airblade/vim-gitgutter'  " git adaptions
 " Syntax
 Plug 'towolf/vim-helm'
+Plug 'carlsmedstad/vim-bicep'
+Plug 'grafana/vim-alloy'
+Plug 'evanleck/vim-svelte'
 " Autocomplete
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
@@ -20,6 +23,7 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/cmp-nvim-lsp'
 " Lsp
 Plug 'neovim/nvim-lspconfig'
+Plug 'szymonwilczek/vim-be-better'
 call plug#end()
 
 set colorcolumn=80
@@ -54,23 +58,29 @@ hi NormalNC     guibg=none
 
 autocmd FileType yaml,helm setlocal ts=2 sts=2 sw=2 expandtab indentkeys-=0# indentkeys-=<:>
 autocmd BufWritePre * execute 'norm m`' | %s/\s\+$//e | norm g``
-autocmd FileType markdown setlocal textwidth=80
+autocmd FileType markdown setlocal textwidth=80 conceallevel=0 concealcursor=
 
 let g:lightline = {
 	\ 'colorscheme': 'edge',
 	\ 'separator': { 'left': '▙', 'right': '▟' },
 	\ 'subseparator': { 'left': '▸', 'right': '◂' },
 	\ }
-let g:NERDTreeChDirMode     = 1
-let g:NERDTreeShowHidden    = 1
-let g:NERDTreeWinPos        = 'right'
-let g:NERDTreeRemoveFileCmd = 'trash '
-let g:NERDTreeRemoveDirCmd  = 'trash '
-let g:NERDTreeMinimalMenu   = 1
-let g:indentLine_char_list  = ['|', '¦', '┆', '┊']
-let g:gitgutter_map_keys    = 0
-let g:vim_json_conceal      = 0 " show JSON quotes
-let g:indentLine_setColors  = 0 " use theme colours
+let g:NERDTreeChDirMode       = 1
+let g:NERDTreeShowHidden      = 1
+let g:NERDTreeWinPos          = 'right'
+let g:NERDTreeRemoveFileCmd   = 'trash '
+let g:NERDTreeRemoveDirCmd    = 'trash '
+let g:NERDTreeMinimalMenu     = 1
+let g:indentLine_char_list    = ['|', '¦', '┆', '┊']
+let g:gitgutter_map_keys      = 0
+let g:vim_json_conceal        = 0 " show JSON quotes
+let g:indentLine_setColors    = 0 " use theme colours
+let g:indentLine_conceallevel = 0 " skip conceal for files
+
+" make python new lines great again
+let g:pyindent_open_paren   = 'shiftwidth()'
+let g:pyindent_continue     = 'shiftwidth()'
+let g:pyindent_nested_paren = 'shiftwidth()'
 
 noremap <leader>f       :Files<cr>
 noremap <leader>F       :Files ~<cr>

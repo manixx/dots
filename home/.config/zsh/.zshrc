@@ -3,6 +3,7 @@ path=(
 	~/.npm-global/bin
 	~/.krew/bin
 	~/go/bin
+	~/.local/opt/google-cloud-sdk/bin
 	$path[@]
 )
 
@@ -10,6 +11,8 @@ fpath=(
 	~/.config/zsh/completion
 	$fpath[@]
 )
+
+typeset -U path fpath
 
 autoload -Uz \
 	compinit \
@@ -27,14 +30,15 @@ compinit -C -d ~/.cache/zsh/zcompdump
 promptinit
 bashcompinit
 
-setopt INC_APPEND_HISTORY   # add commands directly to history (not on closing)
-setopt HIST_IGNORE_SPACE    # ignore commands with space prefixed
-setopt HIST_FIND_NO_DUPS    # skip duplicates in history file
-setopt HIST_IGNORE_ALL_DUPS # do not write duplicates to history file
-setopt SHARE_HISTORY        # share history between sessions
-setopt PROMPT_SUBST         # to enable functions in prompt
-setopt AUTO_CD              # just use .. and omit cd
-setopt APPEND_HISTORY       # append history
+setopt INC_APPEND_HISTORY                        # add commands directly to history (not on closing)
+setopt HIST_IGNORE_SPACE                         # ignore commands with space prefixed
+setopt HIST_FIND_NO_DUPS                         # skip duplicates in history file
+setopt HIST_IGNORE_ALL_DUPS                      # do not write duplicates to history file
+setopt SHARE_HISTORY                             # share history between sessions
+setopt PROMPT_SUBST                              # to enable functions in prompt
+setopt AUTO_CD                                   # just use .. and omit cd
+setopt APPEND_HISTORY                            # append history
+setopt AUTO_PUSHD PUSHD_IGNORE_DUPS PUSHD_SILENT # setup cd stacking
 
 ZLE_RPROMPT_INDENT=0           # disable right padding in prompt
 KEYTIMEOUT=1                   # make vi mode transitions faster
@@ -43,9 +47,9 @@ HISTSIZE=1000
 SAVEHIST=5000
 
 # hist file must be created manually
-if [ ! -f ${HISTFILE} ]; then
-	mkdir -p $(dirname ${HISTFILE})
-	touch ${HISTFILE}
+if [ ! -f "$HISTFILE" ]; then
+	mkdir -p $(dirname "$HISTFILE")
+	touch "$HISTFILE"
 fi
 
 # Yank to the system clipboard while in normale mode
@@ -79,7 +83,7 @@ my_prompt=
 PROMPT='%F{magenta}%~%f\
 $(vcs_data)\
 $(k8s_context)\
-$(aws_profile)\
+$(check_docker)\
 $(check_jobs)\
 '$'\n''\
 %F{green}%B→%b%f '
@@ -97,10 +101,6 @@ plugins=(
 	/usr/share/bash-completion/completions
 	/usr/share/fzf/*.zsh
 	/usr/share/zsh/plugins/*/*.plugin.zsh
-
-	/opt/google-cloud-sdk/completion.zsh.inc
-	/opt/google-cloud-sdk/path.zsh.inc
-	/opt/azure-cli/az.completion
 
 	~/.config/zsh/functions/*.zsh
 	~/.config/zsh/completion/*
@@ -122,6 +122,7 @@ alias dockerc="docker compose"
 alias gco="git checkout"
 alias svu="SVDIR=~/.config/service sv"
 alias bctl="sudo bluetoothctl"
+alias callstop="docker stop $(docker ps -q)"
 
 bindkey -v                            # vim bindings
 bindkey '^?'    backward-delete-char  # delete chars after mode switch
@@ -163,8 +164,8 @@ export FZF_ALT_C_COMMAND='fd \
 	--exclude .cache \
 	~'
 export FZF_DEFAULT_OPTS='
-  --color fg:8,bg:-1,hl:5,fg+:7,bg+:-1,hl+:7
-  --color info:4,prompt:5,spinner:3,pointer:6,marker:2
+	--color fg:8,bg:-1,hl:5,fg+:7,bg+:-1,hl+:7
+	--color info:4,prompt:5,spinner:3,pointer:6,marker:2
 	--bind up:preview-up,down:preview-down'
 
 # nnn
@@ -176,6 +177,14 @@ export BAT_THEME="ansi"
 
 # hidpi
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
+
+# setup zoxide
+eval "$(zoxide init zsh)"
 
 STARTX_LOG="$HOME/.local/share/xorg/startx.log"
 
