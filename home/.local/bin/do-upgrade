@@ -15,3 +15,5 @@ test $(command -v az) \
 	&& az upgrade
 
 sudo makewhatis
+
+vim +'PlugUpgrade' +'PlugUpdate --sync' +qa
