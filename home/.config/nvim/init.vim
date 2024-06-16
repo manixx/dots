@@ -1,4 +1,5 @@
 call plug#begin('~/.vim/plugged')
+" Basic
 Plug 'sainnhe/edge'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
@@ -8,13 +9,8 @@ Plug 'Yggdroot/indentLine'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Syntax
 Plug 'towolf/vim-helm'
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'L3MON4D3/LuaSnip'
 call plug#end()
 
 set colorcolumn=80
@@ -56,16 +52,16 @@ let g:lightline = {
 	\ 'separator': { 'left': '▙', 'right': '▟' },
 	\ 'subseparator': { 'left': '▸', 'right': '◂' },
 	\ }
-let g:NERDTreeChDirMode=1
-let g:NERDTreeShowHidden=1
-let g:NERDTreeWinPos = "right"
+let g:NERDTreeChDirMode     = 1
+let g:NERDTreeShowHidden    = 1
+let g:NERDTreeWinPos        = 'right'
 let g:NERDTreeRemoveFileCmd = 'trash '
-let g:NERDTreeRemoveDirCmd = 'trash '
-let g:NERDTreeMinimalMenu=1
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-let g:gitgutter_map_keys = 0
-let g:vim_json_conceal = 0     " show JSON quotes
-let g:indentLine_setColors = 0 " use theme colours
+let g:NERDTreeRemoveDirCmd  = 'trash '
+let g:NERDTreeMinimalMenu   = 1
+let g:indentLine_char_list  = ['|', '¦', '┆', '┊']
+let g:gitgutter_map_keys    = 0
+let g:vim_json_conceal      = 0     " show JSON quotes
+let g:indentLine_setColors  = 0 " use theme colours
 
 noremap <leader>f       :Files<cr>
 noremap <leader>F       :Files ~<cr>
