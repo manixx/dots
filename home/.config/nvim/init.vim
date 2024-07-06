@@ -11,6 +11,15 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 " Syntax
 Plug 'towolf/vim-helm'
+" Autocomplete
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/cmp-nvim-lsp'
+" Lsp
+Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
 set colorcolumn=80
