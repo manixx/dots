@@ -53,6 +53,7 @@ libX11-devel
 libXft-devel
 libXinerama-devel
 libXrandr-devel
+libsecret
 libspa-bluetooth
 libva-intel-driver
 linux
@@ -81,6 +82,7 @@ picom
 pinentry-dmenu
 pipewire
 psmisc
+python3-pyserial
 redshift
 ripgrep
 setxkbmap
