@@ -3,6 +3,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local servers = {
 	'ccls',
+	'gopls',
 }
 
 for _, lsp in ipairs(servers) do

@@ -36,6 +36,7 @@ fzf
 gimp
 git
 go
+gopls
 gperf
 imlib2-devel
 intel-ucode
