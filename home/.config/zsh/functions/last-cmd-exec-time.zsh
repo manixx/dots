@@ -1,9 +1,5 @@
 last_cmd_timestamp=''
 
-preexec() {
-	last_cmd_timestamp=$(date +%s)
-}
-
 last_cmd_exec_time() {
 	if [ -n "$last_cmd_timestamp" ]; then
 		now=$(date +%s)

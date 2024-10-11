@@ -54,6 +54,7 @@ libX11-devel
 libXft-devel
 libXinerama-devel
 libXrandr-devel
+libopencv-python3
 libsecret
 libspa-bluetooth
 libva-intel-driver
@@ -76,6 +77,7 @@ nmap
 nnn
 ntfs-3g
 ofono
+opencv
 openssh
 pass
 passmenu

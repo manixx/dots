@@ -81,6 +81,12 @@ $(check_jobs)\
 %F{green}%B→%b%f '
 RPROMPT="" # needs to bet set for zle-line-init is not loaded on startup
 
+preexec () {
+	last_cmd_timestamp=$(date +%s)
+	print_time_line
+}
+
+
 setopt +o nomatch # if folder doesn't exist, skip no matches found error
 plugins=(
 	/usr/share/bash-completion/completions
@@ -179,3 +185,4 @@ fi
 if [[ ! -z $DISPLAY ]] && [[ $- == *i* ]] && [[ -z "$TMUX" ]]; then
 	exec tmux -u
 fi
+
