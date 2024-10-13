@@ -1,8 +1,0 @@
-#!/bin/zsh
-
-FILE_PATH="$HOME/screenshots/$(date +%s).png"
-mkdir -p $(basedir ${FILE_PATH})
-
-maim -s ${FILE_PATH} \
-	&& cat ${FILE_PATH} \
-	| xclip -sel cli -t image/png

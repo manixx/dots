@@ -37,7 +37,7 @@
 "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
 	Mod4 + XF86AudioRaiseVolume
 
-"capture-screen"
+"flameshot gui -c -p ~/screenshots"
 	Mod4 + c
 
 "dunstctl close"
