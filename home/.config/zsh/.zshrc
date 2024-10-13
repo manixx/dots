@@ -72,6 +72,8 @@ $(last_cmd_exec_time)'
 	zle reset-prompt
 }
 
+my_prompt=
+
 PROMPT='%F{magenta}%~%f\
 $(vcs_data)\
 $(k8s_context)\
@@ -83,9 +85,10 @@ RPROMPT="" # needs to bet set for zle-line-init is not loaded on startup
 
 preexec () {
 	last_cmd_timestamp=$(date +%s)
-	print_time_line
-}
+	current_command_time=$(date "+%H:%M:%S")
 
+	print -P "%F{8}→ $current_command_time%f"
+}
 
 setopt +o nomatch # if folder doesn't exist, skip no matches found error
 plugins=(
