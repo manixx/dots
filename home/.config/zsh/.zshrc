@@ -2,6 +2,7 @@ path=(
 	~/.local/bin
 	~/.npm-global/bin
 	~/.krew/bin
+	~/go/bin
 	$path[@]
 )
 
