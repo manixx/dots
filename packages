@@ -89,6 +89,7 @@ psmisc
 python3-pyserial
 redshift
 ripgrep
+rsync
 setxkbmap
 socklog-void
 sof-firmware
