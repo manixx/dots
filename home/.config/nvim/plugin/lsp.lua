@@ -7,6 +7,7 @@ local localServer = {
 
 local dockerServer = {
 	'gopls',
+	'bashls',
 }
 
 for _, lsp in ipairs(localServer) do
