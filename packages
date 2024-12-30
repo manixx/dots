@@ -24,6 +24,7 @@ docker-buildx
 docker-compose
 duf
 dunst
+e2fsprogs
 efibootmgr
 exa
 fd
@@ -60,6 +61,7 @@ libopencv-python3
 libsecret
 libspa-bluetooth
 libva-intel-driver
+linssid
 linux
 lnav
 lvm2
@@ -80,8 +82,10 @@ ntfs-3g
 ofono
 opencv
 openssh
+openssl-devel
 pass
 passmenu
+pciutils
 picom
 pinentry-dmenu
 pipewire
@@ -104,6 +108,7 @@ twemoji
 ufw
 unclutter-xfixes
 urlview
+usbutils
 vlc
 void-repo-nonfree
 wget
