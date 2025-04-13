@@ -26,6 +26,7 @@ duf
 dunst
 e2fsprogs
 efibootmgr
+evtest
 exa
 fd
 feh
@@ -41,7 +42,6 @@ go
 gopls
 gperf
 imlib2-devel
-inkscape
 intel-ucode
 iproute2
 iputils
@@ -52,7 +52,6 @@ kbd
 kubectl
 kubernetes-helm
 kubernetes-kind
-lftp
 libX11-devel
 libXft-devel
 libXinerama-devel
@@ -75,14 +74,11 @@ ncurses
 neovim
 net-tools
 newsboat
-ninja
 nmap
 nnn
 ntfs-3g
 ofono
-opencv
 openssh
-openssl-devel
 pass
 passmenu
 pciutils
@@ -90,10 +86,8 @@ picom
 pinentry-dmenu
 pipewire
 psmisc
-python3-pyserial
 redshift
 ripgrep
-rsync
 setxkbmap
 socklog-void
 sof-firmware
@@ -119,6 +113,7 @@ xbindkeys
 xclip
 xcursor-vanilla-dmz-aa
 xf86-video-intel
+xinput
 xmodmap
 xorg-minimal
 xrandr
