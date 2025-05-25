@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Chromium
-Exec=chromium --enable-features=VaapiVideoDecoder,VaapiVideoEncoder %U
+Exec=chromium --enable-features=VaapiVideoDecoder,VaapiVideoEncoder,UseSkiaRenderer,SkiaGraphite,Vulkan --ignore-gpu-blocklist %U
 Terminal=false
 Type=Application
 MimeType=x-scheme-handler/webcal;text/html;text/xml;application/xhtml+xml;text/mml;x-scheme-handler/http;x-scheme-handler/https;
