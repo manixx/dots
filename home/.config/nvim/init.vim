@@ -69,7 +69,7 @@ let g:NERDTreeRemoveDirCmd  = 'trash '
 let g:NERDTreeMinimalMenu   = 1
 let g:indentLine_char_list  = ['|', '¦', '┆', '┊']
 let g:gitgutter_map_keys    = 0
-let g:vim_json_conceal      = 0     " show JSON quotes
+let g:vim_json_conceal      = 0 " show JSON quotes
 let g:indentLine_setColors  = 0 " use theme colours
 
 noremap <leader>f       :Files<cr>

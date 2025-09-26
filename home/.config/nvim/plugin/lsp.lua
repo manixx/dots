@@ -1,13 +1,16 @@
-local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-local localServer = {
-	'ccls',
-	'gopls',
-	'bashls',
-	'pyright'
-}
+vim.lsp.config('ccls', {
+	capabilities = capabilities,
+})
+vim.lsp.enable('ccls')
 
-for _, lsp in ipairs(localServer) do
-	lspconfig[lsp].setup{ capabilities = capabilities }
-end
+vim.lsp.config('gopls', {
+	capabilities = capabilities,
+})
+vim.lsp.enable('gopls')
+
+vim.lsp.config('pyright', {
+	capabilities = capabilities,
+})
+vim.lsp.enable('pyright')
