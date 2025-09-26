@@ -5,6 +5,7 @@ local localServer = {
 	'ccls',
 	'gopls',
 	'bashls',
+	'pyright'
 }
 
 for _, lsp in ipairs(localServer) do

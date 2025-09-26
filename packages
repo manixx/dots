@@ -1,14 +1,11 @@
-Signal-Desktop
 acpid
 apparmor
 base-devel
 base-minimal
 bash
 bat
-bind-utils
 bluez
 calc
-ccache
 ccls
 chromium
 chrony
@@ -26,7 +23,6 @@ duf
 dunst
 e2fsprogs
 efibootmgr
-evtest
 exa
 fd
 feh
@@ -40,7 +36,6 @@ gimp
 git
 go
 gopls
-gperf
 imlib2-devel
 intel-ucode
 iproute2
@@ -60,7 +55,6 @@ libopencv-python3
 libsecret
 libspa-bluetooth
 libva-intel-driver
-linssid
 linux
 lnav
 lvm2
@@ -68,12 +62,12 @@ man-db
 man-pages
 man-pages-posix
 mdocml
+mesa-vulkan-intel
 ncdu
 ncpamixer
 ncurses
 neovim
 net-tools
-newsboat
 nmap
 nnn
 ntfs-3g
@@ -86,6 +80,7 @@ picom
 pinentry-dmenu
 pipewire
 psmisc
+pyright
 redshift
 ripgrep
 setxkbmap
@@ -93,7 +88,6 @@ socklog-void
 sof-firmware
 spotify
 sudo
-telegram-desktop
 tlp
 tmux
 trash-cli
