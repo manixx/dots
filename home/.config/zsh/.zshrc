@@ -34,6 +34,8 @@ setopt HIST_IGNORE_ALL_DUPS # do not write duplicates to history file
 setopt SHARE_HISTORY        # share history between sessions
 setopt PROMPT_SUBST         # to enable functions in prompt
 setopt AUTO_CD              # just use .. and omit cd
+setopt SHARE_HISTORY        # share history between session
+setopt APPEND_HISTORY       # append history
 
 ZLE_RPROMPT_INDENT=0           # disable right padding in prompt
 KEYTIMEOUT=1                   # make vi mode transitions faster
