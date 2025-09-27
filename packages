@@ -9,7 +9,6 @@ calc
 ccls
 chromium
 chrony
-cmake
 connman
 cryptsetup
 curl
@@ -68,7 +67,6 @@ ncpamixer
 ncurses
 neovim
 net-tools
-nmap
 nnn
 ntfs-3g
 ofono
@@ -96,7 +94,6 @@ twemoji
 ufw
 unclutter-xfixes
 urlview
-usbutils
 vlc
 void-repo-nonfree
 wget
@@ -107,7 +104,6 @@ xbindkeys
 xclip
 xcursor-vanilla-dmz-aa
 xf86-video-intel
-xinput
 xmodmap
 xorg-minimal
 xrandr
