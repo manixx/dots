@@ -1,16 +1,20 @@
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-vim.lsp.config('ccls', {
-	capabilities = capabilities,
-})
-vim.lsp.enable('ccls')
+local lsps = {
+	'ccls',
+	'gopls',
+	'pyright',
+}
 
-vim.lsp.config('gopls', {
-	capabilities = capabilities,
-})
-vim.lsp.enable('gopls')
+local function binary_exists(name)
+	return vim.fn.executable(name) == 1
+end
 
-vim.lsp.config('pyright', {
-	capabilities = capabilities,
-})
-vim.lsp.enable('pyright')
+for _, lsp_name in ipairs(lsps) do
+	if binary_exists(lsp_name) then
+		vim.lsp.config(lsp_name, {
+			capabilities = capabilities,
+		})
+		vim.lsp.enable(lsp_name)
+	end
+end

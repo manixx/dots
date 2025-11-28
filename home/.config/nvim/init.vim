@@ -1,14 +1,14 @@
 call plug#begin('~/.vim/plugged')
 " Basic
-Plug 'sainnhe/edge'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'itchyny/lightline.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'Yggdroot/indentLine'
-Plug 'junegunn/vim-easy-align'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+Plug 'sainnhe/edge'            " theme
+Plug 'junegunn/fzf'            " search
+Plug 'junegunn/fzf.vim'        " fzf integration
+Plug 'itchyny/lightline.vim'   " status bar
+Plug 'scrooloose/nerdtree'     " file browser
+Plug 'Yggdroot/indentLine'     " vertical lines
+Plug 'junegunn/vim-easy-align' " align stuff
+Plug 'tpope/vim-fugitive'      " git integration
+Plug 'airblade/vim-gitgutter'  " git adaptions
 " Syntax
 Plug 'towolf/vim-helm'
 " Autocomplete

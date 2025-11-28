@@ -6,7 +6,6 @@ bash
 bat
 bluez
 calc
-ccls
 chromium
 chrony
 connman
@@ -18,11 +17,13 @@ dnscrypt-proxy
 docker
 docker-buildx
 docker-compose
+dosfstools
 duf
 dunst
 e2fsprogs
 efibootmgr
-exa
+exfatprogs
+eza
 fd
 feh
 flameshot
@@ -31,7 +32,6 @@ font-hack-ttf
 fuse
 fwupd
 fzf
-gimp
 git
 go
 gopls
@@ -50,7 +50,6 @@ libX11-devel
 libXft-devel
 libXinerama-devel
 libXrandr-devel
-libopencv-python3
 libsecret
 libspa-bluetooth
 libva-intel-driver
@@ -68,7 +67,7 @@ ncurses
 neovim
 net-tools
 nnn
-ntfs-3g
+noto-fonts-ttf
 ofono
 openssh
 pass
@@ -77,6 +76,7 @@ pciutils
 picom
 pinentry-dmenu
 pipewire
+powertop
 psmisc
 pyright
 redshift
@@ -94,7 +94,6 @@ twemoji
 ufw
 unclutter-xfixes
 urlview
-vlc
 void-repo-nonfree
 wget
 whois
@@ -104,6 +103,7 @@ xbindkeys
 xclip
 xcursor-vanilla-dmz-aa
 xf86-video-intel
+xinput
 xmodmap
 xorg-minimal
 xrandr
