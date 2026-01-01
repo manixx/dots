@@ -4,6 +4,7 @@ base-devel
 base-minimal
 bash
 bat
+bind-utils
 bluez
 calc
 chromium
@@ -56,6 +57,7 @@ libva-intel-driver
 linux
 lnav
 lvm2
+lynis
 man-db
 man-pages
 man-pages-posix
@@ -95,6 +97,7 @@ ufw
 unclutter-xfixes
 urlview
 void-repo-nonfree
+vulkan-loader
 wget
 whois
 wpa_supplicant
