@@ -1,7 +1,9 @@
+aardvark-dns
 acpid
 acpilight
 alsa-utils
 apache-htpasswd
+apache-maven
 apparmor
 base-devel
 base-minimal
@@ -11,8 +13,10 @@ bind-utils
 bluez
 bridge-utils
 calc
+catatonit
 chromium
 chrony
+cmake
 cryptsetup
 curl
 dbeaver
@@ -30,6 +34,7 @@ eza
 fd
 feh
 file
+firefox
 flameshot
 font-awesome5
 font-hack-ttf
@@ -39,6 +44,7 @@ fzf
 gimp
 git
 git-lfs
+glow
 go
 gopls
 htop
@@ -52,6 +58,7 @@ iwd
 jq
 k9s
 kbd
+keepassxc
 kubectl
 kubernetes-helm
 kubernetes-kind
@@ -61,6 +68,7 @@ libXinerama-devel
 libXrandr-devel
 libffi-devel
 libinput-devel
+liblzma-devel
 libreoffice-calc
 libsecret
 libspa-bluetooth
@@ -80,6 +88,7 @@ mesa-vulkan-intel
 ncdu
 ncpamixer
 ncurses
+ncurses-devel
 neovim
 net-tools
 nmap
@@ -89,6 +98,7 @@ noto-fonts-ttf
 noto-fonts-ttf-extra
 openconnect
 openssh
+opentofu
 openvpn
 pass
 passmenu
@@ -96,12 +106,14 @@ peek
 picom
 pinentry-dmenu
 pipewire
+playerctl
 podman
 podman-compose
 poppler
 poppler-utils
 postgresql-libs-devel
 postgresql17-client
+powertop
 pre-commit
 psmisc
 pyright
@@ -109,11 +121,14 @@ python-devel
 python3-argcomplete
 python3-pipx
 python3.11
+qemu
+readline-devel
 redshift
 remmina
 ripgrep
 setxkbmap
 skopeo
+smartmontools
 socklog-void
 sof-firmware
 spotify
@@ -133,6 +148,7 @@ urlview
 usbutils
 uv
 void-repo-nonfree
+vscode
 wget
 whois
 wireshark
@@ -145,6 +161,7 @@ xclip
 xcursor-vanilla-dmz-aa
 xmodmap
 xorg-minimal
+xorriso
 xrandr
 xrdb
 xss-lock
