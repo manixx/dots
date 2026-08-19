@@ -123,6 +123,8 @@ alias gco="git checkout"
 alias svu="SVDIR=~/.config/service sv"
 alias bctl="sudo bluetoothctl"
 alias callstop="docker stop $(docker ps -q)"
+alias cbin="xclip -in -sel cli"
+alias cbout="xclip -out -sel cli"
 
 bindkey -v                            # vim bindings
 bindkey '^?'    backward-delete-char  # delete chars after mode switch
