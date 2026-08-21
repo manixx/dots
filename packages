@@ -3,7 +3,6 @@ acpid
 acpilight
 alsa-utils
 apache-htpasswd
-apache-maven
 apparmor
 base-devel
 base-minimal
@@ -13,10 +12,8 @@ bind-utils
 bluez
 bridge-utils
 calc
-catatonit
 chromium
 chrony
-cmake
 cryptsetup
 curl
 dbeaver
@@ -39,6 +36,7 @@ flameshot
 font-awesome5
 font-hack-ttf
 fuse
+fuse-sshfs
 fwupd
 fzf
 gimp
@@ -112,7 +110,7 @@ podman-compose
 poppler
 poppler-utils
 postgresql-libs-devel
-postgresql17-client
+postgresql18-client
 powertop
 pre-commit
 psmisc
@@ -148,7 +146,6 @@ urlview
 usbutils
 uv
 void-repo-nonfree
-vscode
 wget
 whois
 wireshark
@@ -168,6 +165,7 @@ xss-lock
 xtools
 xxd
 zip
+zola
 zoxide
 zsh
 zsh-autosuggestions

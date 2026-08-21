@@ -6,6 +6,7 @@ local lsps = {
 	'svelte',
 	'ts_ls',
 	'docker_language_server',
+	'cssls',
 }
 
 for _, lsp_name in ipairs(lsps) do
