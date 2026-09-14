@@ -4,6 +4,7 @@ acpilight
 alsa-utils
 apache-htpasswd
 apparmor
+avahi
 base-devel
 base-minimal
 bash
@@ -14,6 +15,7 @@ bridge-utils
 calc
 chromium
 chrony
+cmake
 cryptsetup
 curl
 dbeaver
@@ -92,8 +94,11 @@ net-tools
 nmap
 nnn
 nodejs
+noto-fonts-cjk
+noto-fonts-emoji
 noto-fonts-ttf
 noto-fonts-ttf-extra
+nss-mdns
 openconnect
 openssh
 opentofu
@@ -138,7 +143,6 @@ tlp
 tmux
 trash-cli
 ttf-bitstream-vera
-twemoji
 ufw
 unclutter-xfixes
 upower
@@ -156,6 +160,7 @@ xbindkeys
 xcb-util-cursor
 xclip
 xcursor-vanilla-dmz-aa
+xinput
 xmodmap
 xorg-minimal
 xorriso
