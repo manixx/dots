@@ -8,17 +8,6 @@ OPTIONS="
 
 	rd.luks.uuid=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 	rd.lvm.vg=storage
-
-	apparmor=1
-	security=apparmor
-
-	quiet
-	loglevel=3
-	i915.enable_psr=0
-	net.ifnames=0
-	vga=current
-	udev.log_level=3
-	fbcon=nodefer
 "
 
 OPTIONS=$(echo $OPTIONS | xargs)
