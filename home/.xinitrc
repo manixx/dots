@@ -31,4 +31,6 @@ fi
 eval $(dbus-launch --sh-syntax)
 runsvdir $HOME/.config/service &
 
+xrandr --output eDP-1 --mode 2880x1800 --rate 120
+
 exec dwm

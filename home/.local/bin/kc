@@ -1,0 +1,4 @@
+#!/bin/bash
+
+context=$(kubectl config get-contexts -o name | fzf --height=5) || exit 0
+kubectl config use-context "$context"

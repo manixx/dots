@@ -2,7 +2,6 @@
 
 desktop_dirs=(
 	/usr/share/applications/*.desktop
-	~/.local/share/applications/*.desktop
 )
 
 app_name=`grep '^Name=' ${desktop_dirs[@]} -h | cut -d'=' -f 2 | sort | uniq | dmenu -i $@`
