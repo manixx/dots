@@ -1,0 +1,44 @@
+#!/bin/zsh
+
+set -eu pipefail
+
+# Lists files and folders to backup (GPG is not covered here)
+data=(
+	"$HOME/.config/chromium/Default/Bookmarks"
+	"$HOME/.ssh"
+	"$HOME/.password-store"
+	"$HOME/.local/vpn"
+)
+
+file="backup-$(date +%s)"
+backup_dir=$(mktemp -d)
+
+echo "Backup dir is ${backup_dir}."
+
+for f in "${data[@]}"; do
+	echo "Backing up ${f}..."
+	if [ ! -d "${f}" ] && [ ! -f "${f}" ]; then
+		echo "Warning: ${f} does not exists."
+		continue;
+	fi
+
+	cp -R ${f} ${backup_dir}
+done
+
+gpg \
+	--export-secret-keys \
+	--export-options backup \
+	--output ${backup_dir}/private.gpg
+
+gpg \
+	--export \
+	--export-options backup \
+	--output ${backup_dir}/public.gp
+
+gpg --export-ownertrust > ${backup_dir}/ownertrust.txt
+
+tar czf ${file}.tar.gz ${backup_dir}
+rm -rf ${backup_dir}
+
+gpg --symmetric --out ${file}.gpg ${file}.tar.gz
+rm -f ${file}.tar.gz

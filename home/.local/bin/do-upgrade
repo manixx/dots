@@ -11,9 +11,6 @@ xlocate -S
 test $(command -v gcloud) \
 	&& gcloud components update
 
-test $(command -v az) \
-	&& az upgrade
-
 sudo makewhatis
 
 vim +'PlugUpgrade' +'PlugUpdate --sync' +qa
