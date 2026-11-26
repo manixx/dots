@@ -3,22 +3,15 @@ DISK="/dev/nvme0n1"
 PART=1
 
 OPTIONS="
-	root=/dev/storage/root rw
-	resume=/dev/storage/swap
+	root=/dev/cryptroot/root rw
+	resume=/dev/cryptroot/swap
 
 	rd.luks.uuid=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-	rd.lvm.vg=storage
-
-	apparmor=1
-	security=apparmor
-
+	rd.lvm.vg=cryptroot
 	quiet
 	loglevel=3
-	i915.enable_psr=0
-	net.ifnames=0
-	vga=current
-	udev.log_level=3
-	fbcon=nodefer
+	xe.enable_psr=1
+	xe.enable_panel_replay=0
 "
 
 OPTIONS=$(echo $OPTIONS | xargs)
