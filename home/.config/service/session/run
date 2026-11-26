@@ -1,6 +1,0 @@
-#!/bin/sh
-
-$HOME/.fehbg     # set background
-xset -dpms s off # disable monitor saving mode
-
-exec chpst -b session pause

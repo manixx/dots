@@ -187,17 +187,18 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 [[ -d $PYENV_ROOT/bin ]] && eval "$(pyenv init - zsh)"
 
-STARTX_LOG="$HOME/.local/share/xorg/startx.log"
+export DWL_LOG="$HOME/.local/state/dwl.log"
+if [[ -z "$DISPLAY" && -z "$WAYLAND_DISPLAY" && $(tty) == "/dev/tty1" ]]; then
+	[[ -f "$DWL_LOG" ]] && mv -f "$DWL_LOG" "$DWL_LOG.old"
 
-if [[ ! $DISPLAY && $(tty) == "/dev/tty1" ]]; then
-	[[ -f $STARTX_LOG ]] && mv -f $STARTX_LOG $STARTX_LOG.old
+	export XDG_SESSION_TYPE=wayland
+	export XDG_CURRENT_DESKTOP=dwl
 
-	exec startx 1> $STARTX_LOG 2>&1
+	exec dwl -d -s "$HOME/.config/dwl/autostart.sh" > "$DWL_LOG" 2>&1
 fi
 
 # launch tmux if display is set (x server running), interactive and
 # no tmux session is running. Force utf-8 output (-u).
-if [[ ! -z $DISPLAY ]] && [[ $- == *i* ]] && [[ -z "$TMUX" ]]; then
-	exec tmux -u
+if [[ -n "$DISPLAY" || -n "$WAYLAND_DISPLAY" ]] && [[ $- == *i* ]] && [[ -z "$TMUX" ]]; then
+    exec tmux -u
 fi
-

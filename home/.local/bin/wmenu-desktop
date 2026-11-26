@@ -1,0 +1,20 @@
+#!/bin/zsh
+
+desktop_dirs=(
+	/usr/share/applications/*.desktop
+)
+
+app_name=$(grep -h '^Name=' "${desktop_dirs[@]}" |
+	cut -d'=' -f2- |
+	sort -u |
+	wmenu -i "$@")
+
+if [[ -z "$app_name" ]]; then
+	exit 0
+fi
+
+file_path=$(grep -Flx "Name=${app_name}" "${desktop_dirs[@]}" | head -n1)
+
+if [[ -n "$file_path" ]]; then
+	gtk-launch "$(basename "$file_path")"
+fi
